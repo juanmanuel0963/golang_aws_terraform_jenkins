@@ -33,10 +33,11 @@ override.tf.json
 # Ignore CLI configuration files
 .terraformrc
 terraform.rc
-**/key_pairs/*
 *tfplan*
 
 *.tfvars
+terraform.tfvars
+
 microservices/contacts_delete_by_contact_id/testing/lambda_func_0_test.go
 microservices/contacts_get_by_company_id/testing/lambda_func_0_test.go
 microservices/contacts_get_by_contact_id/testing/lambda_func_0_test.go
