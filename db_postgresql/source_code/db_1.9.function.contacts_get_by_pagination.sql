@@ -79,12 +79,11 @@ BEGIN
 	ORDER_BY_QUERY = ' 
 	ORDER BY contacts.created_at ASC, contacts.id ASC ';
 		
-	PAGE_SIZE_QUERY = ' 
-	FETCH NEXT ' || page_size || ' ROWS ONLY ';
-	--LIMIT ' || page_size;
-	
 	PAGE_NUMBER_QUERY = ' 
 	OFFSET (' || page_number || ' - 1) * ' || page_size;
+	
+	PAGE_SIZE_QUERY = ' 
+	FETCH NEXT ' || page_size || ' ROWS ONLY ';
 	
 	RAISE NOTICE '%', SELECT_QUERY || JOIN_QUERY || WHERE_QUERY || ORDER_BY_QUERY || PAGE_SIZE_QUERY || PAGE_NUMBER_QUERY || ' ;';
 	
