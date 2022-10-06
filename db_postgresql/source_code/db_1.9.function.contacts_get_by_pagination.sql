@@ -80,7 +80,8 @@ BEGIN
 	ORDER BY contacts.created_at ASC, contacts.id ASC ';
 		
 	PAGE_SIZE_QUERY = ' 
-	LIMIT ' || page_size;
+	FETCH NEXT ' || page_size || ' ROWS ONLY ';
+	--LIMIT ' || page_size;
 	
 	PAGE_NUMBER_QUERY = ' 
 	OFFSET (' || page_number || ' - 1) * ' || page_size;
