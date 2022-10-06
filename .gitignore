@@ -38,9 +38,11 @@ terraform.rc
 *.tfvars
 terraform.tfvars
 
-microservices/contacts_delete_by_contact_id/testing/lambda_func_0_test.go
 microservices/contacts_get_by_company_id/testing/lambda_func_0_test.go
 microservices/contacts_get_by_contact_id/testing/lambda_func_0_test.go
+microservices/contacts_get_by_pagination/testing/lambda_func_0_test.go
+microservices/contacts_get_by_dynamic_filter/testing/lambda_func_0_test.go
 microservices/contacts_insert/testing/lambda_func_0_test.go
 microservices/contacts_update_by_contact_id/testing/lambda_func_0_test.go
+microservices/contacts_delete_by_contact_id/testing/lambda_func_0_test.go
 microservices/lambda_func_go/testing/lambda_func_0_test.go
