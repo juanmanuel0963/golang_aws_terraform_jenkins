@@ -30,6 +30,8 @@ type ContactsFilter struct {
 	SearchText      string `json:"search_text"`
 	CreatedAtStart  string `json:"created_at_start"`
 	CreatedAtFinish string `json:"created_at_finish"`
+	PageNumber      int    `json:"page_number"`
+	PageSize        int    `json:"page_size"`
 }
 
 type ResponseBody struct {
@@ -56,8 +58,10 @@ func Test_with_aws_signature(t *testing.T) {
 	requestContactFilter := ContactsFilter{
 		Id:              0,
 		SearchText:      "amazon",
-		CreatedAtStart:  "2022.09.26 00:00:00",
-		CreatedAtFinish: "2022.09.30 23:59:59",
+		CreatedAtStart:  "",
+		CreatedAtFinish: "",
+		PageNumber:      1,
+		PageSize:        5,
 	}
 	//-----------------------------------------------------------
 	fmt.Println("Step - Marshalling contact object into JSON format")
