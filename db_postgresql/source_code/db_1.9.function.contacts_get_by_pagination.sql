@@ -1,10 +1,12 @@
-DROP FUNCTION IF EXISTS public.contacts_get_by_dynamic_filter(int);
-CREATE OR REPLACE FUNCTION contacts_get_by_dynamic_filter
+DROP FUNCTION IF EXISTS public.contacts_get_by_pagination(int);
+CREATE OR REPLACE FUNCTION contacts_get_by_pagination
 (
 	contact_id_input int,
 	search_text_input varchar,
 	contacts_created_at_start timestamp with time zone,
-	contacts_created_at_finish timestamp with time zone
+	contacts_created_at_finish timestamp with time zone,
+	page_number int,
+ 	page_size int
 )
 RETURNS TABLE 
 (
@@ -20,11 +22,15 @@ AS $$
 	DECLARE WHERE_QUERY text;
 	DECLARE JOIN_QUERY text;
 	DECLARE ORDER_BY_QUERY text;
+	DECLARE PAGE_NUMBER_QUERY text;
+	DECLARE PAGE_SIZE_QUERY text;
 BEGIN
 	SELECT_QUERY = '';
 	WHERE_QUERY = '';
 	JOIN_QUERY = '';
-	ORDER_BY_QUERY = '';
+	PAGE_NUMBER_QUERY = '';
+	PAGE_SIZE_QUERY = '';
+	
 	--SET datestyle = US, DMY;
 	
     SELECT_QUERY = 
@@ -70,21 +76,26 @@ BEGIN
 		WHERE_QUERY = WHERE_QUERY || ' )';
 	END IF;
 	
-	ORDER_BY_QUERY = ' ORDER BY contacts.created_at ASC ';
+	ORDER_BY_QUERY = ' 
+	ORDER BY contacts.created_at ASC, contacts.id ASC ';
+		
+	PAGE_SIZE_QUERY = ' 
+	LIMIT ' || page_size;
 	
-	RAISE NOTICE '%', SELECT_QUERY || JOIN_QUERY || WHERE_QUERY || ORDER_BY_QUERY || ' ;';
+	PAGE_NUMBER_QUERY = ' 
+	OFFSET (' || page_number || ' - 1) * ' || page_size;
+	
+	RAISE NOTICE '%', SELECT_QUERY || JOIN_QUERY || WHERE_QUERY || ORDER_BY_QUERY || PAGE_SIZE_QUERY || PAGE_NUMBER_QUERY || ' ;';
 	
 	RETURN QUERY
-		EXECUTE (SELECT_QUERY || JOIN_QUERY || WHERE_QUERY || ORDER_BY_QUERY || ' ;' );
+		EXECUTE (SELECT_QUERY || JOIN_QUERY || WHERE_QUERY || ORDER_BY_QUERY || PAGE_SIZE_QUERY || PAGE_NUMBER_QUERY || ' ;');
 	
 END
 $$ LANGUAGE PLPGSQL;
 
 --SELECT '0001.01.01'::date;
---SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_dynamic_filter(3,'','0001.01.01','0001.01.01');
---SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_dynamic_filter(0,'microsoft','0001.01.01','0001.01.01');
---SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_dynamic_filter(0,'','2022.09.20 00:00:00','0001.01.01');
---SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_dynamic_filter(0,'','00001.01.01','2022.09.30 23:59:59');
---SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_dynamic_filter(0,'','2022.09.25 00:00:00','2022.09.26 23:59:59');
---SELECT * FROM contacts WHERE contacts.company_id = 3;
---SELECT * FROM companies
+--SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_pagination(0,'amazon','0001.01.01','0001.01.01', 1, 15);
+--SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_pagination(0,'amazon','0001.01.01','0001.01.01', 1, 5);
+--SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_pagination(0,'amazon','0001.01.01','0001.01.01', 2, 5);
+--SELECT id, first_name, last_name, email, created_at, company_id FROM contacts_get_by_pagination(0,'amazon','0001.01.01','0001.01.01', 3, 5);
+
