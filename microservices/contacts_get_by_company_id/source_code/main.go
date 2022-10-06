@@ -13,10 +13,6 @@ import (
 	_ "github.com/lib/pq"
 )
 
-var db *sql.DB
-var errOpenConnection error
-var errPingDB error
-
 type Contact struct {
 	Id        int    `json:"id"`
 	CompanyId int    `json:"company_id"`
@@ -78,7 +74,7 @@ func FunctionHandler(ctx context.Context, request events.APIGatewayProxyRequest)
 	//
 	log.Println("Step - Openning DB connection")
 	//
-	db, errOpenConnection = sql.Open("postgres", dsn)
+	db, errOpenConnection := sql.Open("postgres", dsn)
 	//
 	//If an error occurs pinging the db
 	if errOpenConnection != nil {
@@ -94,7 +90,7 @@ func FunctionHandler(ctx context.Context, request events.APIGatewayProxyRequest)
 	//
 	log.Println("Step - Ping DB")
 	//
-	errPingDB = db.Ping()
+	errPingDB := db.Ping()
 	//If an error occurs pinging the db
 	if errPingDB != nil {
 		messageStatus := "ERROR_PINGING_DB"
