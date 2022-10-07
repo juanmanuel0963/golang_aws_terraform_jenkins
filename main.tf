@@ -166,6 +166,21 @@ variable "skip_final_snapshot" {
   type    = bool
 }
 
+variable "backup_retention_period"{
+  type    = string
+}
+
+variable "backup_window"{
+  type    = string
+}
+
+variable "maintenance_window"{
+  type    = string
+}
+
+variable apply_immediately{
+  type    = bool 
+}
 
 ##################################################################################
 # db_postgresql
@@ -193,6 +208,10 @@ module "module_db_postgresql" {
     random_pet              = local.random_pet
     vpc_id                  = module.module_networking.vpc_id 
     security_group_id       = module.module_networking.security_group_id
+    backup_retention_period = var.backup_retention_period
+    backup_window           = var.backup_window
+    maintenance_window      = var.maintenance_window
+    apply_immediately       = var.apply_immediately
 }
 
 ##################################################################################

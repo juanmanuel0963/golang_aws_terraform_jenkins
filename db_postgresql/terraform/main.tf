@@ -82,6 +82,22 @@ variable "security_group_id"{
   type    = string
 }
 
+variable "backup_retention_period"{
+  type    = string
+}
+
+variable "backup_window"{
+  type    = string
+}
+
+variable "maintenance_window"{
+  type    = string
+}
+
+variable apply_immediately{
+  type    = bool 
+}
+
 locals {
   default_aws_db_subnet_group = "default-${var.vpc_id}"
   identifier = "${var.identifier}-${replace("${var.random_pet}", "_", "-")}" 
@@ -164,6 +180,11 @@ resource "aws_db_instance" "the_postgresql_instance" {
   publicly_accessible     = var.publicly_accessible
   deletion_protection     = var.deletion_protection
   skip_final_snapshot     = var.skip_final_snapshot
+
+  backup_retention_period = var.backup_retention_period
+  backup_window           = var.backup_window
+  maintenance_window      = var.maintenance_window
+  apply_immediately       = var.apply_immediately
 }
 
 ##################################################################################

@@ -16,3 +16,7 @@ parameter_group_name    = "default.postgres13"
 publicly_accessible     = true
 deletion_protection     = true
 skip_final_snapshot     = true
+backup_retention_period = 3
+backup_window           = "21:00-21:30"
+maintenance_window      = "Fri:21:30-Fri:22:00"
+apply_immediately       = true
