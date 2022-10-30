@@ -44,6 +44,11 @@ module "module_networking" {
 # networking - OUTPUT
 ##################################################################################
 
+output "module_networking_security_group" {
+  description = "Security Group"
+  value = module.module_networking.security_group
+}
+
 output "module_networking_security_group_name" {
   description = "Security Group Name"
   value = module.module_networking.security_group_name
@@ -663,4 +668,42 @@ output "module_contacts_get_by_pagination_lambda_func_role_name" {
 output "module_contacts_get_by_pagination_lambda_func_base_url" {
   description = "Base URL for API Gateway stage + function name"
   value = module.module_contacts_get_by_pagination.lambda_func_base_url
+}
+
+##################################################################################
+# ec2_instance1
+##################################################################################
+
+module "module_ec2_instance1" {
+    source                            = "./ec2/instance1/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key
+    ami_id                            = "ami-0149b2da6ceec4bb0"
+    instance_type                     = "t2.micro"
+    key_name                          = "dev.workloads.key_pair" 
+    tag_name                          = "Instance_1 - Ubuntu 1GB"
+    associate_public_ip_address       = true      
+    vpc_id                            = module.module_networking.vpc_id 
+    security_group_id                 = module.module_networking.security_group_id
+}
+
+output "module_ec2_instance1_id" {
+  description = "Instance Id"
+  value = module.module_ec2_instance1.aws_instance_id
+}
+
+output "module_ec2_instance1_name" {
+  description = "Instance Name"
+  value = module.module_ec2_instance1.aws_instance_name
+}
+
+output "module_ec2_instance1_public_ip" {
+  description = "Public IP"
+  value = module.module_ec2_instance1.aws_instance_public_ip
+}
+
+output "module_ec2_instance1_private_ip" {
+  description = "Private IP"
+  value = module.module_ec2_instance1.aws_instance_private_ip
 }

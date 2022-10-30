@@ -45,3 +45,5 @@ microservices/contacts_insert/testing/lambda_func_0_test.go
 microservices/contacts_update_by_contact_id/testing/lambda_func_0_test.go
 microservices/contacts_delete_by_contact_id/testing/lambda_func_0_test.go
 microservices/lambda_func_go/testing/lambda_func_0_test.go
+
+**/key_pairs/*

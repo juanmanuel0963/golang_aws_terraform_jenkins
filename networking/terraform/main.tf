@@ -84,6 +84,46 @@ resource "aws_security_group_rule" "ingress_from_self_security_group" {
   self              = true  
 }
 
+resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_to_ssh"
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+/*
+resource "aws_security_group_rule" "ingress_from_local_home_to_8080" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_to_8080"
+  type              = "ingress"
+  from_port         = 8080
+  to_port           = 8080
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+
+resource "aws_security_group_rule" "ingress_from_local_home_to_80" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_to_80"
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+*/
+resource "aws_security_group_rule" "ingress_from_local_home_to_443" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_to_443"
+  type              = "ingress"
+  from_port         = 443
+  to_port           = 443
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+
 resource "aws_security_group_rule" "egress_to_everywhere" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "egress_to_everywhere"
@@ -97,6 +137,11 @@ resource "aws_security_group_rule" "egress_to_everywhere" {
 ##################################################################################
 # aws_security_group - OUTPUT
 ##################################################################################
+
+output "security_group" {
+  description = "Security Group "
+  value = aws_security_group.the_security_group
+}
 
 output "security_group_name" {
   description = "Security Group Name"
