@@ -670,40 +670,61 @@ output "module_contacts_get_by_pagination_lambda_func_base_url" {
   value = module.module_contacts_get_by_pagination.lambda_func_base_url
 }
 
+#############################################################################
+# VARIABLES - ec2_grpc_server_1
+#############################################################################
+
+variable "ami_id" {
+  type    = string
+}
+variable "instance_type" {
+  type    = string
+}
+variable "key_name" {
+  type    = string
+}
+variable "instance_name_grpc_server_1" {
+  type    = string
+}
+variable "tag_name_grpc_server_1" {
+  type    = string
+}
+
 ##################################################################################
-# ec2_instance1
+# ec2_grpc_server_1
 ##################################################################################
 
-module "module_ec2_instance1" {
-    source                            = "./ec2/instance1/terraform"
+module "module_ec2_grpc_server_1" {
+    source                            = "./ec2/grpc_server_1/terraform"
+    instance_name                     = var.instance_name_grpc_server_1
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
-    ami_id                            = "ami-0149b2da6ceec4bb0"
-    instance_type                     = "t2.micro"
-    key_name                          = "dev.workloads.key_pair" 
-    tag_name                          = "Instance_1 - Ubuntu 1GB"
+    ami_id                            = var.ami_id
+    instance_type                     = var.instance_type
+    key_name                          = var.key_name
+    tag_name                          = var.tag_name_grpc_server_1    
     associate_public_ip_address       = true      
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
 }
 
-output "module_ec2_instance1_id" {
+output "module_ec2_grpc_server_1_id" {
   description = "Instance Id"
-  value = module.module_ec2_instance1.aws_instance_id
+  value = module.module_ec2_grpc_server_1.aws_instance_id
 }
 
-output "module_ec2_instance1_name" {
+output "module_ec2_grpc_server_1_name" {
   description = "Instance Name"
-  value = module.module_ec2_instance1.aws_instance_name
+  value = module.module_ec2_grpc_server_1.aws_instance_name
 }
 
-output "module_ec2_instance1_public_ip" {
+output "module_ec2_grpc_server_1_public_ip" {
   description = "Public IP"
-  value = module.module_ec2_instance1.aws_instance_public_ip
+  value = module.module_ec2_grpc_server_1.aws_instance_public_ip
 }
 
-output "module_ec2_instance1_private_ip" {
+output "module_ec2_grpc_server_1_private_ip" {
   description = "Private IP"
-  value = module.module_ec2_instance1.aws_instance_private_ip
+  value = module.module_ec2_grpc_server_1.aws_instance_private_ip
 }

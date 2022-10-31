@@ -62,6 +62,10 @@ resource "aws_security_group" "the_security_group" {
   name        = var.security_group_name
   description = var.security_group_name
   vpc_id      = aws_default_vpc.default.id
+
+  lifecycle {
+    create_before_destroy = true
+  }  
 }
 
 resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
@@ -113,7 +117,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_80" {
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
-*/
+
 resource "aws_security_group_rule" "ingress_from_local_home_to_443" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_home_to_443"
@@ -123,7 +127,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_443" {
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
-
+*/
 resource "aws_security_group_rule" "egress_to_everywhere" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "egress_to_everywhere"

@@ -30,8 +30,13 @@ variable "key_name" {
   type    = string
 }
 
-variable "tag_name" {
+variable "instance_name" {
   description = "Name for this EC2 instance"
+  type    = string
+}
+
+variable "tag_name" {
+  description = "Tag name for this EC2 instance"
   type    = string
 }
 
@@ -85,6 +90,55 @@ provider "aws" {
 # RESOURCES
 #############################################################################  
 
+//----------IAM Rol creation----------
+
+//Defines an IAM role that allows EC2 to access resources in your AWS account.
+
+resource "aws_iam_role" "ec2_instance_role" {
+  //name = "grpc_server_1_iam_role"
+  name = "${var.instance_name}_iam_role"
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+}
+
+//----------Policy assignment to the IAM Rol----------
+
+//Attaches a policy to the IAM role.
+//AmazonEC2FullAccess Provides full access to Amazon EC2 via the AWS Management Console.
+resource "aws_iam_role_policy_attachment" "aws_ec2_access_execution_role" {
+  role        = aws_iam_role.ec2_instance_role.name
+  policy_arn  = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+}
+
+//Attaches a policy to the IAM role.
+//AmazonSSMFullAccess Provides full access to Amazon SSM.
+resource "aws_iam_role_policy_attachment" "aws_ssm_access_execution_role" {
+  role        = aws_iam_role.ec2_instance_role.name
+  policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+}
+
+//----------Instance Profile and role attachment----------
+
+resource "aws_iam_instance_profile" "ec2_profile" {
+  name = "${var.instance_name}_instance_profile"
+  role = aws_iam_role.ec2_instance_role.name
+}
+
 //----------Creates the AWS EC2 instance----------
 
 resource "aws_instance" "the_instance" {
@@ -93,7 +147,8 @@ resource "aws_instance" "the_instance" {
   availability_zone = local.availability_zone
   associate_public_ip_address = var.associate_public_ip_address
   key_name        = var.key_name
-  
+  #iam_instance_profile = "ec2_ssm_role"
+  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
   vpc_security_group_ids = [
     var.security_group_id
   ]
@@ -123,6 +178,8 @@ resource "aws_eip" "lb" {
   vpc      = true
 }
 
+
+
 ##################################################################################
 # aws_instance - OUTPUT
 ##################################################################################
@@ -146,4 +203,3 @@ output "aws_instance_private_ip" {
   description = "Private IP"
   value = aws_instance.the_instance.private_ip
 }
-
