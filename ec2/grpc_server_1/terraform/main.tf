@@ -142,14 +142,13 @@ resource "aws_iam_instance_profile" "ec2_profile" {
 //----------Creates the AWS EC2 instance----------
 
 resource "aws_instance" "the_instance" {
-  ami             = var.ami_id
-  instance_type   = var.instance_type
-  availability_zone = local.availability_zone
+  ami                   = var.ami_id
+  instance_type         = var.instance_type
+  availability_zone     = local.availability_zone
   associate_public_ip_address = var.associate_public_ip_address
-  key_name        = var.key_name
-  #iam_instance_profile = "ec2_ssm_role"
-  iam_instance_profile = aws_iam_instance_profile.ec2_profile.name
-  vpc_security_group_ids = [
+  key_name                  = var.key_name
+  iam_instance_profile      = aws_iam_instance_profile.ec2_profile.name
+  vpc_security_group_ids    = [
     var.security_group_id
   ]
 
