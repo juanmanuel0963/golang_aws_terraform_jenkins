@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                checkout([$class: 'GitSCM', branches: [[name: '*/release-branch.v1']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/juanmanuel0963/terraform_jenkins_api_gateway_lambda_postgresql']]])
+                checkout([$class: 'GitSCM', branches: [[name: '*/release-branch.v1']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql']]])
             }
         }
         stage('Terraform init') {

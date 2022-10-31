@@ -1,4 +1,4 @@
-module github.com/juanmanuel0963/terraform_jenkins_api_gateway_lambda_postgresql
+module github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql
 
 go 1.18
 
