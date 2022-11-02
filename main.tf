@@ -683,12 +683,13 @@ variable "instance_type" {
 variable "key_name" {
   type    = string
 }
-variable "instance_name_grpc_server_1" {
+variable "grpc_server_1_instance_name" {
   type    = string
 }
-variable "tag_name_grpc_server_1" {
+variable "grpc_server_1_tag_name" {
   type    = string
 }
+
 
 ##################################################################################
 # ec2_grpc_server_1
@@ -696,14 +697,14 @@ variable "tag_name_grpc_server_1" {
 
 module "module_ec2_grpc_server_1" {
     source                            = "./ec2/grpc_server_1/terraform"
-    instance_name                     = var.instance_name_grpc_server_1
+    instance_name                     = var.grpc_server_1_instance_name
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
     ami_id                            = var.ami_id
     instance_type                     = var.instance_type
     key_name                          = var.key_name
-    tag_name                          = var.tag_name_grpc_server_1    
+    tag_name                          = var.grpc_server_1_tag_name    
     associate_public_ip_address       = true      
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
@@ -729,12 +730,13 @@ output "module_ec2_grpc_server_1_private_ip" {
   value = module.module_ec2_grpc_server_1.aws_instance_private_ip
 }
 
-
-
 #############################################################################
 # VARIABLES - ec2_grpc_server_1
 #############################################################################
 
+variable "grpc_server_1_op1_function_name" {
+  type    = string
+}
 
 ##################################################################################
 # grpc_usermgmt_op1
@@ -744,5 +746,8 @@ module "module_grpc_usermgmt_op1" {
     source                            = "./microservices/usermgmt_op1_no_persistence/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
-    secret_key                        = var.secret_key
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_server_1_instance_name
+    instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id
+    function_name                     = var.grpc_server_1_op1_function_name
 }

@@ -131,6 +131,13 @@ resource "aws_iam_role_policy_attachment" "aws_ssm_access_execution_role" {
   policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
 }
 
+//Attaches a policy to the IAM role.
+//AmazonSSMFullAccess Provides full access to Amazon SSM.
+resource "aws_iam_role_policy_attachment" "aws_cloudwatch_access_execution_role" {
+  role        = aws_iam_role.ec2_instance_role.name
+  policy_arn  = "arn:aws:iam::aws:policy/CloudWatchFullAccess"
+}
+
 //----------Instance Profile and role attachment----------
 
 resource "aws_iam_instance_profile" "ec2_profile" {

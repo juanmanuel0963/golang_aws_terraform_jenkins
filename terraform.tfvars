@@ -20,9 +20,10 @@ backup_retention_period = 3
 backup_window           = "21:00-21:30"
 maintenance_window      = "Fri:21:30-Fri:22:00"
 apply_immediately       = true
-#ec2_grpc_server_1
+#grpc_server_1
 ami_id                  = "ami-0149b2da6ceec4bb0"
 instance_type           = "t2.micro"
-key_name                = "dev.workloads.key_pair" 
-instance_name_grpc_server_1  = "grpc_server_1"
-tag_name_grpc_server_1  = "grpc_server_1 - Ubuntu 1GB"
+key_name                = "dev.workloads.key_pair"
+grpc_server_1_instance_name     = "grpc_server_1"
+grpc_server_1_tag_name          = "grpc_server_1 - Ubuntu 1GB"
+grpc_server_1_op1_function_name = "op1_usermgmt_server"

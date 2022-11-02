@@ -14,6 +14,18 @@ variable "secret_key" {
   type    = string
 }
 
+variable "instance_name" {
+  type    = string
+}
+
+variable "instance_id" {
+  type    = string
+}
+
+variable "function_name" {
+  type    = string
+}
+
 locals {
   availability_zone = "${var.region}c"  
 }
@@ -56,9 +68,8 @@ provider "aws" {
 //----------IAM Rol creation----------
 
 //Defines an IAM role that allows Lambda to access resources in your AWS account.
-resource "aws_iam_role" "ec2_instance_role" {
-  name = "grpc_usermgmt_op1_iam_role"
-  //name = "${local.lambda_func_role_name}"
+resource "aws_iam_role" "the_iam_role" {
+  name = "${var.instance_name}_${var.function_name}_iam_role"
 
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -82,31 +93,43 @@ resource "aws_iam_role" "ec2_instance_role" {
 
 //Attaches a policy to the IAM role.
 //AmazonEC2FullAccess Provides full access to Amazon EC2 via the AWS Management Console.
-resource "aws_iam_role_policy_attachment" "aws_ec2_access_execution_role" {
-  role        = aws_iam_role.ec2_instance_role.name
+resource "aws_iam_role_policy_attachment" "the_execution_role" {
+  role        = aws_iam_role.the_iam_role.name
   policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
 }
 
 #-----Cloudwatch Rule--------
 
-resource "aws_cloudwatch_event_rule" "stop_instances" {
-  name                = "StopInstance"
-  description         = "Stop instances nightly"
-  schedule_expression = "cron(0/1 * * * ? *)"
+resource "aws_cloudwatch_event_rule" "the_rule" {
+  name                = "${var.instance_name}_${var.function_name}_rule"
+  description         = "${var.instance_name}_${var.function_name}_rule"
+  schedule_expression = "cron(0/5 * * * ? *)"
+  //schedule_expression = "cron(0/1 * * * ? *)"
   //schedule_expression = "rate(1 minute)"
 }
 
 #-----Cloudwatch Target--------
 
-resource "aws_cloudwatch_event_target" "stop_instances" {
-  target_id = "StopInstance"
+resource "aws_cloudwatch_event_target" "the_target" {
+  target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
-  input     = "{\"commands\":[\"sudo shutdown -h now\"]}"
-  rule      = aws_cloudwatch_event_rule.stop_instances.name
-  role_arn  = aws_iam_role.ec2_instance_role.arn
+  //input     = "{\"commands\":[\"ls -a\"]}"
+  input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"git clone https://github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql.git\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"cd microservices/usermgmt_op1_no_persistence/usermgmt_server\",\"go run usermgmt_server.go\"]}"
+  rule      = aws_cloudwatch_event_rule.the_rule.name
+  role_arn  = aws_iam_role.the_iam_role.arn
 
   run_command_targets {
     key    = "InstanceIds"
-    values = ["i-055f9cf29562ba94e"]
+    values = ["${var.instance_id}"]
   }
 }
+/*
+//----------CloudWatch assignment event----------
+
+//Defines a log group to store log messages from your Lambda function for 30 days. 
+//By convention, Lambda stores logs in a group with the name /aws/lambda/<Function Name>.
+resource "aws_cloudwatch_log_group" "the_log_group" {
+  name = "/aws/events/${aws_cloudwatch_event_rule.the_rule.name}"
+  retention_in_days = 30
+}
+*/
