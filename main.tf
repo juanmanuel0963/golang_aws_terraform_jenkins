@@ -748,6 +748,7 @@ module "module_grpc_usermgmt_op1" {
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
     instance_name                     = var.grpc_server_1_instance_name
-    instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id
+    instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op1_function_name
 }

@@ -17,7 +17,7 @@ const (
 )
 
 func main() {
-	conn, err := grpc.Dial(os.Getenv("server_1"), grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(os.Getenv("grpc_server_1"), grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
