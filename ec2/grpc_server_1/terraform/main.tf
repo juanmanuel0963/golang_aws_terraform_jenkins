@@ -95,7 +95,6 @@ provider "aws" {
 //Defines an IAM role that allows EC2 to access resources in your AWS account.
 
 resource "aws_iam_role" "ec2_instance_role" {
-  //name = "grpc_server_1_iam_role"
   name = "${var.instance_name}_iam_role"
 
   # Terraform's "jsonencode" function converts a

@@ -728,3 +728,21 @@ output "module_ec2_grpc_server_1_private_ip" {
   description = "Private IP"
   value = module.module_ec2_grpc_server_1.aws_instance_private_ip
 }
+
+
+
+#############################################################################
+# VARIABLES - ec2_grpc_server_1
+#############################################################################
+
+
+##################################################################################
+# grpc_usermgmt_op1
+##################################################################################
+
+module "module_grpc_usermgmt_op1" {
+    source                            = "./microservices/usermgmt_op1_no_persistence/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key
+}
