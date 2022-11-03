@@ -671,7 +671,7 @@ output "module_contacts_get_by_pagination_lambda_func_base_url" {
 }
 
 #############################################################################
-# VARIABLES - ec2_grpc_server_1
+# VARIABLES - ec2_grpc_server_1 (EC2 instance)
 #############################################################################
 
 variable "ami_id" {
@@ -689,14 +689,17 @@ variable "grpc_server_1_instance_name" {
 variable "grpc_server_1_tag_name" {
   type    = string
 }
-
+variable "grpc_server_1_op1_function_name" {
+  type    = string
+}
 
 ##################################################################################
-# ec2_grpc_server_1
+# ec2_grpc_server_1 (EC2 instance)
 ##################################################################################
 
 module "module_ec2_grpc_server_1" {
-    source                            = "./ec2/grpc_server_1/terraform"
+    //source                            = "./ec2/grpc_server_1/terraform"
+    source                            = "./ec2/grpc_instance/terraform"
     instance_name                     = var.grpc_server_1_instance_name
     region                            = var.region  
     access_key                        = var.access_key 
@@ -730,20 +733,12 @@ output "module_ec2_grpc_server_1_private_ip" {
   value = module.module_ec2_grpc_server_1.aws_instance_private_ip
 }
 
-#############################################################################
-# VARIABLES - ec2_grpc_server_1
-#############################################################################
-
-variable "grpc_server_1_op1_function_name" {
-  type    = string
-}
-
 ##################################################################################
-# grpc_usermgmt_op1
+# ec2_grpc_server_1 - grpc_usermgmt_op1 - (EventBridge rule RunShellScript)
 ##################################################################################
 
-module "module_grpc_usermgmt_op1" {
-    source                            = "./microservices/usermgmt_op1_no_persistence/terraform"
+module "module_grpc_server_1_op1_eventbridge_rule" {
+    source                            = "./microservices/usermgmt_op1_no_persistence/eventbridge_server/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -751,4 +746,83 @@ module "module_grpc_usermgmt_op1" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op1_function_name
+}
+
+output "module_grpc_server_1_op1_eventbridge_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_grpc_server_1_op1_eventbridge_rule.aws_cloudwatch_event_rule_name
+}
+
+#############################################################################
+# VARIABLES - ec2_grpc_client_1 (EC2 instance)
+#############################################################################
+
+variable "grpc_client_1_instance_name" {
+  type    = string
+}
+variable "grpc_client_1_tag_name" {
+  type    = string
+}
+variable "grpc_client_1_op1_function_name" {
+  type    = string
+}
+
+##################################################################################
+# ec2_grpc_client_1 (EC2 instance)
+##################################################################################
+
+module "module_ec2_grpc_client_1" {
+    //source                            = "./ec2/grpc_client_1/terraform"
+    source                            = "./ec2/grpc_instance/terraform"
+    instance_name                     = var.grpc_client_1_instance_name
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key
+    ami_id                            = var.ami_id
+    instance_type                     = var.instance_type
+    key_name                          = var.key_name
+    tag_name                          = var.grpc_client_1_tag_name    
+    associate_public_ip_address       = true      
+    vpc_id                            = module.module_networking.vpc_id 
+    security_group_id                 = module.module_networking.security_group_id
+}
+
+output "module_ec2_grpc_client_1_id" {
+  description = "Instance Id"
+  value = module.module_ec2_grpc_client_1.aws_instance_id
+}
+
+output "module_ec2_grpc_client_1_name" {
+  description = "Instance Name"
+  value = module.module_ec2_grpc_client_1.aws_instance_name
+}
+
+output "module_ec2_grpc_client_1_public_ip" {
+  description = "Public IP"
+  value = module.module_ec2_grpc_client_1.aws_instance_public_ip
+}
+
+output "module_ec2_grpc_client_1_private_ip" {
+  description = "Private IP"
+  value = module.module_ec2_grpc_client_1.aws_instance_private_ip
+}
+
+##################################################################################
+# ec2_grpc_client_1 - grpc_usermgmt_op1 - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_grpc_client_1_op1_eventbridge_rule" {
+    source                            = "./microservices/usermgmt_op1_no_persistence/eventbridge_client/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_client_1_instance_name
+    instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    function_name                     = var.grpc_client_1_op1_function_name
+}
+
+output "module_grpc_client_1_op1_eventbridge_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_grpc_client_1_op1_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
