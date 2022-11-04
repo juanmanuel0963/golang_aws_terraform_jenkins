@@ -6,7 +6,7 @@ import (
 	"math/rand"
 	"net"
 
-	pb "github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql/v2/microservices/usermgmt_op1_no_persistence/usermgmt"
+	pb "github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql/v3/microservices/usermgmt_op1_no_persistence/usermgmt"
 	"google.golang.org/grpc"
 )
 

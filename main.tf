@@ -692,7 +692,9 @@ variable "grpc_server_1_tag_name" {
 variable "grpc_server_1_op1_function_name" {
   type    = string
 }
-
+variable "grpc_server_1_op2_function_name" {
+  type    = string
+}
 ##################################################################################
 # ec2_grpc_server_1 (EC2 instance)
 ##################################################################################
@@ -753,6 +755,26 @@ output "module_grpc_server_1_op1_eventbridge_rule_name" {
   value = module.module_grpc_server_1_op1_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
 
+##################################################################################
+# ec2_grpc_server_1 - grpc_usermgmt_op2 - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_grpc_server_1_op2_eventbridge_rule" {
+    source                            = "./microservices/usermgmt_op2_in_memory/eventbridge_server/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_server_1_instance_name
+    instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
+    function_name                     = var.grpc_server_1_op2_function_name
+}
+
+output "module_grpc_server_1_op2_eventbridge_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_grpc_server_1_op2_eventbridge_rule.aws_cloudwatch_event_rule_name
+}
+
 #############################################################################
 # VARIABLES - ec2_grpc_client_1 (EC2 instance)
 #############################################################################
@@ -766,7 +788,9 @@ variable "grpc_client_1_tag_name" {
 variable "grpc_client_1_op1_function_name" {
   type    = string
 }
-
+variable "grpc_client_1_op2_function_name" {
+  type    = string
+}
 ##################################################################################
 # ec2_grpc_client_1 (EC2 instance)
 ##################################################################################
@@ -825,4 +849,24 @@ module "module_grpc_client_1_op1_eventbridge_rule" {
 output "module_grpc_client_1_op1_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op1_eventbridge_rule.aws_cloudwatch_event_rule_name
+}
+
+##################################################################################
+# ec2_grpc_client_1 - grpc_usermgmt_op2 - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_grpc_client_1_op2_eventbridge_rule" {
+    source                            = "./microservices/usermgmt_op2_in_memory/eventbridge_client/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_client_1_instance_name
+    instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    function_name                     = var.grpc_client_1_op2_function_name
+}
+
+output "module_grpc_client_1_op2_eventbridge_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_grpc_client_1_op2_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
