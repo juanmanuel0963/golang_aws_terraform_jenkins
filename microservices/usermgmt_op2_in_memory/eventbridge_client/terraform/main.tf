@@ -107,7 +107,7 @@ resource "aws_iam_role_policy_attachment" "the_execution_role" {
 resource "aws_cloudwatch_event_rule" "the_rule" {
   name                = "${var.instance_name}_${var.function_name}_rule"
   description         = "${var.instance_name}_${var.function_name}_rule"
-  schedule_expression = "cron(0/2 * * * ? *)" //every 2 minutes
+  schedule_expression = "cron(0/5 * * * ? *)" //every 5 minutes
   //schedule_expression = "rate(1 minute)"
 }
 
