@@ -98,7 +98,7 @@ func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUser
 
 func main() {
 	//database_url1 := "postgres://postgres:mysecretpassword@localhost:5432/postgres"
-	database_url := "postgres://db_master:PASSWORD@db-server-postgresql-romantic-shark.cm03k8s4ogkh.us-east-1.rds.amazonaws.com:5432/db_postgresql_romantic_shark?sslmode=disable"
+	database_url := "postgres://db_master:" + os.Getenv("db_password") + "@db-server-postgresql-romantic-shark.cm03k8s4ogkh.us-east-1.rds.amazonaws.com:5432/db_postgresql_romantic_shark?sslmode=disable"
 	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
 	conn, err := pgx.Connect(context.Background(), database_url)
 	if err != nil {
