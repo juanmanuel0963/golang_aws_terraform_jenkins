@@ -6,7 +6,7 @@ import (
 	"log"
 	"time"
 
-	pb "github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql/v5/microservices/usermgmt_op3_json_file/usermgmt"
+	pb "github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql/v5/microservices/usermgmt_op4_db_postgres/usermgmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
