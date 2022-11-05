@@ -28,8 +28,8 @@ func main() {
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
 	var new_users = make(map[string]int)
-	new_users["Alice"] = 43
-	new_users["Bob"] = 30
+	new_users["Juan"] = 43
+	new_users["Manuel"] = 30
 	for name, age := range new_users {
 		r, err := c.CreateNewUser(ctx, &pb.NewUser{Name: name, Age: int32(age)})
 		if err != nil {
