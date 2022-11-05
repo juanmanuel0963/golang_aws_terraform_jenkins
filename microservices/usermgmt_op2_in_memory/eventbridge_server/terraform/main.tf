@@ -107,7 +107,8 @@ resource "aws_iam_role_policy_attachment" "the_execution_role" {
 resource "aws_cloudwatch_event_rule" "the_rule" {
   name                = "${var.instance_name}_${var.function_name}_rule"
   description         = "${var.instance_name}_${var.function_name}_rule"
-  schedule_expression = "cron(0 * * * ? *)" //every one hour
+  //schedule_expression = "cron(0 * * * ? *)" //every one hour
+  schedule_expression = "cron(0/1 * * * ? *)" //every 1 minute
   //schedule_expression = "rate(1 minute)"
 }
 
@@ -117,7 +118,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
-  input     = "{\"commands\":[\"sudo snap install go --classic\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"sudo rm -rf terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"git clone https://github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql.git\",\"cd /home/ubuntu/\",\"cd terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"cd microservices/usermgmt_op2_in_memory/usermgmt_server\",\"go run usermgmt_server.go\"]}"
+  input     = "{\"commands\":[\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"cd microservices/usermgmt_op2_in_memory/usermgmt_server\",\"go run usermgmt_server.go\"]}"
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
 

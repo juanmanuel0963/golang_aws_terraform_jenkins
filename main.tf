@@ -701,6 +701,9 @@ variable "grpc_server_1_op3_function_name" {
 variable "grpc_server_1_op4_function_name" {
   type    = string
 }
+variable "grpc_server_1_server_install" {
+  type    = string
+}
 ##################################################################################
 # ec2_grpc_server_1 (EC2 instance)
 ##################################################################################
@@ -739,6 +742,26 @@ output "module_ec2_grpc_server_1_public_ip" {
 output "module_ec2_grpc_server_1_private_ip" {
   description = "Private IP"
   value = module.module_ec2_grpc_server_1.aws_instance_private_ip
+}
+
+##################################################################################
+# ec2_grpc_server_1 - eventbridge_server_install - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_grpc_server_1_server_install" {
+    source                            = "./microservices/usermgmt_op1_no_persistence/eventbridge_server_install/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_server_1_instance_name
+    instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
+    function_name                     = var.grpc_server_1_server_install
+}
+
+output "module_grpc_server_1_server_install" {
+  description = "EventBridge rule name"
+  value = module.module_grpc_server_1_server_install.aws_cloudwatch_event_rule_name
 }
 
 ##################################################################################
@@ -843,6 +866,9 @@ variable "grpc_client_1_op3_function_name" {
 variable "grpc_client_1_op4_function_name" {
   type    = string
 }
+variable "grpc_client_1_client_install" {
+  type    = string
+}
 ##################################################################################
 # ec2_grpc_client_1 (EC2 instance)
 ##################################################################################
@@ -881,6 +907,26 @@ output "module_ec2_grpc_client_1_public_ip" {
 output "module_ec2_grpc_client_1_private_ip" {
   description = "Private IP"
   value = module.module_ec2_grpc_client_1.aws_instance_private_ip
+}
+
+##################################################################################
+# ec2_grpc_client_1 - eventbridge_client_install - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_grpc_client_1_client_install" {
+    source                            = "./microservices/usermgmt_op1_no_persistence/eventbridge_client_install/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_client_1_instance_name
+    instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    function_name                     = var.grpc_client_1_client_install
+}
+
+output "module_grpc_client_1_client_install" {
+  description = "EventBridge rule name"
+  value = module.module_grpc_client_1_client_install.aws_cloudwatch_event_rule_name
 }
 
 ##################################################################################

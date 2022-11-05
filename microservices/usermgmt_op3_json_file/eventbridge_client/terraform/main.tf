@@ -118,8 +118,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
   
-  input     = "{\"commands\":[\"sudo snap install go --classic\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"sudo rm -rf terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"git clone https://github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql.git\",\"cd /home/ubuntu/\",\"cd terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"cd microservices/usermgmt_op3_json_file/usermgmt_client\",\"go run usermgmt_client.go\"]}"
-
+  input     = "{\"commands\":[\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"cd microservices/usermgmt_op3_json_file/usermgmt_client\",\"go run usermgmt_client.go\"]}"
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
 
