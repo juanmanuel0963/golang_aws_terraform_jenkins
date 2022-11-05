@@ -814,6 +814,7 @@ module "module_grpc_server_1_op4_eventbridge_rule" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op4_function_name
+    password                          = var.password
 }
 
 output "module_grpc_server_1_op4_eventbridge_rule_name" {
