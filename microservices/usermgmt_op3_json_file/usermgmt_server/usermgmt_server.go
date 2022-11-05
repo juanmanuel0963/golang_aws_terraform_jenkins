@@ -56,7 +56,7 @@ func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.Ne
 			if err != nil {
 				log.Fatalf("JSON Marshaling failed: %v", err)
 			}
-			if err := ioutil.WriteFile("users.json", jsonBytes, 0664); err != nil {
+			if err := ioutil.WriteFile("users.json", jsonBytes, 0666); err != nil {
 				log.Fatalf("Failed write to file: %v", err)
 			}
 			return created_user, nil
