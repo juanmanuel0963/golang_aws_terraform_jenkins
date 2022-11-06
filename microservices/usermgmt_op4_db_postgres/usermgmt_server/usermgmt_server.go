@@ -13,7 +13,7 @@ import (
 )
 
 const (
-	port = ":50051"
+	port = ":50054"
 )
 
 func NewUserManagementServer() *UserManagementServer {
