@@ -941,6 +941,7 @@ module "module_grpc_client_1_op1_eventbridge_rule" {
     instance_name                     = var.grpc_client_1_instance_name
     instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_op1_function_name
 }
 
@@ -961,6 +962,7 @@ module "module_grpc_client_1_op2_eventbridge_rule" {
     instance_name                     = var.grpc_client_1_instance_name
     instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_op2_function_name
 }
 
@@ -981,6 +983,7 @@ module "module_grpc_client_1_op3_eventbridge_rule" {
     instance_name                     = var.grpc_client_1_instance_name
     instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_op3_function_name
 }
 
@@ -1001,6 +1004,7 @@ module "module_grpc_client_1_op4_eventbridge_rule" {
     instance_name                     = var.grpc_client_1_instance_name
     instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_op4_function_name
 }
 

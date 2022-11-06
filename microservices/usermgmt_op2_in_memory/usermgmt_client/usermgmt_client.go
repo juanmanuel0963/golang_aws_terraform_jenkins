@@ -4,6 +4,7 @@ import (
 	"context"
 	"fmt"
 	"log"
+	"os"
 	"time"
 
 	pb "github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql/v5/microservices/usermgmt_op2_in_memory/usermgmt"
@@ -12,13 +13,13 @@ import (
 )
 
 const (
-	//address = "localhost:50051"
-	address = "172.31.92.9:50051"
+// address = "localhost:50051"
+// address = "172.31.92.9:50051"
 )
 
 func main() {
 	//conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
-	conn, err := grpc.Dial(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
+	conn, err := grpc.Dial(os.Getenv("server_address")+":50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
 	}
