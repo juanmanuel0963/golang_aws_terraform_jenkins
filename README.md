@@ -20,10 +20,10 @@ AWS RDS Postgresql
 ## AWS API Gateway
 AWS API Gateway
 
-## AWS Lambda Functions in Golang
+## AWS Lambda Functions Golang microservices
 AWS Lambda microservices in Golang
 
-## GRPC in Golang
+## GRPC Golang microservices
 GRPC microservices in Golang
 
 ## AWS Eventbridge
