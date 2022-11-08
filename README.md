@@ -15,7 +15,7 @@ The ./main.tf file is the lab backbone. It makes reference to terraform submodul
 - ec2
 
 ## Jenkins
-The platform update instructions and the Golang microservices can be automatically deployed with Terraform commands or thorught Jenkins Pipelines to DEV, QAT or PROD environments.
+The platform update instructions and the Golang microservices can be automatically deployed with Terraform commands or with Jenkins Pipelines to DEV, QAT, NFT or PROD environments.
 In this repo we just show screenshots for Jenkins pipeline configuration (jenkins-config folder).
 The Jenkins server has been creaed and configured on a AWS EC2 instance.
 The Jenkins pipeline reads this Github repo and executes commands on a AWS account.
