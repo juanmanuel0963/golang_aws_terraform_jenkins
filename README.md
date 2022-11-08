@@ -1,12 +1,18 @@
 <!-- BEGIN_TF_DOCS -->
 # AWS GOLANG LABORATORY
-
-This Repo contains Terraform modules code to create an AWS API Gateway with several Lambda microservices in Golang.
-It also creates a Postgresql server with one Database by default.
-It can be deployed with Terraform commands or trought Jenkins pipeline.
+This Repo contains examples of several AWS Services created with Terraform and deployment of microservices in Golang.
 
 ## Terraform
-Terraform
+Every single AWS Service in this lab has been created with Terraform sentences.
+This lab demostrates the ability to handle any AWS platform as code with Terraform.
+The only procedure we have done manually is the creation of users, roles and key pairs with AWS IAM.
+
+The ./main.tf file is the lab backbone. It makes reference to terraform submodules inside below subfolders:
+- networkinbg
+- api_gateway
+- db_postgresql
+- microservices
+- ec2
 
 ## Jenkins
 Jenkins
