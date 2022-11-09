@@ -35,7 +35,8 @@ We have two special functions: one for dynamic filtering of contacts and one for
 These CRUD functions are call by AWS Lambda functions.
 
 ## AWS API Gateway
-AWS API Gateway
+The main purpose of this lab is to show how to create a microservices backend with AWS and lambda functions in Golang.
+So the first estep is to expose a API for contacts update which is publicly available.
 
 ## AWS Lambda Functions Golang microservices
 AWS Lambda microservices in Golang
