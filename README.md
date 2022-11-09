@@ -25,6 +25,7 @@ The Jenkins pipeline can be executed manually or configure to deploy code automa
 In this lab we create two EC2 instances (client and server) for the purpose of deploying grpc microservices in golang.
 Each EC2 instance is associated to a public IP, VPC and security group. 
 The security group is configure with ingress and egress rules.
+Every suitable resource is created behind the same VPC and security group.
 
 ## AWS RDS Postgresql
 AWS RDS Postgresql
