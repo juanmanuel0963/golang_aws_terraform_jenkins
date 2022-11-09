@@ -60,7 +60,7 @@ Once the client is invoked then it calls the corresponding GRPC function running
 The microservices can perform this operations:
 
 - usermgmt no persistence
-- usermgmt in memory 
+- usermgmt in memory no persistence
 - usermgmt json file persistence
 - usermgmt db postgres persistence
 
