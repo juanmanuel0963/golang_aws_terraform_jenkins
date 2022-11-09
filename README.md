@@ -21,8 +21,10 @@ The Jenkins server has been creaed and configured on a AWS EC2 instance.
 The Jenkins pipeline reads this Github repo and executes commands on a AWS account.
 The Jenkins pipeline can be executed manually or configure to deploy code automatically (every hour, day, etc).
 
-## AWS EC2 instances
-AWS EC2 instances
+## AWS EC2 instances, Public IP, VPC, Security Group
+In this lab we create 2 EC2 instances (client and server) for the purpose of testing grpc microservices in golang.
+Each EC2 instance is associated to a public IP, VPC and security group. 
+The security group is configure with ingress and egress rules. 
 
 ## AWS RDS Postgresql
 AWS RDS Postgresql
