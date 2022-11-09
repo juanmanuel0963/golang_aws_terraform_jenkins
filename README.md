@@ -28,7 +28,11 @@ The security group is configure with ingress and egress rules.
 Every suitable resource is created behind the same VPC and security group.
 
 ## AWS RDS Postgresql
-AWS RDS Postgresql
+In this lab we create one AWS RDS Postgresql database.
+The DB model has two tables (companies and contacts).
+All the DB resources are created with sql statements (tables, relationsips, CRUD operations and load of test data).
+We have two special functions: one for dynamic filtering of contacts and one for query pagination.
+These CRUD functions are call by AWS Lambda functions.
 
 ## AWS API Gateway
 AWS API Gateway
