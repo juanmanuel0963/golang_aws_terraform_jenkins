@@ -30,8 +30,8 @@ Every suitable resource is created behind the same VPC and security group.
 ## AWS RDS Postgresql
 In this lab we create one AWS RDS Postgresql database.
 The DB model has two tables (companies and contacts).
-All the DB resources are created with sql statements (tables, relationsips, CRUD operations and load of test data).
-We have two special functions: one for dynamic filtering of contacts and one for query pagination.
+All the DB resources are created with sql statements straight into the database (tables, relationsips, CRUD operations and load of test data).
+We have two special sql functions: one for dynamic filtering and one for query pagination.
 These CRUD functions are call by AWS Lambda functions.
 
 ## AWS API Gateway
@@ -43,6 +43,7 @@ So the first estep is to expose an API which is publicly available.
 The API invokes lambda functions written in golang to update contacts.
 The lambda functions are secured with IAM authentication, so the client needs to send AWS Signature for authentication (AccessKey and SecretKey).
 The lambda functions write detailed logs into the AWS CloudWatch event log.
+The lambda functions execute the CRUD operations calling the Postgresql functions.
 
 ## GRPC Golang microservices
 The API also sends messages to AWS EventBridge and then it calls GRPC functions running in a EC2 instance (client).
