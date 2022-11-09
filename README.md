@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# AWS WITH TERRAFORM AND GOLANG LABORATORY
+# AWS WITH TERRAFORM AND GOLANG
 This repo contains several examples of AWS Services created with Terraform as well a microservices backend composed of REST and GRPC microservices in Golang.
 
 ## Terraform
