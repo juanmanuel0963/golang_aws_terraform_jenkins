@@ -36,13 +36,16 @@ These CRUD functions are call by AWS Lambda functions.
 
 ## AWS API Gateway
 The main purpose of this lab is to show how to create a microservices backend with AWS and lambda functions in Golang.
-So the first estep is to expose an API to update update which is publicly available.
+So the first estep is to expose an API which is publicly available. 
+
 
 ## AWS Lambda Functions Golang microservices
-AWS Lambda microservices in Golang
+The API invokes lambda functions written in golang to update contacts.
+The lambda functions are secured with IAM authentication, so the client needs to send AWS Signature for authentication (AccessKey and SecretKey).
+The lambda functions write detailed logs into the AWS CloudWatch event log.
 
 ## GRPC Golang microservices
-GRPC microservices in Golang
+The API also sends messages to AWS EventBridge and then it calls GRPC functions running in a EC2 instance (client).
 
 ## AWS Eventbridge
 AWS Eventbridge
