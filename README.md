@@ -46,7 +46,9 @@ The lambda functions write detailed logs into the AWS CloudWatch event log.
 The lambda functions execute the CRUD operations calling the Postgresql functions.
 
 ## GRPC Golang microservices
-The API also sends messages to AWS EventBridge and then it calls GRPC functions running in a EC2 instance (client).
+Some API services are integrated to AWS EventBridge rules which fire GRPC functions running in a EC2 instance (client).
+Once the client is invoked then it calls the corresponding GRPC function running in the EC2 server instance and it updates the Postgresql DB.
 
 ## AWS Eventbridge
-AWS Eventbridge
+AWS Eventbridge is used to orquestrate the integration between the AWS API Gateway and the GRPC services running in the EC2 instances.
+A rule is created in EventBridge. Once the rule is satisfied, it executes linux commands into the EC2 to call a client GRPC function.
