@@ -35,7 +35,7 @@ We have two special sql functions: one for dynamic filtering and one for query p
 These CRUD functions are call by AWS Lambda functions.
 
 ## AWS API Gateway
-The main purpose of this lab is to show how to create a microservices backend with AWS and lambda functions in Golang.
+The main purpose of this lab is to show how to create a microservices backend with AWS, lambda functions and GRPC functions written in Golang.
 So the first estep is to expose an API which is publicly available. 
 
 
