@@ -8,7 +8,7 @@ This lab demostrates the ability to update any AWS platform as code with Terrafo
 The only procedure we do manually is the creation of accounts, users, roles and key pairs with AWS IAM.
 
 The ./main.tf file is the lab backbone. It links to submodules inside below subfolders:
-- networkinbg
+- networking
 - api_gateway
 - db_postgresql
 - microservices
