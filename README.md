@@ -40,7 +40,7 @@ So the first estep is to expose an API which is publicly available.
 
 
 ## AWS Lambda Functions Golang microservices
-The API invokes lambda functions written in golang to update contacts.
+The API invokes lambda functions written in golang to update DB contacts.
 The lambda functions are secured with IAM authentication, so the client needs to send AWS Signature for authentication (AccessKey and SecretKey).
 The lambda functions write detailed logs into the AWS CloudWatch event log.
 The lambda functions execute the CRUD operations calling the Postgresql functions.
