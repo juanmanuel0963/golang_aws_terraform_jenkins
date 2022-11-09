@@ -43,11 +43,26 @@ So the first estep is to expose an API which is publicly available.
 The API invokes lambda functions written in golang to update DB contacts.
 The lambda functions are secured with IAM authentication, so the client needs to send AWS Signature for authentication (AccessKey and SecretKey).
 The lambda functions write detailed logs into the AWS CloudWatch event log.
-The lambda functions execute the CRUD operations calling the Postgresql functions.
+The lambda functions execute the CRUD operations calling the in database functions.
+The microservices can perform this operations:
+
+- contacts delete by contact id
+- contacts get by compamy id
+- contacts get by contact id
+- contacts get by dynamic filter
+- contacts get by pagination
+- contacts insert
+- contacts update by contact id
 
 ## GRPC Golang microservices
 Some API services are integrated to AWS EventBridge rules which fire GRPC functions running in a EC2 instance (client).
-Once the client is invoked then it calls the corresponding GRPC function running in the EC2 server instance and it updates the Postgresql DB.
+Once the client is invoked then it calls the corresponding GRPC function running in the EC2 server instance.
+The microservices can perform this operations:
+
+- usermgmt no persistence
+- usermgmt in memory
+- usermgmt json file
+- usermgmt db postgres
 
 ## AWS Eventbridge
 AWS Eventbridge is used to orquestrate the integration between the AWS API Gateway and the GRPC services running in the EC2 instances.
