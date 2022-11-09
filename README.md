@@ -7,7 +7,7 @@ Every single AWS Service in this lab has been created with Terraform sentences.
 This lab demostrates the ability to update any AWS platform as code with Terraform.
 The only procedure we do manually is the creation of accounts, users, roles and key pairs with AWS IAM.
 
-The ./main.tf file is the lab backbone. It makes reference to terraform submodules inside below subfolders:
+The ./main.tf file is the lab backbone. It refers submodules inside below subfolders:
 - networkinbg
 - api_gateway
 - db_postgresql
