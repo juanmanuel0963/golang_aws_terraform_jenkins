@@ -60,9 +60,9 @@ Once the client is invoked then it calls the corresponding GRPC function running
 The microservices can perform this operations:
 
 - usermgmt no persistence
-- usermgmt in memory
-- usermgmt json file
-- usermgmt db postgres
+- usermgmt in memory 
+- usermgmt json file persistence
+- usermgmt db postgres persistence
 
 ## AWS Eventbridge
 AWS Eventbridge is used to orquestrate the integration between the AWS API Gateway and the GRPC services running in the EC2 instances.
