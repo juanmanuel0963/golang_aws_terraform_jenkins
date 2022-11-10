@@ -1,6 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
 # AWS WITH TERRAFORM AND GOLANG
-This repo contains several examples of AWS Services created with Terraform as well a microservices backend composed of REST and GRPC microservices in Golang.
+This repo contains several examples of AWS Services created with Terraform as well a microservices backend composed of REST and gRPC microservices in Golang.
 
 ## Terraform
 Every single AWS Service in this lab has been created with Terraform sentences.
@@ -11,7 +11,7 @@ The ./main.tf file is the lab backbone. It links to submodules inside below subf
 - networking
 - api_gateway
 - db_postgresql
-- microservices
+- microservices (lambda functions, gRPC, S3)
 - ec2
 
 ## Jenkins
@@ -22,7 +22,7 @@ The Jenkins pipeline reads this Github repo and executes commands on a AWS accou
 The Jenkins pipeline can be executed manually or configure to deploy code automatically (every hour, day, etc).
 
 ## AWS EC2 instances, Public IP, VPC, Security Group
-In this lab we create two EC2 instances (client and server) for the purpose of deploying grpc microservices in golang.
+In this lab we create two EC2 instances (client and server) for the purpose of deploying gRPC microservices in golang.
 Each EC2 instance is associated to a public IP, VPC and security group. 
 The security group is configure with ingress and egress rules.
 Every suitable resource is created behind the same VPC and security group.
@@ -35,7 +35,7 @@ We have two special sql functions: one for dynamic filtering and one for query p
 These CRUD functions are call by AWS Lambda functions.
 
 ## AWS API Gateway
-The main purpose of this lab is to show how to create a microservices backend with AWS, lambda functions and GRPC functions written in Golang.
+The main purpose of this lab is to show how to create a microservices backend with AWS, lambda functions and gRPC functions written in Golang.
 So the first estep is to expose an API which is publicly available. 
 
 
@@ -54,9 +54,9 @@ The microservices can perform this operations:
 - contacts insert
 - contacts update by contact id
 
-## GRPC Golang microservices
-Some API services are integrated to AWS EventBridge rules which fire GRPC functions running in a EC2 instance (client).
-Once the client is invoked then it calls the corresponding GRPC function running in the EC2 server instance.
+## gRPC Golang microservices
+Some API services are integrated to AWS EventBridge rules which fire gRPC functions running in a EC2 instance (client).
+Once the client is invoked then it calls the corresponding gRPC function running in the EC2 server instance.
 The microservices can perform this operations:
 
 - usermgmt no persistence
@@ -65,5 +65,5 @@ The microservices can perform this operations:
 - usermgmt db postgres persistence
 
 ## AWS Eventbridge
-AWS Eventbridge is used to orquestrate the integration between the AWS API Gateway and the GRPC services running in the EC2 instances.
-A rule is created in EventBridge. Once the rule is satisfied, it executes linux commands into the EC2 to call a client GRPC function.
+AWS Eventbridge is used to orquestrate the integration between the AWS API Gateway and the gRPC services running in the EC2 instances.
+A rule is created in EventBridge. Once the rule is satisfied, it executes linux commands into the EC2 to call a client gRPC function.
