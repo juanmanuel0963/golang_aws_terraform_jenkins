@@ -38,6 +38,9 @@ These CRUD functions are call by AWS Lambda functions.
 The main purpose of this lab is to show how to create a microservices backend with AWS, lambda functions and gRPC functions written in Golang.
 So the first estep is to expose an API which is publicly available. 
 
+## AWS Eventbridge
+AWS Eventbridge is used to orquestrate the integration between the AWS API Gateway and the gRPC services running in the EC2 instances.
+A rule is created in EventBridge. Once the rule is satisfied, it executes linux commands into the EC2 to call a client gRPC function.
 
 ## AWS Lambda Functions Golang microservices
 The API invokes lambda functions written in golang to update DB contacts.
@@ -63,7 +66,3 @@ The microservices can perform this operations:
 - usermgmt in memory no persistence
 - usermgmt json file persistence
 - usermgmt db postgres persistence
-
-## AWS Eventbridge
-AWS Eventbridge is used to orquestrate the integration between the AWS API Gateway and the gRPC services running in the EC2 instances.
-A rule is created in EventBridge. Once the rule is satisfied, it executes linux commands into the EC2 to call a client gRPC function.
