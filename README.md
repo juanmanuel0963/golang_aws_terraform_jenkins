@@ -13,10 +13,10 @@ The ./main.tf file is the lab backbone. It links to submodules inside below subf
 - networking
 - api_gateway
 - db_postgresql
-- microservices (lambda functions, gRPC, S3)
+- microservices (lambda functions, gRPC)
 - ec2
 
-## Jenkins
+## Jenkins CI/CD
 The infraestructure updates and the Golang code can be automatically deployed with Terraform commands or with Jenkins Pipelines to DEV, QAT, NFT or PROD environments.
 The Jenkins server has been created and configured manually on a AWS EC2 instance.
 In this repo we just share screenshots of the Jenkins pipeline configuration (jenkins-config folder).
@@ -38,11 +38,12 @@ These CRUD functions are call by AWS Lambda functions.
 
 ## AWS API Gateway
 The main purpose of this lab is to show how to create a microservices backend with AWS, lambda functions and gRPC functions written in Golang.
-So the first estep is to expose an API which is publicly available. 
+So the first step is to expose an API which is publicly available.
 
 ## AWS Eventbridge
 AWS Eventbridge is used to orquestrate the integration between the AWS API Gateway and the gRPC services running in the EC2 instances.
-A rule is created in EventBridge. Once the rule is satisfied, it executes linux commands into the EC2 to call a client gRPC function.
+A patern rule is created in EventBridge. Once the rule is satisfied, it executes a target Run Command (linux commands) into the EC2 to call a client gRPC function.
+Also a schedule rule is created to execute a Run Command to execute a call to a client gRPC function.
 
 ## AWS Lambda Functions Golang microservices
 The API invokes lambda functions written in golang to update DB contacts.
