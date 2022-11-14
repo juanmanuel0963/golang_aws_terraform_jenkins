@@ -2,6 +2,8 @@
 # AWS WITH TERRAFORM AND GOLANG
 This repo contains several examples of AWS Services created with Terraform as well a microservices backend composed of REST and gRPC microservices in Golang.
 
+<img src="https://img.shields.io/github/workflow/status/grpc-ecosystem/grpc-gateway/master?color=379c9c&label=build&logo=github&logoColor=ffffff&style=flat-square"/>
+
 ## Terraform
 Every single AWS Service in this lab has been created with Terraform sentences.
 This lab demostrates the ability to update any AWS infrastructure with a platform as code approach with Terraform.
