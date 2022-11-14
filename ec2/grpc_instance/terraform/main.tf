@@ -177,11 +177,12 @@ resource "aws_instance" "the_instance" {
 }
 
 //----------Associating Public IP----------
-
+/*
 resource "aws_eip" "lb" {
   instance = aws_instance.the_instance.id
   vpc      = true
 }
+*/
 
 
 
