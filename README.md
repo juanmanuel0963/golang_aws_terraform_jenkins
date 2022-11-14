@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# AWS Infrastructure with Terraform and API Backend with Golang
+# Creating AWS infrastructures with Terraform and API backend microservices with Golang
 This repo contains a complete AWS platform created with Terraform syntax and an API backend composed of RESTful and gRPC microservices written in Golang.
 
 <img src="architecture_diagram.png"/>
