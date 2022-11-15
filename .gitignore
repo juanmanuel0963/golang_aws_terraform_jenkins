@@ -36,6 +36,7 @@ terraform.rc
 *tfplan*
 
 *.tfvars
+terraform.tfvars
 
 microservices/contacts_get_by_company_id/testing/lambda_func_0_test.go
 microservices/contacts_get_by_contact_id/testing/lambda_func_0_test.go
