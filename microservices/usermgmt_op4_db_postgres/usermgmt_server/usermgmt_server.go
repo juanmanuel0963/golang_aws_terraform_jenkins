@@ -8,7 +8,7 @@ import (
 	"os"
 
 	"github.com/jackc/pgx/v4"
-	pb "github.com/juanmanuel0963/golang_aws_terraform_jenkins/v5/microservices/usermgmt_op4_db_postgres/usermgmt"
+	pb "github.com/juanmanuel0963/golang_aws_terraform_jenkins/microservices/usermgmt_op4_db_postgres/usermgmt"
 	"google.golang.org/grpc"
 )
 

@@ -1,4 +1,4 @@
-module github.com/juanmanuel0963/golang_aws_terraform_jenkins/v5
+module github.com/juanmanuel0963/golang_aws_terraform_jenkins
 
 go 1.18
 
