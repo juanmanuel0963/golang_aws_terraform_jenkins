@@ -9,7 +9,7 @@ import (
 	"net"
 	"os"
 
-	pb "github.com/juanmanuel0963/terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql/v5/microservices/usermgmt_op3_json_file/usermgmt"
+	pb "github.com/juanmanuel0963/golang_aws_terraform_jenkins/v5/microservices/usermgmt_op3_json_file/usermgmt"
 	"google.golang.org/grpc"
 	"google.golang.org/protobuf/encoding/protojson"
 )

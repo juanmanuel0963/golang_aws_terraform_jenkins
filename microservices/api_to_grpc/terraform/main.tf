@@ -260,7 +260,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id                = "${local.target_name}"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   
-  input     = "{\"commands\":[\"export server_address=${var.server_private_ip}\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd terraform_jenkins_aws_api_gateway_microservices_lambda_golang_ec2_grpc_postgresql\",\"cd microservices/usermgmt_op4_db_postgres/usermgmt_client\",\"go run usermgmt_client.go\"]}"
+  input     = "{\"commands\":[\"export server_address=${var.server_private_ip}\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices/usermgmt_op4_db_postgres/usermgmt_client\",\"go run usermgmt_client.go\"]}"
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_eventbridge_role.arn
 
