@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	pb "github.com/juanmanuel0963/golang_aws_terraform_jenkins/microservices/usermgmt_op2_in_memory/usermgmt"
+	pb "github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices/usermgmt_op2_in_memory/usermgmt"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
