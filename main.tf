@@ -1058,3 +1058,4 @@ output "module_grpc_client_1_op4_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op4_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
+

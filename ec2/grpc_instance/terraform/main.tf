@@ -164,7 +164,7 @@ resource "aws_instance" "the_instance" {
 
   root_block_device {
     delete_on_termination = true
-    volume_size = 8
+    volume_size = 9
     volume_type = "gp2"
   }
 
@@ -177,12 +177,12 @@ resource "aws_instance" "the_instance" {
 }
 
 //----------Associating Public IP----------
-
+/*
 resource "aws_eip" "lb" {
   instance = aws_instance.the_instance.id
   vpc      = true
 }
-
+*/
 
 
 
