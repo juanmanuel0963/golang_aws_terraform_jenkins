@@ -102,7 +102,7 @@ func main() {
 	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
 	conn, err := pgx.Connect(context.Background(), database_url)
 	if err != nil {
-		log.Fatalf("Unable to establish connection: %v", err)
+		log.Fatalf("Unable to establish connection: %v, pass: %v", err, os.Getenv("db_password"))
 	}
 	defer conn.Close(context.Background())
 	user_mgmt_server.conn = conn

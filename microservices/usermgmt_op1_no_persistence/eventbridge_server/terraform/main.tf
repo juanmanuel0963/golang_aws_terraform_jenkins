@@ -118,7 +118,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
-  input     = "{\"commands\":[\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices/usermgmt_op1_no_persistence/usermgmt_server\",\"usermgmt_server\"]}"
+  input     = "{\"commands\":[\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices/usermgmt_op1_no_persistence/usermgmt_server\",\"sudo chmod 700 usermgmt_server\",\"sudo ./usermgmt_server\"]}"
   //input     = "{\"commands\":[\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices/usermgmt_op1_no_persistence/usermgmt_server\",\"go run usermgmt_server.go\"]}"
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
