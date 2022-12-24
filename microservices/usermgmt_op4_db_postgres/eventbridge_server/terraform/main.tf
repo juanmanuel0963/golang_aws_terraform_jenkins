@@ -34,9 +34,20 @@ variable "password" {
   type    = string
 }
 
+variable "db_instance_endpoint" {
+  type    = string
+}
+
+variable "db_instance_db_name" {
+  type    = string
+}
+
 locals {
   availability_zone = "${var.region}c"  
+  db_conn = "@${var.db_instance_endpoint}/${var.db_instance_db_name}?sslmode=disable"
+  //"@db-server-postgresql-romantic-shark.cm03k8s4ogkh.us-east-1.rds.amazonaws.com:5432/db_postgresql_romantic_shark?sslmode=disable"
 }
+
 
 #############################################################################
 # PROVIDERS
@@ -122,7 +133,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
-  input     = "{\"commands\":[\"export db_password=${var.password}\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices/usermgmt_op4_db_postgres/usermgmt_server\",\"sudo chmod 700 usermgmt_server\",\"sudo --preserve-env ./usermgmt_server\"]}"
+  input     = "{\"commands\":[\"export db_conn=${local.db_conn}\",\"export db_password=${var.password}\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices/usermgmt_op4_db_postgres/usermgmt_server\",\"sudo chmod 700 usermgmt_server\",\"sudo --preserve-env ./usermgmt_server\"]}"
   //input     = "{\"commands\":[\"export db_password=${var.password}\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices/usermgmt_op4_db_postgres/usermgmt_server\",\"go run usermgmt_server.go\"]}"
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn

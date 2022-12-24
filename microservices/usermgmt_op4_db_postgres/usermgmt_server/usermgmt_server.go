@@ -98,11 +98,12 @@ func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUser
 
 func main() {
 	//database_url1 := "postgres://postgres:mysecretpassword@localhost:5432/postgres"
-	database_url := "postgres://db_master:" + os.Getenv("db_password") + "@db-server-postgresql-romantic-shark.cm03k8s4ogkh.us-east-1.rds.amazonaws.com:5432/db_postgresql_romantic_shark?sslmode=disable"
+	database_url := "postgres://db_master:" + os.Getenv("db_password") + os.Getenv("db_conn")
+	//database_url := "postgres://db_master:" + os.Getenv("db_password") + "@db-server-postgresql-romantic-shark.cm03k8s4ogkh.us-east-1.rds.amazonaws.com:5432/db_postgresql_romantic_shark?sslmode=disable"
 	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
 	conn, err := pgx.Connect(context.Background(), database_url)
 	if err != nil {
-		log.Fatalf("Unable to establish connection: %v, pass: %v", err, os.Getenv("db_password"))
+		log.Fatalf("Unable to establish connection: %v, db_conn: %v, db_pass: %v", err, os.Getenv("db_conn"), os.Getenv("db_password"))
 	}
 	defer conn.Close(context.Background())
 	user_mgmt_server.conn = conn
