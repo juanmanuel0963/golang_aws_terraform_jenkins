@@ -48,7 +48,8 @@ locals {
   availability_zone = "${var.region}c"  
   db_conn = "@${var.db_instance_endpoint}/${var.db_instance_db_name}?sslmode=disable"
   //"@db-server-postgresql-romantic-shark.cm03k8s4ogkh.us-east-1.rds.amazonaws.com:5432/db_postgresql_romantic_shark?sslmode=disable"
-  rule_name         = "${var.instance_name}_${var.function_name}_rule_${var.random_pet}"        
+  rule_name         = "${var.instance_name}_${var.function_name}_rule_${var.random_pet}"    
+  iam_role_name     = "${var.instance_name}_${var.function_name}_iam_role_${var.random_pet}"    
 }
 
 
@@ -91,8 +92,8 @@ provider "aws" {
 
 //Defines an IAM role that allows Lambda to access resources in your AWS account.
 resource "aws_iam_role" "the_iam_role" {
-  name = "${var.instance_name}_${var.function_name}_iam_role"
-
+  //name = "${var.instance_name}_${var.function_name}_iam_role"
+  name = local.iam_role_name
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
   assume_role_policy = jsonencode({

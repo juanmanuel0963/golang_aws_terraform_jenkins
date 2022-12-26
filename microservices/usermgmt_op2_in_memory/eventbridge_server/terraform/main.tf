@@ -37,6 +37,7 @@ variable "random_pet"{
 locals {
   availability_zone = "${var.region}c"  
   rule_name         = "${var.instance_name}_${var.function_name}_rule_${var.random_pet}"
+  iam_role_name     = "${var.instance_name}_${var.function_name}_iam_role_${var.random_pet}"
 }
 
 #############################################################################
@@ -78,8 +79,8 @@ provider "aws" {
 
 //Defines an IAM role that allows Lambda to access resources in your AWS account.
 resource "aws_iam_role" "the_iam_role" {
-  name = "${var.instance_name}_${var.function_name}_iam_role"
-
+  //name = "${var.instance_name}_${var.function_name}_iam_role"
+  name = local.iam_role_name
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
   assume_role_policy = jsonencode({
