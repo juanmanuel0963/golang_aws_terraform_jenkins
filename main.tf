@@ -803,6 +803,7 @@ module "module_grpc_server_1_server_install" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_server_install
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_server_1_server_install" {
@@ -823,6 +824,7 @@ module "module_grpc_server_1_op1_eventbridge_rule" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op1_function_name
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_server_1_op1_eventbridge_rule_name" {
@@ -843,6 +845,7 @@ module "module_grpc_server_1_op2_eventbridge_rule" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op2_function_name
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_server_1_op2_eventbridge_rule_name" {
@@ -863,6 +866,7 @@ module "module_grpc_server_1_op3_eventbridge_rule" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op3_function_name
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_server_1_op3_eventbridge_rule_name" {
@@ -886,6 +890,7 @@ module "module_grpc_server_1_op4_eventbridge_rule" {
     password                          = var.password
     db_instance_endpoint              = module.module_db_postgresql.aws_db_instance_endpoint
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_server_1_op4_eventbridge_rule_name" {
@@ -970,6 +975,7 @@ module "module_grpc_client_1_client_install" {
     instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_client_install
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_client_1_client_install" {
@@ -991,6 +997,7 @@ module "module_grpc_client_1_op1_eventbridge_rule" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_op1_function_name
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_client_1_op1_eventbridge_rule_name" {
@@ -1012,6 +1019,7 @@ module "module_grpc_client_1_op2_eventbridge_rule" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_op2_function_name
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_client_1_op2_eventbridge_rule_name" {
@@ -1033,6 +1041,7 @@ module "module_grpc_client_1_op3_eventbridge_rule" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_op3_function_name
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_client_1_op3_eventbridge_rule_name" {
@@ -1054,6 +1063,7 @@ module "module_grpc_client_1_op4_eventbridge_rule" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_client_1_op4_function_name
+    random_pet                        = local.random_pet
 }
 
 output "module_grpc_client_1_op4_eventbridge_rule_name" {

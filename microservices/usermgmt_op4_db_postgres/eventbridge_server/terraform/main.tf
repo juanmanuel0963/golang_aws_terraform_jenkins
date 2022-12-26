@@ -41,11 +41,14 @@ variable "db_instance_endpoint" {
 variable "db_instance_db_name" {
   type    = string
 }
-
+variable "random_pet"{
+  type    = string
+}
 locals {
   availability_zone = "${var.region}c"  
   db_conn = "@${var.db_instance_endpoint}/${var.db_instance_db_name}?sslmode=disable"
   //"@db-server-postgresql-romantic-shark.cm03k8s4ogkh.us-east-1.rds.amazonaws.com:5432/db_postgresql_romantic_shark?sslmode=disable"
+  rule_name         = "${var.instance_name}_${var.function_name}_rule_${var.random_pet}"        
 }
 
 
@@ -120,8 +123,10 @@ resource "aws_iam_role_policy_attachment" "the_execution_role" {
 #-----Cloudwatch Rule--------
 
 resource "aws_cloudwatch_event_rule" "the_rule" {
-  name                = "${var.instance_name}_${var.function_name}_rule"
-  description         = "${var.instance_name}_${var.function_name}_rule"
+  //name                = "${var.instance_name}_${var.function_name}_rule"
+  //description         = "${var.instance_name}_${var.function_name}_rule"
+  name                = "${local.rule_name}"
+  description         = "${local.rule_name}"    
   //schedule_expression = "cron(0 * * * ? *)" //every one hour
   schedule_expression = "cron(0/1 * * * ? *)" //every 1 minute
   //schedule_expression = "rate(1 minute)"

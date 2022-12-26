@@ -251,7 +251,7 @@ resource "aws_iam_role_policy_attachment" "ssm_access_execution_role" {
 
 resource "aws_cloudwatch_event_rule" "the_rule" {
   name                = "${local.rule_name}"
-  description                = "${local.rule_name}"
+  description         = "${local.rule_name}"
   event_pattern       =   "{\"source\": [\"com.srcecde.app\"], \"detail-type\": [\"sampledata\"], \"detail\": {\"name\": [\"trigger_usermgmt_op4_db_postgres\"]}}"
 }
 #-----Cloudwatch Target--------
