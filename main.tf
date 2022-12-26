@@ -768,6 +768,7 @@ module "module_ec2_grpc_server_1" {
     associate_public_ip_address       = true      
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    random_pet                        = local.random_pet
 }
 
 output "module_ec2_grpc_server_1_id" {
@@ -940,6 +941,7 @@ module "module_ec2_grpc_client_1" {
     associate_public_ip_address       = true      
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    random_pet                        = local.random_pet
 }
 
 output "module_ec2_grpc_client_1_id" {

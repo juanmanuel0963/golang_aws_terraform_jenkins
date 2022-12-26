@@ -55,8 +55,13 @@ variable "security_group_id"{
   type    = string
 }
 
+variable "random_pet"{
+  type    = string
+}
+
 locals {
-  availability_zone = "${var.region}c"  
+  availability_zone       = "${var.region}c"  
+  iam_role_name           = "${var.instance_name}_iam_role_${var.random_pet}"
 }
 
 #############################################################################
@@ -95,8 +100,8 @@ provider "aws" {
 //Defines an IAM role that allows EC2 to access resources in your AWS account.
 
 resource "aws_iam_role" "ec2_instance_role" {
-  name = "${var.instance_name}_iam_role"
-
+  //name = "${var.instance_name}_iam_role"
+  name = local.iam_role_name
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
   assume_role_policy = jsonencode({
