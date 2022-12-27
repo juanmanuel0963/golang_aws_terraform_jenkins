@@ -57,7 +57,7 @@ func Test_with_aws_signature(t *testing.T) {
 		Id:              0,
 		SearchText:      "amazon",
 		CreatedAtStart:  "2022.09.26 00:00:00",
-		CreatedAtFinish: "2022.09.30 23:59:59",
+		CreatedAtFinish: "2023.09.30 23:59:59",
 	}
 	//-----------------------------------------------------------
 	fmt.Println("Step - Marshalling contact object into JSON format")

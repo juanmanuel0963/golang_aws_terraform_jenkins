@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	SERVICE_URL = "https://99590g38jk.execute-api.us-east-1.amazonaws.com/contacts_get_by_pagination_romantic_shark"
+	SERVICE_URL = "https://1ugfbpoyi8.execute-api.us-east-1.amazonaws.com/contacts_get_by_pagination_aware_goldfish"
 	ACCESS_KEY  = ""
 	SECRET_KEY  = ""
 )
