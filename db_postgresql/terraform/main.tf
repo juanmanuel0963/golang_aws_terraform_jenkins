@@ -99,7 +99,8 @@ variable apply_immediately{
 }
 
 locals {
-  default_aws_db_subnet_group = "default-${var.vpc_id}"
+  //default_aws_db_subnet_group       = "default-${var.vpc_id}"
+  default_aws_db_subnet_group_name  = "${var.vpc_id}_subnet_group_${var.random_pet}"
   identifier = "${var.identifier}-${replace("${var.random_pet}", "_", "-")}" 
   db_name    = "${var.db_name}_${var.random_pet}" 
   availability_zone = "${var.region}c"  
@@ -138,7 +139,14 @@ provider "aws" {
 
 //----------Sets the default vpc----------
 
-//resource "aws_default_vpc" "default" { }
+resource "aws_default_vpc" "default_vpc" { }
+
+data "aws_subnets" "default_subnet_ids" {
+  filter {
+    name   = "vpc-id"
+    values = [aws_default_vpc.default_vpc.id]
+  }
+}
 
 //----------db_security_group lookup----------
 /*
@@ -156,6 +164,12 @@ data "aws_security_groups" "the_db_security_group" {
   }
 }
 */
+
+resource "aws_db_subnet_group" "the_db_subnet_group" {
+  name       = local.default_aws_db_subnet_group_name
+  subnet_ids = data.aws_subnets.default_subnet_ids.ids
+}
+
 //----------Creates the AWS db instance----------
 
 resource "aws_db_instance" "the_postgresql_instance" {
@@ -168,8 +182,9 @@ resource "aws_db_instance" "the_postgresql_instance" {
   port                    = var.port
   
   vpc_security_group_ids  = [var.security_group_id]
-  db_subnet_group_name    = local.default_aws_db_subnet_group
-  
+  //db_subnet_group_name    = local.default_aws_db_subnet_group
+  db_subnet_group_name    = aws_db_subnet_group.the_db_subnet_group.id
+
   db_name                 = local.db_name
   username                = var.username
   password                = var.password

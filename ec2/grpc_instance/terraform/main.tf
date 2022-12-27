@@ -60,7 +60,8 @@ variable "random_pet"{
 }
 
 locals {
-  availability_zone       = "${var.region}c"  
+  availability_zone       = "${var.region}c"
+  tag_name                = "${var.tag_name}_${var.random_pet}"
   iam_role_name           = "${var.instance_name}_iam_role_${var.random_pet}"
   instance_profile_name   = "${var.instance_name}_instance_profile_${var.random_pet}"
 }
@@ -166,7 +167,7 @@ resource "aws_instance" "the_instance" {
   ]
 
   tags  = {
-    Name = var.tag_name
+    Name = local.tag_name
   }
 
   root_block_device {
@@ -184,12 +185,12 @@ resource "aws_instance" "the_instance" {
 }
 
 //----------Associating Public IP----------
-/*
+
 resource "aws_eip" "lb" {
   instance = aws_instance.the_instance.id
   vpc      = true
 }
-*/
+
 ##################################################################################
 # aws_instance - OUTPUT
 ##################################################################################

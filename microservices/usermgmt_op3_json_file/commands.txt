@@ -5,3 +5,9 @@ go run .\usermgmt_server\usermgmt_server.go
 
 Start client
 go run .\usermgmt_client\usermgmt_client.go
+
+--before build binary to upload to AWS
+$Env:GOOS = "linux" 
+
+--buiild
+go build main.go
