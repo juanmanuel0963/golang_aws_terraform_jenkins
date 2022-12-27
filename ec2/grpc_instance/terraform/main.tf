@@ -62,6 +62,7 @@ variable "random_pet"{
 locals {
   availability_zone       = "${var.region}c"  
   iam_role_name           = "${var.instance_name}_iam_role_${var.random_pet}"
+  instance_profile_name   = "${var.instance_name}_instance_profile_${var.random_pet}"
 }
 
 #############################################################################
@@ -146,7 +147,8 @@ resource "aws_iam_role_policy_attachment" "aws_cloudwatch_access_execution_role"
 //----------Instance Profile and role attachment----------
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  name = "${var.instance_name}_instance_profile"
+  //name = "${var.instance_name}_instance_profile"
+  name = local.instance_profile_name
   role = aws_iam_role.ec2_instance_role.name
 }
 
@@ -182,12 +184,12 @@ resource "aws_instance" "the_instance" {
 }
 
 //----------Associating Public IP----------
-
+/*
 resource "aws_eip" "lb" {
   instance = aws_instance.the_instance.id
   vpc      = true
 }
-
+*/
 ##################################################################################
 # aws_instance - OUTPUT
 ##################################################################################
