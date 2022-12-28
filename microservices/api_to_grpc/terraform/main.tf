@@ -79,7 +79,8 @@ variable "server_private_ip" {
 }
 
 locals {
-  default_aws_db_subnet_group = "default-${var.vpc_id}"  
+  //default_aws_db_subnet_group = "default-${var.vpc_id}"  
+  //default_aws_db_subnet_group_name  = "${var.vpc_id}_subnet_group_${var.random_pet}"
   api_func_name           = "${var.api_func_name}_${replace("${var.random_pet}", "-", "_")}"
   api_func_role_name      = "${var.api_func_name}_api_gateway_role_${var.random_pet}"
   eventbridge_role_name   = "${var.api_func_name}_eventbridge_role_${var.random_pet}"
@@ -124,11 +125,11 @@ provider "aws" {
 #############################################################################  
 
 //----------db_subnet_group lookup----------
-
+/*
 data "aws_db_subnet_group" "the_db_subnet_group" {
-  name = "${local.default_aws_db_subnet_group}"
+  name = "${local.default_aws_db_subnet_group_name}"
 }
-
+*/
 //----------IAM Rol creation----------
 
 //Defines an IAM role that allows Lambda to access resources in your AWS account.

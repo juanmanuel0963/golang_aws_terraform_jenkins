@@ -248,6 +248,11 @@ output "module_db_postgresql_aws_db_instance_endpoint" {
   value = module.module_db_postgresql.aws_db_instance_endpoint
 }
 
+output "module_db_postgresql_aws_db_subnet_group_name" {
+  description = "DB Subnet Group Name"
+  value = module.module_db_postgresql.aws_db_subnet_group_name
+}
+
 ##################################################################################
 # lambda_func_node
 ##################################################################################
@@ -355,6 +360,7 @@ module "module_contacts_insert" {
     dbPassword                        = var.password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
 }
 
 ##################################################################################
@@ -450,6 +456,7 @@ module "module_contacts_get_by_contact_id" {
     dbPassword                        = var.password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
 }
 
 ##################################################################################
@@ -498,6 +505,7 @@ module "module_contacts_get_by_company_id" {
     dbPassword                        = var.password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
 }
 
 ##################################################################################
@@ -546,6 +554,7 @@ module "module_contacts_update_by_contact_id" {
     dbPassword                        = var.password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
 }
 
 ##################################################################################
@@ -594,6 +603,7 @@ module "module_contacts_delete_by_contact_id" {
     dbPassword                        = var.password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
 }
 
 ##################################################################################
@@ -642,6 +652,7 @@ module "module_contacts_get_by_dynamic_filter" {
     dbPassword                        = var.password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
 }
 
 ##################################################################################
@@ -690,6 +701,7 @@ module "module_contacts_get_by_pagination" {
     dbPassword                        = var.password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
+    db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
 }
 
 ##################################################################################

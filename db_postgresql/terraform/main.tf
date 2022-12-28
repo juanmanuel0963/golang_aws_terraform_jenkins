@@ -230,3 +230,8 @@ output "aws_db_instance_endpoint" {
   description = "Endpoint"
   value = aws_db_instance.the_postgresql_instance.endpoint
 }
+
+output "aws_db_subnet_group_name" {
+  description = "DB Subnet Group Name"
+  value = aws_db_instance.the_postgresql_instance.db_subnet_group_name
+}

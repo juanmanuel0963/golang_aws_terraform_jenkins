@@ -66,8 +66,13 @@ variable "security_group_id"{
   type    = string
 }
 
+variable "db_subnet_group_name"{
+  type    = string
+}
+
 locals {
-  default_aws_db_subnet_group = "default-${var.vpc_id}"
+  //default_aws_db_subnet_group = "default-${var.vpc_id}"
+  //default_aws_db_subnet_group_name  = "${var.vpc_id}_subnet_group_${var.random_pet}"
   lambda_func_bucket_name = "${replace("${var.lambda_func_name}", "_", "-")}-bucket-${replace("${var.random_pet}", "_", "-")}"
   lambda_func_role_name = "${var.lambda_func_name}_role_${var.random_pet}"
   lambda_func_name = "${var.lambda_func_name}_${replace("${var.random_pet}", "-", "_")}"
@@ -136,7 +141,8 @@ data "aws_security_groups" "the_db_security_group" {
 //----------db_subnet_group lookup----------
 
 data "aws_db_subnet_group" "the_db_subnet_group" {
-  name = "${local.default_aws_db_subnet_group}"
+  //name = "${local.default_aws_db_subnet_group_name}"
+  name = "${var.db_subnet_group_name}"
 }
 
 //----------S3 bucket creation----------
