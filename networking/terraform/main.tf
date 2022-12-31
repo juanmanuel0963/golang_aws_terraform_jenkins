@@ -68,6 +68,8 @@ resource "aws_security_group" "the_security_group" {
   }  
 }
 
+//-------Dynamic IPs---------------------------
+
 resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_home_to_postgresql"
@@ -97,6 +99,29 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
+
+//-------Static IPs---------------------------
+
+resource "aws_security_group_rule" "ingress_from_local_home_static_to_postgresql" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_static_to_postgresql"
+  type              = "ingress"
+  from_port         = 5432
+  to_port           = 5432
+  protocol          = "tcp"
+  cidr_blocks      = ["186.155.14.7/32"]
+}
+
+resource "aws_security_group_rule" "ingress_from_local_home_static_to_ssh" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_static_to_ssh"
+  type              = "ingress"
+  from_port         = 22
+  to_port           = 22
+  protocol          = "tcp"
+  cidr_blocks      = ["186.155.14.7/32"]
+}
+
 /*
 resource "aws_security_group_rule" "ingress_from_local_home_to_50051" {
   security_group_id = aws_security_group.the_security_group.id
