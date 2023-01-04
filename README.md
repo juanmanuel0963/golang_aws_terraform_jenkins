@@ -1,6 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
 # Backend microservices architecture with Terraform and Golang
-This repo contains a complete AWS backend infrastructure as code created with Terraform and RESTful/gRPC microservices written in Golang.
+This repo contains different alternatives for creation of AWS backend infrastructure as code with Terraform and microservices written with Golang.
 
 <img src="architecture_diagram.png"/>
 
