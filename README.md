@@ -1,6 +1,6 @@
 <!-- BEGIN_TF_DOCS -->
-# Creating AWS infrastructure as code with Terraform and backend API microservices with Golang
-This repo contains a complete AWS platform created with Terraform syntax and an API backend composed of RESTful and gRPC microservices written in Golang.
+# Backend microservices architecture with Terraform and Golang
+This repo contains a complete AWS backend infrastructure as code created with Terraform and RESTful/gRPC microservices written in Golang.
 
 <img src="architecture_diagram.png"/>
 
@@ -69,3 +69,5 @@ The microservices can perform this operations:
 - usermgmt in memory no persistence
 - usermgmt json file persistence
 - usermgmt db postgres persistence
+
+Contact me at https://www.linkedin.com/in/juanmanuel0963/
