@@ -50,3 +50,4 @@ microservices/lambda_func_go/testing/lambda_func_0_test.go
 **/key_pairs/*
 
 .terraform.lock.hcl
+.env
