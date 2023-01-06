@@ -109,7 +109,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_static_to_postgresql
   from_port         = 5432
   to_port           = 5432
   protocol          = "tcp"
-  cidr_blocks      = ["186.155.14.7/32"]
+  cidr_blocks      = ["186.155.15.156/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_local_home_static_to_ssh" {
@@ -119,7 +119,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_static_to_ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks      = ["186.155.14.7/32"]
+  cidr_blocks      = ["186.155.15.156/32"]
 }
 
 /*
