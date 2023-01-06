@@ -77,7 +77,7 @@ variable "instance_id" {
 variable "server_private_ip" {
   type    = string
 }
-/*
+
 locals {
   //default_aws_db_subnet_group = "default-${var.vpc_id}"  
   //default_aws_db_subnet_group_name  = "${var.vpc_id}_subnet_group_${var.random_pet}"
@@ -87,7 +87,7 @@ locals {
   rule_name               = "${var.instance_name}_${var.api_func_name}_rule_${var.random_pet}"
   target_name             = "${var.instance_name}_${var.api_func_name}_target_${var.random_pet}"
 }
-*/
+
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -132,7 +132,7 @@ data "aws_db_subnet_group" "the_db_subnet_group" {
 */
 //----------IAM Rol creation----------
 
-/*hide
+
 //Defines an IAM role that allows Lambda to access resources in your AWS account.
 resource "aws_iam_role" "the_apigateway_role" {
   name = "${local.api_func_role_name}"
@@ -150,9 +150,9 @@ resource "aws_iam_role" "the_apigateway_role" {
     ]
   })
 }
-unhide */
+
 //----------Policy assignment to the IAM Rol----------
-/*hide
+
 //Attaches a policy to the IAM role.
 //AmazonAPIGatewayPushToCloudWatchLogs Allows API Gateway to push logs to user's account.
 resource "aws_iam_role_policy_attachment" "api_gateway_access_execution_role" {
@@ -184,9 +184,9 @@ resource "aws_apigatewayv2_integration" "the_api_function" {
     "Source"          = "com.srcecde.app"
   }
 }
-unhide */
+
 //----------API Gateway - adding the EventBridge (Routes part) ----------
-/*hide
+
 //Maps an HTTP request to a target, in this case your Lambda function. 
 //In the example configuration, the route_key matches any GET request matching the path /hello. 
 //A target matching integrations/<ID> maps to a Lambda integration with the given ID.
@@ -197,11 +197,11 @@ resource "aws_apigatewayv2_route" "the_api_function" {
   target    = "integrations/${aws_apigatewayv2_integration.the_api_function.id}"
   //authorization_type = "AWS_IAM"
 }
-unhide */
+
 ##################################################################################
 # OUTPUT
 ##################################################################################
-/*hide
+
 output "api_func_base_url" {
   description = "Base URL for API Gateway stage + function name"
   value = "${var.parent_api_gateway_invoke_url}${local.api_func_name}"  
@@ -211,13 +211,13 @@ output "api_func_role_name" {
   description = "Name of the rol"
   value = aws_iam_role.the_apigateway_role.name
 }
-unhide */
+
 #############################################################################
 # EventBridge
 #############################################################################  
 
 //----------IAM Rol creation----------
-/*hide
+
 //Defines an IAM role that allows Lambda to access resources in your AWS account.
 resource "aws_iam_role" "the_eventbridge_role" {  
   name = "${local.eventbridge_role_name}"
@@ -239,9 +239,9 @@ resource "aws_iam_role" "the_eventbridge_role" {
   })
 
 }
-unhide */
+
 //----------Policy assignment to the IAM Rol----------
-/*hide
+
 //Attaches a policy to the IAM role.
 //AmazonSSMFullAccess Provides full access to Amazon SSM.
 resource "aws_iam_role_policy_attachment" "ssm_access_execution_role" {
@@ -271,13 +271,12 @@ resource "aws_cloudwatch_event_target" "the_target" {
     values = ["${var.instance_id}"]
   }
 }
-unhide */
+
 ##################################################################################
 # EventBridge - OUTPUT
 ##################################################################################
-/*hide
+
 output "aws_cloudwatch_event_rule_name" {
   description = "EventBridge rule name"
   value = aws_cloudwatch_event_rule.the_rule.name
 }
-unhide */

@@ -1041,15 +1041,15 @@ output "module_grpc_client_1_op4_eventbridge_rule_name" {
 }
 
 ##################################################################################
-# api_to_grpc
+# api_eventb_rule_to_grpc
 ##################################################################################
 
-module "module_api_to_grpc" {
-    source                            = "./microservices_grpc_ec2/lambda_to_grpc/terraform"
+module "module_api_eventb_rule_to_grpc" {
+    source                            = "./microservices_grpc_ec2/api_eventb_rule_to_grpc/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
-    api_func_name                     = "api_to_grpc"
+    api_func_name                     = "api_eventb_rule_to_grpc"
     random_integer                    = local.random_integer
     random_pet                        = local.random_pet
     parent_api_gateway_id             = module.module_api_gateway.api_gateway_id
@@ -1068,21 +1068,20 @@ module "module_api_to_grpc" {
 }
 
 ##################################################################################
-# api_to_grpc - OUTPUT
+# api_eventb_rule_to_grpc - OUTPUT
 ##################################################################################
-/*
-output "module_api_to_grpc_api_base_url" {
+
+output "module_api_eventb_rule_to_grpc_api_base_url" {
   description = "Base URL for API Gateway stage + function name"
-  value = module.module_api_to_grpc.api_func_base_url
+  value = module.module_api_eventb_rule_to_grpc.api_func_base_url
 }
 
-output "module_api_to_grpc_api_role_name" {
+output "module_api_eventb_rule_to_grpc_api_role_name" {
   description = "Name of the rol"
-  value = module.module_api_to_grpc.api_func_role_name
+  value = module.module_api_eventb_rule_to_grpc.api_func_role_name
 }
 
-output "module_api_to_grpc_eventbridge_rule_name" {
+output "module_api_eventb_rule_to_grpc_eventbridge_rule_name" {
   description = "EventBridge rule name"
-  value = module.module_api_to_grpc.aws_cloudwatch_event_rule_name
+  value = module.module_api_eventb_rule_to_grpc.aws_cloudwatch_event_rule_name
 }
-*/
