@@ -1,8 +1,0 @@
-------------------GIN/GORM------------------------------------------------------------------------
-
-- Creating database schema
-go run migrate/migrate.go
-
-- Raising GIN Server / Running Compile Daemon
-CompileDaemon -command="./source_code"
-

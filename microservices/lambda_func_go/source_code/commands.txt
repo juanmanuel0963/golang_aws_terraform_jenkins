@@ -1,8 +1,0 @@
-go get -u github.com/aws/aws-lambda-go/events
-go get -u github.com/aws/aws-lambda-go/lambda
-
---before build binary to upload to AWS
-$Env:GOOS = "linux" 
-
---buiild
-go build main.go

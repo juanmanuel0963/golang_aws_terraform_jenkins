@@ -258,7 +258,7 @@ output "module_db_postgresql_aws_db_subnet_group_name" {
 ##################################################################################
 
 module "module_lambda_func_node" {
-    source                            = "./microservices/lambda_func_node/terraform"
+    source                            = "./microservices_restful_lambda/lambda_func_node/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -300,7 +300,7 @@ output "module_lambda_func_node_lambda_func_base_url" {
 ##################################################################################
 
 module "module_lambda_func_go" {
-    source                            = "./microservices/lambda_func_go/terraform"
+    source                            = "./microservices_restful_lambda/lambda_func_go/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -343,7 +343,7 @@ output "module_lambda_func_go_lambda_func_base_url" {
 ##################################################################################
 
 module "module_contacts_insert" {
-    source                            = "./microservices/contacts_insert/terraform"
+    source                            = "./microservices_restful_lambda/contacts_insert/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -388,58 +388,13 @@ output "module_contacts_insert_lambda_func_base_url" {
 }
 
 
-##################################################################################
-# api_to_grpc
-##################################################################################
-
-module "module_api_to_grpc" {
-    source                            = "./microservices/api_to_grpc/terraform"
-    region                            = var.region  
-    access_key                        = var.access_key 
-    secret_key                        = var.secret_key
-    api_func_name                     = "api_to_grpc"
-    random_integer                    = local.random_integer
-    random_pet                        = local.random_pet
-    parent_api_gateway_id             = module.module_api_gateway.api_gateway_id
-    parent_api_gateway_name           = module.module_api_gateway.api_gateway_name
-    parent_api_gateway_execution_arn  = module.module_api_gateway.api_gateway_execution_arn
-    parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
-    InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
-    dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
-    vpc_id                            = module.module_networking.vpc_id 
-    security_group_id                 = module.module_networking.security_group_id
-    instance_name                     = var.grpc_client_1_instance_name    
-    instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
-    server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
-}
-
-##################################################################################
-# api_to_grpc - OUTPUT
-##################################################################################
-
-output "module_api_to_grpc_api_base_url" {
-  description = "Base URL for API Gateway stage + function name"
-  value = module.module_api_to_grpc.api_func_base_url
-}
-
-output "module_api_to_grpc_api_role_name" {
-  description = "Name of the rol"
-  value = module.module_api_to_grpc.api_func_role_name
-}
-
-output "module_api_to_grpc_eventbridge_rule_name" {
-  description = "EventBridge rule name"
-  value = module.module_api_to_grpc.aws_cloudwatch_event_rule_name
-}
 
 ##################################################################################
 # contacts_get_by_contact_id
 ##################################################################################
 
 module "module_contacts_get_by_contact_id" {
-    source                            = "./microservices/contacts_get_by_contact_id/terraform"
+    source                            = "./microservices_restful_lambda/contacts_get_by_contact_id/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -488,7 +443,7 @@ output "module_contacts_get_by_contact_id_lambda_func_base_url" {
 ##################################################################################
 
 module "module_contacts_get_by_company_id" {
-    source                            = "./microservices/contacts_get_by_company_id/terraform"
+    source                            = "./microservices_restful_lambda/contacts_get_by_company_id/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -537,7 +492,7 @@ output "module_contacts_get_by_company_id_lambda_func_base_url" {
 ##################################################################################
 
 module "module_contacts_update_by_contact_id" {
-    source                            = "./microservices/contacts_update_by_contact_id/terraform"
+    source                            = "./microservices_restful_lambda/contacts_update_by_contact_id/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -586,7 +541,7 @@ output "module_contacts_update_by_contact_id_lambda_func_base_url" {
 ##################################################################################
 
 module "module_contacts_delete_by_contact_id" {
-    source                            = "./microservices/contacts_delete_by_contact_id/terraform"
+    source                            = "./microservices_restful_lambda/contacts_delete_by_contact_id/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -635,7 +590,7 @@ output "module_contacts_delete_by_contact_id_lambda_func_base_url" {
 ##################################################################################
 
 module "module_contacts_get_by_dynamic_filter" {
-    source                            = "./microservices/contacts_get_by_dynamic_filter/terraform"
+    source                            = "./microservices_restful_lambda/contacts_get_by_dynamic_filter/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -684,7 +639,7 @@ output "module_contacts_get_by_dynamic_filter_lambda_func_base_url" {
 ##################################################################################
 
 module "module_contacts_get_by_pagination" {
-    source                            = "./microservices/contacts_get_by_pagination/terraform"
+    source                            = "./microservices_restful_lambda/contacts_get_by_pagination/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
@@ -808,7 +763,7 @@ output "module_ec2_grpc_server_1_private_ip" {
 ##################################################################################
 
 module "module_grpc_server_1_server_install" {
-    source                            = "./microservices/usermgmt_op1_no_persistence/eventbridge_server_install/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_server_install/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -829,7 +784,7 @@ output "module_grpc_server_1_server_install" {
 ##################################################################################
 
 module "module_grpc_server_1_op1_eventbridge_rule" {
-    source                            = "./microservices/usermgmt_op1_no_persistence/eventbridge_server/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_server/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -850,7 +805,7 @@ output "module_grpc_server_1_op1_eventbridge_rule_name" {
 ##################################################################################
 
 module "module_grpc_server_1_op2_eventbridge_rule" {
-    source                            = "./microservices/usermgmt_op2_in_memory/eventbridge_server/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op2_in_memory/eventbridge_server/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -871,7 +826,7 @@ output "module_grpc_server_1_op2_eventbridge_rule_name" {
 ##################################################################################
 
 module "module_grpc_server_1_op3_eventbridge_rule" {
-    source                            = "./microservices/usermgmt_op3_json_file/eventbridge_server/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op3_json_file/eventbridge_server/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -892,7 +847,7 @@ output "module_grpc_server_1_op3_eventbridge_rule_name" {
 ##################################################################################
 
 module "module_grpc_server_1_op4_eventbridge_rule" {
-    source                            = "./microservices/usermgmt_op4_db_postgres/eventbridge_server/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op4_db_postgres/eventbridge_server/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -981,7 +936,7 @@ output "module_ec2_grpc_client_1_private_ip" {
 ##################################################################################
 
 module "module_grpc_client_1_client_install" {
-    source                            = "./microservices/usermgmt_op1_no_persistence/eventbridge_client_install/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -1002,7 +957,7 @@ output "module_grpc_client_1_client_install" {
 ##################################################################################
 
 module "module_grpc_client_1_op1_eventbridge_rule" {
-    source                            = "./microservices/usermgmt_op1_no_persistence/eventbridge_client/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -1024,7 +979,7 @@ output "module_grpc_client_1_op1_eventbridge_rule_name" {
 ##################################################################################
 
 module "module_grpc_client_1_op2_eventbridge_rule" {
-    source                            = "./microservices/usermgmt_op2_in_memory/eventbridge_client/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op2_in_memory/eventbridge_client/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -1046,7 +1001,7 @@ output "module_grpc_client_1_op2_eventbridge_rule_name" {
 ##################################################################################
 
 module "module_grpc_client_1_op3_eventbridge_rule" {
-    source                            = "./microservices/usermgmt_op3_json_file/eventbridge_client/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op3_json_file/eventbridge_client/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -1068,7 +1023,7 @@ output "module_grpc_client_1_op3_eventbridge_rule_name" {
 ##################################################################################
 
 module "module_grpc_client_1_op4_eventbridge_rule" {
-    source                            = "./microservices/usermgmt_op4_db_postgres/eventbridge_client/terraform"
+    source                            = "./microservices_grpc_ec2/usermgmt_op4_db_postgres/eventbridge_client/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
@@ -1085,3 +1040,48 @@ output "module_grpc_client_1_op4_eventbridge_rule_name" {
   value = module.module_grpc_client_1_op4_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
 
+##################################################################################
+# api_to_grpc
+##################################################################################
+
+module "module_api_to_grpc" {
+    source                            = "./microservices_grpc_ec2/api_to_grpc/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key
+    api_func_name                     = "api_to_grpc"
+    random_integer                    = local.random_integer
+    random_pet                        = local.random_pet
+    parent_api_gateway_id             = module.module_api_gateway.api_gateway_id
+    parent_api_gateway_name           = module.module_api_gateway.api_gateway_name
+    parent_api_gateway_execution_arn  = module.module_api_gateway.api_gateway_execution_arn
+    parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
+    InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
+    dbName                            = module.module_db_postgresql.aws_db_instance_db_name
+    dbUser                            = var.username
+    dbPassword                        = var.password        
+    vpc_id                            = module.module_networking.vpc_id 
+    security_group_id                 = module.module_networking.security_group_id
+    instance_name                     = var.grpc_client_1_instance_name    
+    instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
+    server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
+}
+
+##################################################################################
+# api_to_grpc - OUTPUT
+##################################################################################
+
+output "module_api_to_grpc_api_base_url" {
+  description = "Base URL for API Gateway stage + function name"
+  value = module.module_api_to_grpc.api_func_base_url
+}
+
+output "module_api_to_grpc_api_role_name" {
+  description = "Name of the rol"
+  value = module.module_api_to_grpc.api_func_role_name
+}
+
+output "module_api_to_grpc_eventbridge_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_api_to_grpc.aws_cloudwatch_event_rule_name
+}
