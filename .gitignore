@@ -48,6 +48,4 @@ microservices_restful_lambda/contacts_update_by_contact_id/testing/lambda_func_0
 microservices_restful_lambda/lambda_func_go/testing/lambda_func_0_test.go
 
 **/key_pairs/*
-
-.terraform.lock.hcl
 .env
