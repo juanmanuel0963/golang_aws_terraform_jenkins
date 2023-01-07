@@ -100,6 +100,26 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
 
+resource "aws_security_group_rule" "ingress_from_local_home_to_3000" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_to_3000"
+  type              = "ingress"
+  from_port         = 3000
+  to_port           = 3000
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+
+resource "aws_security_group_rule" "ingress_from_local_home_to_3001" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_to_3001"
+  type              = "ingress"
+  from_port         = 3001
+  to_port           = 3001
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+
 //-------Static IPs for Prod/Jenkins ---------------------------
 /*
 resource "aws_security_group_rule" "ingress_from_local_home_static_to_postgresql" {
