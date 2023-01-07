@@ -1,13 +1,15 @@
 package main
 
 import (
+	"os"
+
 	"github.com/gin-gonic/gin"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/blogs/source_code/controllers"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/blogs/source_code/initializers"
 )
 
 func init() {
-	initializers.LoadEnvVariables()
+	//initializers.LoadEnvVariables()
 	initializers.ConnectToDB()
 }
 
@@ -18,5 +20,10 @@ func main() {
 	r.GET("/blog_get/:id", controllers.BlogGet)
 	r.POST("/blog_update/:id", controllers.BlogUpdate)
 	r.DELETE("/blog_delete/:id", controllers.BlogDelete)
-	r.Run() // listen and serve on 0.0.0.0:env(PORT)
+	//r.Run() // listen and serve on 0.0.0.0:env(PORT)
+
+	err := r.Run(":" + os.Getenv("PORT"))
+	if err != nil {
+		panic("[Error] failed to start Gin server due to: " + err.Error())
+	}
 }
