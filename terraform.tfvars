@@ -24,7 +24,6 @@ apply_immediately       = true
 ami_id                  = "ami-0149b2da6ceec4bb0"
 instance_type           = "t2.micro"
 key_name                = "env.key_pair"
-#key_name                = "dev.workloads.key_pair"
 #
 grpc_server_1_instance_name     = "grpc_server_1"
 grpc_server_1_tag_name          = "grpc_server_1 - Ubuntu 1GB"
