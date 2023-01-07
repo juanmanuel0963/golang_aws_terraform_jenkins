@@ -139,7 +139,7 @@ variable "instance_class" {
   type    = string
 }
 
-variable "port" {
+variable "db_port" {
   type    = string
 }
 
@@ -202,7 +202,7 @@ module "module_db_postgresql" {
     engine                  = var.engine
     engine_version          = var.engine_version
     instance_class          = var.instance_class
-    port                    = var.port
+    db_port                 = var.db_port
     db_name                 = var.db_name
     username                = var.username
     password                = var.password
@@ -246,6 +246,11 @@ output "module_db_postgresql_aws_db_instance_db_subnet_group_name" {
 output "module_db_postgresql_aws_db_instance_endpoint" {
   description = "Endpoint"
   value = module.module_db_postgresql.aws_db_instance_endpoint
+}
+
+output "module_db_postgresql_aws_db_instance_address" {
+  description = "Address"
+  value = module.module_db_postgresql.aws_db_instance_address
 }
 
 output "module_db_postgresql_aws_db_subnet_group_name" {
@@ -1109,8 +1114,9 @@ module "module_microservices_restful_ec2_blogs_install_start" {
     function_name                     = var.restful_ec2_blogs_install_start
     random_pet                        = local.random_pet
     password                          = var.password
-    db_instance_endpoint              = module.module_db_postgresql.aws_db_instance_endpoint
+    db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
+    db_port                           = var.db_port
 }
 
 output "module_microservices_restful_ec2_blogs_install_start_rule_name" {

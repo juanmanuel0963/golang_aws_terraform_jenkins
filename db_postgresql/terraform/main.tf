@@ -38,7 +38,7 @@ variable "instance_class" {
   type    = string
 }
 
-variable "port" {
+variable "db_port" {
   type    = string
 }
 
@@ -179,7 +179,7 @@ resource "aws_db_instance" "the_postgresql_instance" {
   engine                  = var.engine
   engine_version          = var.engine_version
   instance_class          = var.instance_class
-  port                    = var.port
+  port                    = var.db_port
   
   vpc_security_group_ids  = [var.security_group_id]
   //db_subnet_group_name    = local.default_aws_db_subnet_group
@@ -229,6 +229,11 @@ output "aws_db_instance_db_subnet_group_name" {
 output "aws_db_instance_endpoint" {
   description = "Endpoint"
   value = aws_db_instance.the_postgresql_instance.endpoint
+}
+
+output "aws_db_instance_address" {
+  description = "Address"
+  value = aws_db_instance.the_postgresql_instance.address
 }
 
 output "aws_db_subnet_group_name" {
