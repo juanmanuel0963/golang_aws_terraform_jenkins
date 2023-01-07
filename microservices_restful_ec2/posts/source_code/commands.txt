@@ -5,3 +5,11 @@ go run migrate/migrate.go
 
 - Raising GIN Server / Running Compile Daemon. Within source_code folder
 CompileDaemon -command="./source_code"
+
+--Compiling binary to upload to AWS
+$Env:GOOS = "linux" 
+
+--buiild
+go build migrate.go
+go build main.go
+

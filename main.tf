@@ -1085,3 +1085,35 @@ output "module_api_eventb_rule_to_grpc_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_api_eventb_rule_to_grpc.aws_cloudwatch_event_rule_name
 }
+
+#############################################################################
+# VARIABLES - microservices_restful_ec2_blogs
+#############################################################################
+
+variable "restful_ec2_blogs_install_start" {
+  type    = string
+}
+
+##################################################################################
+# microservices_restful_ec2_blogs - eventbridge_install_start - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_microservices_restful_ec2_blogs_install_start" {
+    source                            = "./microservices_restful_ec2/blogs/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_client_1_instance_name
+    instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    function_name                     = var.restful_ec2_blogs_install_start
+    random_pet                        = local.random_pet
+    password                          = var.password
+    db_instance_endpoint              = module.module_db_postgresql.aws_db_instance_endpoint
+    db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
+}
+
+output "module_microservices_restful_ec2_blogs_install_start_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_microservices_restful_ec2_blogs_install_start.aws_cloudwatch_event_rule_name
+}
