@@ -1,8 +1,7 @@
 ------------------GIN/GORM------------------------------------------------------------------------
 
-- Creating database schema
+- Creating database schema. Within source_code folder
 go run migrate/migrate.go
 
-- Raising GIN Server / Running Compile Daemon
+- Raising GIN Server / Running Compile Daemon. Within source_code folder
 CompileDaemon -command="./source_code"
-
