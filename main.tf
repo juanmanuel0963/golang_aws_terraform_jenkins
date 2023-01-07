@@ -1099,6 +1099,10 @@ variable "restful_ec2_blogs_install_start" {
   type    = string
 }
 
+variable "restful_ec2_blogs_port" {
+  type    = string
+}
+
 ##################################################################################
 # microservices_restful_ec2_blogs - eventbridge_install_start - (EventBridge rule RunShellScript)
 ##################################################################################
@@ -1117,6 +1121,7 @@ module "module_microservices_restful_ec2_blogs_install_start" {
     db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     db_port                           = var.db_port
+    blogs_port                        = var.restful_ec2_blogs_port
 }
 
 output "module_microservices_restful_ec2_blogs_install_start_rule_name" {
