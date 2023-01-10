@@ -43,3 +43,6 @@ grpc_client_1_op4_function_name = "op4_usermgmt_client"
 #restful_ec2_blogs
 restful_ec2_blogs_install_start = "blogs_install_start"
 restful_ec2_blogs_port          = "3000"
+#restful_ec2_posts
+restful_ec2_posts_install_start = "posts_install_start"
+restful_ec2_posts_port          = "3001"
