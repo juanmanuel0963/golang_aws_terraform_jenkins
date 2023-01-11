@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/posts/source_code/initializers"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/posts/source_code/models"
 )
 
 func init() {
@@ -10,5 +11,5 @@ func init() {
 }
 
 func main() {
-	//initializers.DB.AutoMigrate(&models.Post{})
+	initializers.DB.AutoMigrate(&models.Post{})
 }
