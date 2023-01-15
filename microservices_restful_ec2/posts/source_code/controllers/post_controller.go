@@ -16,8 +16,6 @@ func PostCreate(c *gin.Context) {
 	}
 	c.Bind(&body)
 
-	//body.BlogID = 4
-
 	// Crete a post
 	post := models.Post{Title: body.Title, Body: body.Body, BlogID: body.BlogID}
 	result := initializers.DB.Create(&post)
