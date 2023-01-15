@@ -56,7 +56,7 @@ variable "blogs_port" {
 
 locals {
   availability_zone       = "${var.region}c"  
-  db_conn                 = "host=${var.db_instance_address} user=db_master password=${var.password} dbname=${var.db_instance_db_name} port=${var.db_port} sslmode=disable"
+  db_conn                 = "host=${var.db_instance_address} user=db_master password=${var.db_password} dbname=${var.db_instance_db_name} port=${var.db_port} sslmode=disable"
   rule_name               = "${var.instance_name}_${var.function_name}_rule_${var.random_pet}"
   iam_role_name           = "${var.instance_name}_${var.function_name}_iam_role_${var.random_pet}"
 }

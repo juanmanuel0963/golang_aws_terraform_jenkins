@@ -204,8 +204,8 @@ module "module_db_postgresql" {
     instance_class          = var.instance_class
     db_port                 = var.db_port
     db_name                 = var.db_name
-    username                = var.username
-    password                = var.password
+    db_username             = var.db_username
+    db_password             = var.db_password
     parameter_group_name    = var.parameter_group_name
     publicly_accessible     = var.publicly_accessible
     deletion_protection     = var.deletion_protection
@@ -361,8 +361,8 @@ module "module_contacts_insert" {
     parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
     InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
     dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
+    dbUser                            = var.db_username
+    dbPassword                        = var.db_password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
@@ -412,8 +412,8 @@ module "module_contacts_get_by_contact_id" {
     parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
     InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
     dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
+    dbUser                            = var.db_username
+    dbPassword                        = var.db_password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
@@ -461,8 +461,8 @@ module "module_contacts_get_by_company_id" {
     parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
     InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
     dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
+    dbUser                            = var.db_username
+    dbPassword                        = var.db_password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
@@ -510,8 +510,8 @@ module "module_contacts_update_by_contact_id" {
     parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
     InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
     dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
+    dbUser                            = var.db_username
+    dbPassword                        = var.db_password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
@@ -559,8 +559,8 @@ module "module_contacts_delete_by_contact_id" {
     parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
     InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
     dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
+    dbUser                            = var.db_username
+    dbPassword                        = var.db_password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
@@ -608,8 +608,8 @@ module "module_contacts_get_by_dynamic_filter" {
     parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
     InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
     dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
+    dbUser                            = var.db_username
+    dbPassword                        = var.db_password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
@@ -657,8 +657,8 @@ module "module_contacts_get_by_pagination" {
     parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
     InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
     dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
+    dbUser                            = var.db_username
+    dbPassword                        = var.db_password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     db_subnet_group_name              = module.module_db_postgresql.aws_db_subnet_group_name
@@ -860,7 +860,7 @@ module "module_grpc_server_1_op4_eventbridge_rule" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op4_function_name
-    password                          = var.password
+    db_password                          = var.db_password
     db_instance_endpoint              = module.module_db_postgresql.aws_db_instance_endpoint
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     random_pet                        = local.random_pet
@@ -1063,8 +1063,8 @@ module "module_api_eventb_rule_to_grpc" {
     parent_api_gateway_invoke_url     = module.module_api_gateway.api_gateway_invoke_url    
     InstanceConnectionName            = module.module_db_postgresql.aws_db_instance_endpoint
     dbName                            = module.module_db_postgresql.aws_db_instance_db_name
-    dbUser                            = var.username
-    dbPassword                        = var.password        
+    dbUser                            = var.db_username
+    dbPassword                        = var.db_password        
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     instance_name                     = var.grpc_client_1_instance_name    
@@ -1117,7 +1117,7 @@ module "module_microservices_restful_ec2_blogs_install_start" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_blogs_install_start
     random_pet                        = local.random_pet
-    password                          = var.password
+    db_password                          = var.db_password
     db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     db_port                           = var.db_port
@@ -1156,7 +1156,7 @@ module "module_microservices_restful_ec2_posts_install_start" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_posts_install_start
     random_pet                        = local.random_pet
-    password                          = var.password
+    db_password                       = var.db_password
     db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     db_port                           = var.db_port
@@ -1194,7 +1194,7 @@ module "module_microservices_restful_ec2_invoices_install_start" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_invoices_install_start
     random_pet                        = local.random_pet
-    password                          = var.password
+    db_password                          = var.db_password
     db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     db_port                           = var.db_port
@@ -1232,7 +1232,7 @@ module "module_microservices_restful_ec2_products_install_start" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_products_install_start
     random_pet                        = local.random_pet
-    password                          = var.password
+    db_password                       = var.db_password
     db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     db_port                           = var.db_port
@@ -1266,7 +1266,7 @@ module "module_microservices_restful_ec2_database_migrate" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_database_migrate
     random_pet                        = local.random_pet
-    password                          = var.password
+    db_password                          = var.db_password
     db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     db_port                           = var.db_port

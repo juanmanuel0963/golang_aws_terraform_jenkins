@@ -186,8 +186,8 @@ resource "aws_db_instance" "the_postgresql_instance" {
   db_subnet_group_name    = aws_db_subnet_group.the_db_subnet_group.id
 
   db_name                 = local.db_name
-  username                = var.username
-  password                = var.password
+  username                = var.db_username
+  password                = var.db_password
   
   parameter_group_name    = var.parameter_group_name
   availability_zone       = local.availability_zone
