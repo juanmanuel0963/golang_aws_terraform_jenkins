@@ -45,8 +45,8 @@ microservices_restful_lambda/lambda_func_go/testing/lambda_func_0_test.go
 
 **/key_pairs/*
 *.env
-migrate_commands_dev.cmd
-migrate_commands_tools.cmd
+#migrate_commands_dev.cmd
+#migrate_commands_tools.cmd
 #terraform.tfvars
 #*.tfvars
 #*.tfvars.json
