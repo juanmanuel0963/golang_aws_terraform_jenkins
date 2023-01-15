@@ -1,5 +1,6 @@
 ::Compiling binaries to upload to AWS
 set GOOS=linux
+ls env:
 ::set $Env:GOOS=linux
 ::--------DB migrate--------
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\_database\migrate

@@ -1,4 +1,5 @@
 ::--------DB migrate--------
+ls env:
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\_database\migrate
 del migrate
 del migrate.exe

@@ -1,6 +1,6 @@
 ::AWS authentication - Tools Environment-------------
 set AWS_PROFILE=tools
-
+ls env:
 terraform workspace select tools
 terraform workspace list
 terraform init
