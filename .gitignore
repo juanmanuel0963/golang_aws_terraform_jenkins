@@ -13,7 +13,6 @@ crash.*.log
 # password, private keys, and other secrets. These should not be part of version
 # control as they are data points which are potentially sensitive and subject
 # to change depending on the environment.
-#
 
 
 # Ignore override files as they are usually used to override resources locally and so
@@ -35,9 +34,6 @@ override.tf.json
 terraform.rc
 *tfplan*
 
-*.tfvars
-*.tfvars.json
-
 microservices_restful_lambda/contacts_delete_by_contact_id/testing/lambda_func_0_test.go
 microservices_restful_lambda/contacts_get_by_company_id/testing/lambda_func_0_test.go
 microservices_restful_lambda/contacts_get_by_contact_id/testing/lambda_func_0_test.go
@@ -52,3 +48,5 @@ microservices_restful_lambda/lambda_func_go/testing/lambda_func_0_test.go
 migrate_commands_dev.cmd
 migrate_commands_tools.cmd
 #terraform.tfvars
+#*.tfvars
+#*.tfvars.json
