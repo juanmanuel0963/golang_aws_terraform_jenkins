@@ -34,7 +34,7 @@ variable "random_pet"{
   type    = string
 }
 
-variable "password" {
+variable "db_password" {
   type    = string
 }
 

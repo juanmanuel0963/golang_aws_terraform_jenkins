@@ -30,7 +30,7 @@ variable "function_name" {
   type    = string
 }
 
-variable "password" {
+variable "db_password" {
   type    = string
 }
 
