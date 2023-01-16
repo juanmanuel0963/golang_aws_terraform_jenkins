@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
-	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/products/source_code/controllers"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/invoices/source_code/controllers"
 )
 
 func init() {
@@ -15,11 +15,11 @@ func init() {
 
 func main() {
 	r := gin.Default()
-	r.POST("/product_create", controllers.ProductCreate)
-	r.GET("/product_list", controllers.ProductList)
-	r.GET("/product_get/:id", controllers.ProductGet)
-	r.POST("/product_update/:id", controllers.ProductUpdate)
-	r.DELETE("/product_delete/:id", controllers.ProductDelete)
+	r.POST("/invoice_create", controllers.InvoiceCreate)
+	r.GET("/invoice_list", controllers.InvoiceList)
+	r.GET("/invoice_get/:id", controllers.InvoiceGet)
+	r.POST("/invoice_update/:id", controllers.InvoiceUpdate)
+	r.DELETE("/invoice_delete/:id", controllers.InvoiceDelete)
 	//r.Run() // listen and serve on 0.0.0.0:env(PORT)
 
 	err := r.Run(":" + os.Getenv("PORT"))

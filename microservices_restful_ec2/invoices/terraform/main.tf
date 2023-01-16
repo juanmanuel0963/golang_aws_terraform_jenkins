@@ -147,8 +147,8 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
-  input     = "{\"commands\":[\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins/microservices_restful_ec2/products/source_code\",\"export PORT=${var.invoices_port}\",\"export db_conn='${local.db_conn}'\",\"sudo chmod 700 main\",\"sudo --preserve-env ./main\"]}"
-  //input     = "{\"commands\":[\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins/microservices_restful_ec2/products/source_code\",\"export PORT=${var.products_port}\",\"export db_conn='${local.db_conn}'\",\"sudo chmod 700 ./migrate/migrate\",\"sudo --preserve-env ./migrate/migrate\",\"sudo chmod 700 main\",\"sudo --preserve-env ./main\"]}"
+  input     = "{\"commands\":[\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins/microservices_restful_ec2/invoices/source_code\",\"export PORT=${var.invoices_port}\",\"export db_conn='${local.db_conn}'\",\"sudo chmod 700 main\",\"sudo --preserve-env ./main\"]}"
+  //input     = "{\"commands\":[\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins/microservices_restful_ec2/invoices/source_code\",\"export PORT=${var.products_port}\",\"export db_conn='${local.db_conn}'\",\"sudo chmod 700 ./migrate/migrate\",\"sudo --preserve-env ./migrate/migrate\",\"sudo chmod 700 main\",\"sudo --preserve-env ./main\"]}"
   //\"sudo chmod -R a+rwx /home/ubuntu/\",
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn

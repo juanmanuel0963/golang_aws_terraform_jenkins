@@ -1180,7 +1180,7 @@ variable "restful_ec2_invoices_port" {
   type    = string
 }
 
-##################################################################################
+################################################################################## 
 # microservices_restful_ec2_invoices - eventbridge_install_start - (EventBridge rule RunShellScript)
 ##################################################################################
 
@@ -1194,7 +1194,7 @@ module "module_microservices_restful_ec2_invoices_install_start" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_invoices_install_start
     random_pet                        = local.random_pet
-    db_password                          = var.db_password
+    db_password                       = var.db_password
     db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     db_port                           = var.db_port
