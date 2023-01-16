@@ -10,12 +10,14 @@ func InvoiceCreate(c *gin.Context) {
 
 	// Get data off req body
 	var body struct {
-		Title string
+		Title    string
+		Products []models.Product
 	}
+
 	c.Bind(&body)
 
 	// Crete an invoice
-	invoice := models.Invoice{Title: body.Title}
+	invoice := models.Invoice{Title: body.Title, Products: body.Products}
 	result := initializers.DB.Create(&invoice)
 
 	if result.Error != nil {
