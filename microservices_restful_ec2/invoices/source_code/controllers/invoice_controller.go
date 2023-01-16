@@ -8,16 +8,32 @@ import (
 
 func InvoiceCreate(c *gin.Context) {
 
+	type ProductInput struct {
+		ProductId uint
+	}
+
 	// Get data off req body
 	var body struct {
 		Title    string
-		Products []models.Product
+		Products []ProductInput
 	}
 
 	c.Bind(&body)
 
+	var productsList []models.Product
+
+	//Finding input Products
+	for _, product := range body.Products {
+		var productFind models.Product
+		initializers.DB.First(&productFind, product.ProductId)
+
+		if productFind.ID > 0 {
+			productsList = append(productsList, productFind)
+		}
+	}
+
 	// Crete an invoice
-	invoice := models.Invoice{Title: body.Title, Products: body.Products}
+	invoice := models.Invoice{Title: body.Title, Products: productsList}
 	result := initializers.DB.Create(&invoice)
 
 	if result.Error != nil {

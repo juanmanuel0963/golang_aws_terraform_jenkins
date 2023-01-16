@@ -62,10 +62,15 @@ func main() {
 	var newproduct2 = products[2]
 	fmt.Println("Product: ", newproduct2.ID)
 
+	// Create Invoice and add Products
+	var findProduct models.Product
+	initializers.DB.First(&findProduct, 412) //Finding hard-coded Product
+
 	var invoices = []models.Invoice{
-		{Title: "Invoice 1", Products: []models.Product{newproduct0, newproduct1, newproduct2}},
-		{Title: "Invoice 2", Products: []models.Product{newproduct0, newproduct1, newproduct2}},
-		{Title: "Invoice 3", Products: []models.Product{newproduct0, newproduct1, newproduct2}},
+		{Title: "Invoice 1", Products: []models.Product{newproduct0, newproduct1, newproduct2, findProduct}},
+		{Title: "Invoice 2", Products: []models.Product{newproduct0, newproduct1, newproduct2, findProduct}},
+		{Title: "Invoice 3", Products: []models.Product{newproduct0, newproduct1, newproduct2, findProduct}},
+		{Title: "Invoice find Product", Products: []models.Product{newproduct0, newproduct1, newproduct2, findProduct}},
 	}
 
 	initializers.DB.Create(&invoices)
