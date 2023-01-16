@@ -140,7 +140,7 @@ func FunctionHandler(ctx context.Context, request events.APIGatewayProxyRequest)
 		responseStatusCodeForClient = 200
 	case responseContact.Id == 0:
 		responseMessageForClient = "RECORD_NOT_FOUND"
-		responseStatusCodeForClient = 500
+		responseStatusCodeForClient = 400
 	default:
 		responseMessageForClient = "RECORD_UNKNOWN_ERROR"
 		responseStatusCodeForClient = 500

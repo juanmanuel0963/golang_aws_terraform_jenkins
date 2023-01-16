@@ -171,7 +171,7 @@ func FunctionHandler(ctx context.Context, request events.APIGatewayProxyRequest)
 	switch { // missing expression means "true"
 	case len(responseContactsSlice) == 0:
 		responseMessageForClient = "RECORD_NOT_FOUND"
-		responseStatusCodeForClient = 500
+		responseStatusCodeForClient = 400
 	case len(responseContactsSlice) >= 1:
 		responseMessageForClient = "RECORD_OK"
 		responseStatusCodeForClient = 200
