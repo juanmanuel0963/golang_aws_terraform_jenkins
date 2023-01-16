@@ -9,13 +9,14 @@ import (
 func ProductCreate(c *gin.Context) {
 
 	// Get data off req body
-	var body struct {
+	/*var body struct {
 		Title string
 	}
 	c.Bind(&body)
-
+	*/
 	// Crete a post
-	product := models.Product{Title: body.Title}
+	product := models.Product{Title: "My titular"}
+	//product := models.Product{Title: body.Title}
 	result := initializers.DB.Create(&product)
 
 	if result.Error != nil {
