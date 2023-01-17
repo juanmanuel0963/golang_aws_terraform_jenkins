@@ -18,6 +18,7 @@ func main() {
 	r.POST("/post_create", controllers.PostCreate)
 	r.GET("/post_list", controllers.PostList)
 	r.GET("/post_get/:id", controllers.PostGet)
+	r.GET("/post_get_by_blogid/:blogid", controllers.PostGetByBlogId)
 	r.POST("/post_update/:id", controllers.PostUpdate)
 	r.DELETE("/post_delete/:id", controllers.PostDelete)
 	//r.Run() // listen and serve on 0.0.0.0:env(PORT)

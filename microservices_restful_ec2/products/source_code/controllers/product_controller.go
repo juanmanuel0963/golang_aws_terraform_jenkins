@@ -1,12 +1,9 @@
 package controllers
 
 import (
-	"errors"
-
 	"github.com/gin-gonic/gin"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
-	"gorm.io/gorm"
 )
 
 func ProductCreate(c *gin.Context) {
@@ -53,13 +50,14 @@ func ProductGet(c *gin.Context) {
 	var product models.Product
 	result := initializers.DB.First(&product, id)
 
-	rows := result.RowsAffected // returns count of records found
-	//result.Error                // returns error or nil
+	// returns count of records found
+	rows := result.RowsAffected
 
 	status_message := "RECORD_OK"
 	status_code := 200
 	status_error := ""
 
+	// returns error or nil
 	if result.Error != nil {
 		status_error = result.Error.Error()
 		status_message = "RECORD_UNKNOWN_ERROR"
@@ -67,7 +65,9 @@ func ProductGet(c *gin.Context) {
 	}
 
 	// check error ErrRecordNotFound
-	if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+	//if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+
+	if result.RowsAffected == 0 {
 		status_message = "RECORD_NOT_FOUND"
 		status_code = 400
 	}
@@ -75,6 +75,49 @@ func ProductGet(c *gin.Context) {
 	//Respond with it
 	c.JSON(200, gin.H{
 		"product":        product,
+		"row_count":      rows,
+		"status_message": status_message,
+		"status_code":    status_code,
+		"status_error":   status_error,
+	})
+}
+
+func ProductGetByInvoiceId(c *gin.Context) {
+
+	//Get the id off url
+	InvoiceID := c.Param("invoiceid")
+
+	// Get the products
+	var products []models.Product
+
+	// Get all matched records
+	result := initializers.DB.Joins("JOIN invoice_products ON invoice_products.product_id = products.id").Where("invoice_products.invoice_id = ?", InvoiceID).Find(&products)
+
+	// returns count of records found
+	rows := result.RowsAffected
+
+	status_message := "RECORD_OK"
+	status_code := 200
+	status_error := ""
+
+	// returns error or nil
+	if result.Error != nil {
+		status_error = result.Error.Error()
+		status_message = "RECORD_UNKNOWN_ERROR"
+		status_code = 500
+	}
+
+	// check error ErrRecordNotFound
+	//if errors.Is(result.Error, gorm.ErrRecordNotFound) {
+
+	if result.RowsAffected == 0 {
+		status_message = "RECORD_NOT_FOUND"
+		status_code = 400
+	}
+
+	//Respond with it
+	c.JSON(200, gin.H{
+		"products":       products,
 		"row_count":      rows,
 		"status_message": status_message,
 		"status_code":    status_code,

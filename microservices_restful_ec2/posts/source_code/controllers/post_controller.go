@@ -58,6 +58,49 @@ func PostGet(c *gin.Context) {
 	})
 }
 
+func PostGetByBlogId(c *gin.Context) {
+	//Get the id off url
+	BlogID := c.Param("blogid")
+
+	// Get the posts
+	var posts []models.Post
+
+	// Get all matched records
+	result := initializers.DB.Where("blog_id = ?", BlogID).Find(&posts)
+	// SELECT * FROM posts WHERE blog_id = BlogID param;
+
+	// returns count of records found
+	rows := result.RowsAffected
+
+	status_message := "RECORD_OK"
+	status_code := 200
+	status_error := ""
+
+	// returns error or nil
+	if result.Error != nil {
+		status_error = result.Error.Error()
+		status_message = "RECORD_UNKNOWN_ERROR"
+		status_code = 500
+	}
+
+	// check error ErrRecordNotFound
+	//if errors.Is(result.Error, gorm.ErrRecordNotFound)
+
+	if result.RowsAffected == 0 {
+		status_message = "RECORD_NOT_FOUND"
+		status_code = 400
+	}
+
+	//Respond with it
+	c.JSON(200, gin.H{
+		"posts":          posts,
+		"row_count":      rows,
+		"status_message": status_message,
+		"status_code":    status_code,
+		"status_error":   status_error,
+	})
+}
+
 func PostUpdate(c *gin.Context) {
 
 	//Get the id off url

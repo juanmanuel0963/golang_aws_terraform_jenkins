@@ -18,6 +18,7 @@ func main() {
 	r.POST("/product_create", controllers.ProductCreate)
 	r.GET("/product_list", controllers.ProductList)
 	r.GET("/product_get/:id", controllers.ProductGet)
+	r.GET("/product_get_by_invoiceid/:invoiceid", controllers.ProductGetByInvoiceId)
 	r.POST("/product_update/:id", controllers.ProductUpdate)
 	r.DELETE("/product_delete/:id", controllers.ProductDelete)
 	//r.Run() // listen and serve on 0.0.0.0:env(PORT)
