@@ -19,6 +19,8 @@ func main() {
 	r.GET("/post_list", controllers.PostList)
 	r.GET("/post_get/:id", controllers.PostGet)
 	r.GET("/post_get_by_blogid/:blogid", controllers.PostGetByBlogId)
+	r.POST("/post_get_by_dynamic_filter", controllers.PostGetByDynamicFilter)
+	r.POST("/post_get_by_pagination", controllers.PostGetByPagination)
 	r.POST("/post_update/:id", controllers.PostUpdate)
 	r.DELETE("/post_delete/:id", controllers.PostDelete)
 	//r.Run() // listen and serve on 0.0.0.0:env(PORT)

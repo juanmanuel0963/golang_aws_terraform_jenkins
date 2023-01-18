@@ -18,10 +18,16 @@ func main() {
 
 	initializers.DB.AutoMigrate(&models.Blog{}, &models.Post{})
 
+	//----------Invoices and Products----------
+
+	initializers.DB.AutoMigrate(&models.Invoice{}, &models.Product{})
+
+	//----------Blogs and Posts - Adding Data----------
+
 	var blogs = []models.Blog{
-		{Title: "Blog 1", Posts: []models.Post{{Title: "Blog 1 - Post 1", Body: "Blog 1 - Post 1 - Body"}, {Title: "Blog 1 - Post 2", Body: "Blog 1 - Post 2 - Body"}}},
-		{Title: "Blog 2", Posts: []models.Post{{Title: "Blog 2 - Post 1", Body: "Blog 2 - Post 1 - Body"}, {Title: "Blog 2 - Post 2", Body: "Blog 2 - Post 2 - Body"}}},
-		{Title: "Blog 3", Posts: []models.Post{{Title: "Blog 3 - Post 1", Body: "Blog 3 - Post 1 - Body"}, {Title: "Blog 3 - Post 2", Body: "Blog 3 - Post 2 - Body"}}},
+		{Title: "Programming Blog 1", Posts: []models.Post{{Title: "Golang programming post 1", Body: "Body Golang programming post 1"}, {Title: "Golang programming post 2", Body: "Body Golang programming post 2"}}},
+		{Title: "Programming Blog 2", Posts: []models.Post{{Title: "Golang programming post 1", Body: "Body Golang programming post 1"}, {Title: "Golang programming post 2", Body: "Body Golang programming post 2"}}},
+		{Title: "Programming Blog 3", Posts: []models.Post{{Title: "Golang programming post 1", Body: "Body Golang programming post 1"}, {Title: "Golang programming post 2", Body: "Body Golang programming post 2"}}},
 	}
 
 	initializers.DB.Create(&blogs)
@@ -33,22 +39,20 @@ func main() {
 		}
 	}
 
-	////----------Adding a new Post to a Blog//----------
+	////----------Adding a new Post to a Blog----------
 	var id uint
 	row := initializers.DB.Table("blogs").Where("id = ?", 1).Select("id").Row()
 	row.Scan(&id)
 
-	post := models.Post{Title: "Blog 4 - Post 1", Body: "Blog 4 - Post 1 - Body", BlogID: id}
+	post := models.Post{Title: "Java programming post", Body: "Body Java programming post", BlogID: id}
 	initializers.DB.Create(&post)
 
-	//----------Invoices and Products----------
-
-	initializers.DB.AutoMigrate(&models.Invoice{}, &models.Product{})
+	//----------Invoices and Products - Adding Data----------
 
 	var products = []models.Product{
-		{Title: "Product 1"},
-		{Title: "Product 2"},
-		{Title: "Product 3"},
+		{Title: "Retail Product 1"},
+		{Title: "Technology Product 2"},
+		{Title: "Sports Product 3"},
 	}
 
 	initializers.DB.Create(&products)
