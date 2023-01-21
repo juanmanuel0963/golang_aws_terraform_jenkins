@@ -30,4 +30,5 @@ func main() {
 	if err != nil {
 		panic("[Error] failed to start Gin server due to: " + err.Error())
 	}
+
 }

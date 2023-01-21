@@ -148,7 +148,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
   //input     = "{\"commands\":[\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins/microservices_restful_ec2/blogs/source_code\",\"export PORT=${var.blogs_port}\",\"export db_conn='${local.db_conn}'\",\"sudo chmod 700 ./migrate/migrate\",\"sudo --preserve-env ./migrate/migrate\",\"sudo chmod 700 main\",\"sudo --preserve-env ./main\"]}"
-  input     = "{\"commands\":[\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins/microservices_restful_ec2/blogs/source_code\",\"export PORT=${var.blogs_port}\",\"export db_conn='${local.db_conn}'\",\"sudo chmod 700 main\",\"sudo --preserve-env ./main\"]}"
+  input     = "{\"commands\":[\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins/microservices_restful_ec2/blogs/source_code/tls\",\"go run $(go env GOROOT)/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"cd ..\",\"export PORT=${var.blogs_port}\",\"export db_conn='${local.db_conn}'\",\"sudo chmod 700 main\",\"sudo --preserve-env ./main\"]}"
   //\"sudo chmod -R a+rwx /home/ubuntu/\",
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
