@@ -13,3 +13,5 @@ $Env:GOOS = "linux"
 go build migrate.go
 go build main.go
 
+--generate tls certificate
+go run 'C:\Program Files\Go\src\crypto\tls\generate_cert.go' -rsa-bits 2048 -host localhost 

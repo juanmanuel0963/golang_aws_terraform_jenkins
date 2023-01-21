@@ -21,9 +21,13 @@ func main() {
 	r.GET("/product_get_by_invoiceid/:invoiceid", controllers.ProductGetByInvoiceId)
 	r.POST("/product_update/:id", controllers.ProductUpdate)
 	r.DELETE("/product_delete/:id", controllers.ProductDelete)
+
+	//err := r.Run(":" + os.Getenv("PORT"))
 	//r.Run() // listen and serve on 0.0.0.0:env(PORT)
 
-	err := r.Run(":" + os.Getenv("PORT"))
+	err := r.RunTLS(":"+os.Getenv("PORT"), "./tls/cert.pem", "./tls/key.pem")
+	// Listen and Server in https://127.0.0.1:8080
+
 	if err != nil {
 		panic("[Error] failed to start Gin server due to: " + err.Error())
 	}

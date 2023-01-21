@@ -20,9 +20,13 @@ func main() {
 	r.GET("/blog_get/:id", controllers.BlogGet)
 	r.POST("/blog_update/:id", controllers.BlogUpdate)
 	r.DELETE("/blog_delete/:id", controllers.BlogDelete)
+
+	//err := r.Run(":" + os.Getenv("PORT"))
 	//r.Run() // listen and serve on 0.0.0.0:env(PORT)
 
-	err := r.Run(":" + os.Getenv("PORT"))
+	err := r.RunTLS(":"+os.Getenv("PORT"), "./tls/cert.pem", "./tls/key.pem")
+	// Listen and Server in https://127.0.0.1:8080
+
 	if err != nil {
 		panic("[Error] failed to start Gin server due to: " + err.Error())
 	}
