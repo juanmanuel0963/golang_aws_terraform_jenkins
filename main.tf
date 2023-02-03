@@ -1276,3 +1276,41 @@ output "module_microservices_restful_ec2_database_migrate_rule_name" {
   description = "EventBridge rule name"
   value = module.module_microservices_restful_ec2_database_migrate.aws_cloudwatch_event_rule_name
 }
+
+##################################################################################
+# aws_cognito_user_pool
+##################################################################################
+
+module "module_aws_cognito_user_pool" {
+    source              = "./cognito/auth_token/terraform"
+    region              = var.region
+    access_key          = var.access_key
+    secret_key          = var.secret_key    
+    random_pet          = local.random_pet
+}
+
+##################################################################################
+# aws_cognito_user_pool - OUTPUT
+##################################################################################
+
+output "module_aws_cognito_user_pool_id" {
+  description = "Cognito User pool ID"
+  value = module.module_aws_cognito_user_pool.aws_cognito_user_pool_id
+}
+
+output "module_aws_cognito_user_pool_name" {
+  description = "Cognito User pool name"
+  value = module.module_aws_cognito_user_pool.aws_cognito_user_pool_name
+}
+
+
+output "module_aws_cognito_user_pool_app_client_id" {
+  description = "Cognito client app ID"
+  value = module.module_aws_cognito_user_pool.aws_cognito_user_pool_app_client_id
+}
+
+output "module_aws_cognito_user_pool_app_client_name" {
+  description = "Cognito client app name"
+  value = module.module_aws_cognito_user_pool.aws_cognito_user_pool_app_client_name
+}
+
