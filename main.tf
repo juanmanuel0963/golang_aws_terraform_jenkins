@@ -1122,6 +1122,7 @@ module "module_microservices_restful_ec2_blogs_install_start" {
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     db_port                           = var.db_port
     blogs_port                        = var.restful_ec2_blogs_port
+    aws_cognito_user_pool_id          = module.module_aws_cognito_user_pool.aws_cognito_user_pool_id
 }
 
 output "module_microservices_restful_ec2_blogs_install_start_rule_name" {
@@ -1287,6 +1288,8 @@ module "module_aws_cognito_user_pool" {
     access_key          = var.access_key
     secret_key          = var.secret_key    
     random_pet          = local.random_pet
+    username            = var.db_username
+    password            = var.db_password
 }
 
 ##################################################################################
