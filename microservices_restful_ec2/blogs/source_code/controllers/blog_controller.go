@@ -29,9 +29,13 @@ func VerifyToken(c *gin.Context) bool {
 		// https://docs.aws.amazon.com/cognito/latest/developerguide/amazon-cognito-user-pools-using-tokens-verifying-a-jwt.html
 		//regionID := "us-east-1" // TODO Get the region ID for your AWS Cognito instance.
 		regionID := os.Getenv("region")
+		fmt.Println(regionID)
+
 		//userPoolID := "us-east-1_Es8PRfyf2" // TestPoolInfo TODO Get the user pool ID of your AWS Cognito instance.
 		//userPoolID := "us-east-1_hnPCjlOjN" // user_pool_curious_sunbeam TODO Get the user pool ID of your AWS Cognito instance.
 		userPoolID := os.Getenv("aws_cognito_user_pool_id") // TODO Get the user pool ID of your AWS Cognito instance.
+		fmt.Println(userPoolID)
+
 		jwksURL := fmt.Sprintf("https://cognito-idp.%s.amazonaws.com/%s/.well-known/jwks.json", regionID, userPoolID)
 
 		// Create the keyfunc options. Use an error handler that logs. Refresh the JWKS when a JWT signed by an unknown KID
