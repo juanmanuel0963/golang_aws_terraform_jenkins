@@ -25,7 +25,8 @@ func main() {
 	//r.Run() // listen and serve on 0.0.0.0:env(PORT)
 
 	//err := r.RunTLS(":"+os.Getenv("PORT"), "/home/ubuntu/tls/cert.pem", "/home/ubuntu/tls/key.pem")
-	err := r.RunTLS(":"+os.Getenv("PORT"), "cert.pem", "key.pem")
+	//err := r.RunTLS(":"+os.Getenv("PORT"), "cert.pem", "key.pem")
+	err := r.Run(":" + os.Getenv("PORT"))
 	// Listen and Server in https://127.0.0.1:8080
 
 	if err != nil {
