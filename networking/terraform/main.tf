@@ -69,7 +69,7 @@ resource "aws_security_group" "the_security_group" {
 }
 
 //-------Dynamic IPs---------------------------
-
+/*
 resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_home_to_postgresql"
@@ -79,7 +79,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
-
+*/
 resource "aws_security_group_rule" "ingress_from_self_security_group" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_self_${aws_security_group.the_security_group.id}"
@@ -89,7 +89,7 @@ resource "aws_security_group_rule" "ingress_from_self_security_group" {
   protocol          = "all"
   self              = true  
 }
-
+/*
 resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_home_to_ssh"
@@ -137,6 +137,16 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3003" {
   from_port         = 3003
   to_port           = 3003
   protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+*/
+resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_home_to_everywhere"
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 65535
+  protocol          = "all"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
 
