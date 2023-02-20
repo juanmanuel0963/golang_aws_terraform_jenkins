@@ -23,8 +23,11 @@ func main() {
 
 	//err := r.Run(":" + os.Getenv("PORT"))
 	//r.Run() // listen and serve on 0.0.0.0:env(PORT)
-	//Local
+
+	//Local w/TLS
 	//err := r.RunTLS(":"+os.Getenv("PORT"), "cert.pem", "key.pem")
+
+	//Local wout/TLS
 	//err := r.Run(":" + os.Getenv("PORT"))
 
 	//Server
