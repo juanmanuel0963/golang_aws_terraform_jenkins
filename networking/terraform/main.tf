@@ -69,17 +69,7 @@ resource "aws_security_group" "the_security_group" {
 }
 
 //-------Dynamic IPs---------------------------
-/*
-resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_postgresql"
-  type              = "ingress"
-  from_port         = 5432
-  to_port           = 5432
-  protocol          = "tcp"
-  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
-}
-*/
+
 resource "aws_security_group_rule" "ingress_from_self_security_group" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_self_${aws_security_group.the_security_group.id}"
@@ -89,10 +79,20 @@ resource "aws_security_group_rule" "ingress_from_self_security_group" {
   protocol          = "all"
   self              = true  
 }
-/*
+
+resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_local_home_to_postgresql"
+  type              = "ingress"
+  from_port         = 5432
+  to_port           = 5432
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+
 resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_ssh"
+  description       = "ingress_from_local_home_to_ssh"
   type              = "ingress"
   from_port         = 22
   to_port           = 22
@@ -102,7 +102,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
 
 resource "aws_security_group_rule" "ingress_from_local_home_to_3000" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_3000"
+  description       = "ingress_from_local_home_to_3000"
   type              = "ingress"
   from_port         = 3000
   to_port           = 3000
@@ -112,7 +112,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3000" {
 
 resource "aws_security_group_rule" "ingress_from_local_home_to_3001" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_3001"
+  description       = "ingress_from_local_home_to_3001"
   type              = "ingress"
   from_port         = 3001
   to_port           = 3001
@@ -122,7 +122,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3001" {
 
 resource "aws_security_group_rule" "ingress_from_local_home_to_3002" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_3002"
+  description       = "ingress_from_local_home_to_3002"
   type              = "ingress"
   from_port         = 3002
   to_port           = 3002
@@ -132,17 +132,17 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3002" {
 
 resource "aws_security_group_rule" "ingress_from_local_home_to_3003" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_3003"
+  description       = "ingress_from_local_home_to_3003"
   type              = "ingress"
   from_port         = 3003
   to_port           = 3003
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
-*/
-resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
+
+resource "aws_security_group_rule" "ingress_from_local_home_to_everywhere" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_everywhere"
+  description       = "ingress_from_local_home_to_everywhere"
   type              = "ingress"
   from_port         = 0
   to_port           = 65535
@@ -152,9 +152,9 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
 
 //-------Static IPs for Prod/Jenkins ---------------------------
 
-resource "aws_security_group_rule" "ingress_from_local_home_static_to_postgresql" {
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_static_to_postgresql"
+  description       = "ingress_from_server_jenkins_to_postgresql"
   type              = "ingress"
   from_port         = 5432
   to_port           = 5432
@@ -162,9 +162,9 @@ resource "aws_security_group_rule" "ingress_from_local_home_static_to_postgresql
   cidr_blocks      = ["186.155.14.153/32"]
 }
 
-resource "aws_security_group_rule" "ingress_from_local_home_static_to_ssh" {
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_ssh" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_static_to_ssh"
+  description       = "ingress_from_server_jenkins_to_ssh"
   type              = "ingress"
   from_port         = 22
   to_port           = 22
@@ -172,9 +172,9 @@ resource "aws_security_group_rule" "ingress_from_local_home_static_to_ssh" {
   cidr_blocks      = ["186.155.14.153/32"]
 }
 
-resource "aws_security_group_rule" "ingress_from_local_home_static_to_3000" {
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3000" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_3000"
+  description       = "ingress_from_server_jenkins_to_3000"
   type              = "ingress"
   from_port         = 3000
   to_port           = 3000
@@ -182,9 +182,9 @@ resource "aws_security_group_rule" "ingress_from_local_home_static_to_3000" {
   cidr_blocks      = ["186.155.14.153/32"]
 }
 
-resource "aws_security_group_rule" "ingress_from_local_home_static_to_3001" {
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3001" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_3001"
+  description       = "ingress_from_server_jenkins_to_3001"
   type              = "ingress"
   from_port         = 3001
   to_port           = 3001
@@ -192,9 +192,9 @@ resource "aws_security_group_rule" "ingress_from_local_home_static_to_3001" {
   cidr_blocks      = ["186.155.14.153/32"]
 }
 
-resource "aws_security_group_rule" "ingress_from_local_home_static_to_3002" {
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3002" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_3002"
+  description       = "ingress_from_server_jenkins_to_3002"
   type              = "ingress"
   from_port         = 3002
   to_port           = 3002
@@ -202,9 +202,9 @@ resource "aws_security_group_rule" "ingress_from_local_home_static_to_3002" {
   cidr_blocks      = ["186.155.14.153/32"]
 }
 
-resource "aws_security_group_rule" "ingress_from_local_home_static_to_3003" {
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_3003"
+  description       = "ingress_from_server_jenkins_to_3003"
   type              = "ingress"
   from_port         = 3003
   to_port           = 3003
