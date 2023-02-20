@@ -140,6 +140,7 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3003" {
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
 
+/*
 resource "aws_security_group_rule" "ingress_from_local_home_to_everywhere" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_local_home_to_everywhere"
@@ -149,9 +150,20 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_everywhere" {
   protocol          = "all"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
+*/
+
+resource "aws_security_group_rule" "egress_to_everywhere" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "egress_to_everywhere"
+  type              = "egress"
+  from_port         = 0
+  to_port           = 65535
+  protocol          = "all"
+  cidr_blocks      = ["0.0.0.0/0"]
+}
 
 //-------Static IPs for Prod/Jenkins ---------------------------
-
+/*
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_server_jenkins_to_postgresql"
@@ -211,57 +223,8 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
   protocol          = "tcp"
   cidr_blocks      = ["186.155.14.153/32"]
 }
-
-/*
-resource "aws_security_group_rule" "ingress_from_local_home_to_50051" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_50051"
-  type              = "ingress"
-  from_port         = 50051
-  to_port           = 50051
-  protocol          = "tcp"
-  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
-}
-
-resource "aws_security_group_rule" "ingress_from_local_home_to_8080" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_8080"
-  type              = "ingress"
-  from_port         = 8080
-  to_port           = 8080
-  protocol          = "tcp"
-  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
-}
-
-resource "aws_security_group_rule" "ingress_from_local_home_to_80" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_80"
-  type              = "ingress"
-  from_port         = 80
-  to_port           = 80
-  protocol          = "tcp"
-  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
-}
-
-resource "aws_security_group_rule" "ingress_from_local_home_to_443" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home_to_443"
-  type              = "ingress"
-  from_port         = 443
-  to_port           = 443
-  protocol          = "tcp"
-  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
-}
 */
-resource "aws_security_group_rule" "egress_to_everywhere" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "egress_to_everywhere"
-  type              = "egress"
-  from_port         = 0
-  to_port           = 65535
-  protocol          = "all"
-  cidr_blocks      = ["0.0.0.0/0"]
-}
+
 
 ##################################################################################
 # aws_security_group - OUTPUT
