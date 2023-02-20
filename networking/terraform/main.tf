@@ -68,7 +68,7 @@ resource "aws_security_group" "the_security_group" {
   }  
 }
 
-//-------Dynamic IPs---------------------------
+//-------Self security Group---------------------------
 
 resource "aws_security_group_rule" "ingress_from_self_security_group" {
   security_group_id = aws_security_group.the_security_group.id
@@ -80,6 +80,21 @@ resource "aws_security_group_rule" "ingress_from_self_security_group" {
   self              = true  
 }
 
+//-------Egress to everywhere---------------------------
+
+resource "aws_security_group_rule" "egress_to_everywhere" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "egress_to_everywhere"
+  type              = "egress"
+  from_port         = 0
+  to_port           = 65535
+  protocol          = "all"
+  cidr_blocks      = ["0.0.0.0/0"]
+}
+
+
+//-------Dynamic Home IPs for Dev/Tools ---------------------------
+/*
 resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_local_home_to_postgresql"
@@ -139,31 +154,10 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3003" {
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
-
-/*
-resource "aws_security_group_rule" "ingress_from_local_home_to_everywhere" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_local_home_to_everywhere"
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 65535
-  protocol          = "all"
-  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
-}
 */
 
-resource "aws_security_group_rule" "egress_to_everywhere" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "egress_to_everywhere"
-  type              = "egress"
-  from_port         = 0
-  to_port           = 65535
-  protocol          = "all"
-  cidr_blocks      = ["0.0.0.0/0"]
-}
-
 //-------Static IPs for Prod/Jenkins ---------------------------
-/*
+
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_server_jenkins_to_postgresql"
@@ -223,7 +217,6 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
   protocol          = "tcp"
   cidr_blocks      = ["186.155.14.153/32"]
 }
-*/
 
 
 ##################################################################################
