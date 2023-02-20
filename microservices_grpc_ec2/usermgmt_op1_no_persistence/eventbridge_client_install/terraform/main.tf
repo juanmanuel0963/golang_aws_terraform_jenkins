@@ -116,7 +116,7 @@ resource "aws_cloudwatch_event_rule" "the_rule" {
   name                = "${local.rule_name}"
   description         = "${local.rule_name}"
   //schedule_expression = "cron(0 * * * ? *)" //every one hour
-  schedule_expression = "cron(0/5 * * * ? *)" //every 5 minutes
+  schedule_expression = "cron(0/10 * * * ? *)" //every 5 minutes
   //schedule_expression = "rate(1 minute)"
 }
 
@@ -126,7 +126,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
-  input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf golang_aws_terraform_jenkins\",\"git clone https://github.com/juanmanuel0963/golang_aws_terraform_jenkins.git\",\"export HOME=/home/ubuntu\",\"export GOROOT=/snap/go/10030\",\"export GOPATH=$HOME/snap/go/10030\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\"]}"
+  input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf golang_aws_terraform_jenkins\",\"git clone https://github.com/juanmanuel0963/golang_aws_terraform_jenkins.git\",\"export HOME=/home/ubuntu\",\"export GOROOT=/snap/go/10050\",\"export GOPATH=$HOME/snap/go/10050\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"sudo shutdown -r now\"]}"
   //\"sudo chmod -R a+rwx /home/ubuntu/\",
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
