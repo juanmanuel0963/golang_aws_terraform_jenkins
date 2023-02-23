@@ -13,12 +13,12 @@ import (
 )
 
 const (
-// address = "localhost:50051"
+// address = "localhost:50054"
 // address = "172.31.92.9:50051"
 )
 
 func main() {
-	//conn, err := grpc.Dial(address, grpc.WithInsecure(), grpc.WithBlock())
+	//conn, err := grpc.Dial(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	conn, err := grpc.Dial(os.Getenv("server_address")+":50054", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
@@ -37,16 +37,19 @@ func main() {
 			log.Fatalf("could not create user: %v", err)
 		}
 		log.Printf(`User Details:
-NAME: %s
-AGE: %d
-ID: %d`, r.GetName(), r.GetAge(), r.GetId())
-
+		NAME: %s
+		AGE: %d
+		ID: %d`, r.GetName(), r.GetAge(), r.GetId())
 	}
+
 	params := &pb.GetUsersParams{}
+	fmt.Print("Params: ", params)
+
 	r, err := c.GetUsers(ctx, params)
 	if err != nil {
 		log.Fatalf("could not get users: %v", err)
 	}
-	log.Print("\nUSER LIST: \n")
+
+	log.Print("\n USERs LIST: \n")
 	fmt.Printf("r.GetUsers(): %v\n", r.GetUsers())
 }

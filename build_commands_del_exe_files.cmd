@@ -35,3 +35,15 @@ del main
 del main.exe
 del *.exe
 del *.exe~
+
+::usermgmt_op4_db_postgres-------------
+
+::usermgmt_client
+cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op4_db_postgres\usermgmt_client
+del usermgmt_client
+del usermgmt_client.exe
+
+::usermgmt_server
+cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op4_db_postgres\usermgmt_server
+del usermgmt_server
+del usermgmt_server.exe

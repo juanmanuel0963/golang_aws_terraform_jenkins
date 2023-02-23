@@ -21,7 +21,8 @@ message User {
 }
 
 message GetUsersParams {
-
+  string name = 1;
+  int32 age = 2;
 }
 
 message UsersList {

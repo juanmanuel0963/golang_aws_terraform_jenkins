@@ -66,14 +66,17 @@ func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.Ne
 		log.Fatalf("conn.Begin failed: %v", err)
 	}
 
-	_, err = tx.Exec(context.Background(), "insert into users(name, age) values ($1,$2)",
-		created_user.Name, created_user.Age)
+	_, err = tx.Exec(context.Background(), "insert into users(name, age) values ($1,$2)", created_user.Name, created_user.Age)
+
 	if err != nil {
 		log.Fatalf("tx.Exec failed: %v", err)
 	}
-	tx.Commit(context.Background())
-	return created_user, nil
 
+	tx.Commit(context.Background())
+
+	fmt.Println("created_user: ", created_user)
+
+	return created_user, nil
 }
 
 func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUsersParams) (*pb.UsersList, error) {
@@ -98,7 +101,7 @@ func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUser
 
 func main() {
 	//database_url1 := "postgres://postgres:mysecretpassword@localhost:5432/postgres"
-	database_url := "postgres://db_master:" + os.Getenv("db_password") + os.Getenv("db_conn")
+	database_url := "postgres://" + os.Getenv("db_username") + ":" + os.Getenv("db_password") + os.Getenv("db_conn")
 	//database_url := "postgres://db_master:" + os.Getenv("db_password") + "@db-server-postgresql-romantic-shark.cm03k8s4ogkh.us-east-1.rds.amazonaws.com:5432/db_postgresql_romantic_shark?sslmode=disable"
 	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
 	conn, err := pgx.Connect(context.Background(), database_url)

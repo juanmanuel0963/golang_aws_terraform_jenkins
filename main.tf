@@ -860,7 +860,8 @@ module "module_grpc_server_1_op4_eventbridge_rule" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op4_function_name
-    db_password                          = var.db_password
+    db_username                       = var.db_username
+    db_password                       = var.db_password
     db_instance_endpoint              = module.module_db_postgresql.aws_db_instance_endpoint
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
     random_pet                        = local.random_pet
