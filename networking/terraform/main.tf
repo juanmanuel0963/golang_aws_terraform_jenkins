@@ -94,7 +94,7 @@ resource "aws_security_group_rule" "egress_to_everywhere" {
 
 
 //-------Dynamic Home IPs for Dev/Tools ---------------------------
-/*
+
 resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_local_home_to_postgresql"
@@ -154,10 +154,10 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3003" {
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
-*/
+
 
 //-------Static IPs for Prod/Jenkins ---------------------------
-
+/*
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_server_jenkins_to_postgresql"
@@ -165,7 +165,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_postgresql" {
   from_port         = 5432
   to_port           = 5432
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.153/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_ssh" {
@@ -175,7 +175,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.153/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3000" {
@@ -185,7 +185,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3000" {
   from_port         = 3000
   to_port           = 3000
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.153/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3001" {
@@ -195,7 +195,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3001" {
   from_port         = 3001
   to_port           = 3001
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.153/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3002" {
@@ -205,7 +205,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3002" {
   from_port         = 3002
   to_port           = 3002
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.153/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
@@ -215,8 +215,9 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
   from_port         = 3003
   to_port           = 3003
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.153/32"]
 }
+*/
 
 ##################################################################################
 # aws_security_group - OUTPUT
