@@ -8,11 +8,18 @@ import (
 )
 
 func init() {
+	//Only for connections from localhost
 	//initializers.LoadEnvVariables()
+
+	//Initialize DB conn
 	initializers.ConnectToDB()
 }
 
 func main() {
+
+	//----------Users----------
+
+	initializers.DB.AutoMigrate(&models.User{})
 
 	//----------Blogs and Posts----------
 
@@ -21,6 +28,20 @@ func main() {
 	//----------Invoices and Products----------
 
 	initializers.DB.AutoMigrate(&models.Invoice{}, &models.Product{})
+
+	//----------Users - Adding Data----------
+
+	var users = []models.User{
+		{Name: "Moe"},
+		{Name: "Larry"},
+		{Name: "Curley"},
+	}
+
+	initializers.DB.Create(&users)
+
+	for _, user := range users {
+		fmt.Println("User: ", user.ID) // 1,2,3
+	}
 
 	//----------Blogs and Posts - Adding Data----------
 
