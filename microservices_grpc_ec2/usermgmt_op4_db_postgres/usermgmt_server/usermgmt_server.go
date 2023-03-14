@@ -78,7 +78,6 @@ func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.Ne
 	for _, user := range users {
 		fmt.Println("User: ", user.ID) // 1,2,3
 	}
-
 	/*
 		tx, err := server.DB.Begin(context.Background())
 		if err != nil {
@@ -93,9 +92,9 @@ func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.Ne
 		}
 
 		tx.Commit(context.Background())
-
-		fmt.Println("created_user: ", created_user)
 	*/
+	fmt.Println("created_user: ", created_user)
+
 	return created_user, nil
 }
 

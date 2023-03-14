@@ -2,7 +2,6 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"os"
 	"time"
@@ -41,15 +40,16 @@ func main() {
 		AGE: %d
 		ID: %d`, r.GetName(), r.GetAge(), r.GetId())
 	}
+	/*
+		params := &pb.GetUsersParams{}
+		fmt.Print("Params: ", params)
 
-	params := &pb.GetUsersParams{}
-	fmt.Print("Params: ", params)
+		r, err := c.GetUsers(ctx, params)
+		if err != nil {
+			log.Fatalf("could not get users: %v", err)
+		}
 
-	r, err := c.GetUsers(ctx, params)
-	if err != nil {
-		log.Fatalf("could not get users: %v", err)
-	}
-
-	log.Print("\n USERs LIST: \n")
-	fmt.Printf("r.GetUsers(): %v\n", r.GetUsers())
+		log.Print("\n USERs LIST: \n")
+		fmt.Printf("r.GetUsers(): %v\n", r.GetUsers())
+	*/
 }
