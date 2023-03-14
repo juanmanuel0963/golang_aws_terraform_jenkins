@@ -34,11 +34,19 @@ variable "random_pet"{
   type    = string
 }
 
+variable "db_username" {
+  type    = string
+}
+
 variable "db_password" {
   type    = string
 }
 
 variable "db_instance_address" {
+  type    = string
+}
+
+variable "db_instance_endpoint" {
   type    = string
 }
 
@@ -52,7 +60,7 @@ variable "db_port" {
 
 locals {
   availability_zone       = "${var.region}c"  
-  db_conn                 = "host=${var.db_instance_address} user=db_master password=${var.db_password} dbname=${var.db_instance_db_name} port=${var.db_port} sslmode=disable"
+  db_conn                 = "host=${var.db_instance_address} user=${var.db_username} password=${var.db_password} dbname=${var.db_instance_db_name} port=${var.db_port} sslmode=disable"
   rule_name               = "${var.instance_name}_${var.function_name}_rule_${var.random_pet}"
   iam_role_name           = "${var.instance_name}_${var.function_name}_iam_role_${var.random_pet}"
 }

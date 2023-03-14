@@ -860,11 +860,13 @@ module "module_grpc_server_1_op4_eventbridge_rule" {
     instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
     instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
     function_name                     = var.grpc_server_1_op4_function_name
+    random_pet                        = local.random_pet
     db_username                       = var.db_username
     db_password                       = var.db_password
+    db_port                           = var.db_port
     db_instance_endpoint              = module.module_db_postgresql.aws_db_instance_endpoint
-    db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
-    random_pet                        = local.random_pet
+    db_instance_address               = module.module_db_postgresql.aws_db_instance_address
+    db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name    
 }
 
 output "module_grpc_server_1_op4_eventbridge_rule_name" {
@@ -1268,10 +1270,12 @@ module "module_microservices_restful_ec2_database_migrate" {
     instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_database_migrate
     random_pet                        = local.random_pet
-    db_password                          = var.db_password
-    db_instance_address               = module.module_db_postgresql.aws_db_instance_address
-    db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
+    db_username                       = var.db_username
+    db_password                       = var.db_password
     db_port                           = var.db_port
+    db_instance_endpoint              = module.module_db_postgresql.aws_db_instance_endpoint
+    db_instance_address               = module.module_db_postgresql.aws_db_instance_address
+    db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name    
 }
 
 output "module_microservices_restful_ec2_database_migrate_rule_name" {
