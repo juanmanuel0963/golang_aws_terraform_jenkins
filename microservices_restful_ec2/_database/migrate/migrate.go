@@ -8,7 +8,7 @@ import (
 )
 
 func init() {
-	//Only for connections from localhost
+	//Deprecate--Only for connections from localhost
 	//initializers.LoadEnvVariables()
 
 	//Initialize DB conn
@@ -32,9 +32,9 @@ func main() {
 	//----------Users - Adding Data----------
 
 	var users = []models.User{
-		{Name: "Moe"},
-		{Name: "Larry"},
-		{Name: "Curley"},
+		{Name: "Moe", Age: 31},
+		{Name: "Larry", Age: 32},
+		{Name: "Curley", Age: 33},
 	}
 
 	initializers.DB.Create(&users)
