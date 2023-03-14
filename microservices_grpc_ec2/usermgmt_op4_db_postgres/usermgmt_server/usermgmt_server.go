@@ -68,9 +68,9 @@ func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.Ne
 	//----------Users - Adding Data----------
 
 	var users = []models.User{
-		{Name: "Moe", Age: 41},
-		{Name: "Larry", Age: 42},
-		{Name: "Curley", Age: 43},
+		{Name: "Moe Grpc", Age: 41},
+		{Name: "Larry Grpc", Age: 42},
+		{Name: "Curley Grpc", Age: 43},
 	}
 
 	initializers.DB.Create(&users)
