@@ -7,6 +7,7 @@ import (
 	"time"
 
 	pb "github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_grpc_ec2/usermgmt_op4_db_postgres/usermgmt"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
 )
@@ -27,11 +28,15 @@ func main() {
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
-	var new_users = make(map[string]int)
-	new_users["Alice"] = 43
-	new_users["Bob"] = 30
-	for name, age := range new_users {
-		r, err := c.CreateNewUser(ctx, &pb.NewUser{Name: name, Age: int32(age)})
+
+	var new_users = []models.User{
+		{Name: "Moe GRPC", Age: 41},
+		{Name: "Larry GRPC", Age: 42},
+		{Name: "Curley GRPC", Age: 43},
+	}
+
+	for _, user := range new_users {
+		r, err := c.CreateNewUser(ctx, &pb.NewUser{Name: user.Name, Age: user.Age})
 		if err != nil {
 			log.Fatalf("could not create user: %v", err)
 		}
