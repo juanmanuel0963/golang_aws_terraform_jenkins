@@ -719,6 +719,9 @@ variable "grpc_server_1_op3_function_name" {
 variable "grpc_server_1_op4_function_name" {
   type    = string
 }
+variable "grpc_server_1_op5_function_name" {
+  type    = string
+}
 variable "grpc_server_1_server_install" {
   type    = string
 }
@@ -873,6 +876,34 @@ output "module_grpc_server_1_op4_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_server_1_op4_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
+
+##################################################################################
+# ec2_grpc_server_1 - grpc_usermgmt_op5 - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_grpc_server_1_op5_eventbridge_rule" {
+    source                            = "./microservices_grpc_ec2/usermgmt_op5_rest_to_grpc/eventbridge_server/terraform"
+    region                            = var.region
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_server_1_instance_name
+    instance_id                       = module.module_ec2_grpc_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_server_1.aws_instance_private_ip
+    function_name                     = var.grpc_server_1_op5_function_name
+    random_pet                        = local.random_pet
+    db_username                       = var.db_username
+    db_password                       = var.db_password
+    db_port                           = var.db_port
+    db_instance_endpoint              = module.module_db_postgresql.aws_db_instance_endpoint
+    db_instance_address               = module.module_db_postgresql.aws_db_instance_address
+    db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name    
+}
+
+output "module_grpc_server_1_op5_eventbridge_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_grpc_server_1_op5_eventbridge_rule.aws_cloudwatch_event_rule_name
+}
+
 #############################################################################
 # VARIABLES - ec2_grpc_client_1 (EC2 instance)
 #############################################################################
@@ -893,6 +924,9 @@ variable "grpc_client_1_op3_function_name" {
   type    = string
 }
 variable "grpc_client_1_op4_function_name" {
+  type    = string
+}
+variable "grpc_client_1_op5_function_name" {
   type    = string
 }
 variable "grpc_client_1_client_install" {
@@ -1046,6 +1080,28 @@ module "module_grpc_client_1_op4_eventbridge_rule" {
 output "module_grpc_client_1_op4_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op4_eventbridge_rule.aws_cloudwatch_event_rule_name
+}
+
+##################################################################################
+# ec2_grpc_client_1 - grpc_usermgmt_op5 - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_grpc_client_1_op5_eventbridge_rule" {
+    source                            = "./microservices_grpc_ec2/usermgmt_op5_rest_to_grpc/eventbridge_client/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.grpc_client_1_instance_name
+    instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_grpc_client_1.aws_instance_private_ip
+    server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
+    function_name                     = var.grpc_client_1_op5_function_name
+    random_pet                        = local.random_pet
+}
+
+output "module_grpc_client_1_op5_eventbridge_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_grpc_client_1_op5_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
 
 ##################################################################################
