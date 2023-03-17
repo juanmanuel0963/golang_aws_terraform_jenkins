@@ -155,6 +155,16 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3003" {
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
 
+resource "aws_security_group_rule" "ingress_from_local_home_to_50056" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_local_home_to_50056"
+  type              = "ingress"
+  from_port         = 50056
+  to_port           = 50056
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+
 
 //-------Static IPs for Prod/Jenkins ---------------------------
 /*
@@ -217,6 +227,17 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
   protocol          = "tcp"
   cidr_blocks      = ["186.29.180.80/32"]
 }
+
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_50056" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_server_jenkins_to_50056"
+  type              = "ingress"
+  from_port         = 50056
+  to_port           = 50056
+  protocol          = "tcp"
+  cidr_blocks      = ["186.29.180.80/32"]
+}
+
 */
 
 ##################################################################################

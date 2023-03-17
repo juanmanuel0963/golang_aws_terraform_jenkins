@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -24,7 +25,7 @@ func main() {
 		log.Fatalf("did not connect: %v", err)
 	}
 	defer conn.Close()
-	c := pb.NewUserManagementClient(conn)
+	client := pb.NewUserManagementClient(conn)
 
 	ctx, cancel := context.WithTimeout(context.Background(), time.Second)
 	defer cancel()
@@ -36,14 +37,15 @@ func main() {
 	}
 
 	for _, user := range new_users {
-		r, err := c.CreateNewUser(ctx, &pb.NewUser{Name: user.Name, Age: user.Age})
+
+		r, err := client.CreateNewUser(ctx, &pb.NewUser{Name: user.Name, Age: user.Age})
+
 		if err != nil {
 			log.Fatalf("could not create user: %v", err)
+		} else {
+			fmt.Printf("User Details: Id: %d, Name: %s, Age: %d\n", r.GetId(), r.GetName(), r.GetAge())
 		}
-		log.Printf(`User Details:
-		NAME: %s
-		AGE: %d
-		ID: %d`, r.GetName(), r.GetAge(), r.GetId())
+
 	}
 	/*
 		params := &pb.GetUsersParams{}

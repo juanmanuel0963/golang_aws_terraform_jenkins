@@ -55,6 +55,7 @@ del usermgmt_server.exe~
 cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op5_rest_to_grpc\usermgmt_client
 del usermgmt_client
 del usermgmt_client.exe
+del usermgmt_client.exe~
 
 ::usermgmt_server
 cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op5_rest_to_grpc\usermgmt_server
