@@ -21,7 +21,8 @@ backup_window           = "21:00-21:30"
 maintenance_window      = "Fri:21:30-Fri:22:00"
 apply_immediately       = true
 #grpc_server_1
-ami_id                  = "ami-0149b2da6ceec4bb0"
+ami_id                  = "ami-0557a15b87f6559cf" #2023-02-08
+#ami_id                  = "ami-0149b2da6ceec4bb0" #2022-09-14
 instance_type           = "t2.micro"
 key_name                = "env.key_pair"
 #
