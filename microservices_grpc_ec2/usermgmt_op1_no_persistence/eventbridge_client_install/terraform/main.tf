@@ -103,6 +103,7 @@ resource "aws_iam_role" "the_iam_role" {
 
 //Attaches a policy to the IAM role.
 //AmazonEC2FullAccess Provides full access to Amazon EC2 via the AWS Management Console.
+
 resource "aws_iam_role_policy_attachment" "the_execution_role" {
   role        = aws_iam_role.the_iam_role.name
   policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
@@ -126,10 +127,10 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
-  //input     = "{\"commands\":[\"sudo shutdown -r now\"]}"
-  input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf golang_aws_terraform_jenkins\",\"git clone https://github.com/juanmanuel0963/golang_aws_terraform_jenkins.git\",\"export HOME=/home/ubuntu\",\"export GOROOT=/snap/go/10050\",\"export GOPATH=$HOME/snap/go/10050\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"cd /home/ubuntu/\",\"export GOROOT=/snap/go/10073\",\"export GOPATH=$HOME/snap/go/10073\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"sudo shutdown -r now\"]}"
+  input     = "{\"commands\":[\"sudo shutdown -r now\"]}"
+  //input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf golang_aws_terraform_jenkins\",\"git clone https://github.com/juanmanuel0963/golang_aws_terraform_jenkins.git\",\"export HOME=/home/ubuntu\",\"export GOROOT=/snap/go/10050\",\"export GOPATH=$HOME/snap/go/10050\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"cd /home/ubuntu/\",\"export GOROOT=/snap/go/10073\",\"export GOPATH=$HOME/snap/go/10073\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"sudo shutdown -r now\"]}"
   //input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf golang_aws_terraform_jenkins\",\"git clone https://github.com/juanmanuel0963/golang_aws_terraform_jenkins.git\",\"export HOME=/home/ubuntu\",\"export GOROOT=/snap/go/10073\",\"export GOPATH=$HOME/snap/go/10073\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"sudo shutdown -r now\"]}"
-  //\"sudo chmod -R a+rwx /home/ubuntu/\",
+  
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
 
