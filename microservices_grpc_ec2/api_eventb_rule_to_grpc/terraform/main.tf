@@ -142,7 +142,6 @@ resource "aws_iam_role" "the_apigateway_role" {
     Statement = [{
       Action = "sts:AssumeRole"
       Effect = "Allow"
-      Sid    = ""
       Principal = {
         Service = "apigateway.amazonaws.com"
       }
@@ -230,7 +229,6 @@ resource "aws_iam_role" "the_eventbridge_role" {
       {
         Action = "sts:AssumeRole"
         Effect = "Allow"
-        Sid    = ""
         Principal = {
           Service = "events.amazonaws.com"
         }

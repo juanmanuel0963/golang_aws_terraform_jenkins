@@ -89,7 +89,6 @@ resource "aws_iam_role" "the_iam_role" {
       {
         Action = "sts:AssumeRole"
         Effect = "Allow"
-        Sid    = ""
         Principal = {
           Service = "events.amazonaws.com"
         }
@@ -103,10 +102,30 @@ resource "aws_iam_role" "the_iam_role" {
 
 //Attaches a policy to the IAM role.
 //AmazonEC2FullAccess Provides full access to Amazon EC2 via the AWS Management Console.
+resource "aws_iam_role_policy_attachment" "aws_ec2_access_execution_role" {
+  role        = aws_iam_role.the_iam_role.name
+  policy_arn  = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
+}
 
+//Attaches a policy to the IAM role.
+//AmazonEC2FullAccess Provides full access to Amazon EC2 via the AWS Management Console.
 resource "aws_iam_role_policy_attachment" "the_execution_role" {
   role        = aws_iam_role.the_iam_role.name
   policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
+}
+
+//Attaches a policy to the IAM role.
+//AmazonSSMFullAccess Provides full access to Amazon SSM.
+resource "aws_iam_role_policy_attachment" "aws_cloudwatch_access_execution_role" {
+  role        = aws_iam_role.the_iam_role.name
+  policy_arn  = "arn:aws:iam::aws:policy/CloudWatchFullAccess"
+}
+
+//Attaches a policy to the IAM role.
+//AmazonSSMManagedInstanceCore The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality.
+resource "aws_iam_role_policy_attachment" "aws_ssm_managed_execution_role" {
+  role        = aws_iam_role.the_iam_role.name
+  policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
 #-----Cloudwatch Rule--------
