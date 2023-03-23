@@ -97,6 +97,46 @@ provider "aws" {
 # RESOURCES
 #############################################################################  
 
+
+//----------Creates the AWS EC2 instance----------
+
+resource "aws_instance" "the_instance" {
+  ami                   = var.ami_id
+  instance_type         = var.instance_type
+  availability_zone     = local.availability_zone
+  associate_public_ip_address = var.associate_public_ip_address
+  key_name                  = var.key_name
+  iam_instance_profile      = aws_iam_instance_profile.ec2_profile.name
+  vpc_security_group_ids    = [
+    var.security_group_id
+  ]
+
+  tags  = {
+    Name = local.tag_name
+  }
+
+  root_block_device {
+    delete_on_termination = true
+    volume_size = 8
+    volume_type = "gp2"
+  }
+
+  private_dns_name_options{
+    enable_resource_name_dns_a_record = true
+    hostname_type = "ip-name"
+  }
+
+  depends_on = [ var.security_group_id ]
+}
+
+//----------Instance Profile and role attachment----------
+
+resource "aws_iam_instance_profile" "ec2_profile" {
+  //name = "${var.instance_name}_instance_profile"
+  name = local.instance_profile_name
+  role = aws_iam_role.ec2_instance_role.name
+}
+
 //----------IAM Rol creation----------
 
 //Defines an IAM role that allows EC2 to access resources in your AWS account.
@@ -145,44 +185,13 @@ resource "aws_iam_role_policy_attachment" "aws_cloudwatch_access_execution_role"
   policy_arn  = "arn:aws:iam::aws:policy/CloudWatchFullAccess"
 }
 
-//----------Instance Profile and role attachment----------
-
-resource "aws_iam_instance_profile" "ec2_profile" {
-  //name = "${var.instance_name}_instance_profile"
-  name = local.instance_profile_name
-  role = aws_iam_role.ec2_instance_role.name
+//Attaches a policy to the IAM role.
+//AmazonSSMManagedInstanceCore The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality.
+resource "aws_iam_role_policy_attachment" "aws_ssm_managed_execution_role" {
+  role        = aws_iam_role.ec2_instance_role.name
+  policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 }
 
-//----------Creates the AWS EC2 instance----------
-
-resource "aws_instance" "the_instance" {
-  ami                   = var.ami_id
-  instance_type         = var.instance_type
-  availability_zone     = local.availability_zone
-  associate_public_ip_address = var.associate_public_ip_address
-  key_name                  = var.key_name
-  iam_instance_profile      = aws_iam_instance_profile.ec2_profile.name
-  vpc_security_group_ids    = [
-    var.security_group_id
-  ]
-
-  tags  = {
-    Name = local.tag_name
-  }
-
-  root_block_device {
-    delete_on_termination = true
-    volume_size = 8
-    volume_type = "gp2"
-  }
-
-  private_dns_name_options{
-    enable_resource_name_dns_a_record = true
-    hostname_type = "ip-name"
-  }
-
-  depends_on = [ var.security_group_id ]
-}
 
 //----------Associating Public IP----------
 /*
