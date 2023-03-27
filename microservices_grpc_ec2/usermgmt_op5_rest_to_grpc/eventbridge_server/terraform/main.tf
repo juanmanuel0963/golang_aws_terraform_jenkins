@@ -152,7 +152,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"
-  //input     = "{\"commands\":[\"export db_conn='${local.db_conn}'\",\"export db_username=${var.db_username}\",\"export db_password=${var.db_password}\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices_grpc_ec2/usermgmt_op5_rest_to_grpc/usermgmt_server\",\"sudo chmod 700 usermgmt_server\",\"sudo --preserve-env ./usermgmt_server\"]}"
+  input     = "{\"commands\":[\"export db_conn='${local.db_conn}'\",\"export db_username=${var.db_username}\",\"export db_password=${var.db_password}\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices_grpc_ec2/usermgmt_op5_rest_to_grpc/usermgmt_server\",\"sudo chmod 700 usermgmt_server\",\"sudo --preserve-env ./usermgmt_server\"]}"
   
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
