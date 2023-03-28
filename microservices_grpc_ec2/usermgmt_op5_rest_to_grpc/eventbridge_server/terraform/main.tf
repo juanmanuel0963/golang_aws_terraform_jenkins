@@ -142,7 +142,7 @@ resource "aws_cloudwatch_event_rule" "the_rule" {
   name                = "${local.rule_name}"
   description         = "${local.rule_name}"    
   //schedule_expression = "cron(0 * * * ? *)" //every one hour
-  schedule_expression = "cron(0/1 * * * ? *)" //every 1 minute
+  schedule_expression = "cron(* * * * *)" //every 1 minute
   //schedule_expression = "rate(1 minute)"
 }
 

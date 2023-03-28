@@ -116,7 +116,7 @@ resource "aws_cloudwatch_event_rule" "the_rule" {
 //  description         = "${var.instance_name}_${var.function_name}_rule"
   name                = "${local.rule_name}"
   description         = "${local.rule_name}"    
-  schedule_expression = "cron(0/1 * * * ? *)" //every 1 minute  
+  schedule_expression = "cron(* * * * *)" //every 1 minute  
   //schedule_expression = "cron(0/5 * * * ? *)" //every 5 minutes
   //schedule_expression = "rate(1 minute)"
 }
