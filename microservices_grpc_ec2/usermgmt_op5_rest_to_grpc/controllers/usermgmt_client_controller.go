@@ -28,9 +28,7 @@ func UserCreate(contexto *gin.Context) {
 	defer cancel()
 
 	var new_users = []models.User{
-		{Name: "Moe REST controller to GRPC", Age: 41},
-		{Name: "Larry REST controller to GRPC", Age: 42},
-		{Name: "Curley REST controller to GRPC", Age: 43},
+		{Name: "op5: REST to GRPC", Age: 51},
 	}
 
 	for _, user := range new_users {

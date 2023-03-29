@@ -32,7 +32,7 @@ func main() {
 	//----------Users - Adding Data----------
 
 	var users = []models.User{
-		{Name: "migration: Moe", Age: 31},
+		{Name: "migrate: Juan", Age: 31},
 	}
 
 	initializers.DB.Create(&users)
