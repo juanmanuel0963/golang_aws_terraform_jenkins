@@ -31,9 +31,7 @@ func main() {
 	defer cancel()
 
 	var new_users = []models.User{
-		{Name: "Moe GRPC", Age: 41},
-		{Name: "Larry GRPC", Age: 42},
-		{Name: "Curley GRPC", Age: 43},
+		{Name: "Moe GRPC's", Age: 41},
 	}
 
 	for _, user := range new_users {
