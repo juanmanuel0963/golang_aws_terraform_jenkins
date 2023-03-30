@@ -1,10 +1,4 @@
 
-::Delete Files :: DB migrate--------
-::ls env:
-cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\_database\migrate
-del migrate
-del migrate.exe
-
 ::Delete Files :: Blogs-------------
 ::Blogs - web server
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\blogs\source_code
@@ -36,6 +30,12 @@ del main
 del main.exe
 del *.exe
 del *.exe~
+
+::Delete Files :: DB migrate--------
+::ls env:
+cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\_database\migrate
+del migrate
+del migrate.exe
 
 ::Delete Files :: usermgmt_op1_no_persistence-------------
 
