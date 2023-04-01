@@ -1,7 +1,6 @@
-
-::--------AWS authentication - Dev Environment-------------
+::AWS authentication - Dev Environment-------------
 set AWS_PROFILE=dev
-
+::ls env:
 ::--------Terraform - Infrastructure setup-------------
 
 terraform workspace select dev
