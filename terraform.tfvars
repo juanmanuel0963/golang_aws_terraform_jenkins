@@ -43,6 +43,10 @@ grpc_client_1_op2_function_name = "op2_grpc_start_service"
 grpc_client_1_op3_function_name = "op3_grpc_start_service" 
 grpc_client_1_op4_function_name = "op4_grpc_start_service" 
 grpc_client_1_op5_function_name = "op5_grpc_start_service" 
+#restful_client_1 
+restful_client_1_instance_name     = "restful_client_1"
+restful_client_1_tag_name          = "restful_client_1 - Ubuntu 1GB"
+restful_client_1_client_install    = "software_install"
 #restful_ec2_blogs
 restful_ec2_blogs_install_start = "blogs_start_service"
 restful_ec2_blogs_port          = "3000"
