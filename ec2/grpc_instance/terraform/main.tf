@@ -97,7 +97,6 @@ provider "aws" {
 # RESOURCES
 #############################################################################  
 
-
 //----------Creates the AWS EC2 instance----------
 
 resource "aws_instance" "the_instance" {
@@ -159,8 +158,8 @@ resource "aws_iam_role" "ec2_instance_role" {
       },
     ]
   })
-
 }
+
 //Terraform(AWS) EC2 and SSM (Aws System Manager)
 //https://medium.com/@khimananda.oli/terraform-aws-ec2-and-system-manager-e0f0c914132c
 
@@ -173,6 +172,7 @@ resource "aws_iam_role_policy_attachment" "aws_ec2_access_execution_role" {
   policy_arn  = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
 }
 
+
 //Attaches a policy to the IAM role.
 //AmazonSSMFullAccess Provides full access to Amazon SSM.
 resource "aws_iam_role_policy_attachment" "aws_ssm_access_execution_role" {
@@ -180,12 +180,14 @@ resource "aws_iam_role_policy_attachment" "aws_ssm_access_execution_role" {
   policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
 }
 
+
 //Attaches a policy to the IAM role.
 //AmazonSSMFullAccess Provides full access to Amazon SSM.
 resource "aws_iam_role_policy_attachment" "aws_cloudwatch_access_execution_role" {
   role        = aws_iam_role.ec2_instance_role.name
   policy_arn  = "arn:aws:iam::aws:policy/CloudWatchFullAccess"
 }
+
 
 //Attaches a policy to the IAM role.
 //AmazonSSMManagedInstanceCore The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality.
@@ -196,12 +198,12 @@ resource "aws_iam_role_policy_attachment" "aws_ssm_managed_execution_role" {
 
 
 //----------Associating Public IP----------
-/*
+
 resource "aws_eip" "lb" {
   instance = aws_instance.the_instance.id
   vpc      = true
 }
-*/
+
 ##################################################################################
 # aws_instance - OUTPUT
 ##################################################################################

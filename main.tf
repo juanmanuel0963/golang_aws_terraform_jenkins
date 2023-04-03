@@ -1154,7 +1154,7 @@ output "module_api_eventb_rule_to_grpc_eventbridge_rule_name" {
 #############################################################################
 # VARIABLES - ec2_restful_client_1 (EC2 instance)
 #############################################################################
-
+/*
 variable "restful_client_1_instance_name" {
   type    = string
 }
@@ -1164,11 +1164,11 @@ variable "restful_client_1_tag_name" {
 variable "restful_client_1_client_install" {
   type    = string
 }
-
+*/
 ##################################################################################
 # ec2_restful_client_1 (EC2 instance)
 ##################################################################################
-
+/*
 module "module_ec2_restful_client_1" {
     source                            = "./ec2/grpc_instance/terraform"
     instance_name                     = var.restful_client_1_instance_name
@@ -1204,11 +1204,11 @@ output "module_ec2_restful_client_1_private_ip" {
   description = "Private IP"
   value = module.module_ec2_restful_client_1.aws_instance_private_ip
 }
-
+*/
 ##################################################################################
 # ec2_restful_client_1 - eventbridge_client_install - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_restful_client_1_client_install" {
     source                            = "./microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform"
     region                            = var.region  
@@ -1225,11 +1225,11 @@ output "module_restful_client_1_client_install" {
   description = "EventBridge rule name"
   value = module.module_restful_client_1_client_install.aws_cloudwatch_event_rule_name
 }
-
+*/
 #############################################################################
 # VARIABLES - microservices_restful_ec2_blogs
 #############################################################################
-
+/*
 variable "restful_ec2_blogs_install_start" {
   type    = string
 }
@@ -1237,11 +1237,11 @@ variable "restful_ec2_blogs_install_start" {
 variable "restful_ec2_blogs_port" {
   type    = string
 }
-
+*/
 ##################################################################################
 # microservices_restful_ec2_blogs - eventbridge_install_start - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_microservices_restful_ec2_blogs_install_start" {
     source                            = "./microservices_restful_ec2/blogs/terraform"
     region                            = var.region  
@@ -1264,12 +1264,12 @@ output "module_microservices_restful_ec2_blogs_install_start_rule_name" {
   description = "EventBridge rule name"
   value = module.module_microservices_restful_ec2_blogs_install_start.aws_cloudwatch_event_rule_name
 }
-
+*/
 
 #############################################################################
 # VARIABLES - microservices_restful_ec2_posts
 #############################################################################
-
+/*
 variable "restful_ec2_posts_install_start" {
   type    = string
 }
@@ -1277,11 +1277,11 @@ variable "restful_ec2_posts_install_start" {
 variable "restful_ec2_posts_port" {
   type    = string
 }
-
+*/
 ##################################################################################
 # microservices_restful_ec2_posts - eventbridge_install_start - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_microservices_restful_ec2_posts_install_start" {
     source                            = "./microservices_restful_ec2/posts/terraform"
     region                            = var.region  
@@ -1303,11 +1303,11 @@ output "module_microservices_restful_ec2_posts_install_start_rule_name" {
   description = "EventBridge rule name"
   value = module.module_microservices_restful_ec2_posts_install_start.aws_cloudwatch_event_rule_name
 }
-
+*/
 #############################################################################
 # VARIABLES - microservices_restful_ec2_invoices
 #############################################################################
-
+/*
 variable "restful_ec2_invoices_install_start" {
   type    = string
 }
@@ -1315,11 +1315,11 @@ variable "restful_ec2_invoices_install_start" {
 variable "restful_ec2_invoices_port" {
   type    = string
 }
-
+*/
 ################################################################################## 
 # microservices_restful_ec2_invoices - eventbridge_install_start - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_microservices_restful_ec2_invoices_install_start" {
     source                            = "./microservices_restful_ec2/invoices/terraform"
     region                            = var.region
@@ -1341,11 +1341,11 @@ output "module_microservices_restful_ec2_invoices_install_start_rule_name" {
   description = "EventBridge rule name"
   value = module.module_microservices_restful_ec2_invoices_install_start.aws_cloudwatch_event_rule_name
 }
-
+*/
 #############################################################################
 # VARIABLES - microservices_restful_ec2_products
 #############################################################################
-
+/*
 variable "restful_ec2_products_install_start" {
   type    = string
 }
@@ -1353,11 +1353,11 @@ variable "restful_ec2_products_install_start" {
 variable "restful_ec2_products_port" {
   type    = string
 }
-
+*/
 ##################################################################################
 # microservices_restful_ec2_products - eventbridge_install_start - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_microservices_restful_ec2_products_install_start" {
     source                            = "./microservices_restful_ec2/products/terraform"
     region                            = var.region
@@ -1379,19 +1379,19 @@ output "module_microservices_restful_ec2_products_install_start_rule_name" {
   description = "EventBridge rule name"
   value = module.module_microservices_restful_ec2_products_install_start.aws_cloudwatch_event_rule_name
 }
-
+*/
 #############################################################################
 # VARIABLES - microservices_restful_ec2_database_migrate
 #############################################################################
-
+/*
 variable "restful_ec2_database_migrate" {
   type    = string
 }
-
+*/
 ##################################################################################
 # microservices_restful_ec2_database_migrate - eventbridge_install_start - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_microservices_restful_ec2_database_migrate" {
     source                            = "./microservices_restful_ec2/_database/terraform"
     region                            = var.region  
@@ -1414,7 +1414,7 @@ output "module_microservices_restful_ec2_database_migrate_rule_name" {
   description = "EventBridge rule name"
   value = module.module_microservices_restful_ec2_database_migrate.aws_cloudwatch_event_rule_name
 }
-
+*/
 ##################################################################################
 # aws_cognito_user_pool
 ##################################################################################
