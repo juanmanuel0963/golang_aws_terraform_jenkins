@@ -198,12 +198,12 @@ resource "aws_iam_role_policy_attachment" "aws_ssm_managed_execution_role" {
 
 
 //----------Associating Public IP----------
-
+/*
 resource "aws_eip" "lb" {
   instance = aws_instance.the_instance.id
   vpc      = true
 }
-
+*/
 ##################################################################################
 # aws_instance - OUTPUT
 ##################################################################################
