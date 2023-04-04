@@ -1152,78 +1152,78 @@ output "module_api_eventb_rule_to_grpc_eventbridge_rule_name" {
 
 
 #############################################################################
-# VARIABLES - ec2_restful_client_1 (EC2 instance)
+# VARIABLES - ec2_restful_server_1 (EC2 instance)
 #############################################################################
 
-variable "restful_client_1_instance_name" {
+variable "restful_server_1_instance_name" {
   type    = string
 }
-variable "restful_client_1_tag_name" {
+variable "restful_server_1_tag_name" {
   type    = string
 }
-variable "restful_client_1_client_install" {
+variable "restful_server_1_client_install" {
   type    = string
 }
 
 ##################################################################################
-# ec2_restful_client_1 (EC2 instance)
+# ec2_restful_server_1 (EC2 instance)
 ##################################################################################
 
-module "module_ec2_restful_client_1" {
+module "module_ec2_restful_server_1" {
     source                            = "./ec2/grpc_instance/terraform"
-    instance_name                     = var.restful_client_1_instance_name
+    instance_name                     = var.restful_server_1_instance_name
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
     ami_id                            = var.ami_id
     instance_type                     = var.instance_type
     key_name                          = var.key_name
-    tag_name                          = var.restful_client_1_tag_name    
+    tag_name                          = var.restful_server_1_tag_name    
     associate_public_ip_address       = true      
     vpc_id                            = module.module_networking.vpc_id 
     security_group_id                 = module.module_networking.security_group_id
     random_pet                        = local.random_pet
 }
 
-output "module_ec2_restful_client_1_id" {
+output "module_ec2_restful_server_1_id" {
   description = "Instance Id"
-  value = module.module_ec2_restful_client_1.aws_instance_id
+  value = module.module_ec2_restful_server_1.aws_instance_id
 }
 
-output "module_ec2_restful_client_1_name" {
+output "module_ec2_restful_server_1_name" {
   description = "Instance Name"
-  value = module.module_ec2_restful_client_1.aws_instance_name
+  value = module.module_ec2_restful_server_1.aws_instance_name
 }
 
-output "module_ec2_restful_client_1_public_ip" {
+output "module_ec2_restful_server_1_public_ip" {
   description = "Public IP"
-  value = module.module_ec2_restful_client_1.aws_instance_public_ip
+  value = module.module_ec2_restful_server_1.aws_instance_public_ip
 }
 
-output "module_ec2_restful_client_1_private_ip" {
+output "module_ec2_restful_server_1_private_ip" {
   description = "Private IP"
-  value = module.module_ec2_restful_client_1.aws_instance_private_ip
+  value = module.module_ec2_restful_server_1.aws_instance_private_ip
 }
 
 ##################################################################################
-# ec2_restful_client_1 - eventbridge_client_install - (EventBridge rule RunShellScript)
+# ec2_restful_server_1 - eventbridge_client_install - (EventBridge rule RunShellScript)
 ##################################################################################
 
-module "module_restful_client_1_client_install" {
+module "module_restful_server_1_client_install" {
     source                            = "./microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform"
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
-    instance_name                     = var.restful_client_1_instance_name
-    instance_id                       = module.module_ec2_restful_client_1.aws_instance_id   
-    instance_private_ip               = module.module_ec2_restful_client_1.aws_instance_private_ip
-    function_name                     = var.restful_client_1_client_install
+    instance_name                     = var.restful_server_1_instance_name
+    instance_id                       = module.module_ec2_restful_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_restful_server_1.aws_instance_private_ip
+    function_name                     = var.restful_server_1_client_install
     random_pet                        = local.random_pet
 }
 
-output "module_restful_client_1_client_install" {
+output "module_restful_server_1_client_install" {
   description = "EventBridge rule name"
-  value = module.module_restful_client_1_client_install.aws_cloudwatch_event_rule_name
+  value = module.module_restful_server_1_client_install.aws_cloudwatch_event_rule_name
 }
 
 #############################################################################
@@ -1247,9 +1247,9 @@ module "module_microservices_restful_ec2_blogs_install_start" {
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
-    instance_name                     = var.restful_client_1_instance_name
-    instance_id                       = module.module_ec2_restful_client_1.aws_instance_id   
-    instance_private_ip               = module.module_ec2_restful_client_1.aws_instance_private_ip
+    instance_name                     = var.restful_server_1_instance_name
+    instance_id                       = module.module_ec2_restful_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_restful_server_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_blogs_install_start
     random_pet                        = local.random_pet
     db_password                       = var.db_password
@@ -1287,9 +1287,9 @@ module "module_microservices_restful_ec2_posts_install_start" {
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
-    instance_name                     = var.restful_client_1_instance_name
-    instance_id                       = module.module_ec2_restful_client_1.aws_instance_id   
-    instance_private_ip               = module.module_ec2_restful_client_1.aws_instance_private_ip
+    instance_name                     = var.restful_server_1_instance_name
+    instance_id                       = module.module_ec2_restful_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_restful_server_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_posts_install_start
     random_pet                        = local.random_pet
     db_password                       = var.db_password
@@ -1325,9 +1325,9 @@ module "module_microservices_restful_ec2_invoices_install_start" {
     region                            = var.region
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
-    instance_name                     = var.restful_client_1_instance_name
-    instance_id                       = module.module_ec2_restful_client_1.aws_instance_id   
-    instance_private_ip               = module.module_ec2_restful_client_1.aws_instance_private_ip
+    instance_name                     = var.restful_server_1_instance_name
+    instance_id                       = module.module_ec2_restful_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_restful_server_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_invoices_install_start
     random_pet                        = local.random_pet
     db_password                       = var.db_password
@@ -1363,9 +1363,9 @@ module "module_microservices_restful_ec2_products_install_start" {
     region                            = var.region
     access_key                        = var.access_key 
     secret_key                        = var.secret_key
-    instance_name                     = var.restful_client_1_instance_name
-    instance_id                       = module.module_ec2_restful_client_1.aws_instance_id   
-    instance_private_ip               = module.module_ec2_restful_client_1.aws_instance_private_ip
+    instance_name                     = var.restful_server_1_instance_name
+    instance_id                       = module.module_ec2_restful_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_restful_server_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_products_install_start
     random_pet                        = local.random_pet
     db_password                       = var.db_password
@@ -1397,9 +1397,9 @@ module "module_microservices_restful_ec2_database_migrate" {
     region                            = var.region  
     access_key                        = var.access_key 
     secret_key                        = var.secret_key   
-    instance_name                     = var.restful_client_1_instance_name
-    instance_id                       = module.module_ec2_restful_client_1.aws_instance_id   
-    instance_private_ip               = module.module_ec2_restful_client_1.aws_instance_private_ip
+    instance_name                     = var.restful_server_1_instance_name
+    instance_id                       = module.module_ec2_restful_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_restful_server_1.aws_instance_private_ip
     function_name                     = var.restful_ec2_database_migrate
     random_pet                        = local.random_pet
     db_username                       = var.db_username
