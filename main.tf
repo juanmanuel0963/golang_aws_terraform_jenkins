@@ -20,7 +20,7 @@ resource "random_integer" "rand" {
 }
 
 resource "random_pet" "api_gateway" {
-  length = 2
+  length = 1
 }
 
 locals {
