@@ -45,7 +45,8 @@ variable "parent_api_gateway_invoke_url"{
 locals {
   lambda_func_bucket_name = "${replace("${var.lambda_func_name}", "_", "-")}-bucket-${replace("${var.random_pet}", "_", "-")}"
   lambda_func_role_name = "${var.lambda_func_name}_role_${var.random_pet}"  
-  lambda_func_name = "${var.lambda_func_name}_${replace("${var.random_pet}", "-", "_")}"
+  lambda_func_name = "${var.lambda_func_name}"
+  //lambda_func_name = "${var.lambda_func_name}_${replace("${var.random_pet}", "-", "_")}"
 }
 
 #############################################################################
