@@ -16,7 +16,7 @@ The ./main.tf file is the lab backbone. It links to submodules inside below subf
 - microservices (lambda functions, gRPC)
 - ec2
 
-## Jenkins CI/CD
+## Jenkins CI/CD 
 The infraestructure updates and the Golang code can be automatically deployed with Terraform commands or with Jenkins Pipelines to DEV, QAT, NFT or PROD environments.
 The Jenkins server has been created and configured manually on a AWS EC2 instance.
 In this repo we just share screenshots of the Jenkins pipeline configuration (jenkins-config folder).
