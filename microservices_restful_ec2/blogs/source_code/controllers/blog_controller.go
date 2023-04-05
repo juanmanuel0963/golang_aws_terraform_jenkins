@@ -9,6 +9,7 @@ import (
 	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/cognito/auth_token/source_code/verify_token"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 
@@ -87,7 +88,8 @@ func VerifyToken(c *gin.Context) bool {
 }
 
 func BlogCreate(c *gin.Context) {
-	if VerifyToken(c) {
+	//if VerifyToken(c) {
+	if verify_token.VerifyToken(c) {
 		// Get data off req body
 		var body struct {
 			Title string
