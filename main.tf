@@ -997,7 +997,7 @@ output "module_grpc_client_1_client_install" {
 ##################################################################################
 # ec2_grpc_client_1 - grpc_usermgmt_op1 - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_grpc_client_1_op1_eventbridge_rule" {
     source                            = "./microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client/terraform"
     region                            = var.region  
@@ -1015,11 +1015,11 @@ output "module_grpc_client_1_op1_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op1_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
-
+*/
 ##################################################################################
 # ec2_grpc_client_1 - grpc_usermgmt_op2 - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_grpc_client_1_op2_eventbridge_rule" {
     source                            = "./microservices_grpc_ec2/usermgmt_op2_in_memory/eventbridge_client/terraform"
     region                            = var.region  
@@ -1037,11 +1037,11 @@ output "module_grpc_client_1_op2_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op2_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
-
+*/
 ##################################################################################
 # ec2_grpc_client_1 - grpc_usermgmt_op3 - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_grpc_client_1_op3_eventbridge_rule" {
     source                            = "./microservices_grpc_ec2/usermgmt_op3_json_file/eventbridge_client/terraform"
     region                            = var.region  
@@ -1059,11 +1059,11 @@ output "module_grpc_client_1_op3_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op3_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
-
+*/
 ##################################################################################
 # ec2_grpc_client_1 - grpc_usermgmt_op4 - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_grpc_client_1_op4_eventbridge_rule" {
     source                            = "./microservices_grpc_ec2/usermgmt_op4_db_postgres/eventbridge_client/terraform"
     region                            = var.region  
@@ -1081,11 +1081,11 @@ output "module_grpc_client_1_op4_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op4_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
-
+*/
 ##################################################################################
 # ec2_grpc_client_1 - grpc_usermgmt_op5 - (EventBridge rule RunShellScript)
 ##################################################################################
-
+/*
 module "module_grpc_client_1_op5_eventbridge_rule" {
     source                            = "./microservices_grpc_ec2/usermgmt_op5_rest_to_grpc/eventbridge_client/terraform"
     region                            = var.region  
@@ -1103,11 +1103,11 @@ output "module_grpc_client_1_op5_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op5_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
-
+*/
 ##################################################################################
 # api_eventb_rule_to_grpc
 ##################################################################################
-
+/*
 module "module_api_eventb_rule_to_grpc" {
     source                            = "./microservices_grpc_ec2/api_eventb_rule_to_grpc/terraform"
     region                            = var.region  
@@ -1130,11 +1130,11 @@ module "module_api_eventb_rule_to_grpc" {
     instance_id                       = module.module_ec2_grpc_client_1.aws_instance_id   
     server_private_ip                 = module.module_ec2_grpc_server_1.aws_instance_private_ip
 }
-
+*/
 ##################################################################################
 # api_eventb_rule_to_grpc - OUTPUT
 ##################################################################################
-
+/*
 output "module_api_eventb_rule_to_grpc_api_base_url" {
   description = "Base URL for API Gateway stage + function name"
   value = module.module_api_eventb_rule_to_grpc.api_func_base_url
@@ -1149,7 +1149,7 @@ output "module_api_eventb_rule_to_grpc_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_api_eventb_rule_to_grpc.aws_cloudwatch_event_rule_name
 }
-
+*/
 
 #############################################################################
 # VARIABLES - ec2_restful_server_1 (EC2 instance)
