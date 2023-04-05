@@ -33,9 +33,15 @@ variable "server_private_ip" {
 variable "function_name" {
   type    = string
 }
+
 variable "random_pet"{
   type    = string
 }
+
+variable "aws_cognito_user_pool_id"{
+  type    = string
+}
+
 locals {
   availability_zone = "${var.region}c"  
   rule_name         = "${var.instance_name}_${var.function_name}_rule_${var.random_pet}"      
@@ -127,7 +133,7 @@ resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
   //input     = "{\"commands\":[\"ls -a\"]}"  
-  input     = "{\"commands\":[\"export server_address=${var.server_private_ip}\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices_grpc_ec2/usermgmt_op5_rest_to_grpc/usermgmt_client\",\"sudo chmod 700 usermgmt_client\",\"sudo --preserve-env ./usermgmt_client\"]}"
+  input     = "{\"commands\":[\"export server_address=${var.server_private_ip}\",\"export aws_cognito_user_pool_id='${var.aws_cognito_user_pool_id}'\",\"export HOME=/home/ubuntu\",\"export GOPATH=$HOME/go\",\"export GOMODCACHE=$HOME/go/pkg/mod\",\"export GOCACHE=$HOME/.cache/go-build\",\"cd /home/ubuntu/\",\"cd golang_aws_terraform_jenkins\",\"cd microservices_grpc_ec2/usermgmt_op5_rest_to_grpc/usermgmt_client\",\"sudo chmod 700 usermgmt_client\",\"sudo --preserve-env ./usermgmt_client\"]}"
   
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
