@@ -2,7 +2,7 @@
 # Backend microservices architecture with Terraform and Golang
 This repo contains different alternatives for creation of APIs microservices written with Golang and backend infrastructure as code with Terraform and AWS.
 
-<img src="architecture_diagram.png"/>
+<!--<img src="architecture_diagram.png"/>-->
 
 ## Terraform
 Every single AWS Service in this lab has been created with Terraform sentences.
