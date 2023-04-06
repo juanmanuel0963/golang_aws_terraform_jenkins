@@ -1,9 +1,9 @@
 <!-- BEGIN_TF_DOCS -->
 # Creating a backend microservices architecture with Golang and Terraform.
 
-<img src="architecture_diagram.png"/>
-
 This repository aims to demonstrate how we can implement 3 different types of microservices in our backend projects. These 3 types of microservices are: lambda functions, RESTful microservices, and gRPC microservices.
+
+<img src="architecture_diagram.png"/>
 
 We will be using AWS as our cloud platform. We will be using Golang as our programming language. Github will be our code repository. We will programmatically define the AWS infrastructure and services we will be implementing using Terraform.
 
