@@ -14,8 +14,9 @@ We will also be using Terraform to deploy the infrastructure and functional code
 For our project, we will define 3 types of environments: Development, Testing, and Production. Previously, we should have created 3 independent accounts within our organization.
 
 
-
-
+## Network-level security
+Within each account/environment, we will specify the Availability Zone we want to use. 
+Within the default assigned VPC (Virtual Private Cloud), we will create a Security Group. This Security Group will allow us to define the inbound and outbound ports we need to access our infrastructure resources, such as Databases or EC2 instances.
 
 
 
