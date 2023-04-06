@@ -10,14 +10,15 @@ We will be using AWS as our cloud platform. We will be using Golang as our progr
 We will also be using Terraform to deploy the infrastructure and functional code to the Development and Testing environments. For deploying the infrastructure and functional code to the Production environment, we will be using Jenkins.
 
 ## Definition of environments.
-For our project, we will define 3 types of environments: Development, Testing, and Production. Previously, we should have created 3 independent accounts within our organization.
+For our project, we will define 3 types of environments: Development, Testing, and Production. Previously, we should have created 3 independent accounts within our Organization.
 
 ## Defining infrastructure with Terraform
 The backbone for creating infrastructure resources is the main.tf file, which is located in the root folder. This file in turn refers to sub-files with specific content for configuring and creating resources. Configuration variables are located in the terraform.tfvars file.
 
 ## Network-level security
-Within each account/environment, we will specify the Availability Zone we want to use. 
-Within the default assigned VPC (Virtual Private Cloud), we will create a Security Group. This Security Group will allow us to define the inbound and outbound ports we need to access our infrastructure resources, such as Databases or EC2 instances.
+Within each account/environment, we will specify the availability zone we want to use. Within the default assigned Virtual Private Network, we will create a Security Group. 
+This Security Group will allow us to define the inbound and outbound rules we need to interact with our infrastructure resources, such as Databases or EC2 instances.
+
 
 
 
