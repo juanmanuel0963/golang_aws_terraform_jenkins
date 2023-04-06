@@ -4,6 +4,20 @@ This repo contains different alternatives for creation of APIs microservices wri
 
 <img src="architecture_diagram.png"/>
 
+This repository aims to demonstrate how we can implement 3 different types of microservices in our backend projects. These 3 types of microservices are: lambda functions, RESTful microservices, and gRPC microservices.
+
+We will be using AWS as our cloud platform. We will be using Golang as our programming language. Github will be our code repository. We will programmatically define the AWS infrastructure and services we will be implementing using Terraform.
+
+We will also be using Terraform to deploy the infrastructure and functional code to the Development and Testing environments. For deploying the infrastructure and functional code to the Production environment, we will be using Jenkins.
+
+
+
+
+
+
+
+
+
 ## Terraform
 Every single AWS Service in this lab has been created with Terraform sentences.
 This lab demostrates the ability to update any AWS infrastructure with a platform as code approach with Terraform.
