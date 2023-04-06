@@ -10,6 +10,8 @@ We will be using AWS as our cloud platform. We will be using Golang as our progr
 We will also be using Terraform to deploy the infrastructure and functional code to the Development and Testing environments. For deploying the infrastructure and functional code to the Production environment, we will be using Jenkins.
 
 
+## Definition of environments.
+For our project, we will define 3 types of environments: Development, Testing, and Production. Previously, we should have created 3 independent accounts within our organization.
 
 
 
