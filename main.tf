@@ -898,12 +898,12 @@ module "module_grpc_server_1_op5_eventbridge_rule" {
     db_instance_address               = module.module_db_postgresql.aws_db_instance_address
     db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name    
 }
-/*
+
 output "module_grpc_server_1_op5_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_server_1_op5_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
-*/
+
 #############################################################################
 # VARIABLES - ec2_grpc_client_1 (EC2 instance)
 #############################################################################
@@ -1099,12 +1099,12 @@ module "module_grpc_client_1_op5_eventbridge_rule" {
     random_pet                        = local.random_pet
     aws_cognito_user_pool_id          = module.module_aws_cognito_user_pool.aws_cognito_user_pool_id
 }
-/*
+
 output "module_grpc_client_1_op5_eventbridge_rule_name" {
   description = "EventBridge rule name"
   value = module.module_grpc_client_1_op5_eventbridge_rule.aws_cloudwatch_event_rule_name
 }
-*/
+
 ##################################################################################
 # api_eventb_rule_to_grpc
 ##################################################################################
