@@ -12,7 +12,7 @@ We will also be using Terraform to deploy the infrastructure and functional code
 ## Definition of environments
 For our project, we will define 3 types of environments: Development, Testing, and Production. Previously, we should have created 3 independent accounts within our Organization.
 
-The creation of the organization and the creation of accounts are outside the scope of this tutorial.
+The creation of the organization and the creation of accounts are outside the scope of this guide.
 
 ## Defining infrastructure with Terraform
 The backbone for creating infrastructure resources is the <a href="main.tf" target="_blank">main.tf</a> file, which is located in the root folder. This file in turn refers to sub-files with specific content for configuring and creating resources. Configuration variables are located in the <a href="terraform.tfvars" target="_blank">terraform.tfvars</a> file.
