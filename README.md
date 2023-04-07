@@ -20,9 +20,11 @@ Within each account/environment, we will specify the availability zone we want t
 This Security Group will allow us to define the inbound and outbound rules we need to interact with our infrastructure resources, such as Databases or EC2 instances.
 
 main.tf
+
 <img src="images/networking.png"/>
 
-/networking/terraform/main.tf
+networking/terraform/main.tf
+
 <img src="images/networking_resources.png"/>
 
 wwww
