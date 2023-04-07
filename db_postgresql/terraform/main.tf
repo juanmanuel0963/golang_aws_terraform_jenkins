@@ -182,7 +182,6 @@ resource "aws_db_instance" "the_postgresql_instance" {
   port                    = var.db_port
   
   vpc_security_group_ids  = [var.security_group_id]
-  //db_subnet_group_name    = local.default_aws_db_subnet_group
   db_subnet_group_name    = aws_db_subnet_group.the_db_subnet_group.id
 
   db_name                 = local.db_name
