@@ -44,6 +44,8 @@ We create the database within the same Security Group defined earlier. The confi
 
 <img src="images/postgresql_variables.png"/>
 
+## Creating the API Gateway 
+The API Gateway will allow us to access a collection of microservices under the same domain name. In this project, the API Gateway will give us access to lambda functions to perform CRUD operations on a Contacts table.
 
 
 
