@@ -19,14 +19,13 @@ The backbone for creating infrastructure resources is the <a href="main.tf" targ
 Within each account/environment, we will specify the availability zone we want to use. Within the default assigned Virtual Private Network, we will create a Security Group. 
 This Security Group will allow us to define the inbound and outbound rules we need to interact with our infrastructure resources, such as Databases or EC2 instances.
 
-main.tf
+<a href="main.tf" target="_blank">main.tf</a>
 
 <img src="images/networking.png"/>
 
-networking/terraform/main.tf
+<a href="networking/terraform/main.tf" target="_blank">networking/terraform/main.tf</a>
 
 <img src="images/networking_resources.png"/>
-
 
 ## Creating the Postgresql database. 
 We create the database within the same Security Group defined earlier. The configuration parameters, such as machine type, instance type, and allocated memory space, are brought from the terraform.tfvars file.
