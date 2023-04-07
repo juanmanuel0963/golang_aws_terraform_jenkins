@@ -25,7 +25,7 @@ This Security Group will allow us to define the inbound and outbound rules we ne
 
 <img src="images/networking.png"/>
 
-<a href="https://github.com/juanmanuel0963/golang_aws_terraform_jenkins/blob/release-branch.v2/main.tf#:~:text=%23%20networking-,%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23%23,-module%20%22module_networking" target="_blank">networking/terraform/main.tf</a>
+<a href="networking/terraform/main.tf" target="_blank">networking/terraform/main.tf</a>
 
 <img src="images/networking_resources.png"/>
 
