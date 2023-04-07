@@ -18,7 +18,7 @@ The backbone for creating infrastructure resources is the <a href="main.tf" targ
 ## Network-level security
 Within each account/environment, we will specify the availability zone we want to use. Within the default assigned Virtual Private Network, we will create a Security Group. 
 This Security Group will allow us to define the inbound and outbound rules we need to interact with our infrastructure resources, such as Databases or EC2 instances.
-<img src="images/networking.png"/>
+<img src="images/architecture_diagram.png"/>
 
 wwww
 
