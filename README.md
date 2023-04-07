@@ -47,9 +47,13 @@ We create the database within the same Security Group defined earlier. The confi
 ## Creating the API Gateway 
 The API Gateway will allow us to access a collection of microservices under the same domain name. In this project, the API Gateway will give us access to lambda functions to perform CRUD operations on a Contacts table.
 
+<a href="main.tf" target="_blank">main.tf</a>
 
+<img src="images/api_gateway.png"/>
 
+<a href="api_gateway/terraform/main.tf" target="_blank">api_gateway/terraform/main.tf</a>
 
+<img src="images/api_gateway_resources.png"/>
 
 
 
