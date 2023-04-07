@@ -27,7 +27,10 @@ networking/terraform/main.tf
 
 <img src="images/networking_resources.png"/>
 
-wwww
+
+## Creating the Postgresql database. 
+We create the database within the same Security Group defined earlier. The configuration parameters, such as machine type, instance type, and allocated memory space, are brought from the terraform.tfvars file.
+
 
 
 
