@@ -123,4 +123,6 @@ We insert the data of the "Contact" into the database. In this example, we invok
 
 <img src="images/contacts_insert_function_4.png"/>
 
+Finally, the response body is prepared. The response is sent first to the API Gateway, which in turn returns a response to the client.
+
 <img src="images/contacts_insert_function_5.png"/>
