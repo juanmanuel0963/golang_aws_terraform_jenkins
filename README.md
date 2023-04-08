@@ -107,6 +107,11 @@ Likewise, we define the "ResponseBody" structure which will be returned by the l
 
 <img src="images/contacts_insert_function_1.png"/>
 
+The main() function is the entry point of the lambda function. However, it delegates the responsibility of processing by invoking the FunctionHandler handler. 
+
+The first step that our handler performs is to obtain the message body and extract the data from the "Contact".
+
+
 <img src="images/contacts_insert_function_2.png"/>
 
 <img src="images/contacts_insert_function_3.png"/>
