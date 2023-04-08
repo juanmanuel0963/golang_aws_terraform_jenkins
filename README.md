@@ -147,6 +147,8 @@ Finally, the response body is prepared. The response is sent first to the API Ga
 
 In order to allow only authorized clients to execute calls on our lambda functions, we previously added the function to the API Gateway in Terraform and indicated that the authorization type is "AWS_IAM".
 
+<a href="microservices_restful_lambda/contacts_insert/source_code/main.go" target="_blank">microservices_restful_lambda/contacts_insert/source_code/main.go</a>
+
 <img src="images/contacts_insert_resources_5.png"/>
 
 <img src="images/contacts_insert_resources_6.png"/>
