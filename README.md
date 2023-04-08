@@ -111,6 +111,7 @@ The main() function is the entry point of the lambda function. However, it deleg
 
 The first step that our handler performs is to obtain the message body and extract the data from the "Contact".
 
+At certain control points, the function's execution sequence is logged in CloudWatch. If an error occurs, the details of the generated exception are recorded.
 
 <img src="images/contacts_insert_function_2.png"/>
 
