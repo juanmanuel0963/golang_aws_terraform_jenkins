@@ -153,10 +153,14 @@ In order to allow only authorized clients to execute calls on our lambda functio
 
 <img src="images/contacts_insert_resources_6.png"/>
 
-Now we can create an IAM user with an associated policy that allows them to execute APIs. This user must be used as the authorization header in calls to the function.
+Now we can create an IAM user with an associated policy that allows them to execute APIs.
 
 <img src="images/contacts_insert_auth_1.png"/>
 
 <img src="images/contacts_insert_auth_2.png"/>
 
 <img src="images/contacts_insert_auth_3.png"/>
+
+This IAM user must be used as the authorization header in calls to the function.
+
+<img src="images/contacts_insert_auth_4.png"/>
