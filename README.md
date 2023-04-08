@@ -33,7 +33,7 @@ This Security Group will allow us to define the inbound and outbound rules we ne
 
 <img src="images/networking_resources.png"/>
 
-## Creating the Postgresql database. 
+## Creating the Postgresql database
 We create the database within the same Security Group defined earlier. The configuration parameters, such as machine type, instance type, and allocated memory space, are brought from the terraform.tfvars file.
 
 <a href="main.tf" target="_blank">main.tf</a>
