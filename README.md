@@ -115,6 +115,8 @@ At certain control points, the function's execution sequence is logged in CloudW
 
 <img src="images/contacts_insert_function_2.png"/>
 
+The next thing we do is to verify that the connection to the database is working properly.
+
 <img src="images/contacts_insert_function_3.png"/>
 
 <img src="images/contacts_insert_function_4.png"/>
