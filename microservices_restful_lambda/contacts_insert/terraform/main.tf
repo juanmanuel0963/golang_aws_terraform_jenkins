@@ -119,30 +119,9 @@ module "s3-bucket" {
 # RESOURCES
 #############################################################################  
 
-//----------Sets the default vpc----------
-/*
-resource "aws_default_vpc" "default" { }
-*/
-//----------db_security_group lookup----------
-/*
-data "aws_security_groups" "the_db_security_group" {
-  
-  filter {
-    name   = "group-name"
-    values = ["db_security_group"]
-  }
-
-  filter {
-    name   = "vpc-id"
-    values = [aws_default_vpc.default.id]
-  }
-  
-}
-*/
 //----------db_subnet_group lookup----------
 
 data "aws_db_subnet_group" "the_db_subnet_group" {
-  //name = "${local.default_aws_db_subnet_group_name}"
   name = "${var.db_subnet_group_name}"
 }
 
@@ -160,10 +139,6 @@ resource "aws_s3_bucket" "lambda_func_bucket" {
 //and an aws_s3_object resource to upload the archive to your S3 bucket.
 data "archive_file" "the_lambda_function" {
   type = "zip"
-
-  //----------Enable if calling from function----------
-  //source_dir  = "${path.cwd}/../source_code"  
-  //output_path = "${path.cwd}/../last_deploy/${var.lambda_func_name}.zip"
 
   //----------Enable if calling from root main----------
   source_dir  = "${path.cwd}/microservices_restful_lambda/${var.lambda_func_name}/source_code"  
