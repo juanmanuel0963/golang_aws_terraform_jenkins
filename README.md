@@ -61,11 +61,18 @@ The API Gateway will allow us to access a collection of microservices under the 
 
 ## Creating lambda functions. 
 The next step is to create the lambda functions and associate them with the API Gateway we just created. We are going to create several functions to perform CRUD operations, as well as more specialized functions to perform searches through dynamic filters or paginated searches. The lambda functions that we will create and associate with the API Gateway are as follows:
+
 &#x2022; contacts insert
+
 &#x2022; contacts get by company id
+
 &#x2022; contacts get by contact id
+
 &#x2022; contacts delete by contact id
+
 &#x2022; contacts update by contact id
+
 &#x2022; contacts get by dynamic filter
+
 &#x2022; contacts get by pagination
 
