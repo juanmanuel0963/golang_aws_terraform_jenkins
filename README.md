@@ -3,7 +3,7 @@
 
 This repository aims to demonstrate how we can implement 3 different types of microservices in our backend projects. These 3 types of microservices are: lambda functions, RESTful microservices, and gRPC microservices.
 
-<img src="images/linkedin.png"/> https://www.linkedin.com/in/juanmanuel0963/
+https://www.linkedin.com/in/juanmanuel0963/
 
 <img src="images/architecture_diagram.png"/>
 
