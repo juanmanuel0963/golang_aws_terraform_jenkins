@@ -86,4 +86,12 @@ As always, everything starts with the main.tf file located in the root folder.
 
 <img src="images/contacts_insert_resources_1.png"/>
 
+<img src="images/contacts_insert_resources_2.png"/>
+
+<img src="images/contacts_insert_resources_3.png"/>
+
+<img src="images/contacts_insert_resources_4.png"/>
+
+
+
 
