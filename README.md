@@ -76,3 +76,6 @@ The next step is to create the lambda functions and associate them with the API 
 
 &#x2022; contacts get by pagination
 
+As always, everything starts with the main.tf file located in the root folder.
+
+
