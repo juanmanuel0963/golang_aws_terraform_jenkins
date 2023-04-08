@@ -99,7 +99,11 @@ You can find the source code of the contacts insert function written in Golang i
 
 <a href="microservices_restful_lambda/contacts_insert/source_code/main.go" target="_blank">microservices_restful_lambda/contacts_insert/source_code/main.go</a>
 
-We add the libraries we will need in the body of the function. We define the "Contact" structure to obtain the data that is sent to the lambda function to later extract and insert it into the database. Likewise, we define the "ResponseBody" structure which will be returned by the lambda function informing the status of the transaction and the "Contact" with the new created Id.
+We add the libraries we will need in the body of the function. 
+
+We define the "Contact" structure to obtain the data that is sent to the lambda function to later extract and insert it into the database
+
+Likewise, we define the "ResponseBody" structure which will be returned by the lambda function informing the status of the transaction and the "Contact" with the new created Id.
 
 <img src="images/contacts_insert_function_1.png"/>
 
