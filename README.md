@@ -46,6 +46,12 @@ We create the database within the same Security Group defined earlier. The confi
 
 <img src="images/postgresql_variables.png"/>
 
+Once Terraform has created the initial server and database, we create the "Companies" and "Contacts" tables, as well as the functions to perform CRUD operations on these tables. We do this by executing the scripts defined in the following folder. This can be done using a database IDE such as PgAdmin.
+
+<a href="db_postgresql/source_code" target="_blank">db_postgresql/source_code</a>
+
+<img src="images/companies_contacts.png"/>
+
 ## Creating the API Gateway 
 The API Gateway will allow us to access a collection of microservices under the same domain name. In this project, the API Gateway will give us access to lambda functions to perform CRUD operations on a Contacts table.
 
@@ -82,7 +88,7 @@ As always, everything starts with the main.tf file located in the root folder.
 
 <img src="images/contacts_insert.png"/>
 
-<a href="./microservices_restful_lambda/contacts_insert/terraform/main.tf" target="_blank">microservices_restful_lambda/contacts_insert/terraform/main.tf</a>
+<a href="microservices_restful_lambda/contacts_insert/terraform/main.tf" target="_blank">microservices_restful_lambda/contacts_insert/terraform/main.tf</a>
 
 <img src="images/contacts_insert_resources_1.png"/>
 
