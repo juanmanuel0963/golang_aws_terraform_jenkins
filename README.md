@@ -78,4 +78,8 @@ The next step is to create the lambda functions and associate them with the API 
 
 As always, everything starts with the main.tf file located in the root folder.
 
+<a href="main.tf" target="_blank">main.tf</a>
+
+<img src="images/contacts_insert.png"/>
+
 
