@@ -95,9 +95,9 @@ As always, everything starts with the main.tf file located in the root folder.
 
 ## Contacts Insert: Lambda function written in Golang
 
-You can find the source code of the contacts insert function written in Golang in the following file:
+You can find the source code of the contacts insert function written in Golang in the following path:
 
-<a href="microservices_restful_lambda/contacts_insert/source_code/main.go" target="_blank">main.go</a>
+<a href="microservices_restful_lambda/contacts_insert/source_code/main.go" target="_blank">microservices_restful_lambda/contacts_insert/source_code/main.go</a>
 
 <img src="images/contacts_insert_function_1.png"/>
 
