@@ -95,3 +95,12 @@ As always, everything starts with the main.tf file located in the root folder.
 
 ## Contacts Insert: Lambda function written in Golang
 
+<img src="images/contacts_insert_function_1.png"/>
+
+<img src="images/contacts_insert_function_2.png"/>
+
+<img src="images/contacts_insert_function_3.png"/>
+
+<img src="images/contacts_insert_function_4.png"/>
+
+<img src="images/contacts_insert_function_5.png"/>
