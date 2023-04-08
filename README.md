@@ -153,4 +153,5 @@ In order to allow only authorized clients to execute calls on our lambda functio
 
 <img src="images/contacts_insert_resources_6.png"/>
 
-ss
+
+<img src="images/contacts_insert_auth_1.png"/>
