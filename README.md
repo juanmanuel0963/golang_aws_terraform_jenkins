@@ -1,5 +1,5 @@
 <!-- BEGIN_TF_DOCS -->
-# Creating a backend microservices architecture with Golang and Terraform.
+# Creating a backend microservices architecture with Terraform and Golang.
 
 This repository aims to demonstrate how we can implement 3 different types of microservices in our backend projects. These 3 types of microservices are: serverless lambda functions, server-based RESTful microservices, and server-based gRPC microservices.
 
