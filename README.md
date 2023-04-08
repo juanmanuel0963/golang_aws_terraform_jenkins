@@ -119,6 +119,8 @@ The next thing we do is to verify that the connection to the database is working
 
 <img src="images/contacts_insert_function_3.png"/>
 
+We insert the data of the "Contact" into the database. In this example, we invoke a Postgresql database function.
+
 <img src="images/contacts_insert_function_4.png"/>
 
 <img src="images/contacts_insert_function_5.png"/>
