@@ -133,7 +133,6 @@ func FunctionHandler(ctx context.Context, request events.APIGatewayProxyRequest)
 	responseMessageForClient := ""
 	responseStatusCodeForClient := 0
 	//
-	//switch contact.Id = addedContactId; { // missing expression means "true"
 	switch { // missing expression means "true"
 	case responseContact.Id > 0:
 		responseMessageForClient = "RECORD_OK"
