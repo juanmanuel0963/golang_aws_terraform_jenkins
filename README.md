@@ -58,6 +58,8 @@ Once Terraform has created the initial server and database, we create the "Compa
 
 <img src="images/companies_insert_2.png"/>
 
+<img src="images/companies_insert_3.png"/>
+
 We can create database tables and functions using scripts or an ORM. In this guide, we will use GORM when creating RESTful microservices and gRPC microservices.
 
 ## Creating the API Gateway 
