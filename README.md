@@ -49,7 +49,7 @@ We create the database within the same Security Group defined earlier. The confi
 ## Creating the API Gateway 
 The API Gateway will allow us to access a collection of microservices under the same domain name. In this project, the API Gateway will give us access to lambda functions to perform CRUD operations on a Contacts table.
 
-<a href="main.tf" target="_blank">main.tf</a>
+<a href="main.tf" target="_blank">./main.tf</a>
 
 <img src="images/api_gateway.png"/>
 
@@ -81,5 +81,9 @@ As always, everything starts with the main.tf file located in the root folder.
 <a href="main.tf" target="_blank">main.tf</a>
 
 <img src="images/contacts_insert.png"/>
+
+<a href="./microservices_restful_lambda/contacts_insert/terraform" target="_blank">microservices_restful_lambda/contacts_insert/terraform</a>
+
+<img src="images/contacts_insert_resources_1.png"/>
 
 
