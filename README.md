@@ -82,7 +82,7 @@ As always, everything starts with the main.tf file located in the root folder.
 
 <img src="images/contacts_insert.png"/>
 
-<a href="./microservices_restful_lambda/contacts_insert/terraform" target="_blank">microservices_restful_lambda/contacts_insert/terraform</a>
+<a href="./microservices_restful_lambda/contacts_insert/terraform/main.tf" target="_blank">microservices_restful_lambda/contacts_insert/terraform/main.tf</a>
 
 <img src="images/contacts_insert_resources_1.png"/>
 
