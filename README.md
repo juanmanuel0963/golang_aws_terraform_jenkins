@@ -164,3 +164,5 @@ Now we can create an IAM user with an associated policy that allows them to exec
 This IAM user must be used as the authorization header in calls to the function.
 
 <img src="images/contacts_insert_auth_4.png"/>
+
+<img src="images/contacts_insert_auth_5.png"/>
