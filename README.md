@@ -109,7 +109,7 @@ As always, everything starts with the main.tf file located in the root folder.
 <img src="images/contacts_insert_resources_4.png"/>
 
 
-## Contacts Insert: Lambda function written in Golang
+## Lambda functions written in Golang: Contacts Insert
 
 You can find the source code of the contacts insert function written in Golang in the following path:
 
