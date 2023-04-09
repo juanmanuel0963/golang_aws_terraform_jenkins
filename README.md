@@ -143,7 +143,7 @@ Finally, the response body is prepared. The response is sent first to the API Ga
 
 <img src="images/contacts_insert_function_5.png"/>
 
-## Implementing authorization in lambda functions
+## Implementing IAM authentication & authorization in lambda functions
 
 In order to allow only authorized clients to execute calls on our lambda functions, we previously added the function to the API Gateway in Terraform and indicated that the authorization type is "AWS_IAM".
 
