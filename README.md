@@ -104,6 +104,17 @@ As always, everything starts with the main.tf file located in the root folder.
 
 We use S3 buckets so that Terraform can upload the compiled executable code in a zip file and then migrate it to the lambda function. Previously, we must have compiled the source code into an executable file for the target operating system, in this case Linux.
 
+We can compile the code into an executable file by invoking the following commands:
+
+--before build binary to upload to AWS
+
+$Env:GOOS = "linux" 
+
+--build
+
+go build main.go
+
+
 <img src="images/contacts_insert_resources_2.png"/>
 
 <img src="images/contacts_insert_resources_3.png"/>
