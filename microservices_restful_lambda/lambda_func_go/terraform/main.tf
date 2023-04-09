@@ -131,7 +131,7 @@ resource "aws_s3_object" "the_lambda_function" {
 //----------IAM role assignment----------
 
 //Configures the Lambda function to use the bucket object containing your function code. 
-//It also sets the runtime to NodeJS 12.x, and assigns the handler to the handler function defined in hello.js. 
+//It also sets the runtime to go1.x, and assigns the handler to the handler function defined in main.go.
 //The source_code_hash attribute will change whenever you update the code contained in the archive, 
 //which lets Lambda know that there is a new version of your code available. 
 //Finally, the resource specifies a role which grants the function permission to access AWS services and resources in your account.
