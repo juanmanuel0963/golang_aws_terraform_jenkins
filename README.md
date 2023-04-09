@@ -102,6 +102,8 @@ As always, everything starts with the main.tf file located in the root folder.
 
 <img src="images/contacts_insert_resources_1.png"/>
 
+We use S3 buckets so that Terraform can upload the compiled executable code in a zip file and then migrate it to the lambda function. Previously, we must have compiled the source code into an executable file for the target operating system, in this case Linux.
+
 <img src="images/contacts_insert_resources_2.png"/>
 
 <img src="images/contacts_insert_resources_3.png"/>
