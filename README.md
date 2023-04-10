@@ -198,4 +198,6 @@ We will use the following Terraform instructions.
 
 <img src="images/restful_server_2.png"/>
 
+The configuration parameters that we will use for the EC2 instance are found in the variables file.
+
 
