@@ -184,7 +184,7 @@ In the following image, an example of a contacts_insert function invocation in P
 
 <img src="images/contacts_insert_auth_5.png"/>
 
-## Creating EC2 Instances: RESTful Server
+## Creating EC2 Instance and configuring RESTful Server
 
 We will create an EC2 instance to expose RESTful microservices using the following Terraform instructions.
 
