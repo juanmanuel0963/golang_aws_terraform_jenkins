@@ -215,3 +215,5 @@ This rule executes a cron job periodically. This rule is responsible for downloa
 <img src="images/restful_server_5.png"/>
 
 Once we have the executable code installed, the next step is to start the service that will allow us to invoke the microservices from anywhere on the internet. For this, we start a GIN server for each microservice.
+
+<img src="images/restful_server_6.png"/>
