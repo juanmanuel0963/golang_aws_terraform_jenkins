@@ -186,9 +186,7 @@ In the following image, an example of a contacts_insert function invocation in P
 
 ## Creating EC2 Instances: RESTful Server
 
-We will create an EC2 instance in order to expose RESTful microservices installed on it.
-
-We will use the following Terraform instructions.
+We will create an EC2 instance to expose RESTful microservices using the following Terraform instructions.
 
 <a href="main.tf" target="_blank">main.tf</a>
 
