@@ -202,4 +202,8 @@ The configuration parameters that we will use for the EC2 instance are found in 
 
 <img src="images/restful_server_3.png"/>
 
+We create an EventBridge rule of type "Schedule"/"Run Command". This rule is responsible for downloading and installing the latest updated version of the executable code for the RESTful microservices. This rule executes a cron job periodically.
 
+<img src="images/restful_server_4.png"/>
+
+<img src="images/restful_server_5.png"/>

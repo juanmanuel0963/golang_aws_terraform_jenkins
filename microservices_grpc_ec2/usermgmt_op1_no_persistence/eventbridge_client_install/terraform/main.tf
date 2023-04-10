@@ -131,13 +131,9 @@ resource "aws_iam_role_policy_attachment" "aws_ssm_managed_execution_role" {
 #-----Cloudwatch Rule--------
 
 resource "aws_cloudwatch_event_rule" "the_rule" {
-  //name                = "${var.instance_name}_${var.function_name}_rule"
-  //description         = "${var.instance_name}_${var.function_name}_rule"
   name                = "${local.rule_name}"
   description         = "${local.rule_name}"
-  //schedule_expression = "cron(0 * * * ? *)" //every one hour
   schedule_expression = "cron(0/10 * * * ? *)" //every 10 minutes
-  //schedule_expression = "rate(1 minute)"
 }
 
 #-----Cloudwatch Target--------
@@ -148,7 +144,6 @@ resource "aws_cloudwatch_event_target" "the_target" {
   //input     = "{\"commands\":[\"ls -a\"]}"
   //input     = "{\"commands\":[\"sudo shutdown -r now\"]}"
   input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf golang_aws_terraform_jenkins\",\"git clone https://github.com/juanmanuel0963/golang_aws_terraform_jenkins.git\",\"export HOME=/home/ubuntu\",\"export GOROOT=/snap/go/10050\",\"export GOPATH=$HOME/snap/go/10050\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"cd /home/ubuntu/\",\"export GOROOT=/snap/go/10073\",\"export GOPATH=$HOME/snap/go/10073\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\"]}" //,\"sudo shutdown -r now\"
-  //input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf golang_aws_terraform_jenkins\",\"git clone https://github.com/juanmanuel0963/golang_aws_terraform_jenkins.git\",\"export HOME=/home/ubuntu\",\"export GOROOT=/snap/go/10073\",\"export GOPATH=$HOME/snap/go/10073\",\"export GOMODCACHE=$GOPATH/pkg/mod\",\"export GOBIN=$GOPATH/bin\",\"mkdir tls\",\"sudo chmod 777 ./tls\",\"cd /home/ubuntu/tls\",\"go run $GOROOT/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost\",\"sudo shutdown -r now\"]}"
   
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
