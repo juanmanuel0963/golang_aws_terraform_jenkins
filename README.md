@@ -183,3 +183,8 @@ In the following image, an example of a contacts_insert function invocation in P
 <img src="images/contacts_insert_auth_4.png"/>
 
 <img src="images/contacts_insert_auth_5.png"/>
+
+## Creating EC2 Instances: RESTful Server
+
+We create an EC2 instance using the following Terraform instructions.
+
