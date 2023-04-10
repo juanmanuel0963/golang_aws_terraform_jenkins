@@ -202,13 +202,13 @@ The configuration parameters that we will use for the EC2 instance are found in 
 
 <img src="images/restful_server_3.png"/>
 
-We create an EventBridge rule of type "Schedule"/"Run Command". 
+We create an EventBridge rule of type "Schedule"/"Run Command":
 
 <a href="main.tf" target="_blank">main.tf</a>
 
 <img src="images/restful_server_4.png"/>
 
-This rule executes a cron job periodically. This rule is responsible for downloading and installing the latest updated version of the executable code for the RESTful microservices. 
+This rule executes a cron job periodically. This rule is responsible for downloading and installing the latest updated version of the executable code for the RESTful microservices:
 
 <a href="microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf" target="_blank">microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf</a>
 
