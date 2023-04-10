@@ -188,3 +188,5 @@ In the following image, an example of a contacts_insert function invocation in P
 
 We create an EC2 instance using the following Terraform instructions.
 
+<img src="images/restful_server_1.png"/>
+
