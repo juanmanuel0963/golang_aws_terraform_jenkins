@@ -188,7 +188,11 @@ In the following image, an example of a contacts_insert function invocation in P
 
 We create an EC2 instance using the following Terraform instructions.
 
+<a href="main.tf" target="_blank">main.tf</a>
+
 <img src="images/restful_server_1.png"/>
+
+<a href="ec2/grpc_instance/terraform/main.tf" target="_blank">ec2/grpc_instance/terraform/main.tf</a>
 
 <img src="images/restful_server_2.png"/>
 
