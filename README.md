@@ -190,3 +190,6 @@ We create an EC2 instance using the following Terraform instructions.
 
 <img src="images/restful_server_1.png"/>
 
+<img src="images/restful_server_2.png"/>
+
+

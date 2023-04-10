@@ -109,31 +109,25 @@ resource "aws_instance" "the_instance" {
   vpc_security_group_ids    = [
     var.security_group_id
   ]
-
   tags  = {
     Name = local.tag_name
   }
-
   root_block_device {
     delete_on_termination = true
     volume_size = 8
     volume_type = "gp2"
   }
-
   private_dns_name_options{
     enable_resource_name_dns_a_record = true
     hostname_type = "ip-name"
   }
-
   depends_on = [ var.security_group_id ]
 }
 
 //----------Instance Profile and role attachment----------
 
 resource "aws_iam_instance_profile" "ec2_profile" {
-  //name = "${var.instance_name}_instance_profile"
   name = local.instance_profile_name
-  //role = "ec2_ssm_role"
   role = aws_iam_role.ec2_instance_role.name
 }
 
@@ -142,7 +136,6 @@ resource "aws_iam_instance_profile" "ec2_profile" {
 //Defines an IAM role that allows EC2 to access resources in your AWS account.
 
 resource "aws_iam_role" "ec2_instance_role" {
-  //name = "${var.instance_name}_iam_role"
   name = local.iam_role_name
   # Terraform's "jsonencode" function converts a
   # Terraform expression result to valid JSON syntax.
@@ -172,7 +165,6 @@ resource "aws_iam_role_policy_attachment" "aws_ec2_access_execution_role" {
   policy_arn  = "arn:aws:iam::aws:policy/AmazonEC2FullAccess"
 }
 
-
 //Attaches a policy to the IAM role.
 //AmazonSSMFullAccess Provides full access to Amazon SSM.
 resource "aws_iam_role_policy_attachment" "aws_ssm_access_execution_role" {
@@ -180,14 +172,12 @@ resource "aws_iam_role_policy_attachment" "aws_ssm_access_execution_role" {
   policy_arn  = "arn:aws:iam::aws:policy/AmazonSSMFullAccess"
 }
 
-
 //Attaches a policy to the IAM role.
 //AmazonSSMFullAccess Provides full access to Amazon SSM.
 resource "aws_iam_role_policy_attachment" "aws_cloudwatch_access_execution_role" {
   role        = aws_iam_role.ec2_instance_role.name
   policy_arn  = "arn:aws:iam::aws:policy/CloudWatchFullAccess"
 }
-
 
 //Attaches a policy to the IAM role.
 //AmazonSSMManagedInstanceCore The policy for Amazon EC2 Role to enable AWS Systems Manager service core functionality.
