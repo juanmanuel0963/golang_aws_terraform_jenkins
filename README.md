@@ -198,4 +198,6 @@ We will create an EC2 instance to expose RESTful microservices using the followi
 
 The configuration parameters that we will use for the EC2 instance are found in the variables file.
 
+<img src="images/restful_server_3.png"/>
+
 
