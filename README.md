@@ -279,7 +279,7 @@ Once we have the executable code installed, the next step is to start the servic
 
 ## Server-based RESTful microservice in Golang: Blogs management
 
-Once we have the
+<a href="microservices_restful_ec2/blogs/source_code/main.go" target="_blank">microservices_restful_ec2/blogs/source_code/main.go</a>
 
 <img src="images/restful_blogs_1.png"/>
 
