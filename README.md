@@ -218,3 +218,61 @@ This EventBridge rule is also responsible for generating a self-signed TLS certi
 Once we have the executable code installed, the next step is to start the service that will allow us to invoke the microservices from anywhere on the internet. For this, we start a GIN server for each microservice.
 
 <img src="images/restful_server_6.png"/>
+
+Inside our RESTful server, we will have hosted 4 microservices with the following methods.
+
+Blogs
+
+&#x2022; blog create
+
+&#x2022; blog list
+
+&#x2022; blog get by id
+
+&#x2022; blog update by id
+
+&#x2022; blog delete by id
+
+Posts
+
+&#x2022; post create
+
+&#x2022; post list
+
+&#x2022; post get by id
+
+&#x2022; post get by blog id
+
+&#x2022; post get by dynamic filter
+
+&#x2022; post get by pagination
+
+&#x2022; post update by id
+
+&#x2022; post delete by id
+
+Products
+
+&#x2022; product create
+
+&#x2022; product list
+
+&#x2022; product get by id
+
+&#x2022; product get by invoice id
+
+&#x2022; product update by id
+
+&#x2022; product delete by id
+
+Invoices
+
+&#x2022; Invoice create
+
+&#x2022; invoice list
+
+&#x2022; invoice get by id
+
+&#x2022; invoice update by id
+
+&#x2022; invoice delete by id
