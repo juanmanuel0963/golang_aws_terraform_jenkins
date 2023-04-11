@@ -309,7 +309,7 @@ The VerifyToken() function extracts the token sent by the client and makes a con
 
 <img src="images/restful_blogs_5.png"/>
 
-## Testing RESTful microservices with Postman
+## Testing server-based RESTful microservices with Postman
 
 The following image shows an example of an invocation in Postman to the method blog_create. As seen before, the microservice requires authentication with AWS Cognito. In this case, no authentication method is specified. As a response, the method sends an "Unauthorized" message.
 
