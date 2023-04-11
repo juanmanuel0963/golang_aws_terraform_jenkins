@@ -277,7 +277,7 @@ Once we have the executable code installed, the next step is to start the servic
 
 <img src="images/restful_server_6.png"/>
 
-## EC2 Server-based RESTful microservice in Golang: Blogs management
+## Server-based RESTful Golang microservice on EC2: Blogs management
 
 <a href="microservices_restful_ec2/blogs/source_code/main.go" target="_blank">microservices_restful_ec2/blogs/source_code/main.go</a>
 
