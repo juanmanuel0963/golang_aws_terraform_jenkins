@@ -15,9 +15,6 @@ func ConnectToDB() {
 
 	var err error
 
-	//Only for connections from localhost
-	//dsn := os.Getenv("db_conn_from_local")
-
 	//Only for connections from EC2 instance
 	dsn := os.Getenv("db_conn")
 

@@ -277,4 +277,7 @@ Once we have the executable code installed, the next step is to start the servic
 
 <img src="images/restful_server_6.png"/>
 
+## Server-based RESTful microservice
+
+Once we have the
 
