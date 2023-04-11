@@ -287,6 +287,8 @@ Once we have the executable code installed, the next step is to start the servic
 
 <img src="images/restful_blogs_2.png"/>
 
+<a href="microservices_restful_ec2/blogs/source_code/controllers/blog_controller.go" target="_blank">microservices_restful_ec2/blogs/source_code/controllers/blog_controller.go</a>
+
 <img src="images/restful_blogs_3.png"/>
 
 <img src="images/restful_blogs_4.png"/>
