@@ -299,6 +299,8 @@ The microservice is initialized on the GIN web server on a specific port and req
 
 <img src="images/restful_blogs_3.png"/>
 
+The VerifyToken() function extracts the token sent by the client and makes a connection to the Cognito authentication service created previously for our application. If the token is valid, the execution flow continues normally. If the token is not valid, the client cannot be authenticated and therefore cannot invoke the requested method.
+
 <a href="cognito/auth_token/source_code/verify_token/verify_token.go" target="_blank">cognito/auth_token/source_code/verify_token/verify_token.go</a>
 
 <img src="images/restful_blogs_4.png"/>
