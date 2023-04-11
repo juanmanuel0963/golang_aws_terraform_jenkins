@@ -279,7 +279,13 @@ Once we have the executable code installed, the next step is to start the servic
 
 ## Server-based RESTful microservice in Golang on EC2: Blogs management
 
-The init() function initializes the connection to the Postgres database using the GORM connection driver. Our Blog management microservice is implemented using the model-view-controller pattern. At the beginning of the main() function, the routes for invoking each of the microservice methods and the controller function responsible for each method are specified. The microservice is initialized on the GIN web server on a specific port and requires a TLS security certificate, which is generated and self-signed by the application itself.
+Our Blog management microservice is implemented using the model-view-controller pattern.
+
+The init() function initializes the connection to the Postgres database using the GORM connection driver.  
+
+At the beginning of the main() function, the routes for invoking each of the microservice methods and the controller function responsible for each method are specified. 
+
+The microservice is initialized on the GIN web server on a specific port and requires a TLS security certificate, which is generated and self-signed by the application itself.
 
 <a href="microservices_restful_ec2/blogs/source_code/main.go" target="_blank">microservices_restful_ec2/blogs/source_code/main.go</a>
 
