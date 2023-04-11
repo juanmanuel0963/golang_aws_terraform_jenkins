@@ -191,9 +191,13 @@ Inside our RESTful server, we will have hosted 4 microservices with the followin
 <b>Blogs</b>
 
 &#x2022; blog create
+
 &#x2022; blog list
+
 &#x2022; blog get by id
+
 &#x2022; blog update by id
+
 &#x2022; blog delete by id
 
 <b>Posts</b>
