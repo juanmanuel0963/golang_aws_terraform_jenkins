@@ -178,6 +178,8 @@ Now we can create an IAM user with an associated policy that allows them to exec
 
 This IAM user must be used as the authorization header in calls to the function.
 
+## Testing lambda functions with Postman
+
 In the following image, an example of a contacts_insert function invocation in Postman is shown. "AWS Signature" is specified as the authorization type, and the AccessKey and SecretKey created in IAM are entered.
 
 <img src="images/contacts_insert_auth_4.png"/>
