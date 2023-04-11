@@ -186,39 +186,6 @@ In the following image, an example of a contacts_insert function invocation in P
 
 ## Creating EC2 Instance and configuring RESTful Server
 
-We will create an EC2 instance to expose RESTful microservices using the following Terraform instructions.
-
-<a href="main.tf" target="_blank">main.tf</a>
-
-<img src="images/restful_server_1.png"/>
-
-<a href="ec2/grpc_instance/terraform/main.tf" target="_blank">ec2/grpc_instance/terraform/main.tf</a>
-
-<img src="images/restful_server_2.png"/>
-
-The configuration parameters that we will use for the EC2 instance are found in the variables file.
-
-<a href="terraform.tfvars" target="_blank">terraform.tfvars</a>
-
-<img src="images/restful_server_3.png"/>
-
-We create an EventBridge rule of type "Schedule"/"Run Command".
-
-<a href="main.tf" target="_blank">main.tf</a>
-
-<img src="images/restful_server_4.png"/>
-
-This rule executes a cron job periodically. This EventBridge rule is responsible for downloading and installing from Github the latest updated version of the executable Golang code for the RESTful microservices.
-This EventBridge rule is also responsible for generating a self-signed TLS certificate, in order to serve requests securely.
-
-<a href="microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf" target="_blank">microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf</a>
-
-<img src="images/restful_server_5.png"/>
-
-Once we have the executable code installed, the next step is to start the service that will allow us to invoke the microservices from anywhere on the internet. For this, we start a GIN server for each microservice.
-
-<img src="images/restful_server_6.png"/>
-
 Inside our RESTful server, we will have hosted 4 microservices with the following methods.
 
 Blogs
@@ -276,3 +243,38 @@ Invoices
 &#x2022; invoice update by id
 
 &#x2022; invoice delete by id
+
+We will create an EC2 instance to expose RESTful microservices using the following Terraform instructions.
+
+<a href="main.tf" target="_blank">main.tf</a>
+
+<img src="images/restful_server_1.png"/>
+
+<a href="ec2/grpc_instance/terraform/main.tf" target="_blank">ec2/grpc_instance/terraform/main.tf</a>
+
+<img src="images/restful_server_2.png"/>
+
+The configuration parameters that we will use for the EC2 instance are found in the variables file.
+
+<a href="terraform.tfvars" target="_blank">terraform.tfvars</a>
+
+<img src="images/restful_server_3.png"/>
+
+We create an EventBridge rule of type "Schedule"/"Run Command".
+
+<a href="main.tf" target="_blank">main.tf</a>
+
+<img src="images/restful_server_4.png"/>
+
+This rule executes a cron job periodically. This EventBridge rule is responsible for downloading and installing from Github the latest updated version of the executable Golang code for the RESTful microservices.
+This EventBridge rule is also responsible for generating a self-signed TLS certificate, in order to serve requests securely.
+
+<a href="microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf" target="_blank">microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf</a>
+
+<img src="images/restful_server_5.png"/>
+
+Once we have the executable code installed, the next step is to start the service that will allow us to invoke the microservices from anywhere on the internet. For this, we start a GIN server for each microservice.
+
+<img src="images/restful_server_6.png"/>
+
+
