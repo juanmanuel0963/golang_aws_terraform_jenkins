@@ -311,7 +311,7 @@ The VerifyToken() function extracts the token sent by the client and makes a con
 
 ## Testing RESTful microservices with Postman
 
-In the following image, an example of a contacts_insert function invocation in Postman is shown. "AWS Signature" is specified as the authorization type, and the AccessKey and SecretKey created in IAM are entered.
+The following image shows an example of an invocation in Postman to the method blog_create. As seen before, the microservice requires authentication with AWS Cognito. In this case, no authentication method is specified. As a response, the method sends an "Unauthorized" message.
 
 <img src="images/restful_blogs_test_1.png"/>
 
