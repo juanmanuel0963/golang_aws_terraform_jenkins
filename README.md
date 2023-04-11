@@ -281,3 +281,13 @@ Once we have the executable code installed, the next step is to start the servic
 
 Once we have the
 
+<img src="images/restful_blogs_1.png"/>
+
+<img src="images/restful_blogs_2.png"/>
+
+<img src="images/restful_blogs_3.png"/>
+
+<img src="images/restful_blogs_4.png"/>
+
+<img src="images/restful_blogs_5.png"/>
+
