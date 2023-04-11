@@ -291,6 +291,8 @@ Once we have the executable code installed, the next step is to start the servic
 
 <img src="images/restful_blogs_3.png"/>
 
+<a href="cognito/auth_token/source_code/verify_token/verify_token.go" target="_blank">cognito/auth_token/source_code/verify_token/verify_token.go</a>
+
 <img src="images/restful_blogs_4.png"/>
 
 <img src="images/restful_blogs_5.png"/>
