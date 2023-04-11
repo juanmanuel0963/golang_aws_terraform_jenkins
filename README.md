@@ -317,3 +317,5 @@ In the following image, an example of a contacts_insert function invocation in P
 
 <img src="images/restful_blogs_test_2.png"/>
 
+<img src="images/restful_blogs_test_3.png"/>
+
