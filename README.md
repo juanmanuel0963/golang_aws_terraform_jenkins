@@ -319,7 +319,7 @@ In the following image, we see an example of an invocation of the blog_create me
 
 <img src="images/restful_blogs_test_2.png"/>
 
-As a response, we get the ID and creation date of the blog.
+As a response, we get the ID and creation date of the blog. You can see that HTTPS was used to invoke the method. This is possible because the microservice generates a self-signed TLS security certificate.
 
 <img src="images/restful_blogs_test_3.png"/>
 
