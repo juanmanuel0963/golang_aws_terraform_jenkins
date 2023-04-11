@@ -188,7 +188,7 @@ In the following image, an example of a contacts_insert function invocation in P
 
 Inside our RESTful server, we will have hosted 4 microservices with the following methods.
 
-Blogs
+<b>Blogs</b>
 
 &#x2022; blog create
 
@@ -200,7 +200,7 @@ Blogs
 
 &#x2022; blog delete by id
 
-Posts
+<b>Posts</b>
 
 &#x2022; post create
 
@@ -218,7 +218,7 @@ Posts
 
 &#x2022; post delete by id
 
-Products
+<b>Products</b>
 
 &#x2022; product create
 
@@ -232,7 +232,7 @@ Products
 
 &#x2022; product delete by id
 
-Invoices
+<b>Invoices</b>
 
 &#x2022; Invoice create
 
