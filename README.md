@@ -315,6 +315,8 @@ The following image shows an example of an invocation in Postman to the method b
 
 <img src="images/restful_blogs_test_1.png"/>
 
+In the following image, we see an example of an invocation of the blog_create method. In this case, we obtain and specify an AWS Cognito token. As a response, we get the ID and creation date of the blog.
+
 <img src="images/restful_blogs_test_2.png"/>
 
 <img src="images/restful_blogs_test_3.png"/>
