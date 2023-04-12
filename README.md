@@ -393,9 +393,10 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 
 <img src="images/grpc_client_4.png"/>
 
-The configuration parameters that we will use for the two client and server EC2 instances are found in the variables file.
+The next step is to start the services for each of the gRPC client-side methods. We do this by executing an EventBridge rule of type "Schedule" / "Run Command". 
 
-<a href="terraform.tfvars" target="_blank">terraform.tfvars</a>
+<img src="images/grpc_client_5.png"/>
 
-<img src="images/restful_server_3.png"/> 
+This rule runs a cron job periodically to ensure that the service is always active.
 
+<img src="images/grpc_client_6.png"/>
