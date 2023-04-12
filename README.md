@@ -383,7 +383,7 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 
 <a href="microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf" target="_blank">microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf</a>
 
-<img src="images/grpc_server_4.png"/>
+<img src="images/grpc_client_4.png"/>
 
 
 ------------
