@@ -325,4 +325,17 @@ As a response, we get the ID and creation date of the blog. You can see that HTT
 
 ## Creating EC2 instances and configuring gRPC client and server.
 
-We will create a pair of EC2 instances in order to implement a gRPC client-server microservice.
+We will create a pair of EC2 instances in order to implement a client-server gRPC microservice architecture.
+
+The microservice will contain the following 5 methods with different strategies for user creation and data persistence.
+
+&#x2022; Sending client data to server without persistence method.
+
+&#x2022; Sending client data to server with in-memory persistence.
+
+&#x2022; Sending client data to server with JSON file persistence.
+
+&#x2022; Sending client data to server with Postgresql database persistence.
+
+&#x2022; Sending data from RESTful method to client and from client to server with Postgresql database persistence.
+
