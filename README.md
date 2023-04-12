@@ -345,9 +345,9 @@ The microservice will contain the following 5 methods with different strategies 
 
 &#x2022; Sending data from RESTful method to client and from client to server with Postgresql database persistence.
 
-We will create two EC2 instances to expose gRPC microservices using the following Terraform instructions.
-
 ## Setting up gRPC Server
+
+We will create an EC2 instance to expose gRPC server-side microservices using the following Terraform instructions.
 
 <a href="main.tf" target="_blank">main.tf</a>
 
@@ -378,6 +378,8 @@ This rule runs a cron job periodically to ensure that the service is always acti
 <img src="images/grpc_server_6.png"/>
 
 ## Setting up gRPC Client
+
+We will create an EC2 instance to expose gRPC client-side microservices using the following Terraform instructions.
 
 <a href="main.tf" target="_blank">main.tf</a>
 
