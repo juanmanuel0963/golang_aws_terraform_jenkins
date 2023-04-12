@@ -279,7 +279,7 @@ Once we have the executable code installed, the next step is to start the servic
 
 <img src="images/restful_server_6.png"/>
 
-## Server-based RESTful microservice in Golang on EC2: Blogs management
+## Server-based RESTful microservice written Golang on EC2: Blogs management
 
 Our Blog management microservice is implemented using the model-view-controller pattern.
 
