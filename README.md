@@ -363,6 +363,10 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 
 <img src="images/grpc_server_4.png"/>
 
+<img src="images/grpc_server_5.png"/>
+
+<img src="images/grpc_server_6.png"/>
+
 ## Setting up gRPC Client
 
 <a href="main.tf" target="_blank">main.tf</a>
