@@ -45,16 +45,4 @@ func main() {
 		}
 
 	}
-	/*
-		params := &pb.GetUsersParams{}
-		fmt.Print("Params: ", params)
-
-		r, err := c.GetUsers(ctx, params)
-		if err != nil {
-			log.Fatalf("could not get users: %v", err)
-		}
-
-		log.Print("\n USERs LIST: \n")
-		fmt.Printf("r.GetUsers(): %v\n", r.GetUsers())
-	*/
 }

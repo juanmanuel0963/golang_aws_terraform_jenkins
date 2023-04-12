@@ -92,9 +92,6 @@ func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUser
 	return users_list, nil
 }
 func init() {
-	//Deprecate--Only for connections from localhost
-	//initializers.LoadEnvVariables()
-
 	//Initialize DB conn
 	initializers.ConnectToDB()
 }
