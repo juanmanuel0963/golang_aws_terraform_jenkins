@@ -427,7 +427,7 @@ Our gRPC user management microservice contains a method to create users.
 
 <img src="images/grpc_server_code_3.png"/>
 
-We can start the service by running the following command.
+We can start up the service by executing the following command. However, this command is executed directly by Terraform as indicated earlier.
 
 sudo --preserve-env ./usermgmt_server
 
