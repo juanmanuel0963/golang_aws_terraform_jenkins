@@ -357,7 +357,7 @@ We create an EventBridge rule of type "Schedule"/"Run Command".
 
 <img src="images/grpc_server_3.png"/>
 
-This rule executes a cron job periodically. This EventBridge rule is responsible for downloading and installing from Github the latest updated version of the executable Golang code for the RESTful microservices. This EventBridge rule is also responsible for generating a self-signed TLS certificate, in order to serve requests securely.
+This rule executes a cron job periodically. This EventBridge rule is responsible for downloading and installing from Github the latest updated version of the executable Golang code for the gRPC microservice. This EventBridge rule is also responsible for generating a self-signed TLS certificate, in order to serve requests securely.
 
 <a href="microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_server_install/terraform/main.tf" target="_blank">microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_server_install/terraform/main.tf</a>
 
