@@ -287,6 +287,10 @@ The init() function initializes the connection to the Postgres database using th
 
 At the beginning of the main() function, the routes for invoking each of the microservice methods and the controller function responsible for each method are specified. 
 
+We can start the service by running the following command.
+
+sudo --preserve-env ./main
+
 The microservice is initialized on the GIN web server on a specific port and requires a TLS security certificate, which is generated and self-signed by the application itself.
 
 <a href="microservices_restful_ec2/blogs/source_code/main.go" target="_blank">microservices_restful_ec2/blogs/source_code/main.go</a>
@@ -308,10 +312,6 @@ The VerifyToken() function extracts the token sent by the client and makes a con
 <img src="images/restful_blogs_4.png"/>
 
 <img src="images/restful_blogs_5.png"/>
-
-We can start the service by running the following command.
-
-sudo --preserve-env ./main
 
 ## Testing server-based RESTful microservices with Postman
 
