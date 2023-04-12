@@ -373,6 +373,16 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 
 <img src="images/grpc_client_2.png"/>
 
+We create an EventBridge rule of type "Schedule"/"Run Command".
+
+<a href="main.tf" target="_blank">main.tf</a>
+
+<img src="images/grpc_client_3.png"/>
+
+
+------------
+
+
 The configuration parameters that we will use for the EC2 instances are found in the variables file.
 
 <a href="terraform.tfvars" target="_blank">terraform.tfvars</a>
