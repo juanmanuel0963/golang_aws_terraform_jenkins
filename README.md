@@ -409,6 +409,8 @@ We add the necessary libraries to the import section. Specify the port on which 
 
 <img src="images/grpc_server_code_1.png"/>
 
+The main() method initializes the variables of the structure and starts the service to run on the specified port.
+
 <img src="images/grpc_server_code_2.png"/>
 
 <img src="images/grpc_server_code_3.png"/>
