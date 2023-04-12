@@ -324,3 +324,5 @@ As a response, we get the ID and creation date of the blog. You can see that HTT
 <img src="images/restful_blogs_test_3.png"/>
 
 ## Creating EC2 instances and configuring gRPC client and server.
+
+We will create a pair of EC2 instances in order to implement a gRPC client-server microservice.
