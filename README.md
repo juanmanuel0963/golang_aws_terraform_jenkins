@@ -418,6 +418,7 @@ Our gRPC user management microservice contains a method to create users.
 <img src="images/grpc_server_code_3.png"/>
 
 We can start the service by running the following command.
+
 sudo --preserve-env ./usermgmt_server
 
 Now that the microservice is up and listening on the specified port, we can start the client service and send requests to the server.
