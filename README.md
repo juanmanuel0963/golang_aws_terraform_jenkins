@@ -386,10 +386,7 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 <img src="images/grpc_client_4.png"/>
 
 
-------------
-
-
-The configuration parameters that we will use for the EC2 instances are found in the variables file.
+The configuration parameters that we will use for the two client and server EC2 instances are found in the variables file.
 
 <a href="terraform.tfvars" target="_blank">terraform.tfvars</a>
 
