@@ -315,6 +315,8 @@ sudo --preserve-env ./main
 
 ## Testing server-based RESTful microservices with Postman
 
+Now that the microservice is up and listening on the specified port we can test connectivity with Postman.
+
 The following image shows an example of an invocation in Postman to the method blog_create. As seen before, the microservice requires authentication with AWS Cognito. In this case, no authentication method is specified. As a response, the method sends an "Unauthorized" message.
 
 <img src="images/restful_blogs_test_1.png"/>
