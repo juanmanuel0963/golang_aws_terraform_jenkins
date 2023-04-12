@@ -405,6 +405,8 @@ This rule runs a cron job periodically to ensure that the service is always acti
 
 <b>gRPC Server</b>
 
+We add the necessary libraries to the import section. Specify the port on which the gRPC server-side microservice will be running. Create a structure with the variables we will need, such as the connection to the database and the user management proto buffer. Initialize the database connection using the GORM driver.
+
 <img src="images/grpc_server_code_1.png"/>
 
 <img src="images/grpc_server_code_2.png"/>
