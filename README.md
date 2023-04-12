@@ -310,6 +310,7 @@ The VerifyToken() function extracts the token sent by the client and makes a con
 <img src="images/restful_blogs_5.png"/>
 
 We can start the service by running the following command.
+
 sudo --preserve-env ./main
 
 ## Testing server-based RESTful microservices with Postman
