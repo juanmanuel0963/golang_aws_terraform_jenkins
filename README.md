@@ -403,6 +403,10 @@ This rule runs a cron job periodically to ensure that the service is always acti
 
 ## gRPC microservice written Golang on EC2: Users management
 
-<b>server</b>
+<b>gRPC Server</b>
 
-dd
+www
+
+<b>gRPC Client</b>
+
+www
