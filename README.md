@@ -400,3 +400,9 @@ The next step is to start the services for each of the gRPC client-side methods.
 This rule runs a cron job periodically to ensure that the service is always active.
 
 <img src="images/grpc_client_6.png"/>
+
+## gRPC microservice written Golang on EC2: Users management
+
+<b>server</b>
+
+dd
