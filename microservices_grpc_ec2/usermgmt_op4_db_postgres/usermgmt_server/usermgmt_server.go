@@ -19,15 +19,28 @@ const (
 	port = ":50054"
 )
 
-func NewUserManagementServer() *UserManagementServer {
-	return &UserManagementServer{}
-}
-
 type UserManagementServer struct {
-	//DB                  *pgx.Conn
 	DB                  *gorm.DB
 	first_user_creation bool
 	pb.UnimplementedUserManagementServer
+}
+
+func init() {
+	//Initialize DB conn
+	initializers.ConnectToDB()
+}
+
+func main() {
+	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
+	user_mgmt_server.DB = DB
+	user_mgmt_server.first_user_creation = true
+	if err := user_mgmt_server.Run(); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
+}
+
+func NewUserManagementServer() *UserManagementServer {
+	return &UserManagementServer{}
 }
 
 func (server *UserManagementServer) Run() error {
@@ -43,8 +56,6 @@ func (server *UserManagementServer) Run() error {
 	return s.Serve(lis)
 }
 
-// When user is added, read full userlist from file into
-// userlist struct, then append new user and write new userlist back to file
 func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.NewUser) (*pb.User, error) {
 
 	server.first_user_creation = false
@@ -90,17 +101,4 @@ func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUser
 		}
 	*/
 	return users_list, nil
-}
-func init() {
-	//Initialize DB conn
-	initializers.ConnectToDB()
-}
-
-func main() {
-	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
-	user_mgmt_server.DB = DB
-	user_mgmt_server.first_user_creation = true
-	if err := user_mgmt_server.Run(); err != nil {
-		log.Fatalf("failed to serve: %v", err)
-	}
 }

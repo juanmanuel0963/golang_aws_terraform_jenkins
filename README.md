@@ -405,7 +405,11 @@ This rule runs a cron job periodically to ensure that the service is always acti
 
 <b>gRPC Server</b>
 
-www
+<img src="images/grpc_server_code_1.png"/>
+
+<img src="images/grpc_server_code_2.png"/>
+
+<img src="images/grpc_server_code_3.png"/>
 
 <b>gRPC Client</b>
 
