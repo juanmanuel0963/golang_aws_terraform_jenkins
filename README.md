@@ -351,8 +351,18 @@ We will create 2 EC2 instances to expose gRPC microservices using the following 
 
 <img src="images/grpc_server_2.png"/>
 
-The configuration parameters that we will use for the EC2 instance are found in the variables file.
+<b>gRPC Client</b>
+
+<a href="main.tf" target="_blank">main.tf</a>
+
+<img src="images/grpc_client_1.png"/>
+
+<a href="ec2/grpc_instance/terraform/main.tf" target="_blank">ec2/grpc_instance/terraform/main.tf</a>
+
+<img src="images/grpc_client_2.png"/>
+
+The configuration parameters that we will use for the EC2 instances are found in the variables file.
 
 <a href="terraform.tfvars" target="_blank">terraform.tfvars</a>
 
-<img src="images/restful_server_3.png"/>
+<img src="images/restful_server_3.png"/> 
