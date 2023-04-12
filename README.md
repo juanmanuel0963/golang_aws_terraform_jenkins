@@ -363,7 +363,11 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 
 <img src="images/grpc_server_4.png"/>
 
+The next step is to start the services for each of the gRPC server-side methods. We do this by executing an EventBridge rule of type "Schedule" / "Run Command". 
+
 <img src="images/grpc_server_5.png"/>
+
+This rule runs a cron job periodically to ensure that the service is always active.
 
 <img src="images/grpc_server_6.png"/>
 
