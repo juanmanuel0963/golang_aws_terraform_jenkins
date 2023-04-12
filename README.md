@@ -413,7 +413,11 @@ The main() method initializes the variables of the structure and starts the serv
 
 <img src="images/grpc_server_code_2.png"/>
 
+Our gRPC user management microservice contains a method to create users. 
+
 <img src="images/grpc_server_code_3.png"/>
+
+Now that the microservice is up and listening on the specified port, we can start the client service and send requests to the server.
 
 <b>gRPC Client</b>
 
