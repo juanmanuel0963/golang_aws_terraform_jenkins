@@ -403,7 +403,7 @@ This rule runs a cron job periodically to ensure that the service is always acti
 
 ## gRPC microservice written in Golang on EC2: Users management
 
-<b>gRPC Server</b>
+<b>gRPC Server-side</b>
 
 We add the necessary libraries to the import section. Specify the port on which the gRPC server-side microservice will be running. Create a structure with the variables we will need, such as the connection to the database and the user management proto buffer. Initialize the database connection using the GORM driver.
 
@@ -416,6 +416,8 @@ The main() method initializes the variables of the structure and starts the serv
 Our gRPC user management microservice contains a method to create users. 
 
 <img src="images/grpc_server_code_3.png"/>
+
+go run .\usermgmt_server\usermgmt_server.go
 
 Now that the microservice is up and listening on the specified port, we can start the client service and send requests to the server.
 
