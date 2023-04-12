@@ -357,6 +357,8 @@ We create an EventBridge rule of type "Schedule"/"Run Command".
 
 <img src="images/grpc_server_3.png"/>
 
+<img src="images/grpc_server_4.png"/>
+
 <b>gRPC Client</b>
 
 <a href="main.tf" target="_blank">main.tf</a>

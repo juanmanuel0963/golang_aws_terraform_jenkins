@@ -114,7 +114,6 @@ resource "aws_cloudwatch_event_rule" "the_rule" {
   //description         = "${var.instance_name}_${var.function_name}_rule"
   name                = "${local.rule_name}"
   description         = "${local.rule_name}"  
-  //schedule_expression = "cron(0 * * * ? *)" //every one hour
   schedule_expression = "cron(0/10 * * * ? *)" //every 10 minutes
   //schedule_expression = "rate(1 minute)"
 }
@@ -124,9 +123,7 @@ resource "aws_cloudwatch_event_rule" "the_rule" {
 resource "aws_cloudwatch_event_target" "the_target" {
   target_id = "${var.instance_name}_${var.function_name}_target"
   arn       = "arn:aws:ssm:${var.region}::document/AWS-RunShellScript"
-  //input     = "{\"commands\":[\"ls -a\"]}"
   input     = "{\"commands\":[\"sudo snap install go --classic\",\"cd /home/ubuntu/\",\"sudo rm -rf golang_aws_terraform_jenkins\",\"git clone https://github.com/juanmanuel0963/golang_aws_terraform_jenkins.git\"]}" //,\"sudo shutdown -r now\"
-  //\"sudo chmod -R a+rwx /home/ubuntu/\",
   rule      = aws_cloudwatch_event_rule.the_rule.name
   role_arn  = aws_iam_role.the_iam_role.arn
 
