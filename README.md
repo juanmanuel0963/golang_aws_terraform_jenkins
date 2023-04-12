@@ -407,6 +407,8 @@ This rule runs a cron job periodically to ensure that the service is always acti
 
 We add the necessary libraries to the import section. Specify the port on which the gRPC server-side microservice will be running. Create a structure with the variables we will need, such as the connection to the database and the user management proto buffer. Initialize the database connection using the GORM driver.
 
+<a href="microservices_grpc_ec2/usermgmt_op4_db_postgres/usermgmt_server/usermgmt_server.go" target="_blank">microservices_grpc_ec2/usermgmt_op4_db_postgres/usermgmt_server/usermgmt_server.go</a>
+
 <img src="images/grpc_server_code_1.png"/>
 
 The main() method initializes the variables of the structure and starts the service to run on the specified port.
