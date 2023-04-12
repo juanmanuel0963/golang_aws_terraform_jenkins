@@ -110,8 +110,6 @@ resource "aws_iam_role_policy_attachment" "the_execution_role" {
 #-----Cloudwatch Rule--------
 
 resource "aws_cloudwatch_event_rule" "the_rule" {
-  //name                = "${var.instance_name}_${var.function_name}_rule"
-  //description         = "${var.instance_name}_${var.function_name}_rule"
   name                = "${local.rule_name}"
   description         = "${local.rule_name}"  
   schedule_expression = "cron(0/10 * * * ? *)" //every 10 minutes
