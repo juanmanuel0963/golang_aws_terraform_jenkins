@@ -401,7 +401,7 @@ This rule runs a cron job periodically to ensure that the service is always acti
 
 <img src="images/grpc_client_6.png"/>
 
-## gRPC microservice written Golang on EC2: Users management
+## gRPC microservice written in Golang on EC2: Users management
 
 <b>gRPC Server</b>
 
