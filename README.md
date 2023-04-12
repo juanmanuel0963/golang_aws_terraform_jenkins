@@ -341,7 +341,7 @@ The microservice will contain the following 5 methods with different strategies 
 
 We will create two EC2 instances to expose gRPC microservices using the following Terraform instructions.
 
-<b>gRPC Server</b>
+## Setting up gRPC Server
 
 <a href="main.tf" target="_blank">main.tf</a>
 
@@ -363,7 +363,7 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 
 <img src="images/grpc_server_4.png"/>
 
-<b>gRPC Client</b>
+## Setting up gRPC Client
 
 <a href="main.tf" target="_blank">main.tf</a>
 
@@ -384,7 +384,6 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 <a href="microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf" target="_blank">microservices_grpc_ec2/usermgmt_op1_no_persistence/eventbridge_client_install/terraform/main.tf</a>
 
 <img src="images/grpc_client_4.png"/>
-
 
 The configuration parameters that we will use for the two client and server EC2 instances are found in the variables file.
 
