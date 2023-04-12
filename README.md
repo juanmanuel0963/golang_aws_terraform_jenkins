@@ -341,6 +341,7 @@ The microservice will contain the following 5 methods with different strategies 
 
 We will create 2 EC2 instances to expose gRPC microservices using the following Terraform instructions.
 
+<b>gRPC Server</b>
 
 <a href="main.tf" target="_blank">main.tf</a>
 
