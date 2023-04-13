@@ -21,9 +21,9 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#defining-network-level-security">Defining network-level security</a>
 
-<a href="#defining-deployment-environments">Creating the Postgresql database</a>
+<a href="#creating-the-postgresql-database">Creating the Postgresql database</a>
 
-<a href="#defining-deployment-environments">Creating the API Gateway</a>
+<a href="#creating-the-api-gateway">Creating the API Gateway</a>
 
 <a href="#defining-deployment-environments">Creating lambda functions</a>
 
