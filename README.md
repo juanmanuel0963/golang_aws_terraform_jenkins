@@ -445,6 +445,10 @@ The main() function is responsible for establishing a connection with the server
 
 For the purpose of the example, it creates a user and invokes the CreateNewUser function on the server.
 
+We can invoke the client service by running the following command. However, this command is executed directly by Terraform as mentioned before.
+
+    sudo --preserve-env ./usermgmt_client
+
 The server responds with the Id of the newly created user.
 
 The user is created in the database with a name and age.
