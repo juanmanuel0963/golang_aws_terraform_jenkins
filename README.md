@@ -317,7 +317,7 @@ We can start the service by running the following command.
 
 ## Testing server-based RESTful microservices with Postman
 
-Now that the microservice is up and listening on the specified port we can test connectivity with Postman.
+Now that the server-side gRPC microservice is up and listening on the specified port we can test connectivity with Postman.
 
 The following image shows an example of an invocation in Postman to the function blog_create. As seen before, the microservice requires authentication with AWS Cognito. In this case, no authentication function is specified. As a response, the function sends an "Unauthorized" message.
 
