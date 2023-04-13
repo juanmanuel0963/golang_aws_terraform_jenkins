@@ -435,4 +435,4 @@ Now that the microservice is up and listening on the specified port, we can star
 
 <b>gRPC client-side Golang code</b>
 
-www
+<img src="images/grpc_client_code_1.png"/>

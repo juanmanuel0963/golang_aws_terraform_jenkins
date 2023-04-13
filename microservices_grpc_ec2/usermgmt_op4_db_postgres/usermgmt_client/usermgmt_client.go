@@ -13,13 +13,9 @@ import (
 	"google.golang.org/grpc/credentials/insecure"
 )
 
-const (
-// address = "localhost:50054"
-// address = "172.31.92.9:50051"
-)
+const ()
 
 func main() {
-	//conn, err := grpc.Dial(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	conn, err := grpc.Dial(os.Getenv("server_address")+":50054", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
 		log.Fatalf("did not connect: %v", err)
