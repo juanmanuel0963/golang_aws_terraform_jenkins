@@ -503,18 +503,16 @@ Since the EventBridge rule is executed every minute, we see that a new user has 
 
 Before running the deployment, we must build the executable files for each of the microservices. We do this by executing steps 1 to 3.
 
-step_1_delete_exe_files
+Step 1: Delete exe files. step_1_delete_exe_files
 
-step_2_build_rest_executables
+Step 2: Build RESTful executables. step_2_build_rest_executables
 
-step_3_build_grpc_op_executables
+Step 3: Build gRPC executables. step_3_build_grpc_op_executables
 
-Once the code is compiled, we must upload the changes to the Github repository.
+Step 4: Once the code is compiled, we must upload the changes to the Github repository.
 
-Once the changes are in Github, we can execute steps 4 and 5 to deploy the code to the "Development" and "Testing" environments.
+Step 4: Deploy to Dev environment. step_4_deploy_dev
 
-step_4_deploy_dev
-
-step_5_deploy_test
+Step 5: Deploy to Test environment. step_5_deploy_test
 
 ## 	Deploy through Jenkins
