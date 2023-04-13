@@ -29,27 +29,27 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#lambda-functions-written-in-golang-contacts-insert">Lambda functions written in Golang: Contacts Insert</a>
 
-<a href="#implementing-iam-authentication-authorization-in-lambda-functions">Implementing IAM authentication & authorization in lambda functions</a>
+<a href="#implementing-iam-authentication--authorization-in-lambda-functions">Implementing IAM authentication & authorization in lambda functions</a>
 
-<a href="#defining-deployment-environments">Testing lambda functions with Postman</a>
+<a href="#testing-lambda-functions-with-postman">Testing lambda functions with Postman</a>
 
-<a href="#defining-deployment-environments">Creating EC2 Instance and configuring RESTful Server</a>
+<a href="#creating-ec2-instance-and-configuring-restful-server">Creating EC2 Instance and configuring RESTful Server</a>
 
-<a href="#defining-deployment-environments">Server-based RESTful microservice written Golang on EC2: Blogs management</a>
+<a href="#server-based-restful-microservice-written-golang-on-ec2-blogs-management">Server-based RESTful microservice written Golang on EC2: Blogs management</a>
 
-<a href="#defining-deployment-environments">Testing server-based RESTful microservices with Postman</a>
+<a href="#testing-server-based-restful-microservices-with-postman">Testing server-based RESTful microservices with Postman</a>
 
-<a href="#defining-deployment-environments">Creating EC2 instances and configuring gRPC client and server</a>
+<a href="#creating-ec2-instances-and-configuring-grpc-client-and-server">Creating EC2 instances and configuring gRPC client and server</a>
 
-<a href="#defining-deployment-environments">Setting up gRPC Server</a>
+<a href="#setting-up-grpc-server">Setting up gRPC Server</a>
 
-<a href="#defining-deployment-environments">Setting up gRPC Client</a>
+<a href="#setting-up-grpc-client">Setting up gRPC Client</a>
 
-<a href="#defining-deployment-environments">gRPC microservice written in Golang on EC2: Users management</a>
+<a href="#grpc-microservice-written-in-golang-on-ec2-users-management">gRPC microservice written in Golang on EC2: Users management</a>
 
-<a href="#defining-deployment-environments">gRPC server-side Golang code</a>
+<a href="#grpc-server-side-golang-code">gRPC server-side Golang code</a>
 
-<a href="#defining-deployment-environments">gRPC client-side Golang code</a>
+<a href="#grpc-client-side-golang-code">gRPC client-side Golang code</a>
 
 
 -----------------------------
