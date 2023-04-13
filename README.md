@@ -15,12 +15,13 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <b>Contents</b>
 
-<a href="#defining-deployment-environments" color="green">Defining deployment environments</a>
+<a href="#defining-deployment-environments">Defining deployment environments</a>
 
 <a href="#defining-infrastructure-with-terraform">Defining infrastructure with Terraform</a>
 
 <a href="#defining-network-level-security">Defining network-level security</a>
 
+-----------------------------
 
 ## Defining deployment environments
 For our project, we will define 3 types of environments: Development, Testing, and Production. Previously, we should have created 3 independent accounts within our Organization.
