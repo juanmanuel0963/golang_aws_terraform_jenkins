@@ -47,6 +47,9 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#defining-deployment-environments">gRPC microservice written in Golang on EC2: Users management</a>
 
+<a href="#defining-deployment-environments">gRPC server-side Golang code</a>
+
+<a href="#defining-deployment-environments">gRPC client-side Golang code</a>
 
 
 -----------------------------
@@ -450,7 +453,7 @@ This rule runs a cron job periodically to ensure that the service is always acti
 
 ## gRPC microservice written in Golang on EC2: Users management
 
-<b>gRPC server-side Golang code</b>
+## gRPC server-side Golang code
 
 We add the necessary libraries to the import section. Specify the port on which the gRPC server-side microservice will be running. Create a structure with the variables we will need, such as the connection to the database and the user management proto buffer. Initialize the database connection using the GORM driver.
 
@@ -472,7 +475,7 @@ We can start up the service by executing the following command. However, this co
 
 Now that the microservice is up and listening on the specified port, we can start the client service and send requests to the server.
 
-<b>gRPC client-side Golang code</b>
+## gRPC client-side Golang code
 
 We add the necessary libraries to the "import" section, including the user management proto buffer.
 
