@@ -498,3 +498,6 @@ The user is created in the database with a name and age.
 <img src="images/grpc_client_code_2.png"/>
 
 Since the EventBridge rule is executed every minute, we see that a new user has been created in the Postgresql database every minute.
+
+## 	Deploy through Terraform
+
