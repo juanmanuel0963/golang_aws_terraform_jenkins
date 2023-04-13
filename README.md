@@ -479,6 +479,8 @@ Now that the microservice is up and listening on the specified port, we can star
 
 We add the necessary libraries to the "import" section, including the user management proto buffer.
 
+<a href="microservices_grpc_ec2/usermgmt_op4_db_postgres/usermgmt_client/usermgmt_client.go" target="_blank">microservices_grpc_ec2/usermgmt_op4_db_postgres/usermgmt_server/usermgmt_server.go</a>
+
 The main() function is responsible for establishing a connection with the server.
 
 <img src="images/grpc_client_code_1.png"/>
