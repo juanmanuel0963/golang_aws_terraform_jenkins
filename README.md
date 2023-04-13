@@ -25,9 +25,9 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#creating-the-api-gateway">Creating the API Gateway</a>
 
-<a href="#defining-deployment-environments">Creating lambda functions</a>
+<a href="#Creating-lambda-functions">Creating lambda functions</a>
 
-<a href="#defining-deployment-environments">Lambda functions written in Golang: Contacts Insert</a>
+<a href="#lambda-functions-written-in-golang-contacts-insert">Lambda functions written in Golang: Contacts Insert</a>
 
 <a href="#defining-deployment-environments">Implementing IAM authentication & authorization in lambda functions</a>
 
