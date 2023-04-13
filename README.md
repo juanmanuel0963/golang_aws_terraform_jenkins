@@ -21,6 +21,34 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#defining-network-level-security">Defining network-level security</a>
 
+<a href="#defining-deployment-environments">Creating the Postgresql database</a>
+
+<a href="#defining-deployment-environments">Creating the API Gateway</a>
+
+<a href="#defining-deployment-environments">Creating lambda functions</a>
+
+<a href="#defining-deployment-environments">Lambda functions written in Golang: Contacts Insert</a>
+
+<a href="#defining-deployment-environments">Implementing IAM authentication & authorization in lambda functions</a>
+
+<a href="#defining-deployment-environments">Testing lambda functions with Postman</a>
+
+<a href="#defining-deployment-environments">Creating EC2 Instance and configuring RESTful Server</a>
+
+<a href="#defining-deployment-environments">Server-based RESTful microservice written Golang on EC2: Blogs management</a>
+
+<a href="#defining-deployment-environments">Testing server-based RESTful microservices with Postman</a>
+
+<a href="#defining-deployment-environments">Creating EC2 instances and configuring gRPC client and server</a>
+
+<a href="#defining-deployment-environments">Setting up gRPC Server</a>
+
+<a href="#defining-deployment-environments">Setting up gRPC Client</a>
+
+<a href="#defining-deployment-environments">gRPC microservice written in Golang on EC2: Users management</a>
+
+
+
 -----------------------------
 
 ## Defining deployment environments
@@ -72,7 +100,7 @@ Once Terraform has created the initial server and database, we create the "Compa
 
 We will use GORM for database resources definition when creating RESTful microservices and gRPC microservices.
 
-## Creating the API Gateway 
+## Creating the API Gateway
 The API Gateway will allow us to access a collection of microservices under the same domain name. In this project, the API Gateway will give us access to lambda functions to perform CRUD operations on a Contacts table.
 
 <a href="main.tf" target="_blank">./main.tf</a>
@@ -84,8 +112,7 @@ The API Gateway will allow us to access a collection of microservices under the 
 <img src="images/api_gateway_resources.png"/>
 
 
-
-## Creating lambda functions. 
+## Creating lambda functions
 The next step is to create the lambda functions and associate them with the API Gateway we just created. We are going to create several functions int Golang to perform CRUD operations, as well as more specialized functions to perform searches through dynamic filters or paginated searches. The lambda functions that we will create and associate with the API Gateway are as follows:
 
 &#x2022; contacts insert
@@ -198,7 +225,7 @@ In the following image, an example of a contacts_insert function invocation in P
 
 <img src="images/contacts_insert_auth_5.png"/>
 
-## Creating EC2 Instance and configuring RESTful Server
+## Creating EC2 instance and configuring RESTful Server
 
 Inside our RESTful server, we will have hosted 4 microservices with the following functions.
 
@@ -341,7 +368,7 @@ As a response, we get the ID and creation date of the blog. You can see that HTT
 
 <img src="images/restful_blogs_test_3.png"/>
 
-## Creating EC2 instances and configuring gRPC client and server.
+## Creating EC2 instances and configuring gRPC client and server
 
 We will create a pair of EC2 instances in order to implement a client-server gRPC microservice architecture.
 
