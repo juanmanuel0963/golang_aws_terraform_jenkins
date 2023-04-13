@@ -441,10 +441,10 @@ We add the necessary libraries to the "import" section, including the user manag
 
 The main() function is responsible for establishing a connection with the server.
 
+<img src="images/grpc_client_code_1.png"/>
+
 For the purpose of the example, it creates a user and invokes the CreateNewUser function on the server.
 
 The server responds with the Id of the newly created user.
-
-<img src="images/grpc_client_code_1.png"/>
 
 The user is created in the database with a name and age.
