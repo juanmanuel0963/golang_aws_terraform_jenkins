@@ -313,7 +313,7 @@ The VerifyToken() function extracts the token sent by the client and makes a con
 
 We can start the service by running the following command.
 
-sudo --preserve-env ./main
+    sudo --preserve-env ./main
 
 ## Testing server-based RESTful microservices with Postman
 
@@ -431,7 +431,7 @@ Our gRPC user management microservice contains a function to create users.
 
 We can start up the service by executing the following command. However, this command is executed directly by Terraform as indicated earlier.
 
-sudo --preserve-env ./usermgmt_server
+    sudo --preserve-env ./usermgmt_server
 
 Now that the microservice is up and listening on the specified port, we can start the client service and send requests to the server.
 
