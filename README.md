@@ -15,11 +15,11 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <b>Contents</b>
 
-<a href="#defining-deployment-environments" target="_blank">Defining deployment environments</a>
+<a href="#defining-deployment-environments">Defining deployment environments</a>
 
-<a href="#defining-infrastructure-with-terraform" target="_blank">Defining infrastructure with Terraform</a>
+<a href="#defining-infrastructure-with-terraform">Defining infrastructure with Terraform</a>
 
-<a href="#defining-network-level-security" target="_blank">Defining Network-level security</a>
+<a href="#defining-network-level-security">Defining Network-level security</a>
 
 
 ## Defining deployment environments
