@@ -102,17 +102,19 @@ As always, everything starts with the main.tf file located in the root folder.
 
 <img src="images/contacts_insert_resources_1.png"/>
 
-We use S3 buckets so that Terraform can upload the compiled executable code in a zip file and then migrate it to the lambda function. Previously, we must have compiled the source code into an executable file for the target operating system, in this case Linux.
+We use S3 buckets so that Terraform can upload the compiled executable code in a zip file and then migrate it to the lambda function. 
+
+Previously, we must have compiled the source code into an executable file for the target operating system, in this case Linux.
 
 We can compile the code into an executable file by invoking the following commands:
 
 --before build binary to upload to AWS
 
-$Env:GOOS = "linux" 
+    $Env:GOOS = "linux" 
 
 --build
 
-go build main.go
+    go build main.go
 
 
 <img src="images/contacts_insert_resources_2.png"/>
@@ -188,7 +190,7 @@ In the following image, an example of a contacts_insert function invocation in P
 
 ## Creating EC2 Instance and configuring RESTful Server
 
-Inside our RESTful server, we will have hosted 4 microservices with the following methods.
+Inside our RESTful server, we will have hosted 4 microservices with the following functions.
 
 <b>Blogs</b>
 
@@ -285,7 +287,7 @@ Our Blog management microservice is implemented using the model-view-controller 
 
 The init() function initializes the connection to the Postgres database using the GORM connection driver.  
 
-At the beginning of the main() function, the routes for invoking each of the microservice methods and the controller function responsible for each method are specified. 
+At the beginning of the main() function, the routes for invoking each of the microservice functions and the controller function responsible for each function are specified. 
 
 The microservice is initialized on the GIN web server on a specific port and requires a TLS security certificate, which is generated and self-signed by the application itself.
 
@@ -301,7 +303,7 @@ The microservice is initialized on the GIN web server on a specific port and req
 
 <img src="images/restful_blogs_3.png"/>
 
-The VerifyToken() function extracts the token sent by the client and makes a connection to the Cognito authentication service created previously for our application. If the token is valid, the execution flow continues normally. If the token is not valid, the client cannot be authenticated and therefore cannot invoke the requested method.
+The VerifyToken() function extracts the token sent by the client and makes a connection to the Cognito authentication service created previously for our application. If the token is valid, the execution flow continues normally. If the token is not valid, the client cannot be authenticated and therefore cannot invoke the requested function.
 
 <a href="cognito/auth_token/source_code/verify_token/verify_token.go" target="_blank">cognito/auth_token/source_code/verify_token/verify_token.go</a>
 
@@ -317,15 +319,15 @@ sudo --preserve-env ./main
 
 Now that the microservice is up and listening on the specified port we can test connectivity with Postman.
 
-The following image shows an example of an invocation in Postman to the method blog_create. As seen before, the microservice requires authentication with AWS Cognito. In this case, no authentication method is specified. As a response, the method sends an "Unauthorized" message.
+The following image shows an example of an invocation in Postman to the function blog_create. As seen before, the microservice requires authentication with AWS Cognito. In this case, no authentication function is specified. As a response, the function sends an "Unauthorized" message.
 
 <img src="images/restful_blogs_test_1.png"/>
 
-In the following image, we see an example of an invocation of the blog_create method. In this case, we obtain and specify an AWS Cognito token. 
+In the following image, we see an example of an invocation of the blog_create function. In this case, we obtain and specify an AWS Cognito token. 
 
 <img src="images/restful_blogs_test_2.png"/>
 
-As a response, we get the ID and creation date of the blog. You can see that HTTPS was used to invoke the method. This is possible because the microservice generates a self-signed TLS security certificate.
+As a response, we get the ID and creation date of the blog. You can see that HTTPS was used to invoke the function. This is possible because the microservice generates a self-signed TLS security certificate.
 
 <img src="images/restful_blogs_test_3.png"/>
 
@@ -333,9 +335,9 @@ As a response, we get the ID and creation date of the blog. You can see that HTT
 
 We will create a pair of EC2 instances in order to implement a client-server gRPC microservice architecture.
 
-The microservice will contain the following 5 methods with different strategies for user creation and data persistence.
+The microservice will contain the following 5 functions with different strategies for user creation and data persistence.
 
-&#x2022; Sending client data to server without persistence method.
+&#x2022; Sending client data to server without persistence function.
 
 &#x2022; Sending client data to server with in-memory persistence.
 
@@ -343,7 +345,7 @@ The microservice will contain the following 5 methods with different strategies 
 
 &#x2022; Sending client data to server with Postgresql database persistence.
 
-&#x2022; Sending data from RESTful method to client and from client to server with Postgresql database persistence.
+&#x2022; Sending data from RESTful function to client and from client to server with Postgresql database persistence.
 
 ## Setting up gRPC Server
 
@@ -369,7 +371,7 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 
 <img src="images/grpc_server_4.png"/>
 
-The next step is to start the services for each of the gRPC server-side methods. We do this by executing an EventBridge rule of type "Schedule" / "Run Command". 
+The next step is to start the services for each of the gRPC server-side functions. We do this by executing an EventBridge rule of type "Schedule" / "Run Command". 
 
 <img src="images/grpc_server_5.png"/>
 
@@ -401,7 +403,7 @@ This rule executes a cron job periodically. This EventBridge rule is responsible
 
 <img src="images/grpc_client_4.png"/>
 
-The next step is to start the services for each of the gRPC client-side methods. We do this by executing an EventBridge rule of type "Schedule" / "Run Command". 
+The next step is to start the services for each of the gRPC client-side functions. We do this by executing an EventBridge rule of type "Schedule" / "Run Command". 
 
 <img src="images/grpc_client_5.png"/>
 
@@ -419,11 +421,11 @@ We add the necessary libraries to the import section. Specify the port on which 
 
 <img src="images/grpc_server_code_1.png"/>
 
-The main() method initializes the variables of the structure and starts the service to run on the specified port.
+The main() function initializes the variables of the structure and starts the service to run on the specified port.
 
 <img src="images/grpc_server_code_2.png"/>
 
-Our gRPC user management microservice contains a method to create users. 
+Our gRPC user management microservice contains a function to create users. 
 
 <img src="images/grpc_server_code_3.png"/>
 
