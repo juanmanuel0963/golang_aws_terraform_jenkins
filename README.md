@@ -448,3 +448,5 @@ For the purpose of the example, it creates a user and invokes the CreateNewUser 
 The server responds with the Id of the newly created user.
 
 The user is created in the database with a name and age.
+
+<img src="images/grpc_client_code_2.png"/>
