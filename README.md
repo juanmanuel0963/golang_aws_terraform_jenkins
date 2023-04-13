@@ -445,7 +445,7 @@ The main() function is responsible for establishing a connection with the server
 
 For the purpose of the example, it creates a user and invokes the CreateNewUser function on the server.
 
-We can invoke the client service by running the following command. However, this command is executed directly by Terraform as mentioned before.
+We can invoke the client service by executing the following command. However, this command is executed directly by Terraform through an Eventbridge rule as indicated earlier.
 
     sudo --preserve-env ./usermgmt_client
 
@@ -454,3 +454,5 @@ The server responds with the Id of the newly created user.
 The user is created in the database with a name and age.
 
 <img src="images/grpc_client_code_2.png"/>
+
+Since the EventBridge rule is executed every minute, we see that a new user has been created in the Postgresql database every minute.
