@@ -17,7 +17,6 @@ go build usermgmt_client.go
 cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op1_no_persistence\usermgmt_server
 go build usermgmt_server.go
 
-
 ::Build Files :: usermgmt_op2_in_memory-------------
 
 ::usermgmt_client
@@ -27,7 +26,6 @@ go build usermgmt_client.go
 ::usermgmt_server
 cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op2_in_memory\usermgmt_server
 go build usermgmt_server.go
-
 
 ::Build Files :: usermgmt_op3_json_file-------------
 
