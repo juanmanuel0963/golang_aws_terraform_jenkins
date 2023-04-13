@@ -19,7 +19,7 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#defining-infrastructure-with-terraform">Defining infrastructure with Terraform</a>
 
-<a href="#defining-network-level-security">Defining Network-level security</a>
+<a href="#defining-network-level-security">Defining network-level security</a>
 
 
 ## Defining deployment environments
@@ -30,7 +30,7 @@ The creation of the Organization and the creation of Accounts are outside the sc
 ## Defining infrastructure with Terraform
 The backbone for creating infrastructure resources is the <a href="main.tf" target="_blank">main.tf</a> file, which is located in the root folder. This file in turn refers to sub-files with specific content for configuring and creating resources. Configuration variables are located in the <a href="terraform.tfvars" target="_blank">terraform.tfvars</a> file.
 
-## Defining Network-level security
+## Defining network-level security
 Within each account/environment, we will specify the availability zone we want to use. Within the default assigned Virtual Private Network, we will create a Security Group. 
 This Security Group will allow us to define the inbound and outbound rules we need to interact with our infrastructure resources, such as Databases or EC2 instances.
 
