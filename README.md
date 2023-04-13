@@ -13,7 +13,11 @@ We will be using AWS as our cloud platform. We will be using Golang as our progr
 
 We will also be using Terraform to deploy the infrastructure and functional code to the Development and Testing environments. For deploying the infrastructure and functional code to the Production environment, we will be using Jenkins.
 
-<a href="#defining-deployment-environments" target="_blank">Defining infrastructure with Terraform</a>
+<b>Contents</b>
+
+<a href="#defining-deployment-environments" target="_blank">Defining deployment environments</a>
+
+<a href="#defining-infrastructure-with-terraform" target="_blank">Defining infrastructure with Terraform</a>
 
 <a href="#defining-network-level-security" target="_blank">Defining Network-level security</a>
 
