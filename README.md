@@ -29,7 +29,7 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#lambda-functions-written-in-golang-contacts-insert">Lambda functions written in Golang: Contacts Insert</a>
 
-<a href="#defining-deployment-environments">Implementing IAM authentication & authorization in lambda functions</a>
+<a href="#implementing-iam-authentication-authorization-in-lambda-functions">Implementing IAM authentication & authorization in lambda functions</a>
 
 <a href="#defining-deployment-environments">Testing lambda functions with Postman</a>
 
