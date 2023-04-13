@@ -437,4 +437,14 @@ Now that the microservice is up and listening on the specified port, we can star
 
 <b>gRPC client-side Golang code</b>
 
+We add the necessary libraries to the "import" section, including the user management proto buffer.
+
+The main() function is responsible for establishing a connection with the server.
+
+For the purpose of the example, it creates a user and invokes the CreateNewUser function on the server.
+
+The server responds with the Id of the newly created user.
+
 <img src="images/grpc_client_code_1.png"/>
+
+The user is created in the database with a name and age.
