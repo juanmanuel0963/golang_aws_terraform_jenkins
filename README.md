@@ -15,7 +15,7 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <b>Contents</b>
 
-<a href="#defining-deployment-environments">Defining deployment environments</a>
+<a href="#defining-deployment-environments" color="green">Defining deployment environments</a>
 
 <a href="#defining-infrastructure-with-terraform">Defining infrastructure with Terraform</a>
 
