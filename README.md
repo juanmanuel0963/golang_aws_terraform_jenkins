@@ -551,9 +551,9 @@ Step 6: Deploy to Test environment.
 
 <a href="step_6_deploy_test.cmd" target="_blank">step_6_deploy_test.cmd</a>
 
-    ::AWS authentication - Tools Environment-------------
+    ::AWS authentication - Test Environment-------------
 
-    set AWS_PROFILE=tools
+    set AWS_PROFILE=test
     
     ::ls env:
     
