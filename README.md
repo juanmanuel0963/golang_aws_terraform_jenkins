@@ -499,7 +499,7 @@ The user is created in the database with a name and age.
 
 Since the EventBridge rule is executed every minute, we see that a new user has been created in the Postgresql database every minute.
 
-## 	Deploy through Terraform
+## 	CI/CD through Terraform
 
 Below you will find the steps to make infrastructure and executable code changes in the "Dev" and "Test" environments in AWS using the command line and Terraform.
 
@@ -573,4 +573,6 @@ Step 6: Deploy to Test environment.
     
     terraform apply -auto-approve "output_plan_tools.tfplan"
 
-## 	Deploy through Jenkins
+## 	CI/CD through Jenkins
+
+terraform
