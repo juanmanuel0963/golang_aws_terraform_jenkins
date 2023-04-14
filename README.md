@@ -511,7 +511,9 @@ Step 2: Build RESTful executables.
 
 <a href="step_2_build_rest_executables.cmd" target="_blank">step_2_build_rest_executables.cmd</a>
 
-Step 3: Build gRPC executables. step_3_build_grpc_op_executables
+Step 3: Build gRPC executables. 
+
+<a href="step_3_build_grpc_executables.cmd" target="_blank">step_3_build_grpc_executables.cmd</a>
 
 Step 4: Once the code is compiled, we must upload the changes to the Github repository.
 
