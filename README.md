@@ -49,8 +49,9 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#grpc-server-side-golang-code">gRPC server-side Golang code</a>
 
-<a href="#grpc-client-side-golang-code">gRPC client-side Golang code</a>
+<a href="#cicd-through-terraform">CI/CD through Terraform</a>
 
+<a href="#cicd-through-jenkins">CI/CD through Jenkins</a>
 
 -----------------------------
 
