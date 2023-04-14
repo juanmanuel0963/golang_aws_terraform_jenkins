@@ -551,4 +551,26 @@ Step 6: Deploy to Test environment.
 
 <a href="step_6_deploy_test.cmd" target="_blank">step_6_deploy_test.cmd</a>
 
+    ::AWS authentication - Tools Environment-------------
+
+    set AWS_PROFILE=tools
+    
+    ::ls env:
+    
+    ::--------Terraform - Infrastructure setup-------------
+    
+    terraform workspace new test
+    
+    terraform workspace select test
+    
+    terraform workspace list
+    
+    terraform init
+    
+    terraform validate
+    
+    terraform plan -var db_password="your_password" -out "output_plan_tools.tfplan"
+    
+    terraform apply -auto-approve "output_plan_tools.tfplan"
+
 ## 	Deploy through Jenkins
