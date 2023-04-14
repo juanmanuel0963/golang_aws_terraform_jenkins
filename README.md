@@ -515,10 +515,16 @@ Step 3: Build gRPC executables.
 
 <a href="step_3_build_grpc_executables.cmd" target="_blank">step_3_build_grpc_executables.cmd</a>
 
-Step 4: Once the code is compiled, we must upload the changes to the Github repository.
+Step 4: Upload files to Github.
 
-Step 4: Deploy to Dev environment. step_4_deploy_dev
+Once the code is compiled, we must upload the changes to the Github repository.
 
-Step 5: Deploy to Test environment. step_5_deploy_test
+Step 4: Deploy to Dev environment. 
+
+<a href="step_4_deploy_dev.cmd" target="_blank">step_4_deploy_dev.cmd</a>
+
+Step 5: Deploy to Test environment. 
+
+<a href="step_5_deploy_test.cmd" target="_blank">step_5_deploy_test.cmd</a>
 
 ## 	Deploy through Jenkins
