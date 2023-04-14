@@ -503,7 +503,7 @@ Since the EventBridge rule is executed every minute, we see that a new user has 
 
 Before running the deployment, we must build the executable files for each of the microservices. We do this by executing steps 1 to 3.
 
-Step 1: Delete exe files. 
+Step 1: Delete executable files. 
 
 <a href="step_1_delete_exe_files.cmd" target="_blank">step_1_delete_exe_files.cmd</a>
 
