@@ -507,8 +507,9 @@ Step 1: Delete executable files.
 
 <a href="step_1_delete_exe_files.cmd" target="_blank">step_1_delete_exe_files.cmd</a>
 
+Step 2: Build RESTful executables. 
 
-Step 2: Build RESTful executables. step_2_build_rest_executables
+<a href="step_2_build_rest_executables.cmd" target="_blank">step_2_build_rest_executables.cmd</a>
 
 Step 3: Build gRPC executables. step_3_build_grpc_op_executables
 
