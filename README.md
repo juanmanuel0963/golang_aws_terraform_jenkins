@@ -501,6 +501,8 @@ Since the EventBridge rule is executed every minute, we see that a new user has 
 
 ## 	Deploy through Terraform
 
+Below you will find the steps to make infrastructure and executable code changes in the "Dev" and "Test" environments in AWS using the command line and Terraform.
+
 Before running the deployment, we must build the executable files for each of the microservices. We do this by executing steps 1 to 3.
 
 Step 1: Delete executable files. 
