@@ -530,8 +530,6 @@ Step 5: Deploy to Dev environment.
 
     set AWS_PROFILE=dev
     
-    ::ls env:
-    
     ::--------Terraform - Infrastructure setup-------------
     
     terraform workspace new dev
@@ -557,8 +555,6 @@ Right after deploying to the "Development" environment, you can execute the depl
     ::AWS authentication - Test Environment-------------
 
     set AWS_PROFILE=test
-    
-    ::ls env:
     
     ::--------Terraform - Infrastructure setup-------------
     
