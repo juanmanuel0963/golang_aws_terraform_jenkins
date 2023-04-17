@@ -584,4 +584,8 @@ With the following configuration in Jenkins, we can create a new pipeline to exe
 
 <img src="jenkins-config/jenkins-3.jpg"/>
 
+<img src="jenkins-config/jenkins-4.jpg"/>
+
 <img src="jenkins-config/access_keys.jpg"/>
+
+<img src="jenkins-config/jenkins-5.jpg"/>
