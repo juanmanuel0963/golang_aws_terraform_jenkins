@@ -584,9 +584,11 @@ With the following configuration in Jenkins, we can create a new pipeline to exe
 
 <img src="jenkins-config/jenkins-3.jpg"/>
 
-<img src="jenkins-config/jenkins-4.jpg"/>
+We save the AWS access credentials as Jenkins credentials.
 
 <img src="jenkins-config/access_keys.jpg"/>
+
+<img src="jenkins-config/jenkins-4.jpg"/>
 
 After a few minutes of execution, we get confirmation that the changes were successfully executed.
 
