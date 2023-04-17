@@ -550,6 +550,8 @@ Step 5: Deploy to Dev environment.
 
 Step 6: Deploy to Test environment. 
 
+Right after deploying to the "Development" environment, you can execute the deployment to the "Test" environment by running step 6.
+
 <a href="step_6_deploy_test.cmd" target="_blank">step_6_deploy_test.cmd</a>
 
     ::AWS authentication - Test Environment-------------
