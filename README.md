@@ -583,3 +583,5 @@ Jenkins pipeline configuration
 <img src="jenkins-config/jenkins-2.jpg"/>
 
 <img src="jenkins-config/jenkins-3.jpg"/>
+
+<img src="jenkins-config/access_keys.jpg"/>
