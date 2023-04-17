@@ -590,7 +590,7 @@ We save the AWS access credentials as Jenkins credentials.
 
 <img src="jenkins-config/access_keys.jpg"/>
 
-We manually run the "Pipeline".
+We manually run the "Pipeline". It can also be configured to run periodically at the interval of our preference.
 
 <img src="jenkins-config/jenkins-4.jpg"/>
 
