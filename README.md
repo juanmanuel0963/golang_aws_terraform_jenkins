@@ -548,7 +548,7 @@ Step 5: Deploy to Dev environment.
 
 After a few minutes of execution, we get confirmation that the changes were successfully executed.
 
-<img src="jenkins-config/jenkins-5.jpg"/>
+<img src="jenkins-config/jenkins-6.jpg"/>
 
 Step 6: Deploy to Test environment. 
 
