@@ -578,6 +578,8 @@ With the following configuration in Jenkins, we can create a new pipeline to exe
 
 <img src="jenkins-config/jenkins-0.jpg"/>
 
+Our Jenkins pipeline is responsible for downloading the latest version of Terraform and Golang code from the Github repository. Then it connects to the AWS cloud using the access credentials that we have previously configured in AWS.
+
 <img src="jenkins-config/jenkins-1.jpg"/>
 
 <img src="jenkins-config/jenkins-2.jpg"/>
