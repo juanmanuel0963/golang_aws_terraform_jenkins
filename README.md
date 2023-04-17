@@ -588,6 +588,8 @@ We save the AWS access credentials as Jenkins credentials.
 
 <img src="jenkins-config/access_keys.jpg"/>
 
+We manually run the "Pipeline".
+
 <img src="jenkins-config/jenkins-4.jpg"/>
 
 After a few minutes of execution, we get confirmation that the changes were successfully executed.
