@@ -577,3 +577,5 @@ Step 6: Deploy to Test environment.
 ## 	CI/CD through Jenkins
 
 terraform
+
+<img src="images/grpc_client_code_2.png"/>
