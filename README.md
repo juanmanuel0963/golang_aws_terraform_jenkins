@@ -576,6 +576,10 @@ Step 6: Deploy to Test environment.
 
 ## 	CI/CD through Jenkins
 
-terraform
+Jenkins configuration
 
-<img src="images/grpc_client_code_2.png"/>
+<img src="jenkins-config/jenkins-1.jpg"/>
+
+<img src="jenkins-config/jenkins-2.jpg"/>
+
+<img src="jenkins-config/jenkins-3.jpg"/>
