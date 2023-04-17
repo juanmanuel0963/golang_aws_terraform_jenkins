@@ -576,6 +576,8 @@ Right after deploying to the "Development" environment, you can execute the depl
 
 With the following configuration in Jenkins, we can create a new pipeline to execute the deployment of the infrastructure we have created in Terraform and the executable Golang code of our Lambda, RESTful, and gRPC microservices.
 
+<img src="jenkins-config/jenkins-0.jpg"/>
+
 <img src="jenkins-config/jenkins-1.jpg"/>
 
 <img src="jenkins-config/jenkins-2.jpg"/>
