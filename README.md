@@ -588,4 +588,6 @@ With the following configuration in Jenkins, we can create a new pipeline to exe
 
 <img src="jenkins-config/access_keys.jpg"/>
 
+After a few minutes of execution, we get confirmation that the changes were successfully executed.
+
 <img src="jenkins-config/jenkins-5.jpg"/>
