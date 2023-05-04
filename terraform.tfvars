@@ -59,5 +59,8 @@ restful_ec2_invoices_port          = "3002"
 #restful_ec2_products
 restful_ec2_products_install_start = "products_start_service"
 restful_ec2_products_port          = "3003"
+#restful_ec2_users
+restful_ec2_users_install_start = "users_start_service"
+restful_ec2_users_port          = "3004"
 #restful_ec2_database_migrate
 restful_ec2_database_migrate    = "database_migrate"

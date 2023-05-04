@@ -25,6 +25,11 @@ go build main.go
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\invoices\source_code
 go build main.go
 
+::Build Files :: Users-------------
+::Users - web server
+cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\users\source_code
+go build main.go
+
 ::--------Back to root folder-------------
 cd D:\projects\golang_aws_terraform_jenkins\
 

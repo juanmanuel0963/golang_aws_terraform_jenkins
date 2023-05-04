@@ -1382,6 +1382,45 @@ output "module_microservices_restful_ec2_products_install_start_rule_name" {
 }
 
 #############################################################################
+# VARIABLES - microservices_restful_ec2_users
+#############################################################################
+
+variable "restful_ec2_users_install_start" {
+  type    = string
+}
+
+variable "restful_ec2_users_port" {
+  type    = string
+}
+
+##################################################################################
+# microservices_restful_ec2_users - eventbridge_install_start - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_microservices_restful_ec2_users_install_start" {
+    source                            = "./microservices_restful_ec2/users/terraform"
+    region                            = var.region  
+    access_key                        = var.access_key 
+    secret_key                        = var.secret_key   
+    instance_name                     = var.restful_server_1_instance_name
+    instance_id                       = module.module_ec2_restful_server_1.aws_instance_id   
+    instance_private_ip               = module.module_ec2_restful_server_1.aws_instance_private_ip
+    function_name                     = var.restful_ec2_users_install_start
+    random_pet                        = local.random_pet
+    db_password                       = var.db_password
+    db_instance_address               = module.module_db_postgresql.aws_db_instance_address
+    db_instance_db_name               = module.module_db_postgresql.aws_db_instance_db_name
+    db_port                           = var.db_port
+    users_port                        = var.restful_ec2_users_port
+    aws_cognito_user_pool_id          = module.module_aws_cognito_user_pool.aws_cognito_user_pool_id
+}
+
+output "module_microservices_restful_ec2_users_install_start_rule_name" {
+  description = "EventBridge rule name"
+  value = module.module_microservices_restful_ec2_users_install_start.aws_cloudwatch_event_rule_name
+}
+
+#############################################################################
 # VARIABLES - microservices_restful_ec2_database_migrate
 #############################################################################
 

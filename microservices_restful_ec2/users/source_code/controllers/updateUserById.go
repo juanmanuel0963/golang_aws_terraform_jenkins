@@ -10,11 +10,6 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-type UpdateUserInput struct {
-	Username string `json:"username"`
-	Email    string `json:"email"`
-}
-
 func UpdateUserById(c *gin.Context) {
 
 	// Get user ID from path parameter
@@ -27,7 +22,7 @@ func UpdateUserById(c *gin.Context) {
 	}
 
 	//Get JSON request body
-	var inputUser UpdateUserInput
+	var inputUser User
 	if err := c.BindJSON(&inputUser); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -56,7 +51,7 @@ func UpdateUserById(c *gin.Context) {
 	}
 }
 
-func updateUserInDatabase(userId int, inputUser UpdateUserInput, userChannel chan<- User, errChannel chan<- error) {
+func updateUserInDatabase(userId int, inputUser User, userChannel chan<- User, errChannel chan<- error) {
 
 	// Simulate a database select by sleeping
 	time.Sleep(1 * time.Second)
