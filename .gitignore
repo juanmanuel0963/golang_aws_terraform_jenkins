@@ -54,3 +54,4 @@ build_commands_deploy_tools.cmd
 #terraform.tfvars
 #*.tfvars
 #*.tfvars.json
+microservices_restful_ec2/users/source_code/source_code.exe~
