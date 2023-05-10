@@ -56,7 +56,7 @@ func createUser(newUser models.User, userChannel chan<- models.User, errChannel 
 	result := initializers.DB.Create(&newUser)
 
 	if result.Error != nil {
-		errChannel <- errors.New("failed to create user. db error")
+		errChannel <- errors.New(result.Error.Error())
 	} else if newUser.ID == 0 {
 		errChannel <- errors.New("failed to create user")
 	} else {

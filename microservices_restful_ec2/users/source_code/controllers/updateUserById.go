@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 )
 
 func UpdateUserById(c *gin.Context) {
@@ -21,28 +22,28 @@ func UpdateUserById(c *gin.Context) {
 		return
 	}
 
-	//Get JSON request body
-	var inputUser BodyUser
-	if err := c.BindJSON(&inputUser); err != nil {
+	var body BodyUser
+
+	// Bind incoming JSON to user struct
+	if err := c.ShouldBindJSON(&body); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
-	fmt.Println(userId)
-	fmt.Println(inputUser)
+	var updateUser = models.User{Name: body.Name, Age: body.Age}
 
 	// Create a channel to communicate with the goroutine
-	userChannel := make(chan BodyUser)
+	userChannel := make(chan bool)
 	errChannel := make(chan error)
 
 	//Calling Go routine
-	go updateUserInDatabase(userId, inputUser, userChannel, errChannel)
+	go updateUserInDatabase(userId, updateUser, userChannel, errChannel)
 
 	// Wait for the user to be created and sent through the channel
 	select {
-	case theUser := <-userChannel:
+	case updatedUser := <-userChannel:
 		c.JSON(http.StatusOK, gin.H{
-			"user": theUser,
+			"status": updatedUser,
 		})
 	case err := <-errChannel:
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -51,6 +52,48 @@ func UpdateUserById(c *gin.Context) {
 	}
 }
 
+func updateUserInDatabase(userId int, updateUser models.User, userChannel chan<- bool, errChannel chan<- error) {
+
+	defer close(userChannel)
+	defer close(errChannel)
+
+	//fmt.Println("Printing")
+
+	//fmt.Println(updateUser)
+	fmt.Println("Go Routine")
+
+	fmt.Println("userId")
+	fmt.Println(userId)
+
+	var findUser models.User
+	result := initializers.DB.First(&findUser, userId)
+
+	fmt.Println("findUser")
+	fmt.Println(findUser)
+
+	if result.Error != nil {
+		errChannel <- errors.New(result.Error.Error())
+	} else if findUser.ID == 0 {
+		errChannel <- errors.New("failed to find user for updating")
+	}
+
+	// Update it
+	result = initializers.DB.Model(&findUser).Updates(updateUser)
+
+	fmt.Println("updateUser")
+	fmt.Println(updateUser)
+
+	if result.Error != nil {
+		errChannel <- errors.New(result.Error.Error())
+	} else {
+		// Send the created user through the channel
+		userChannel <- true
+	}
+
+	fmt.Println("closed")
+}
+
+/*
 func updateUserInDatabase(userId int, inputUser BodyUser, userChannel chan<- BodyUser, errChannel chan<- error) {
 
 	// Simulate a database select by sleeping
@@ -62,13 +105,6 @@ func updateUserInDatabase(userId int, inputUser BodyUser, userChannel chan<- Bod
 		{Id: "2", Name: "Jane Doe", Age: 30},
 		{Id: "3", Name: "Bob Smith", Age: 40},
 	}
-	/*
-		users := []User{
-			{Id: "1", Name: "John Doe", Email: "john@example.com", Age: 20},
-			{Id: "2", Name: "Jane Doe", Email: "jane@example.com", Age: 30},
-			{Id: "3", Name: "Bob Smith", Email: "bob@example.com", Age: 40},
-		}
-	*/
 
 	var theUser BodyUser
 
@@ -110,3 +146,4 @@ func updateUserInDatabase(userId int, inputUser BodyUser, userChannel chan<- Bod
 	close(errChannel)
 	fmt.Println("closed")
 }
+*/

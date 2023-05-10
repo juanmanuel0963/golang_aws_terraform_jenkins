@@ -4,16 +4,17 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 )
 
 // GetAllUsers retrieves all users
 func GetAllUsers(c *gin.Context) {
 
 	// Create a channel to communicate with the goroutine
-	usersChannel := make(chan []BodyUser)
+	usersChannel := make(chan []models.User)
 	errChannel := make(chan error)
 
 	//Calling Go routine
@@ -32,6 +33,30 @@ func GetAllUsers(c *gin.Context) {
 	}
 }
 
+func getAllUserFromDatabase(usersChannel chan<- []models.User, errChannel chan<- error) {
+
+	defer close(usersChannel)
+	defer close(errChannel)
+
+	// Get the users list
+	var users []models.User
+	result := initializers.DB.Find(&users)
+
+	fmt.Println(users)
+
+	if result.Error != nil {
+		errChannel <- errors.New(result.Error.Error())
+	} else if len(users) == 0 {
+		errChannel <- errors.New("failed to get all users users")
+	} else {
+		// Send the created user through the channel
+		usersChannel <- users
+	}
+
+	fmt.Println("closed")
+}
+
+/*
 func getAllUserFromDatabase(usersChannel chan<- []BodyUser, errChannel chan<- error) {
 
 	// Simulate a database select by sleeping
@@ -43,13 +68,6 @@ func getAllUserFromDatabase(usersChannel chan<- []BodyUser, errChannel chan<- er
 		{Id: "2", Name: "Jane Doe", Age: 30},
 		{Id: "3", Name: "Bob Smith", Age: 40},
 	}
-	/*
-		users := []User{
-			{Id: "1", Name: "John Doe", Email: "john@example.com", Age: 20},
-			{Id: "2", Name: "Jane Doe", Email: "jane@example.com", Age: 30},
-			{Id: "3", Name: "Bob Smith", Email: "bob@example.com", Age: 40},
-		}
-	*/
 
 	fmt.Println(users)
 
@@ -65,3 +83,4 @@ func getAllUserFromDatabase(usersChannel chan<- []BodyUser, errChannel chan<- er
 	close(errChannel)
 	fmt.Println("closed")
 }
+*/

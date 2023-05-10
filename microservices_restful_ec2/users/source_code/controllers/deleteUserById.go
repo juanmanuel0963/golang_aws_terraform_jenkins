@@ -5,9 +5,10 @@ import (
 	"fmt"
 	"net/http"
 	"strconv"
-	"time"
 
 	"github.com/gin-gonic/gin"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 )
 
 // DeleteUserByID handles DELETE requests for deleting a specific user by ID
@@ -23,17 +24,17 @@ func DeleteUserById(c *gin.Context) {
 	}
 
 	// Create a channel to communicate with the goroutine
-	userChannel := make(chan BodyUser)
+	userChannel := make(chan bool)
 	errChannel := make(chan error)
 
 	//Calling Go routine
 	go deleteUserInDatabase(userId, userChannel, errChannel)
 
-	// Wait for the user to be created and sent through the channel
+	// Wait for the user to be deleted and sent through the channel
 	select {
-	case theUser := <-userChannel:
+	case deleteSuccess := <-userChannel:
 		c.JSON(http.StatusOK, gin.H{
-			"user": theUser,
+			"status": deleteSuccess,
 		})
 	case err := <-errChannel:
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -41,6 +42,26 @@ func DeleteUserById(c *gin.Context) {
 		})
 	}
 }
+
+func deleteUserInDatabase(userId int, userChannel chan<- bool, errChannel chan<- error) {
+
+	defer close(userChannel)
+	defer close(errChannel)
+
+	//Delete the user
+	result := initializers.DB.Delete(&models.User{}, userId)
+
+	if result.Error != nil {
+		errChannel <- errors.New(result.Error.Error())
+	} else {
+		// Send success
+		userChannel <- true
+	}
+
+	fmt.Println("closed")
+}
+
+/*
 
 func deleteUserInDatabase(userId int, userChannel chan<- BodyUser, errChannel chan<- error) {
 
@@ -53,13 +74,6 @@ func deleteUserInDatabase(userId int, userChannel chan<- BodyUser, errChannel ch
 		{Id: "2", Name: "Jane Doe", Age: 30},
 		{Id: "3", Name: "Bob Smith", Age: 40},
 	}
-	/*
-		users := []User{
-			{Id: "1", Name: "John Doe", Email: "john@example.com", Age: 20},
-			{Id: "2", Name: "Jane Doe", Email: "jane@example.com", Age: 30},
-			{Id: "3", Name: "Bob Smith", Email: "bob@example.com", Age: 40},
-		}
-	*/
 
 	var theUser BodyUser
 
@@ -95,3 +109,5 @@ func deleteUserInDatabase(userId int, userChannel chan<- BodyUser, errChannel ch
 	close(errChannel)
 	fmt.Println("closed")
 }
+
+*/
