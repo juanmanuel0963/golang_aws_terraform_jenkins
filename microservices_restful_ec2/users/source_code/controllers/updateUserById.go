@@ -22,7 +22,7 @@ func UpdateUserById(c *gin.Context) {
 	}
 
 	//Get JSON request body
-	var inputUser User
+	var inputUser BodyUser
 	if err := c.BindJSON(&inputUser); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
@@ -32,7 +32,7 @@ func UpdateUserById(c *gin.Context) {
 	fmt.Println(inputUser)
 
 	// Create a channel to communicate with the goroutine
-	userChannel := make(chan User)
+	userChannel := make(chan BodyUser)
 	errChannel := make(chan error)
 
 	//Calling Go routine
@@ -51,19 +51,26 @@ func UpdateUserById(c *gin.Context) {
 	}
 }
 
-func updateUserInDatabase(userId int, inputUser User, userChannel chan<- User, errChannel chan<- error) {
+func updateUserInDatabase(userId int, inputUser BodyUser, userChannel chan<- BodyUser, errChannel chan<- error) {
 
 	// Simulate a database select by sleeping
 	time.Sleep(1 * time.Second)
 
 	// Simulate a database query
-	users := []User{
-		{Id: "1", Username: "John Doe", Email: "john@example.com"},
-		{Id: "2", Username: "Jane Doe", Email: "jane@example.com"},
-		{Id: "3", Username: "Bob Smith", Email: "bob@example.com"},
+	users := []BodyUser{
+		{Id: "1", Name: "John Doe", Age: 20},
+		{Id: "2", Name: "Jane Doe", Age: 30},
+		{Id: "3", Name: "Bob Smith", Age: 40},
 	}
+	/*
+		users := []User{
+			{Id: "1", Name: "John Doe", Email: "john@example.com", Age: 20},
+			{Id: "2", Name: "Jane Doe", Email: "jane@example.com", Age: 30},
+			{Id: "3", Name: "Bob Smith", Email: "bob@example.com", Age: 40},
+		}
+	*/
 
-	var theUser User
+	var theUser BodyUser
 
 	// Search for user in slice
 	for i, user := range users {
@@ -73,14 +80,16 @@ func updateUserInDatabase(userId int, inputUser User, userChannel chan<- User, e
 		if user.Id == sId {
 			fmt.Println(i)
 			fmt.Println(user.Id)
-			fmt.Println(user.Username)
-			fmt.Println(user.Email)
+			fmt.Println(user.Name)
+			//fmt.Println(user.Email)
 			// Update user with new name and email
-			user.Username = inputUser.Username
-			user.Email = inputUser.Email
+			user.Name = inputUser.Name
+			user.Age = inputUser.Age
+			//user.Email = inputUser.Email
 			//
-			users[i].Username = inputUser.Username
-			users[i].Email = inputUser.Email
+			users[i].Name = inputUser.Name
+			users[i].Age = inputUser.Age
+			//users[i].Email = inputUser.Email
 			//
 			theUser = user
 		}

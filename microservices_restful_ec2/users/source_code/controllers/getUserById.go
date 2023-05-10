@@ -21,7 +21,7 @@ func GetUserById(c *gin.Context) {
 	}
 
 	// Create a channel to communicate with the goroutine
-	userChannel := make(chan User)
+	userChannel := make(chan BodyUser)
 	errChannel := make(chan error)
 
 	//Calling Go routine
@@ -40,19 +40,26 @@ func GetUserById(c *gin.Context) {
 	}
 }
 
-func getUserFromDatabase(userId int, userChannel chan<- User, errChannel chan<- error) {
+func getUserFromDatabase(userId int, userChannel chan<- BodyUser, errChannel chan<- error) {
 
 	// Simulate a database select by sleeping
 	time.Sleep(1 * time.Second)
 
 	// Simulate a database query
-	users := []User{
-		{Id: "1", Username: "John Doe", Email: "john@example.com"},
-		{Id: "2", Username: "Jane Doe", Email: "jane@example.com"},
-		{Id: "3", Username: "Bob Smith", Email: "bob@example.com"},
+	users := []BodyUser{
+		{Id: "1", Name: "John Doe", Age: 20},
+		{Id: "2", Name: "Jane Doe", Age: 30},
+		{Id: "3", Name: "Bob Smith", Age: 40},
 	}
+	/*
+		users := []User{
+			{Id: "1", Name: "John Doe", Email: "john@example.com", Age: 20},
+			{Id: "2", Name: "Jane Doe", Email: "jane@example.com", Age: 30},
+			{Id: "3", Name: "Bob Smith", Email: "bob@example.com", Age: 40},
+		}
+	*/
 
-	var theUser User
+	var theUser BodyUser
 
 	// Search for user in slice
 	for i, user := range users {
@@ -62,8 +69,8 @@ func getUserFromDatabase(userId int, userChannel chan<- User, errChannel chan<- 
 		if user.Id == sId {
 			fmt.Println(i)
 			fmt.Println(user.Id)
-			fmt.Println(user.Username)
-			fmt.Println(user.Email)
+			fmt.Println(user.Name)
+			///fmt.Println(user.Email)
 			theUser = user
 		}
 	}

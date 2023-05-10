@@ -4,39 +4,42 @@ import (
 	"errors"
 	"fmt"
 	"net/http"
-	"time"
 
 	"github.com/gin-gonic/gin"
-	uuid "github.com/satori/go.uuid"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 )
 
-type User struct {
-	Id       string `json:"id"`
-	Username string `json:"username"`
-	Email    string `json:"email"`
+type BodyUser struct {
+	Id   string `json:"id"`
+	Name string `json:"name"`
+	Age  int32  `json:"age"`
 }
 
 func CreateUser(c *gin.Context) {
-	var user User
+
+	var body BodyUser
 
 	// Bind incoming JSON to user struct
-	if err := c.ShouldBindJSON(&user); err != nil {
+	if err := c.ShouldBindJSON(&body); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
 		return
 	}
 
+	var newUser = models.User{Name: body.Name, Age: body.Age}
+
 	// Create a channel to communicate with the goroutine
-	userChannel := make(chan User)
+	userChannel := make(chan models.User)
 	errChannel := make(chan error)
 
 	//Calling Go routine
-	go createUser(user, userChannel, errChannel)
+	go createUser(newUser, userChannel, errChannel)
 
 	// Wait for the user to be created and sent through the channel
 	select {
-	case theUser := <-userChannel:
+	case createdUser := <-userChannel:
 		c.JSON(http.StatusOK, gin.H{
-			"user": theUser,
+			"user": createdUser,
 		})
 	case err := <-errChannel:
 		c.JSON(http.StatusInternalServerError, gin.H{
@@ -45,6 +48,59 @@ func CreateUser(c *gin.Context) {
 	}
 }
 
+func createUser(newUser models.User, userChannel chan<- models.User, errChannel chan<- error) {
+
+	defer close(userChannel)
+	defer close(errChannel)
+
+	result := initializers.DB.Create(&newUser)
+
+	if result.Error != nil {
+		errChannel <- errors.New("failed to create user. db error")
+	} else if newUser.ID == 0 {
+		errChannel <- errors.New("failed to create user")
+	} else {
+		// Send the created user through the channel
+		userChannel <- newUser
+	}
+
+	fmt.Println("closed")
+}
+
+/*
+func createUser(newUser models.User, userChannel chan<- models.User, errChannel chan<- error) {
+	// Simulate a database insert by sleeping
+	time.Sleep(1 * time.Second)
+
+	// Generate a UUID for the new user
+	newUser.ID = uint(rand.Int())
+
+	// Simulate a database query
+	users := []models.User{
+		{Name: "John Doe", Age: 20},
+		{Name: "Jane Doe", Age: 30},
+		{Name: "Bob Smith", Age: 40},
+	}
+
+	// Append the created user to the users slice
+	users = append(users, newUser)
+
+	fmt.Println(users)
+
+	// Return an error if the user ID is empty
+	if newUser.ID == 0 {
+		errChannel <- errors.New("failed to create user")
+	} else {
+		// Send the created user through the channel
+		userChannel <- newUser
+	}
+
+	close(userChannel)
+	close(errChannel)
+	fmt.Println("closed")
+}
+*/
+/*
 func createUser(theUser User, userChannel chan<- User, errChannel chan<- error) {
 	// Simulate a database insert by sleeping
 	time.Sleep(1 * time.Second)
@@ -55,9 +111,9 @@ func createUser(theUser User, userChannel chan<- User, errChannel chan<- error) 
 
 	// Simulate a database query
 	users := []User{
-		{Id: "1", Username: "John Doe", Email: "john@example.com"},
-		{Id: "2", Username: "Jane Doe", Email: "jane@example.com"},
-		{Id: "3", Username: "Bob Smith", Email: "bob@example.com"},
+		{Id: "1", Name: "John Doe", Age: 20},
+		{Id: "2", Name: "Jane Doe", Age: 30},
+		{Id: "3", Name: "Bob Smith", Age: 40},
 	}
 
 	// Append the created user to the users slice
@@ -77,3 +133,4 @@ func createUser(theUser User, userChannel chan<- User, errChannel chan<- error) 
 	close(errChannel)
 	fmt.Println("closed")
 }
+*/

@@ -4,12 +4,13 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/users/source_code/controllers"
 )
 
 func init() {
 	//initializers.LoadEnvVariables()
-	//initializers.ConnectToDB()
+	initializers.ConnectToDB()
 }
 
 func main() {
@@ -29,10 +30,10 @@ func main() {
 	//err := r.RunTLS(":"+os.Getenv("PORT"), "cert.pem", "key.pem")
 
 	//Local w/out TLS
-	//err := r.Run(":" + os.Getenv("PORT"))
+	err := r.Run(":" + os.Getenv("PORT"))
 
 	//Server
-	err := r.RunTLS(":"+os.Getenv("PORT"), "/home/ubuntu/tls/cert.pem", "/home/ubuntu/tls/key.pem")
+	//err := r.RunTLS(":"+os.Getenv("PORT"), "/home/ubuntu/tls/cert.pem", "/home/ubuntu/tls/key.pem")
 
 	// Listen and Server in https://127.0.0.1:8080
 
