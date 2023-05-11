@@ -49,8 +49,7 @@ require (
 
 require (
 	github.com/MicahParks/keyfunc v1.9.0
-	github.com/gofrs/uuid v4.4.0+incompatible
 	github.com/jmespath/go-jmespath v0.4.0 // indirect
 	github.com/lib/pq v1.10.7
-	github.com/satori/go.uuid v1.2.0
+	
 )
