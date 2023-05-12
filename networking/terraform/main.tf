@@ -193,7 +193,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_postgresql" {
   from_port         = 5432
   to_port           = 5432
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.59/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_ssh" {
@@ -203,7 +203,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_ssh" {
   from_port         = 22
   to_port           = 22
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.59/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3000" {
@@ -213,7 +213,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3000" {
   from_port         = 3000
   to_port           = 3000
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.59/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3001" {
@@ -223,7 +223,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3001" {
   from_port         = 3001
   to_port           = 3001
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.59/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3002" {
@@ -233,7 +233,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3002" {
   from_port         = 3002
   to_port           = 3002
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.59/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
@@ -243,7 +243,17 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
   from_port         = 3003
   to_port           = 3003
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.59/32"]
+}
+
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_server_jenkins_to_3003"
+  type              = "ingress"
+  from_port         = 3004
+  to_port           = 3004
+  protocol          = "tcp"
+  cidr_blocks      = ["186.155.14.59/32"]
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_50056" {
@@ -253,7 +263,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_50056" {
   from_port         = 50056
   to_port           = 50056
   protocol          = "tcp"
-  cidr_blocks      = ["186.29.180.80/32"]
+  cidr_blocks      = ["186.155.14.59/32"]
 }
 
 ##################################################################################
