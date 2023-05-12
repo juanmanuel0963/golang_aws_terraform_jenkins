@@ -193,7 +193,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_postgresql" {
   from_port         = 5432
   to_port           = 5432
   protocol          = "tcp"
-  cidr_blocks      = ["186.155.14.59/32"]
+  cidr_blocks      = ["186.155.14.59/32"] 
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_ssh" {
