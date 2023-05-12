@@ -246,9 +246,9 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
   cidr_blocks      = ["186.155.14.59/32"]
 }
 
-resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3003" {
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3004" {
   security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_server_jenkins_to_3003"
+  description       = "ingress_from_server_jenkins_to_3004"
   type              = "ingress"
   from_port         = 3004
   to_port           = 3004
