@@ -103,7 +103,7 @@ resource "aws_security_group_rule" "ingress_from_home" {
 }
 */
 //-------Dynamic Home IPs for Dev/Tools ---------------------------
-/*
+
 resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_local_home_to_postgresql"
@@ -183,9 +183,9 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_50056" {
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
-*/
-//-------Static IPs for Prod/Jenkins ---------------------------
 
+//-------Static IPs for Prod/Jenkins ---------------------------
+/*
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_postgresql" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_server_jenkins_to_postgresql"
@@ -265,7 +265,7 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_50056" {
   protocol          = "tcp"
   cidr_blocks      = ["186.155.14.59/32"]
 }
-
+*/
 ##################################################################################
 # aws_security_group - OUTPUT
 ##################################################################################
