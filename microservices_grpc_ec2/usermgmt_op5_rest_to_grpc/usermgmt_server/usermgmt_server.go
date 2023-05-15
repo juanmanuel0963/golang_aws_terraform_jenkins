@@ -16,7 +16,7 @@ import (
 var DB *gorm.DB
 
 const (
-	port = ":50055"
+	port = ":40055"
 )
 
 func NewUserManagementServer() *UserManagementServer {

@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package usermgmt_op4_db_postgres;
+package usermgmt_op5_rest_to_grpc;
 
 option go_package = "github.com/juanmanuel0963/go_grpc_usermgmt/v5;go_grpc_usermgmt_op5_rest_to_grpc";
 

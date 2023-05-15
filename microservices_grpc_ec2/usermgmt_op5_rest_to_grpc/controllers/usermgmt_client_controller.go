@@ -33,7 +33,7 @@ func UserCreate(c *gin.Context) {
 			}
 		*/
 		//conn, err := grpc.Dial(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
-		conn, err := grpc.Dial(os.Getenv("server_address")+":50055", grpc.WithTransportCredentials(insecure.NewCredentials()))
+		conn, err := grpc.Dial(os.Getenv("server_address")+":40055", grpc.WithTransportCredentials(insecure.NewCredentials()))
 		if err != nil {
 			log.Fatalf("did not connect: %v", err)
 		}

@@ -113,3 +113,17 @@ cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op5_
 del usermgmt_server
 del usermgmt_server.exe
 del usermgmt_server.exe~
+
+::Delete Files :: usermgmt_op6_rest_to_grpc-------------
+
+::usermgmt_client
+cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op6_rest_to_grpc_chan\usermgmt_client
+del usermgmt_client
+del usermgmt_client.exe
+del usermgmt_client.exe~
+
+::usermgmt_server
+cd D:\projects\golang_aws_terraform_jenkins\microservices_grpc_ec2\usermgmt_op6_rest_to_grpc_chan\usermgmt_server
+del usermgmt_server
+del usermgmt_server.exe
+del usermgmt_server.exe~

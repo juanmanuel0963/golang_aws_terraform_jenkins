@@ -174,6 +174,16 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_3004" {
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
 
+resource "aws_security_group_rule" "ingress_from_local_home_to_50055" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_local_home_to_50055"
+  type              = "ingress"
+  from_port         = 50055
+  to_port           = 50055
+  protocol          = "tcp"
+  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
+}
+
 resource "aws_security_group_rule" "ingress_from_local_home_to_50056" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_local_home_to_50056"
@@ -252,6 +262,16 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3004" {
   type              = "ingress"
   from_port         = 3004
   to_port           = 3004
+  protocol          = "tcp"
+  cidr_blocks      = ["186.155.14.59/32"]
+}
+
+resource "aws_security_group_rule" "ingress_from_server_jenkins_to_50055" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_server_jenkins_to_50055"
+  type              = "ingress"
+  from_port         = 50055
+  to_port           = 50055
   protocol          = "tcp"
   cidr_blocks      = ["186.155.14.59/32"]
 }
