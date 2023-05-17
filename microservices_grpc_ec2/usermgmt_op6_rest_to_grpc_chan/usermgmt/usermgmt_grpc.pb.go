@@ -23,7 +23,9 @@ const _ = grpc.SupportPackageIsVersion7
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type UserManagementClient interface {
 	CreateNewUser(ctx context.Context, in *NewUser, opts ...grpc.CallOption) (*User, error)
+	CreateNewContact(ctx context.Context, in *NewContact, opts ...grpc.CallOption) (*Contact, error)
 	GetUsers(ctx context.Context, in *GetUsersParams, opts ...grpc.CallOption) (*UsersList, error)
+	GetContacts(ctx context.Context, in *GetContactsParams, opts ...grpc.CallOption) (*ContactsList, error)
 }
 
 type userManagementClient struct {
@@ -43,9 +45,27 @@ func (c *userManagementClient) CreateNewUser(ctx context.Context, in *NewUser, o
 	return out, nil
 }
 
+func (c *userManagementClient) CreateNewContact(ctx context.Context, in *NewContact, opts ...grpc.CallOption) (*Contact, error) {
+	out := new(Contact)
+	err := c.cc.Invoke(ctx, "/usermgmt_op6_rest_to_grpc_chan.UserManagement/CreateNewContact", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *userManagementClient) GetUsers(ctx context.Context, in *GetUsersParams, opts ...grpc.CallOption) (*UsersList, error) {
 	out := new(UsersList)
 	err := c.cc.Invoke(ctx, "/usermgmt_op6_rest_to_grpc_chan.UserManagement/GetUsers", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *userManagementClient) GetContacts(ctx context.Context, in *GetContactsParams, opts ...grpc.CallOption) (*ContactsList, error) {
+	out := new(ContactsList)
+	err := c.cc.Invoke(ctx, "/usermgmt_op6_rest_to_grpc_chan.UserManagement/GetContacts", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -57,7 +77,9 @@ func (c *userManagementClient) GetUsers(ctx context.Context, in *GetUsersParams,
 // for forward compatibility
 type UserManagementServer interface {
 	CreateNewUser(context.Context, *NewUser) (*User, error)
+	CreateNewContact(context.Context, *NewContact) (*Contact, error)
 	GetUsers(context.Context, *GetUsersParams) (*UsersList, error)
+	GetContacts(context.Context, *GetContactsParams) (*ContactsList, error)
 	mustEmbedUnimplementedUserManagementServer()
 }
 
@@ -68,8 +90,14 @@ type UnimplementedUserManagementServer struct {
 func (UnimplementedUserManagementServer) CreateNewUser(context.Context, *NewUser) (*User, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CreateNewUser not implemented")
 }
+func (UnimplementedUserManagementServer) CreateNewContact(context.Context, *NewContact) (*Contact, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method CreateNewContact not implemented")
+}
 func (UnimplementedUserManagementServer) GetUsers(context.Context, *GetUsersParams) (*UsersList, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetUsers not implemented")
+}
+func (UnimplementedUserManagementServer) GetContacts(context.Context, *GetContactsParams) (*ContactsList, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetContacts not implemented")
 }
 func (UnimplementedUserManagementServer) mustEmbedUnimplementedUserManagementServer() {}
 
@@ -102,6 +130,24 @@ func _UserManagement_CreateNewUser_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserManagement_CreateNewContact_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(NewContact)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagementServer).CreateNewContact(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/usermgmt_op6_rest_to_grpc_chan.UserManagement/CreateNewContact",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagementServer).CreateNewContact(ctx, req.(*NewContact))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _UserManagement_GetUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetUsersParams)
 	if err := dec(in); err != nil {
@@ -120,6 +166,24 @@ func _UserManagement_GetUsers_Handler(srv interface{}, ctx context.Context, dec 
 	return interceptor(ctx, in, info, handler)
 }
 
+func _UserManagement_GetContacts_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetContactsParams)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(UserManagementServer).GetContacts(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/usermgmt_op6_rest_to_grpc_chan.UserManagement/GetContacts",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(UserManagementServer).GetContacts(ctx, req.(*GetContactsParams))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 // UserManagement_ServiceDesc is the grpc.ServiceDesc for UserManagement service.
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
@@ -132,8 +196,16 @@ var UserManagement_ServiceDesc = grpc.ServiceDesc{
 			Handler:    _UserManagement_CreateNewUser_Handler,
 		},
 		{
+			MethodName: "CreateNewContact",
+			Handler:    _UserManagement_CreateNewContact_Handler,
+		},
+		{
 			MethodName: "GetUsers",
 			Handler:    _UserManagement_GetUsers_Handler,
+		},
+		{
+			MethodName: "GetContacts",
+			Handler:    _UserManagement_GetContacts_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},

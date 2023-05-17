@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"errors"
 	"fmt"
 	"log"
 	"net"
@@ -25,8 +26,7 @@ func NewUserManagementServer() *UserManagementServer {
 
 type UserManagementServer struct {
 	//DB                  *pgx.Conn
-	DB                  *gorm.DB
-	first_user_creation bool
+	DB *gorm.DB
 	pb.UnimplementedUserManagementServer
 }
 
@@ -43,31 +43,104 @@ func (server *UserManagementServer) Run() error {
 	return s.Serve(lis)
 }
 
-// When user is added, read full userlist from file into
-// userlist struct, then append new user and write new userlist back to file
 func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.NewUser) (*pb.User, error) {
 
-	server.first_user_creation = false
 	fmt.Printf("User received: Name: %v, Age: %v\n", in.GetName(), in.GetAge())
 
-	user_to_create := &pb.User{Name: in.GetName(), Age: in.GetAge()}
+	userToCreate := &pb.User{Name: in.GetName(), Age: in.GetAge()}
 
-	fmt.Print("User to create: ", user_to_create)
+	fmt.Println("User to create: ", userToCreate)
 
 	//----------Users - Adding Data----------
 
-	var users = []models.User{
-		{Name: user_to_create.Name, Age: user_to_create.Age},
+	var newUser = models.User{Name: userToCreate.Name, Age: userToCreate.Age}
+
+	// Create a channel to communicate with the goroutine
+	userChannel := make(chan models.User)
+	errChannel := make(chan error)
+
+	//Calling Go routine
+	go createUser(newUser, userChannel, errChannel)
+
+	// Wait for the user to be created and sent through the channel
+	select {
+	case newUser := <-userChannel:
+		userToCreate.Id = int32(newUser.ID)
+		return userToCreate, nil
+	case err := <-errChannel:
+		return nil, err
+	case <-ctx.Done():
+		return nil, ctx.Err()
+	}
+}
+
+func createUser(newUser models.User, userChannel chan<- models.User, errChannel chan<- error) {
+
+	defer close(userChannel)
+	defer close(errChannel)
+
+	result := initializers.DB.Create(&newUser)
+
+	if result.Error != nil {
+		errChannel <- errors.New(result.Error.Error())
+	} else if newUser.ID == 0 {
+		errChannel <- errors.New("failed to create user")
+	} else {
+		// Send the created user through the channel
+		userChannel <- newUser
 	}
 
-	initializers.DB.Create(&users)
+	fmt.Println("closed")
+}
 
-	for _, user := range users {
-		user_to_create.Id = int32(user.ID)
-		fmt.Printf("Id User created: %v\n", user.ID) // 1,2,3
+func (server *UserManagementServer) CreateNewContact(ctx context.Context, in *pb.NewContact) (*pb.Contact, error) {
+
+	fmt.Printf("Contact received: FirstName: %v, LastName: %v, Email: %v\n", in.GetFirstName(), in.GetLastName(), in.GetEmail())
+
+	contactToCreate := &pb.Contact{FirstName: in.GetFirstName(), LastName: in.GetLastName(), Email: in.Email, CompanyId: in.CompanyId}
+
+	fmt.Println("Contact to create: ", contactToCreate)
+
+	//----------Contacts - Adding Data----------
+
+	var newContact = models.Contact{First_name: contactToCreate.FirstName, Last_name: contactToCreate.LastName, Email: contactToCreate.Email, Company_id: contactToCreate.CompanyId}
+
+	// Create a channel to communicate with the goroutine
+	contactChannel := make(chan models.Contact)
+	errChannel := make(chan error)
+
+	//Calling Go routine
+	go createContact(newContact, contactChannel, errChannel)
+
+	// Wait for the user to be created and sent through the channel
+	select {
+	case newContact := <-contactChannel:
+		contactToCreate.Id = int32(newContact.ID)
+		return contactToCreate, nil
+	case err := <-errChannel:
+		return nil, err
+	case <-ctx.Done():
+		return nil, ctx.Err()
+	}
+}
+
+func createContact(newContact models.Contact, contactChannel chan<- models.Contact, errChannel chan<- error) {
+
+	defer close(contactChannel)
+	defer close(errChannel)
+
+	result := initializers.DB.Create(&newContact)
+
+	if result.Error != nil {
+		errChannel <- errors.New(result.Error.Error())
+	} else if newContact.ID == 0 {
+		errChannel <- errors.New("failed to create contact")
+	} else {
+		// Send the created user through the channel
+		contactChannel <- newContact
 	}
 
-	return user_to_create, nil
+	fmt.Println("closed")
 }
 
 func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUsersParams) (*pb.UsersList, error) {
@@ -102,7 +175,7 @@ func init() {
 func main() {
 	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
 	user_mgmt_server.DB = DB
-	user_mgmt_server.first_user_creation = true
+	//	user_mgmt_server.first_user_creation = true
 	if err := user_mgmt_server.Run(); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}

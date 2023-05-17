@@ -21,6 +21,10 @@ func main() {
 
 	initializers.DB.AutoMigrate(&models.User{})
 
+	//----------Contacts----------
+
+	initializers.DB.AutoMigrate(&models.Contact{})
+
 	//----------Blogs and Posts----------
 
 	initializers.DB.AutoMigrate(&models.Blog{}, &models.Post{})
