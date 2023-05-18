@@ -4,7 +4,6 @@ import (
 	"context"
 	"errors"
 	"fmt"
-	"log"
 	"net/http"
 	"os"
 	"time"
@@ -18,9 +17,10 @@ import (
 )
 
 type BodyUser struct {
-	Id   string `json:"id"`
-	Name string `json:"name"`
-	Age  int32  `json:"age"`
+	Id    string `json:"id"`
+	Name  string `json:"name"`
+	Age   int32  `json:"age"`
+	Email string `json:"email"`
 }
 
 func UserCreate(c *gin.Context) {
@@ -31,15 +31,24 @@ func UserCreate(c *gin.Context) {
 
 		// Bind incoming JSON to user struct
 		if err := c.ShouldBindJSON(&body); err != nil {
-			c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+			c.JSON(http.StatusBadRequest, gin.H{
+				"error": err.Error(),
+			})
+			fmt.Printf("incorrect body: %s", err.Error()+"\n")
 			return
 		}
 
 		var newUser = models.User{Name: body.Name, Age: body.Age}
 
+		//connection stablish with server
 		conn, err := grpc.Dial(os.Getenv("server_address")+":40056", grpc.WithTransportCredentials(insecure.NewCredentials()))
+
 		if err != nil {
-			log.Fatalf("did not connect: %v", err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			fmt.Printf("did not connect: %s", err.Error()+"\n")
+			return
 		}
 
 		defer conn.Close()
@@ -53,49 +62,77 @@ func UserCreate(c *gin.Context) {
 		//------------------------------
 
 		userToCreate := &pb.NewUser{Name: newUser.Name, Age: newUser.Age}
+		contactToCreate := &pb.NewContact{FirstName: newUser.Name, LastName: newUser.Name, Email: body.Email, CompanyId: 1}
+		var createdUser *pb.User
+		var createdUserErr error
+		var createdContact *pb.Contact
+		var createdContactErr error
 
 		// Create a channel to communicate with the goroutine
 		userChannel := make(chan *pb.User)
 		userErrChannel := make(chan error)
 
-		//Calling Go routine
-		go UserCreateServerCall(ctx, userToCreate, client, userChannel, userErrChannel)
-
-		//------------------------------
-
-		contactToCreate := &pb.NewContact{FirstName: newUser.Name, LastName: newUser.Name, Email: "demo@gmail.com", CompanyId: 1}
-
 		// Create a channel to communicate with the goroutine
 		contactChannel := make(chan *pb.Contact)
 		contactErrChannel := make(chan error)
 
-		//Calling Go routine
+		//Calling Go routine for user creation
+		go UserCreateServerCall(ctx, userToCreate, client, userChannel, userErrChannel)
+
+		//Calling Go routine for contact creation
 		go ContactCreateServerCall(ctx, contactToCreate, client, contactChannel, contactErrChannel)
 
 		//------------------------------
 
 		// Wait for the user to be created and sent through the channel
 		select {
-		case createdUser := <-userChannel:
-			fmt.Printf("User Created: Id: %d, Name: %s, Age: %d\n", createdUser.GetId(), createdUser.GetName(), createdUser.GetAge())
-			c.JSON(http.StatusOK, gin.H{
-				"user":  createdUser,
-				"user2": createdUser,
-			})
-		case err := <-userErrChannel:
-			log.Fatalf("could not create user: %v", err)
-			c.JSON(http.StatusInternalServerError, gin.H{
-				"error": err.Error(),
-			})
+		case createdUser = <-userChannel:
+			fmt.Printf("User created: Id: %d, Name: %s, Age: %d\n", createdUser.GetId(), createdUser.GetName(), createdUser.GetAge())
+		case createdUserErr = <-userErrChannel:
+			fmt.Printf("could not create user: %v", createdUserErr.Error())
 		case <-ctx.Done():
-			log.Fatalf("UserCreateServerCall request timed out")
+			fmt.Printf("UserCreateServerCall request timed out")
+			createdUserErr = ctx.Err()
+		}
+
+		//------------------------------
+
+		// Wait for the contact to be created and sent through the channel
+		select {
+		case createdContact = <-contactChannel:
+			fmt.Printf("Contact created: Id: %d, First Name: %s, Last Name: %s, Email: %s\n", createdContact.GetId(), createdContact.GetFirstName(), createdContact.GetLastName(), createdContact.GetEmail())
+		case createdContactErr = <-contactErrChannel:
+			fmt.Printf("could not create contact: %v", createdContactErr)
+		case <-ctx.Done():
+			fmt.Printf("ContactCreateServerCall request timed out")
+		}
+
+		//------------------------------
+
+		if createdUser != nil && createdContact != nil {
+			c.JSON(http.StatusOK, gin.H{
+				"user":    createdUser,
+				"contact": createdContact,
+			})
+		} else if createdUserErr != nil && createdContactErr != nil {
 			c.JSON(http.StatusInternalServerError, gin.H{
-				"error": ctx.Err().Error(),
+				"user_error":    createdUserErr,
+				"contact_error": createdContactErr,
+			})
+		} else if createdUserErr != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"user_error": createdUserErr,
+			})
+		} else if createdContactErr != nil {
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"contact_error": createdContactErr,
 			})
 		}
+
 	}
 }
 
+// Go Routine for user creation which returns success and error channels
 func UserCreateServerCall(ctx context.Context, userToCreate *pb.NewUser, client pb.UserManagementClient, userChannel chan<- *pb.User, errChannel chan<- error) {
 
 	defer close(userChannel)
@@ -112,9 +149,10 @@ func UserCreateServerCall(ctx context.Context, userToCreate *pb.NewUser, client 
 		userChannel <- createdUser
 	}
 
-	fmt.Println("closed")
+	fmt.Println("User create closed")
 }
 
+// Go Routine for contact creation which returns success and error channels
 func ContactCreateServerCall(ctx context.Context, contactToCreate *pb.NewContact, client pb.UserManagementClient, contactChannel chan<- *pb.Contact, errChannel chan<- error) {
 
 	defer close(contactChannel)
@@ -128,9 +166,8 @@ func ContactCreateServerCall(ctx context.Context, contactToCreate *pb.NewContact
 		errChannel <- errors.New("failed to create user")
 	} else {
 		// Send the created user through the channel
-		fmt.Printf("Contact Created: Id: %d, Name: %s, Age: %s\n", createdContact.Id, createdContact.FirstName, createdContact.LastName)
 		contactChannel <- createdContact
 	}
 
-	fmt.Println("closed")
+	fmt.Println("Contact create closed")
 }

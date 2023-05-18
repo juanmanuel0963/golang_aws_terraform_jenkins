@@ -175,7 +175,6 @@ func init() {
 func main() {
 	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
 	user_mgmt_server.DB = DB
-	//	user_mgmt_server.first_user_creation = true
 	if err := user_mgmt_server.Run(); err != nil {
 		log.Fatalf("failed to serve: %v", err)
 	}

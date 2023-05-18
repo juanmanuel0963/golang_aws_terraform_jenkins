@@ -3,7 +3,7 @@ package controllers
 import (
 	"context"
 	"fmt"
-	"log"
+	"net/http"
 	"os"
 	"time"
 
@@ -35,8 +35,13 @@ func UserCreate(c *gin.Context) {
 		//conn, err := grpc.Dial(address, grpc.WithTransportCredentials(insecure.NewCredentials()))
 		conn, err := grpc.Dial(os.Getenv("server_address")+":40055", grpc.WithTransportCredentials(insecure.NewCredentials()))
 		if err != nil {
-			log.Fatalf("did not connect: %v", err)
+			c.JSON(http.StatusInternalServerError, gin.H{
+				"error": err.Error(),
+			})
+			fmt.Printf("did not connect: %s", err.Error()+"\n")
+			return
 		}
+
 		defer conn.Close()
 		client := pb.NewUserManagementClient(conn)
 
@@ -48,7 +53,7 @@ func UserCreate(c *gin.Context) {
 		r, err := client.CreateNewUser(ctx, &pb.NewUser{Name: new_users.Name, Age: new_users.Age})
 
 		if err != nil {
-			log.Fatalf("could not create user: %v", err)
+			fmt.Printf("could not create user: %v", err)
 			c.Status(400)
 			return
 		} else {
