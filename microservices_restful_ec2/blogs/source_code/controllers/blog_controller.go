@@ -44,7 +44,7 @@ func VerifyToken(c *gin.Context) bool {
 		// 10 seconds. This timeout is also used to create the initial context.Context for keyfunc.Get.
 		options := keyfunc.Options{
 			RefreshErrorHandler: func(err error) {
-				log.Printf("JWT-There was an error with the jwt.Keyfunc\nError: %s", err.Error())
+				fmt.Printf("JWT-There was an error with the jwt.Keyfunc\nError: %s\n", err.Error())
 			},
 			RefreshInterval:   time.Hour,
 			RefreshRateLimit:  time.Minute * 5,
@@ -55,7 +55,7 @@ func VerifyToken(c *gin.Context) bool {
 		// Create the JWKS from the resource at the given URL.
 		jwks, err := keyfunc.Get(jwksURL, options)
 		if err != nil {
-			log.Fatalf("JWT-Failed to create JWKS from resource at the given URL.\nError: %s", err.Error())
+			fmt.Printf("JWT-Failed to create JWKS from resource at the given URL.\nError: %s\n", err.Error())
 			status = false
 		}
 
@@ -66,13 +66,13 @@ func VerifyToken(c *gin.Context) bool {
 		// Parse the JWT.
 		token, err := jwt.Parse(jwtB64, jwks.Keyfunc)
 		if err != nil {
-			log.Fatalf("JWT-Failed to parse the JWT.\nError: %s", err.Error())
+			fmt.Printf("JWT-Failed to parse the JWT.\nError: %s\n", err.Error())
 			status = false
 		}
 
 		// Check if the token is valid.
 		if !token.Valid {
-			log.Fatalf("JWT-The token is not valid.")
+			fmt.Printf("JWT-The token is not valid.\n")
 			status = false
 		}
 
