@@ -33,12 +33,12 @@ type UserManagementServer struct {
 func (server *UserManagementServer) Run() error {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		fmt.Printf("failed to listen: %v", err)
 	}
 
 	s := grpc.NewServer()
 	pb.RegisterUserManagementServer(s, server)
-	log.Printf("server listening at %v", lis.Addr())
+	fmt.Printf("server listening at %v", lis.Addr())
 
 	return s.Serve(lis)
 }
