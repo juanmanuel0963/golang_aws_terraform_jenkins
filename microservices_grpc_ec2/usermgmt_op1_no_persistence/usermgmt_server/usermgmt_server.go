@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"math/rand"
 	"net"
@@ -27,12 +28,12 @@ func (s *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.NewUser
 func main() {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		fmt.Printf("failed to listen: %v", err)
 	}
 	s := grpc.NewServer()
 	pb.RegisterUserManagementServer(s, &UserManagementServer{})
 	log.Printf("server listening at %v", lis.Addr())
 	if err := s.Serve(lis); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+		fmt.Printf("failed to serve: %v", err)
 	}
 }

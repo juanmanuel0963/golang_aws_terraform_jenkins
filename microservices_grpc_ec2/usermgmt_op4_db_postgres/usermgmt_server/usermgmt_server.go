@@ -35,7 +35,7 @@ func main() {
 	user_mgmt_server.DB = DB
 	user_mgmt_server.first_user_creation = true
 	if err := user_mgmt_server.Run(); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+		fmt.Printf("failed to serve: %v", err)
 	}
 }
 
@@ -46,7 +46,7 @@ func NewUserManagementServer() *UserManagementServer {
 func (server *UserManagementServer) Run() error {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		fmt.Printf("failed to listen: %v", err)
 	}
 
 	s := grpc.NewServer()

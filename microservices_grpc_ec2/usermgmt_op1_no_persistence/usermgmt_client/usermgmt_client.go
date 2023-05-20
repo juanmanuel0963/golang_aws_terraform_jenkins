@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"os"
 	"time"
@@ -21,7 +22,7 @@ func main() {
 
 	conn, err := grpc.Dial(os.Getenv("server_address")+":50051", grpc.WithTransportCredentials(insecure.NewCredentials()))
 	if err != nil {
-		log.Fatalf("did not connect: %v", err)
+		fmt.Printf("did not connect: %v", err)
 	}
 	defer conn.Close()
 	c := pb.NewUserManagementClient(conn)
@@ -34,7 +35,7 @@ func main() {
 	for name, age := range new_users {
 		r, err := c.CreateNewUser(ctx, &pb.NewUser{Name: name, Age: age})
 		if err != nil {
-			log.Fatalf("could not create user: %v", err)
+			fmt.Printf("could not create user: %v", err)
 		}
 		log.Printf(`User Details:
 NAME: %s

@@ -29,7 +29,7 @@ type UserManagementServer struct {
 func (server *UserManagementServer) Run() error {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		fmt.Printf("failed to listen: %v", err)
 	}
 
 	s := grpc.NewServer()
@@ -54,10 +54,10 @@ func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.Ne
 			users_list.Users = append(users_list.Users, created_user)
 			jsonBytes, err := protojson.Marshal(users_list)
 			if err != nil {
-				log.Fatalf("JSON Marshaling failed: %v", err)
+				fmt.Printf("JSON Marshaling failed: %v", err)
 			}
 			if err := ioutil.WriteFile("users.json", jsonBytes, 0666); err != nil {
-				log.Fatalf("Failed write to file: %v", err)
+				fmt.Printf("Failed write to file: %v", err)
 			}
 			return created_user, nil
 		} else {
@@ -66,15 +66,15 @@ func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.Ne
 	}
 
 	if err := protojson.Unmarshal(readBytes, users_list); err != nil {
-		log.Fatalf("Failed to parse user list: %v", err)
+		fmt.Printf("Failed to parse user list: %v", err)
 	}
 	users_list.Users = append(users_list.Users, created_user)
 	jsonBytes, err := protojson.Marshal(users_list)
 	if err != nil {
-		log.Fatalf("JSON Marshaling failed: %v", err)
+		fmt.Printf("JSON Marshaling failed: %v", err)
 	}
 	if err := ioutil.WriteFile("users.json", jsonBytes, 0664); err != nil {
-		log.Fatalf("Failed write to file: %v", err)
+		fmt.Printf("Failed write to file: %v", err)
 	}
 	return created_user, nil
 
@@ -83,11 +83,11 @@ func (server *UserManagementServer) CreateNewUser(ctx context.Context, in *pb.Ne
 func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUsersParams) (*pb.UsersList, error) {
 	jsonBytes, err := ioutil.ReadFile("users.json")
 	if err != nil {
-		log.Fatalf("Failed read from file: %v", err)
+		fmt.Printf("Failed read from file: %v", err)
 	}
 	var users_list *pb.UsersList = &pb.UsersList{}
 	if err := protojson.Unmarshal(jsonBytes, users_list); err != nil {
-		log.Fatalf("Unmarshaling failed: %v", err)
+		fmt.Printf("Unmarshaling failed: %v", err)
 	}
 
 	return users_list, nil
@@ -96,6 +96,6 @@ func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUser
 func main() {
 	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
 	if err := user_mgmt_server.Run(); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+		fmt.Printf("failed to serve: %v", err)
 	}
 }

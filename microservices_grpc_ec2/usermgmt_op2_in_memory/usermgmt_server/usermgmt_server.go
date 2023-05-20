@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"fmt"
 	"log"
 	"math/rand"
 	"net"
@@ -28,7 +29,7 @@ type UserManagementServer struct {
 func (server *UserManagementServer) Run() error {
 	lis, err := net.Listen("tcp", port)
 	if err != nil {
-		log.Fatalf("failed to listen: %v", err)
+		fmt.Printf("failed to listen: %v", err)
 	}
 
 	s := grpc.NewServer()
@@ -52,6 +53,6 @@ func (server *UserManagementServer) GetUsers(ctx context.Context, in *pb.GetUser
 func main() {
 	var user_mgmt_server *UserManagementServer = NewUserManagementServer()
 	if err := user_mgmt_server.Run(); err != nil {
-		log.Fatalf("failed to serve: %v", err)
+		fmt.Printf("failed to serve: %v", err)
 	}
 }
