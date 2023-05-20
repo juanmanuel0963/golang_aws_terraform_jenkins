@@ -24,7 +24,7 @@ apply_immediately       = true
 ami_id                  = "ami-053b0d53c279acc90" #2023-05-19
 #ami_id                  = "ami-0557a15b87f6559cf" #2023-02-08
 #ami_id                  = "ami-0149b2da6ceec4bb0" #2022-09-14
-instance_type           = "t2.medium"
+instance_type           = "t2.micro"
 key_name                = "env.key_pair"
 #
 grpc_server_1_instance_name     = "grpc_server_1"
