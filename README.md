@@ -613,15 +613,15 @@ We define the entry points for each of the operations.
 
 <img src="images/restful_chan_1.png"/>
 
-Within each operation, we implement a call to a function that returns 2 channels. 
-
-<img src="images/restful_chan_2.png"/>
-
-<img src="images/restful_chan_3.png"/>
+Within each operation, we implement a call to a Go Routine that returns 2 channels. 
 
 One channel is used to return a successful response, for example, a user successfully created in the database. 
 
 The second response channel is used to return an error if there is any.
+
+<img src="images/restful_chan_2.png"/>
+
+<img src="images/restful_chan_3.png"/>
 
 
 ## 	Implementing Go Routines and Channels in gRPC microservices
