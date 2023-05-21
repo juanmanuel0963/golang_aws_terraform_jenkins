@@ -504,6 +504,71 @@ The user is created in the database with a name and age.
 
 Since the EventBridge rule is executed every minute, we see that a new user has been created in the Postgresql database every minute.
 
+## 	Implementing Go Routines and Channels in Restful microservices
+
+Next, we will create a Restful microservice that will handle user management operations. 
+We will implement this microservice using Go Routines and Channels in order to take advantage of parallel request processing.
+
+We define the entry points for each of the operations.
+
+<a href="microservices_restful_ec2/users/source_code/main.go" target="_blank">microservices_restful_ec2/users/source_code/main.go</a>
+
+<img src="images/restful_chan_1.png"/>
+
+<a href="microservices_restful_ec2/users/source_code/controllers/createUser.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/createUser.go</a>
+
+<a href="microservices_restful_ec2/users/source_code/controllers/deleteUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/deleteUserById.go</a>
+
+<a href="microservices_restful_ec2/users/source_code/controllers/getAllUsers.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/getAllUsers.go</a>
+
+<a href="microservices_restful_ec2/users/source_code/controllers/getUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/getUserById.go</a>
+
+<a href="microservices_restful_ec2/users/source_code/controllers/updateUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/updateUserById.go</a>
+
+Within each operation, we implement a call to a Go Routine that returns 2 channels. 
+
+One channel is used to return a successful response, for example, a user successfully created in the database. 
+
+The second response channel is used to return an error if there is any.
+
+<img src="images/restful_chan_2.png"/>
+
+<img src="images/restful_chan_3.png"/>
+
+<img src="images/restful_chan_4.png"/>
+
+## 	Implementing Go Routines and Channels in gRPC microservices
+
+Next, we are going to build a gRPC microservice that can be accessed as if it were a Restful service. 
+
+This microservice will be responsible for receiving data from a client and creating a user and a contact in the database. 
+
+<img src="images/grpc_chan_1.png"/>
+
+<a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_client/usermgmt_client.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_client/usermgmt_client.go</a>
+
+<a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/controllers/usermgmt_client_controller.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/controllers/usermgmt_client_controller.go</a>
+
+<a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_server/usermgmt_server.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_server/usermgmt_server.go</a>
+
+To accomplish this task, we will implement two Go Routines, one for creating the user and another for creating the contact. 
+
+<img src="images/grpc_chan_2.png"/>
+
+Each Go Routine will return two channels: one channel to return the created user or contact, and another channel to return an error if necessary.
+
+<img src="images/grpc_chan_3.png"/>
+
+The gRPC client sends the data to the gRPC server, which in turn is responsible for creating the user and contact in the database. 
+
+<img src="images/grpc_chan_4.png"/>
+
+The gRPC server also implements Go Routines and Channels to make the processing more efficient.
+
+<img src="images/grpc_chan_5.png"/>
+
+<img src="images/grpc_chan_6.png"/>
+
 ## 	CI/CD through Terraform
 
 Below you will find the steps to make infrastructure and executable code changes in the "Dev" and "Test" environments in AWS using the command line and Terraform.
@@ -605,71 +670,3 @@ We manually run the "Pipeline". It can also be configured to run periodically at
 After a few minutes of execution, we get confirmation that the changes were successfully executed.
 
 <img src="jenkins-config/jenkins-5.jpg"/>
-
-
-
-## 	Implementing Go Routines and Channels in Restful microservices
-
-Next, we will create a Restful microservice that will handle user management operations. 
-We will implement this microservice using Go Routines and Channels in order to take advantage of parallel request processing.
-
-We define the entry points for each of the operations.
-
-<a href="microservices_restful_ec2/users/source_code/main.go" target="_blank">microservices_restful_ec2/users/source_code/main.go</a>
-
-<img src="images/restful_chan_1.png"/>
-
-<a href="microservices_restful_ec2/users/source_code/controllers/createUser.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/createUser.go</a>
-
-<a href="microservices_restful_ec2/users/source_code/controllers/deleteUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/deleteUserById.go</a>
-
-<a href="microservices_restful_ec2/users/source_code/controllers/getAllUsers.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/getAllUsers.go</a>
-
-<a href="microservices_restful_ec2/users/source_code/controllers/getUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/getUserById.go</a>
-
-<a href="microservices_restful_ec2/users/source_code/controllers/updateUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/updateUserById.go</a>
-
-Within each operation, we implement a call to a Go Routine that returns 2 channels. 
-
-One channel is used to return a successful response, for example, a user successfully created in the database. 
-
-The second response channel is used to return an error if there is any.
-
-<img src="images/restful_chan_2.png"/>
-
-<img src="images/restful_chan_3.png"/>
-
-<img src="images/restful_chan_4.png"/>
-
-## 	Implementing Go Routines and Channels in gRPC microservices
-
-Next, we are going to build a gRPC microservice that can be accessed as if it were a Restful service. 
-
-This microservice will be responsible for receiving data from a client and creating a user and a contact in the database. 
-
-<img src="images/grpc_chan_1.png"/>
-
-<a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_client/usermgmt_client.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_client/usermgmt_client.go</a>
-
-<a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/controllers/usermgmt_client_controller.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/controllers/usermgmt_client_controller.go</a>
-
-<a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_server/usermgmt_server.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_server/usermgmt_server.go</a>
-
-To accomplish this task, we will implement two Go Routines, one for creating the user and another for creating the contact. 
-
-<img src="images/grpc_chan_2.png"/>
-
-Each Go Routine will return two channels: one channel to return the created user or contact, and another channel to return an error if necessary.
-
-<img src="images/grpc_chan_3.png"/>
-
-The gRPC client sends the data to the gRPC server, which in turn is responsible for creating the user and contact in the database. 
-
-<img src="images/grpc_chan_4.png"/>
-
-The gRPC server also implements Go Routines and Channels to make the processing more efficient.
-
-<img src="images/grpc_chan_5.png"/>
-
-<img src="images/grpc_chan_6.png"/>
-
