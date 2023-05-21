@@ -648,18 +648,19 @@ Next, we are going to build a gRPC microservice that can be accessed as if it we
 
 This microservice will be responsible for receiving data from a client and creating a user and a contact in the database. 
 
-<img src="images/grpc_chan_2.png"/>
-
 To accomplish this task, we will implement two Go Routines, one for creating the user and another for creating the contact. 
 
-<img src="images/grpc_chan_3.png"/>
+<img src="images/grpc_chan_2.png"/>
 
 Each Go Routine will return two channels: one channel to return the created user or contact, and another channel to return an error if necessary.
 
-<img src="images/grpc_chan_4.png"/>
+<img src="images/grpc_chan_3.png"/>
 
 The gRPC client sends the data to the gRPC server, which in turn is responsible for creating the user or contact in the database. 
 
-<img src="images/grpc_chan_5.png"/>
+<img src="images/grpc_chan_4.png"/>
 
 The gRPC server also implements Go Routines and Channels to make the processing more efficient.
+
+<img src="images/grpc_chan_5.png"/>
+
