@@ -53,6 +53,8 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#cicd-through-jenkins">CI/CD through Jenkins</a>
 
+<a href="#implementing-go-routines-and-channels-in-restful-microservices">Implementing Go Routines and Channels in Restful microservices</a>
+
 -----------------------------
 
 ## Defining deployment environments
