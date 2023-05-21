@@ -640,4 +640,14 @@ The second response channel is used to return an error if there is any.
 
 ## 	Implementing Go Routines and Channels in gRPC microservices
 
-With the following configuration
+Next, we are going to build a gRPC microservice that can be accessed as if it were a Restful service. 
+
+This microservice will be responsible for receiving data from a client and creating a user and a contact in the database. 
+
+To accomplish this task, we will implement two Go Routines, one for creating the user and another for creating the contact. 
+
+Each Go Routine will return two channels: one channel to return the created user or contact, and another channel to return an error if necessary.
+
+The gRPC client sends the data to the gRPC server, which in turn is responsible for creating the user or contact in the database. 
+
+The gRPC server also implements Go Routines and Channels to make the processing more efficient.
