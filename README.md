@@ -644,13 +644,13 @@ The second response channel is used to return an error if there is any.
 
 Next, we are going to build a gRPC microservice that can be accessed as if it were a Restful service. 
 
-<img src="images/grpc_chan_1.png"/>
-
-<a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/controllers/usermgmt_client_controller.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/controllers/usermgmt_client_controller.go</a>
-
 This microservice will be responsible for receiving data from a client and creating a user and a contact in the database. 
 
+<img src="images/grpc_chan_1.png"/>
+
 <a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_client/usermgmt_client.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_client/usermgmt_client.go</a>
+
+<a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/controllers/usermgmt_client_controller.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/controllers/usermgmt_client_controller.go</a>
 
 <a href="microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_server/usermgmt_server.go" target="_blank">microservices_grpc_ec2/usermgmt_op6_rest_to_grpc_chan/usermgmt_server/usermgmt_server.go</a>
 
