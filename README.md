@@ -601,3 +601,13 @@ We manually run the "Pipeline". It can also be configured to run periodically at
 After a few minutes of execution, we get confirmation that the changes were successfully executed.
 
 <img src="jenkins-config/jenkins-5.jpg"/>
+
+
+
+## 	Implementing Go Routines and Channels in Restful microservices
+
+With the following configuration
+
+## 	Implementing Go Routines and Channels in gRPC microservices
+
+With the following configuration
