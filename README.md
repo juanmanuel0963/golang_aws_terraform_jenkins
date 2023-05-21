@@ -639,6 +639,7 @@ The second response channel is used to return an error if there is any.
 
 <img src="images/restful_chan_3.png"/>
 
+<img src="images/restful_chan_4.png"/>
 
 ## 	Implementing Go Routines and Channels in gRPC microservices
 
@@ -669,4 +670,6 @@ The gRPC client sends the data to the gRPC server, which in turn is responsible 
 The gRPC server also implements Go Routines and Channels to make the processing more efficient.
 
 <img src="images/grpc_chan_5.png"/>
+
+<img src="images/grpc_chan_6.png"/>
 
