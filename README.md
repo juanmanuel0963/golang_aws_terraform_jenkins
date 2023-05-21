@@ -656,7 +656,7 @@ Each Go Routine will return two channels: one channel to return the created user
 
 <img src="images/grpc_chan_3.png"/>
 
-The gRPC client sends the data to the gRPC server, which in turn is responsible for creating the user or contact in the database. 
+The gRPC client sends the data to the gRPC server, which in turn is responsible for creating the user and contact in the database. 
 
 <img src="images/grpc_chan_4.png"/>
 
