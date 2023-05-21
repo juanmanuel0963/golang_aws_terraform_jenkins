@@ -609,6 +609,11 @@ After a few minutes of execution, we get confirmation that the changes were succ
 Next, we will create a Restful microservice that will handle user management operations. 
 We will implement this microservice using Go Routines and Channels in order to take advantage of parallel request processing.
 
+We define the entry points for each of the operations.
+
+Within each operation, we implement a call to a function that returns 2 channels. One channel is used to return a successful response, for example, a user successfully created in the database. The second response channel is used to return an error if there is any.
+
+
 ## 	Implementing Go Routines and Channels in gRPC microservices
 
 With the following configuration
