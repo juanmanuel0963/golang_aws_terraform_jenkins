@@ -348,7 +348,7 @@ The microservice is initialized on the GIN web server on a specific port and req
 
 <img src="images/restful_blogs_3.png"/>
 
-The VerifyToken() function extracts the token sent by the client and makes a connection to the Cognito authentication service created previously for our application. If the token is valid, the execution flow continues normally. If the token is not valid, the client cannot be authenticated and therefore cannot invoke the requested function.
+The VerifyToken() function extracts the token sent by the client and makes a connection to the jwt Cognito authentication service created previously for our application. If the token is valid, the execution flow continues normally. If the token is not valid, the client cannot be authenticated and therefore cannot invoke the requested function.
 
 <a href="cognito/auth_token/source_code/verify_token/verify_token.go" target="_blank">cognito/auth_token/source_code/verify_token/verify_token.go</a>
 
@@ -364,11 +364,11 @@ We can start the service by running the following command. However, this command
 
 Now that the server-side gRPC microservice is up and listening on the specified port we can test connectivity with Postman.
 
-The following image shows an example of an invocation in Postman to the function blog_create. As seen before, the microservice requires authentication with AWS Cognito. In this case, no authentication function is specified. As a response, the function sends an "Unauthorized" message.
+The following image shows an example of an invocation in Postman to the function blog_create. As seen before, the microservice requires authentication with AWS jwt Cognito. In this case, no authentication function is specified. As a response, the function sends an "Unauthorized" message.
 
 <img src="images/restful_blogs_test_1.png"/>
 
-In the following image, we see an example of an invocation of the blog_create function. In this case, we obtain and specify an AWS Cognito token. 
+In the following image, we see an example of an invocation of the blog_create function. In this case, we obtain and specify an AWS jwt Cognito token. 
 
 <img src="images/restful_blogs_test_2.png"/>
 
