@@ -55,6 +55,8 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#implementing-go-routines-and-channels-in-restful-microservices">Implementing Go Routines and Channels in Restful microservices</a>
 
+<a href="#implementing-go-routines-and-channels-in-grpc-microservices">Implementing Go Routines and Channels in gRPC microservices</a>
+
 -----------------------------
 
 ## Defining deployment environments
