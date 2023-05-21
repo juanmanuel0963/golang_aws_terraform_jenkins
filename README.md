@@ -606,7 +606,8 @@ After a few minutes of execution, we get confirmation that the changes were succ
 
 ## 	Implementing Go Routines and Channels in Restful microservices
 
-With the following configuration
+Next, we will create a Restful microservice that will handle user management operations. 
+We will implement this microservice using Go Routines and Channels in order to take advantage of parallel request processing.
 
 ## 	Implementing Go Routines and Channels in gRPC microservices
 
