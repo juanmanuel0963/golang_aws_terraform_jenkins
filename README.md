@@ -619,6 +619,14 @@ Within each operation, we implement a call to a Go Routine that returns 2 channe
 
 <a href="microservices_restful_ec2/users/source_code/controllers/createUser.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/createUser.go</a>
 
+<a href="microservices_restful_ec2/users/source_code/controllers/deleteUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/deleteUserById.go</a>
+
+<a href="microservices_restful_ec2/users/source_code/controllers/getAllUsers.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/getAllUsers.go</a>
+
+<a href="microservices_restful_ec2/users/source_code/controllers/getUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/getUserById.go</a>
+
+<a href="microservices_restful_ec2/users/source_code/controllers/updateUserById.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/updateUserById.go</a>
+
 One channel is used to return a successful response, for example, a user successfully created in the database. 
 
 The second response channel is used to return an error if there is any.
