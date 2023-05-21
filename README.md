@@ -611,9 +611,13 @@ We will implement this microservice using Go Routines and Channels in order to t
 
 We define the entry points for each of the operations.
 
+<a href="microservices_restful_ec2/users/source_code/main.go" target="_blank">microservices_restful_ec2/users/source_code/main.go</a>
+
 <img src="images/restful_chan_1.png"/>
 
 Within each operation, we implement a call to a Go Routine that returns 2 channels. 
+
+<a href="microservices_restful_ec2/users/source_code/controllers/createUser.go" target="_blank">microservices_restful_ec2/users/source_code/controllers/createUser.go</a>
 
 One channel is used to return a successful response, for example, a user successfully created in the database. 
 
