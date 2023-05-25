@@ -24,6 +24,10 @@ terraform {
       source  = "hashicorp/aws"
       version = "~> 4.27"
     }
+    kubernetes = {
+      source  = "hashicorp/kubernetes"
+      version = ">= 2.10"
+    }    
     random = {
       source  = "hashicorp/random"
       version = "~> 3.3.2"
@@ -46,13 +50,13 @@ variable "random_pet"{
 }
 
 locals {
-  vpc_name    = "vpc_${var.random_pet}" 
+  vpc_name    = "eks_vpc_${var.random_pet}" 
 }
 
 #############################################################################
 # RESOURCES
 #############################################################################  
-
+/*
 module "vpc" {
     source = "terraform-aws-modules/vpc/aws"
     version = "~> 4.0"
@@ -70,24 +74,23 @@ module "vpc" {
 
     tags = {
         Terraform = "true"
-        Environment = "dev"
     }
 
     public_subnet_tags = {
         "kubernetes.io/role/elb" = "1"
-        "kubernetes.io/cluster/vcc-eks-tf" = "shared"
+        "kubernetes.io/cluster/eks_cluster_kite" = "shared"
     }
 
     private_subnet_tags = {
         "kubernetes.io/role/internal-elb" = "1"
-        "kubernetes.io/cluster/vcc-eks-tf" = "shared"
+        "kubernetes.io/cluster/eks_cluster_kite" = "shared"
     }
 }
-
+*/
 ##################################################################################
 # OUTPUT
 ##################################################################################
-
+/*
 output "aws_vpc_the_custom_vpc_id" {
   description = "Id of the VPC"
   value = module.vpc.vpc_id
@@ -97,3 +100,4 @@ output "aws_vpc_the_custom_vpc_private_subnets" {
   description = "VPC Private subnets"
   value = module.vpc.private_subnets
 }
+*/

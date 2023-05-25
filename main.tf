@@ -43,7 +43,7 @@ module "module_vpc" {
 ##################################################################################
 # vpc - OUTPUT
 ##################################################################################
-
+/*
 output "module_aws_vpc_the_custom_vpc_id" {
   description = "Id of the custom VPC"
   value = module.module_vpc.aws_vpc_the_custom_vpc_id
@@ -53,7 +53,7 @@ output "module_aws_vpc_the_custom_vpc_private_subnets" {
   description = "VPC Private subnets"
   value = module.module_vpc.aws_vpc_the_custom_vpc_private_subnets
 }
-
+*/
 ##################################################################################
 # eks
 ##################################################################################
@@ -63,14 +63,19 @@ module "module_eks" {
     region              = var.region  
     access_key          = var.access_key
     secret_key          = var.secret_key    
-    vpc_private_subnets = module.module_vpc.aws_vpc_the_custom_vpc_private_subnets
-    vpc_id              = module.module_vpc.aws_vpc_the_custom_vpc_id
+    //vpc_id              = module.module_vpc.aws_vpc_the_custom_vpc_id
+    //vpc_private_subnets = module.module_vpc.aws_vpc_the_custom_vpc_private_subnets    
     random_pet          = local.random_pet
 }
 
 ##################################################################################
 # eks - OUTPUT
 ##################################################################################
+/*
+output "module_aws_eks_the_eks_cluster_id" {
+  description = "EKS OIDC provider ARN"
+  value = module.module_eks.aws_eks_the_eks_cluster_id
+}
 
 output "module_aws_eks_the_eks_oidc_provider" {
   description = "EKS OIDC provider"
@@ -81,7 +86,7 @@ output "module_aws_eks_the_eks_oidc_provider_arn" {
   description = "EKS OIDC provider ARN"
   value = module.module_eks.aws_eks_the_eks_oidc_provider_arn
 }
-
+*/
 ##################################################################################
 # iam_role_load_balancer
 ##################################################################################
@@ -92,14 +97,14 @@ module "module_iam_role_load_balancer" {
     access_key          = var.access_key
     secret_key          = var.secret_key
     random_pet          = local.random_pet
-    eks_oidc_provider     = module.module_eks.aws_eks_the_eks_oidc_provider
-    eks_oidc_provider_arn = module.module_eks.aws_eks_the_eks_oidc_provider_arn
+    //eks_oidc_provider     = module.module_eks.aws_eks_the_eks_oidc_provider
+    //eks_oidc_provider_arn = module.module_eks.aws_eks_the_eks_oidc_provider_arn
 }
 
 ##################################################################################
 # iam_role_load_balancer - OUTPUT
 ##################################################################################
-
+/*
 output "module_iam_role_load_balancer_aws_iam_policy_load_balancer_controller" {
   description = "iam policy load balancer controller"
   value = module.module_iam_role_load_balancer.aws_iam_policy_load_balancer_controller
@@ -110,11 +115,30 @@ output "module_iam_role_load_balancer_aws_iam_role_load_balancer_controller" {
   value = module.module_iam_role_load_balancer.aws_iam_role_load_balancer_controller
 }
 
+output "module_iam_role_load_balancer_aws_iam_role_load_balancer_controller_arn" {
+  description = "iam role load balancer controllerarm"
+  value = module.module_iam_role_load_balancer.aws_iam_role_load_balancer_controller_arn
+}
+
 output "module_iam_role_load_balancer_aws_iam_policy_attachment_load_balancer_controller" {
   description = "iam policy attachment load balancer controller"
   value = module.module_iam_role_load_balancer.aws_iam_policy_attachment_load_balancer_controller
 }
 
+*/
+##################################################################################
+# k8s
+##################################################################################
+/*
+module "module_k8s" {
+    source              = "./microservices_kubernetes/k8s/terraform"
+    region              = var.region  
+    access_key          = var.access_key
+    secret_key          = var.secret_key      
+    random_pet          = local.random_pet
+    aws_iam_role_load_balancer_controller_arn = module.module_iam_role_load_balancer.aws_iam_role_load_balancer_controller_arn
+}
+*/
 ##################################################################################
 # networking
 ##################################################################################
