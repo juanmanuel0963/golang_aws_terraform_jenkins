@@ -31,7 +31,7 @@ locals {
 ##################################################################################
 # vpc
 ##################################################################################
-
+/*
 module "module_vpc" {
     source              = "./microservices_kubernetes/vpc/terraform"
     region              = var.region  
@@ -39,7 +39,7 @@ module "module_vpc" {
     secret_key          = var.secret_key    
     random_pet          = local.random_pet
 }
-
+*/
 ##################################################################################
 # vpc - OUTPUT
 ##################################################################################
@@ -57,7 +57,7 @@ output "module_aws_vpc_the_custom_vpc_private_subnets" {
 ##################################################################################
 # eks
 ##################################################################################
-
+/*
 module "module_eks" {
     source              = "./microservices_kubernetes/eks/terraform"
     region              = var.region  
@@ -67,7 +67,7 @@ module "module_eks" {
     //vpc_private_subnets = module.module_vpc.aws_vpc_the_custom_vpc_private_subnets    
     random_pet          = local.random_pet
 }
-
+*/
 ##################################################################################
 # eks - OUTPUT
 ##################################################################################
@@ -90,7 +90,7 @@ output "module_aws_eks_the_eks_oidc_provider_arn" {
 ##################################################################################
 # iam_role_load_balancer
 ##################################################################################
-
+/*
 module "module_iam_role_load_balancer" {
     source              = "./microservices_kubernetes/iam/terraform"
     region              = var.region
@@ -100,7 +100,7 @@ module "module_iam_role_load_balancer" {
     //eks_oidc_provider     = module.module_eks.aws_eks_the_eks_oidc_provider
     //eks_oidc_provider_arn = module.module_eks.aws_eks_the_eks_oidc_provider_arn
 }
-
+*/
 ##################################################################################
 # iam_role_load_balancer - OUTPUT
 ##################################################################################
