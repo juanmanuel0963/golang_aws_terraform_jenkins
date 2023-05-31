@@ -5,6 +5,7 @@ set AWS_PROFILE=tools
 terraform workspace new tools
 terraform workspace select tools
 terraform workspace list
+terraform fmt
 terraform init -upgrade
 terraform validate
 terraform plan -var db_password="Suta100*" -out "output_plan_tools.tfplan"
