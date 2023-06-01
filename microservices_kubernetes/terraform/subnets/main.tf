@@ -76,8 +76,8 @@ resource "aws_subnet" "k8s_the_subnet_public_1" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name                        = "k8s_public-us-east-1a"
-    "kubernetes.io/cluster/eks" = "shared"
+    Name                                                = "k8s_public-us-east-1a"
+    "kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
     "kubernetes.io/role/elb"    = 1
   }
 }
@@ -97,8 +97,8 @@ resource "aws_subnet" "k8s_the_subnet_public_2" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name                        = "k8s_public-us-east-1b"
-    "kubernetes.io/cluster/eks" = "shared"
+    Name                                                = "k8s_public-us-east-1b"
+    "kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
     "kubernetes.io/role/elb"    = 1
   }
 }
@@ -115,8 +115,8 @@ resource "aws_subnet" "k8s_the_subnet_private_1" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name                              = "k8s_private-us-east-1a"
-    "kubernetes.io/cluster/eks"       = "shared"
+    Name                                                = "k8s_private-us-east-1a"
+    "kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
     "kubernetes.io/role/internal-elb" = 1
   }
 }
@@ -133,8 +133,8 @@ resource "aws_subnet" "k8s_the_subnet_private_2" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name                              = "k8s_private-us-east-1b"
-    "kubernetes.io/cluster/eks"       = "shared"
+    Name                                                = "k8s_private-us-east-1b"
+    "kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
     "kubernetes.io/role/internal-elb" = 1
   }
 }
