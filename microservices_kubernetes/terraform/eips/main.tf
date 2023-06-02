@@ -22,11 +22,11 @@ variable "random_pet"{
 variable "k8s_the_vpc_id"{
   type    = string
 }
-/*
+
 variable "k8s_the_internet_gateway"{
   type    = string
 }
-*/
+
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -64,7 +64,7 @@ locals {
 
 # Resource: aws_eip
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/eip
-/*
+
 resource "aws_eip" "k8s_the_eip_nat1" {
   # EIP may require IGW to exist prior to association. 
   # Use depends_on to set an explicit dependency on the IGW.
@@ -106,4 +106,3 @@ output "k8s_the_eip_nat2_id" {
   value       =  aws_eip.k8s_the_eip_nat2.id
   description = "Elastic Public ID Nat 2"
 }
-*/

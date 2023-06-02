@@ -18,7 +18,7 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-/*
+
 variable "k8s_the_eip_nat1_id"{
   type    = string
 }
@@ -34,7 +34,7 @@ variable "k8s_the_subnet_public_1_id"{
 variable "k8s_the_subnet_public_2_id"{
   type    = string
 }
-*/
+
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -72,7 +72,7 @@ locals {
 
 # Resource: aws_nat_gateway
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/nat_gateway
-/*
+
 resource "aws_nat_gateway" "k8s_the_nat_gateway_1" {
   # The Allocation ID of the Elastic IP address for the gateway.
   allocation_id = var.k8s_the_eip_nat1_id
@@ -110,4 +110,3 @@ output "k8s_the_nat_gateway_2_id" {
   value       = aws_nat_gateway.k8s_the_nat_gateway_2.id
 }
 
-*/

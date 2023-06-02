@@ -59,6 +59,7 @@ provider "aws" {
 
 locals {
   subnets_name = "k8s_subnets_${var.random_pet}"
+  tag_name = "kubernetes.io/cluster/k8s_eks_cluster_${var.random_pet}"
 }
 
 resource "aws_subnet" "k8s_the_subnet_public_1" {
@@ -76,9 +77,10 @@ resource "aws_subnet" "k8s_the_subnet_public_1" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name                                                = "k8s_public-us-east-1a"
-    "kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
-    "kubernetes.io/role/elb"    = 1
+    Name = "k8s_public-us-east-1a"
+    //"kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
+    "${local.tag_name}" = "shared"
+    "kubernetes.io/role/elb" = 1
   }
 }
 
@@ -97,9 +99,10 @@ resource "aws_subnet" "k8s_the_subnet_public_2" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name                                                = "k8s_public-us-east-1b"
-    "kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
-    "kubernetes.io/role/elb"    = 1
+    Name = "k8s_public-us-east-1b"
+    //"kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
+    "${local.tag_name}" = "shared"
+    "kubernetes.io/role/elb" = 1
   }
 }
 
@@ -115,8 +118,9 @@ resource "aws_subnet" "k8s_the_subnet_private_1" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name                                                = "k8s_private-us-east-1a"
-    "kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
+    Name = "k8s_private-us-east-1a"
+    //"kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
+    "${local.tag_name}" = "shared"
     "kubernetes.io/role/internal-elb" = 1
   }
 }
@@ -133,8 +137,9 @@ resource "aws_subnet" "k8s_the_subnet_private_2" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name                                                = "k8s_private-us-east-1b"
-    "kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
+    Name = "k8s_private-us-east-1b"
+    //"kubernetes.io/cluster/k8s_eks_cluster_kite"        = "shared"
+    "${local.tag_name}" = "shared"
     "kubernetes.io/role/internal-elb" = 1
   }
 }
