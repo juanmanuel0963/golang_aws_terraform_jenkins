@@ -1,0 +1,53 @@
+------------------------------------------------------------------------------------------
+
+go run main.go
+
+- Raising Server / Running Compile Daemon. Within ping folder
+CompileDaemon -command="./ping"
+
+--Compiling binary to upload to Docker
+$Env:GOOS = "linux"
+$Env:CGO_ENABLED=0
+
+--build
+go build -o docker_ping_exe
+go build main.go
+
+docker build --tag docker_ping_image .
+
+--list images
+docker image ls
+
+--list containers
+docker ps
+docker ps -all
+docker ps -a
+
+--stop containers
+docker stop unruffled_goldberg
+
+--restart container
+docker restart unruffled_goldberg
+
+docker rm unruffled_goldberg
+docker rm boring_villani
+
+--run image
+--To break it down explicitly: -p 8080:8080 means redirecting traffic from port 8080 on all interfaces in the main network namespace to the container’s port 8080 on its external interface.
+
+docker run --rm -p 8080:8080 docker_ping_image
+
+docker run --publish 8080:8080 docker_ping_image
+
+--detached mode
+docker run -d -p 8080:8080 docker_ping_image
+
+--Other commans
+
+docker image tag docker_ping_image:latest docker_ping_image:v1.0
+
+docker image rm docker_ping_image:v1.0
+
+docker image rm docker_ping_image
+
+docker build -t docker_ping_image:multistage -f Dockerfile.multistage .
