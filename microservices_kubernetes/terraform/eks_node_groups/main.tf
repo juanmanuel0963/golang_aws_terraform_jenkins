@@ -18,11 +18,11 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-
+/*
 variable "k8s_the_vpc_id"{
   type    = string
 }
-/*
+
 variable "k8s_the_eks_cluster_name"{
   type    = string
 }
@@ -182,7 +182,7 @@ resource "aws_eks_node_group" "the_eks_nodes_group" {
   force_update_version = false
 
   # List of instance types associated with the EKS Node Group
-  instance_types = ["t2.micro"]
+  instance_types = ["t3.small"]
 
   labels = {
     role = local.eks_node_group_name

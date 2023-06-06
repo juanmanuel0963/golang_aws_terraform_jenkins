@@ -43,51 +43,51 @@ module "module_k8s_vpc" {
 ##################################################################################
 # vpc - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_vpc_the_vpc_id" {
   description = "VPC Id"
   value       = module.module_k8s_vpc.k8s_the_vpc_id
 }
-
+*/
 ##################################################################################
 # k8s_internet_gateway
 ##################################################################################
 
 module "module_k8s_internet_gateway" {
-  source         = "./microservices_kubernetes/terraform/internet_gateway"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
-  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
+  source     = "./microservices_kubernetes/terraform/internet_gateway"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
+  // k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
 }
 
 ##################################################################################
 # k8s_internet_gateway - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_internet_gateway_the_internet_gateway_id" {
   description = "Internet Gateway Id"
   value       = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
 }
-
+*/
 ##################################################################################
 # k8s_subnets
 ##################################################################################
 
 module "module_k8s_subnets" {
-  source         = "./microservices_kubernetes/terraform/subnets"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
-  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
+  source     = "./microservices_kubernetes/terraform/subnets"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
+  //  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
 }
 
 ##################################################################################
 # k8s_subnets - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_subnets_the_subnet_public_1_id" {
   description = "Subnet public 1 Id"
   value       = module.module_k8s_subnets.k8s_the_subnet_public_1_id
@@ -107,7 +107,7 @@ output "module_k8s_subnets_the_subnet_private_2_id" {
   description = "Subnet private 2 Id"
   value       = module.module_k8s_subnets.k8s_the_subnet_private_2_id
 }
-
+*/
 ##################################################################################
 # k8s_eip_nat
 ##################################################################################
@@ -118,9 +118,8 @@ module "module_k8s_eip_nat" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-
+  /*
   k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
-  /*  
   k8s_the_internet_gateway = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
 */
 }
@@ -186,13 +185,13 @@ output "module_k8s_nat_gateways_the_nat_gateway_2_id" {
 ##################################################################################
 
 module "module_k8s_routing_tables" {
-  source         = "./microservices_kubernetes/terraform/routing_tables"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
+  source     = "./microservices_kubernetes/terraform/routing_tables"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
+  /*  
   k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
-  /*
   k8s_the_internet_gateway_id = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
   k8s_the_nat_gateway_1_id    = module.module_k8s_nat_gateways.k8s_the_nat_gateway_1_id
   k8s_the_nat_gateway_2_id    = module.module_k8s_nat_gateways.k8s_the_nat_gateway_2_id
@@ -225,13 +224,13 @@ output "module_k8s_routing_tables_the_route_table_private_2_id" {
 ##################################################################################
 
 module "module_k8s_route_table_association" {
-  source         = "./microservices_kubernetes/terraform/route_table_association"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
-  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
-  /*
+  source     = "./microservices_kubernetes/terraform/route_table_association"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
+  /* 
+  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id 
   k8s_the_internet_gateway_id   = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
   k8s_the_route_table_public_id = module.module_k8s_routing_tables.k8s_the_route_table_public_id
 
@@ -275,13 +274,13 @@ output "module_k8s_route_table_association_the_route_table_association_private_2
 ##################################################################################
 
 module "module_k8s_eks" {
-  source         = "./microservices_kubernetes/terraform/eks"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
-  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
+  source     = "./microservices_kubernetes/terraform/eks"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
   /*
+  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_subnet_public_1_id = module.module_k8s_subnets.k8s_the_subnet_public_1_id
   k8s_the_subnet_public_2_id = module.module_k8s_subnets.k8s_the_subnet_public_2_id
 
@@ -314,13 +313,13 @@ output "module_k8s_eks_the_eks_cluster_name" {
 ##################################################################################
 
 module "module_k8s_eks_node_groups" {
-  source         = "./microservices_kubernetes/terraform/eks_node_groups"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
-  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
+  source     = "./microservices_kubernetes/terraform/eks_node_groups"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
   /*
+  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id  
   k8s_the_eks_cluster_name = module.module_k8s_eks.k8s_the_eks_cluster_name
 
   k8s_the_subnet_public_1_id  = module.module_k8s_subnets.k8s_the_subnet_public_1_id

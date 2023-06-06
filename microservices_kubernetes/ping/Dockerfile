@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 
-#FROM golang:1.19
-FROM golang:1.19 AS build-stage
+FROM golang:1.19
+##FROM golang:1.19 AS build-stage
 # Set destination for COPY
 WORKDIR /app
 

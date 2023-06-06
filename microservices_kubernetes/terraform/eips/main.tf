@@ -18,11 +18,11 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-
+/*
 variable "k8s_the_vpc_id"{
   type    = string
 }
-/*
+
 variable "k8s_the_internet_gateway"{
   type    = string
 }

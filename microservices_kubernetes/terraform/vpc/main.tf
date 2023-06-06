@@ -58,7 +58,7 @@ locals {
 # RESOURCES
 #############################################################################  
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/vpc
-
+/*
 resource "aws_vpc" "k8s_the_vpc" {
 
   # The CIDR block for the VPC.
@@ -94,3 +94,4 @@ output "k8s_the_vpc_id" {
   description = "VPC Id"
 }
 
+*/
