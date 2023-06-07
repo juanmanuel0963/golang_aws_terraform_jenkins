@@ -18,11 +18,11 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-/*
+
 variable "k8s_the_vpc_id"{
   type    = string
 }
-*/
+
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -61,7 +61,7 @@ locals {
 
 # Resource: aws_internet_gateway
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
-/*
+
 resource "aws_internet_gateway" "k8s_the_internet_gateway" {
   # The VPC ID to create in.
   vpc_id = var.k8s_the_vpc_id
@@ -77,4 +77,3 @@ output "k8s_the_internet_gateway_id" {
   value       = aws_internet_gateway.k8s_the_internet_gateway.id
 }
 
-*/
