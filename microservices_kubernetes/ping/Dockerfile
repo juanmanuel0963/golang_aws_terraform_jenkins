@@ -13,7 +13,7 @@ WORKDIR /app
 # https://docs.docker.com/engine/reference/builder/#copy
 #COPY *.go ./
 
-COPY docker_ping_exe /app/
+COPY main /app/
 
 # Build
 #RUN CGO_ENABLED=0 GOOS=linux go build -o /docker-gs-ping
@@ -22,7 +22,7 @@ COPY docker_ping_exe /app/
 # But we can (optionally) document in the Dockerfile what ports
 # the application is going to listen on by default.
 # https://docs.docker.com/engine/reference/builder/#expose
-EXPOSE 8080
+EXPOSE 80
 
 # Run
-CMD [ "/app/docker_ping_exe" ]
+CMD [ "/app/main" ]
