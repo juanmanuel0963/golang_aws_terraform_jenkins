@@ -104,7 +104,7 @@ kubectl create namespace ping-app-namespace
 
 Create Pods and Services
 --------------
-kubectl apply -f D:\projects\golang_aws_terraform_jenkins\microservices_kubernetes\k8s_deployment\ping_app.yaml
+kubectl apply -f D:\projects\golang_aws_terraform_jenkins\microservices_kubernetes\k8s_deployment\source_code\ping_app.yaml
 
 List Pods
 --------------

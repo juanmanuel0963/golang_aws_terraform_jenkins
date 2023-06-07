@@ -18,11 +18,11 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-/*
-variable "k8s_the_vpc_id"{
+
+variable "repository_name"{
   type    = string
 }
-*/
+
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -55,26 +55,33 @@ provider "aws" {
 }
 
 locals {
-  internet_gateway_name = "k8s_internet_gateway_${var.random_pet}"
+  repository_name = "k8s_ecr_public_repo_${var.repository_name}"
 }
 
+resource "aws_ecrpublic_repository" "the_ecr_public_repo" {
 
-# Resource: aws_internet_gateway
-# https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/internet_gateway
-/*
-resource "aws_internet_gateway" "k8s_the_internet_gateway" {
-  # The VPC ID to create in.
-  vpc_id = var.k8s_the_vpc_id
+  repository_name = local.repository_name
 
-  # A map of tags to assign to the resource.
-  tags = {
-    Name = local.internet_gateway_name
+  catalog_data {
+    about_text        = "About ${local.repository_name}"
+    description       = "Description ${local.repository_name}"
+    usage_text        = "Usage ${local.repository_name}"
   }
+
 }
 
-output "k8s_the_internet_gateway_id" {  
-  description = "Internet Gateway Id"
-  value       = aws_internet_gateway.k8s_the_internet_gateway.id
+output "k8s_ecr_public_repo_ping_service_id" {
+  value       =  aws_ecrpublic_repository.the_ecr_public_repo.id
+  description = "Repository id"
 }
 
-*/
+output "k8s_ecr_public_repo_ping_service_name" {
+  value       =  aws_ecrpublic_repository.the_ecr_public_repo.repository_name
+  description = "Repository name"
+}
+
+output "k8s_ecr_public_repo_ping_service_uri" {
+  value       =  aws_ecrpublic_repository.the_ecr_public_repo.repository_uri
+  description = "Repository uri"
+}
+

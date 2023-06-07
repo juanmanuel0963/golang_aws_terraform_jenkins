@@ -43,51 +43,52 @@ module "module_k8s_vpc" {
 ##################################################################################
 # vpc - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_vpc_the_vpc_id" {
   description = "VPC Id"
   value       = module.module_k8s_vpc.k8s_the_vpc_id
 }
-
+*/
 ##################################################################################
 # k8s_internet_gateway
 ##################################################################################
 
 module "module_k8s_internet_gateway" {
-  source         = "./microservices_kubernetes/terraform/internet_gateway"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
-  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
+  source     = "./microservices_kubernetes/terraform/internet_gateway"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
+
+  //k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
 }
 
 ##################################################################################
 # k8s_internet_gateway - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_internet_gateway_the_internet_gateway_id" {
   description = "Internet Gateway Id"
   value       = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
 }
-
+*/
 ##################################################################################
 # k8s_subnets
 ##################################################################################
 
 module "module_k8s_subnets" {
-  source         = "./microservices_kubernetes/terraform/subnets"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
-  k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
+  source     = "./microservices_kubernetes/terraform/subnets"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
+  //k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
 }
 
 ##################################################################################
 # k8s_subnets - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_subnets_the_subnet_public_1_id" {
   description = "Subnet public 1 Id"
   value       = module.module_k8s_subnets.k8s_the_subnet_public_1_id
@@ -107,7 +108,7 @@ output "module_k8s_subnets_the_subnet_private_2_id" {
   description = "Subnet private 2 Id"
   value       = module.module_k8s_subnets.k8s_the_subnet_private_2_id
 }
-
+*/
 ##################################################################################
 # k8s_eip_nat
 ##################################################################################
@@ -118,16 +119,16 @@ module "module_k8s_eip_nat" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-
+  /*
   k8s_the_vpc_id           = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_internet_gateway = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
-
+*/
 }
 
 ##################################################################################
 # k8s_eip_nat - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_eip_nat1_the_public_ip" {
   value       = module.module_k8s_eip_nat.k8s_the_eip_nat1_public_ip
   description = "Elastic Public IP Nat 1"
@@ -147,7 +148,7 @@ output "module_k8s_eip_nat2_the_id" {
   value       = module.module_k8s_eip_nat.k8s_the_eip_nat2_id
   description = "Elastic Public ID Nat 2"
 }
-
+*/
 ##################################################################################
 # k8s_nat_gateways
 ##################################################################################
@@ -158,18 +159,18 @@ module "module_k8s_nat_gateways" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-
+  /*
   k8s_the_eip_nat1_id        = module.module_k8s_eip_nat.k8s_the_eip_nat1_id
   k8s_the_eip_nat2_id        = module.module_k8s_eip_nat.k8s_the_eip_nat2_id
   k8s_the_subnet_public_1_id = module.module_k8s_subnets.k8s_the_subnet_public_1_id
   k8s_the_subnet_public_2_id = module.module_k8s_subnets.k8s_the_subnet_public_2_id
-
+*/
 }
 
 ##################################################################################
 # k8s_nat_gateways - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_nat_gateways_the_nat_gateway_1_id" {
   value       = module.module_k8s_nat_gateways.k8s_the_nat_gateway_1_id
   description = "Nat Gateway 1 Id"
@@ -179,7 +180,7 @@ output "module_k8s_nat_gateways_the_nat_gateway_2_id" {
   value       = module.module_k8s_nat_gateways.k8s_the_nat_gateway_2_id
   description = "Nat Gateway 2 Id"
 }
-
+*/
 ##################################################################################
 # k8s_routing_tables
 ##################################################################################
@@ -190,20 +191,20 @@ module "module_k8s_routing_tables" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-
+  /*
   k8s_the_vpc_id              = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_internet_gateway_id = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
   k8s_the_nat_gateway_1_id    = module.module_k8s_nat_gateways.k8s_the_nat_gateway_1_id
   k8s_the_nat_gateway_2_id    = module.module_k8s_nat_gateways.k8s_the_nat_gateway_2_id
   k8s_the_subnet_public_1_id  = module.module_k8s_subnets.k8s_the_subnet_public_1_id
   k8s_the_subnet_public_2_id  = module.module_k8s_subnets.k8s_the_subnet_public_2_id
-
+*/
 }
 
 ##################################################################################
 # k8s_routing_tables - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_routing_tables_the_route_table_public_id" {
   value       = module.module_k8s_routing_tables.k8s_the_route_table_public_id
   description = "Route table public Id"
@@ -218,7 +219,7 @@ output "module_k8s_routing_tables_the_route_table_private_2_id" {
   value       = module.module_k8s_routing_tables.k8s_the_route_table_private_2_id
   description = "Route table private 2 Id"
 }
-
+*/
 ##################################################################################
 # k8s_route_table_association
 ##################################################################################
@@ -229,7 +230,7 @@ module "module_k8s_route_table_association" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-
+  /*
   k8s_the_vpc_id                = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_internet_gateway_id   = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
   k8s_the_route_table_public_id = module.module_k8s_routing_tables.k8s_the_route_table_public_id
@@ -242,13 +243,13 @@ module "module_k8s_route_table_association" {
 
   k8s_the_subnet_private_1_id = module.module_k8s_subnets.k8s_the_subnet_private_1_id
   k8s_the_subnet_private_2_id = module.module_k8s_subnets.k8s_the_subnet_private_2_id
-
+*/
 }
 
 ##################################################################################
 # k8s_route_table_association - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_route_table_association_the_route_table_association_public_1_id" {
   value       = module.module_k8s_route_table_association.k8s_the_route_table_association_public_1_id
   description = "Route table association public 1 Id"
@@ -268,7 +269,7 @@ output "module_k8s_route_table_association_the_route_table_association_private_2
   value       = module.module_k8s_route_table_association.k8s_the_route_table_association_private_2_id
   description = "Route table association private 2 Id"
 }
-
+*/
 ##################################################################################
 # k8s_eks
 ##################################################################################
@@ -279,20 +280,20 @@ module "module_k8s_eks" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-
+  /*
   k8s_the_vpc_id             = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_subnet_public_1_id = module.module_k8s_subnets.k8s_the_subnet_public_1_id
   k8s_the_subnet_public_2_id = module.module_k8s_subnets.k8s_the_subnet_public_2_id
 
   k8s_the_subnet_private_1_id = module.module_k8s_subnets.k8s_the_subnet_private_1_id
   k8s_the_subnet_private_2_id = module.module_k8s_subnets.k8s_the_subnet_private_2_id
-
+*/
 }
 
 ##################################################################################
 # k8s_eks - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_eks_the_eks_iam_role_policy_attachment_id" {
   value       = module.module_k8s_eks.k8s_the_eks_iam_role_policy_attachment_id
   description = "Eks iam role policy attachment Id"
@@ -307,7 +308,7 @@ output "module_k8s_eks_the_eks_cluster_name" {
   value       = module.module_k8s_eks.k8s_the_eks_cluster_name
   description = "Eks cluster Name"
 }
-
+*/
 ##################################################################################
 # k8s_eks_node_groups
 ##################################################################################
@@ -318,7 +319,7 @@ module "module_k8s_eks_node_groups" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-
+  /*
   k8s_the_vpc_id           = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_eks_cluster_name = module.module_k8s_eks.k8s_the_eks_cluster_name
 
@@ -326,13 +327,13 @@ module "module_k8s_eks_node_groups" {
   k8s_the_subnet_public_2_id  = module.module_k8s_subnets.k8s_the_subnet_public_2_id
   k8s_the_subnet_private_1_id = module.module_k8s_subnets.k8s_the_subnet_private_1_id
   k8s_the_subnet_private_2_id = module.module_k8s_subnets.k8s_the_subnet_private_2_id
-
+*/
 }
 
 ##################################################################################
 # k8s_eks_node_groups - OUTPUT
 ##################################################################################
-
+/*
 output "module_k8s_the_eks_node_groups_iam_role_id" {
   value       = module.module_k8s_eks_node_groups.k8s_the_eks_node_groups_iam_role_id
   description = "Eks node groups iam role Id"
@@ -356,6 +357,39 @@ output "module_k8s_the_amazon_eks_worker_node_policy_attachment_id" {
 output "module_k8s_the_eks_nodes_group_id" {
   value       = module.module_k8s_eks_node_groups.k8s_the_eks_nodes_group_id
   description = "Eks nodes group Id"
+}
+*/
+
+##################################################################################
+# k8s_ecr_public_repo_ping_service
+##################################################################################
+
+module "module_k8s_ecr_public_repo_ping_service" {
+  source          = "./microservices_kubernetes/terraform/ecr_public_repository"
+  region          = var.region
+  access_key      = var.access_key
+  secret_key      = var.secret_key
+  random_pet      = local.random_pet
+  repository_name = "ping"
+}
+
+##################################################################################
+# k8s_ecr_public_repo_ping_service - OUTPUT
+##################################################################################
+
+output "module_k8s_ecr_public_repo_ping_service_id" {
+  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_ping_service_id
+  description = "Repository id"
+}
+
+output "module_k8s_ecr_public_repo_ping_service_name" {
+  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_ping_service_name
+  description = "Repository name"
+}
+
+output "module_k8s_ecr_public_repo_ping_service_uri" {
+  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_ping_service_uri
+  description = "Repository uri"
 }
 
 ##################################################################################

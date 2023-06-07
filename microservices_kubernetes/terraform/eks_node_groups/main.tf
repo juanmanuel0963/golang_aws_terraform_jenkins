@@ -18,7 +18,7 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-
+/*
 variable "k8s_the_vpc_id"{
   type    = string
 }
@@ -42,7 +42,7 @@ variable "k8s_the_subnet_private_1_id"{
 variable "k8s_the_subnet_private_2_id"{
   type    = string
 }
-
+*/
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -81,7 +81,7 @@ locals {
 
 # Resource: aws_iam_role
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role
-
+/*
 # Create IAM role for EKS Node Group
 resource "aws_iam_role" "the_eks_node_groups_iam_role" {
   # The name of the role
@@ -224,3 +224,4 @@ output "k8s_the_eks_nodes_group_id" {
   value       = aws_eks_node_group.the_eks_nodes_group.id
   description = "Eks nodes group Id"
 }
+*/

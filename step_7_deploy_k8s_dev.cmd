@@ -1,6 +1,6 @@
 ::Delete Files :: Ping-------------
 ::Ping - web server
-cd D:\projects\golang_aws_terraform_jenkins\microservices_kubernetes\ping
+cd D:\projects\golang_aws_terraform_jenkins\microservices_kubernetes\ping\source_code
 del main
 del main.exe
 del *.exe
@@ -14,25 +14,28 @@ go build main.go
 
 ::Remove old images
 ::------------------------------
-docker image rm ping_docker_image
+docker image rm k8s_ecr_public_repo_ping
 
-docker image rm public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
+docker image rm public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:latest
 
-::build image
+::Build image
 ::------------------------------
-docker build --tag ping_docker_image .
+::docker build --tag ping_docker_image .
+docker build -t k8s_ecr_public_repo_ping .
 
-::tag image
+::Tag image
 ::------------------------------
-docker tag ping_docker_image:latest public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
-
+::docker tag ping_docker_image:latest public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
+docker tag k8s_ecr_public_repo_ping:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:latest
 ::Connecting to pulic AWS ECR repo
 ::------------------------------
-aws ecr-public get-login-password --region us-east-1 --profile dev | docker login --username AWS --password-stdin public.ecr.aws/h9e6x2j6/docker_ping_repo_pub
+::aws ecr-public get-login-password --region us-east-1 --profile dev | docker login --username AWS --password-stdin public.ecr.aws/h9e6x2j6/docker_ping_repo_pub
+aws ecr-public get-login-password --region us-east-1 --profile dev | docker login --username AWS --password-stdin public.ecr.aws/h9e6x2j6
 
-::Upload image to public AWS ECR repo
+::Push image to public AWS ECR repo
 ::------------------------------
-docker push public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
+::docker push public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:latest
 
 ::Creating .kube config file on C:\Users\Juan Manuel\.kube\config
 ::--------------
