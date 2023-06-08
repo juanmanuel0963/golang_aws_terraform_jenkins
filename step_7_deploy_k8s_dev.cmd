@@ -15,8 +15,7 @@ go build main.go
 ::Remove old images
 ::------------------------------
 docker image rm k8s_ecr_public_repo_ping
-
-docker image rm public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:latest
+docker image rm public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping
 
 ::Build image
 ::------------------------------
@@ -27,10 +26,16 @@ docker build -t k8s_ecr_public_repo_ping .
 ::------------------------------
 ::docker tag ping_docker_image:latest public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
 docker tag k8s_ecr_public_repo_ping:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:latest
+
 ::Connecting to pulic AWS ECR repo
 ::------------------------------
 ::aws ecr-public get-login-password --region us-east-1 --profile dev | docker login --username AWS --password-stdin public.ecr.aws/h9e6x2j6/docker_ping_repo_pub
 aws ecr-public get-login-password --region us-east-1 --profile dev | docker login --username AWS --password-stdin public.ecr.aws/h9e6x2j6
+
+::Delete image to public AWS ECR repo
+::------------------------------
+::aws ecr batch-get-image --repository-name k8s_ecr_public_repo_ping --image-ids imageTag=latest --region us-east-1
+::aws ecr batch-delete-image --repository-name k8s_ecr_public_repo_ping --image-ids imageTag=latest --region us-east-1
 
 ::Push image to public AWS ECR repo
 ::------------------------------
@@ -44,6 +49,10 @@ aws eks --region us-east-1 update-kubeconfig --name k8s_eks_cluster_kite --profi
 ::Connecting to Kubernetes cluster
 ::--------------
 kubectl get svc
+
+::Delete namespace
+::--------------
+kubectl delete namespace ping-app-namespace
 
 ::Create namespace
 ::--------------
