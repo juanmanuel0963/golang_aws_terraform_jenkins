@@ -14,8 +14,11 @@ go build main.go
 
 ::Remove old images
 ::------------------------------
+docker rm -vf $(docker ps -a -q)
+
 docker image rm k8s_ecr_public_repo_ping
 docker image rm public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping
+docker system prune -a
 
 ::Build image
 ::------------------------------
@@ -25,7 +28,7 @@ docker build -t k8s_ecr_public_repo_ping .
 ::Tag image
 ::------------------------------
 ::docker tag ping_docker_image:latest public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
-docker tag k8s_ecr_public_repo_ping:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:latest
+docker tag k8s_ecr_public_repo_ping:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:3
 
 ::Connecting to pulic AWS ECR repo
 ::------------------------------
@@ -40,7 +43,7 @@ aws ecr-public get-login-password --region us-east-1 --profile dev | docker logi
 ::Push image to public AWS ECR repo
 ::------------------------------
 ::docker push public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
-docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:latest
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:3
 
 ::Creating .kube config file on C:\Users\Juan Manuel\.kube\config
 ::--------------
