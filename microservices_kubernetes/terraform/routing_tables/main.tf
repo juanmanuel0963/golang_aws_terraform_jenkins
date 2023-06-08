@@ -18,7 +18,7 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-/*
+
 variable "k8s_the_vpc_id"{
   type    = string
 }
@@ -42,7 +42,7 @@ variable "k8s_the_subnet_public_1_id"{
 variable "k8s_the_subnet_public_2_id"{
   type    = string
 }
-*/
+
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -80,7 +80,7 @@ locals {
 
 # Resource: aws_route_table
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table
-/*
+
 resource "aws_route_table" "k8s_the_route_table_public" {
   # The VPC ID.
   vpc_id = var.k8s_the_vpc_id
@@ -149,4 +149,3 @@ output "k8s_the_route_table_private_2_id" {
   description = "Route table private 2 Id"
   value       = aws_route_table.k8s_the_route_table_private_2.id
 }
-*/
