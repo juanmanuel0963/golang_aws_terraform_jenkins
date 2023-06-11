@@ -77,11 +77,12 @@ output "module_k8s_internet_gateway_the_internet_gateway_id" {
 ##################################################################################
 
 module "module_k8s_subnets" {
-  source         = "./microservices_kubernetes/terraform/subnets"
-  region         = var.region
-  access_key     = var.access_key
-  secret_key     = var.secret_key
-  random_pet     = local.random_pet
+  source     = "./microservices_kubernetes/terraform/subnets"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
+
   k8s_the_vpc_id = module.module_k8s_vpc.k8s_the_vpc_id
 }
 

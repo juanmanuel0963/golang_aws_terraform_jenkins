@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: ping-app
-        image: public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
+        image: public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:v1.6
         ports:
         - containerPort: 80
 ---
