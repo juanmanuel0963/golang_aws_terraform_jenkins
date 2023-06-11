@@ -57,7 +57,7 @@ provider "aws" {
 locals {
   repository_name = "k8s_ecr_public_repo_${var.repository_name}"
 }
-
+/*
 resource "aws_ecrpublic_repository" "the_ecr_public_repo" {
 
   repository_name = local.repository_name
@@ -85,3 +85,4 @@ output "k8s_ecr_public_repo_ping_service_uri" {
   description = "Repository uri"
 }
 
+*/
