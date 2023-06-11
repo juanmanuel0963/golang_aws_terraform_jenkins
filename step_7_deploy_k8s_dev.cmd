@@ -14,21 +14,22 @@ go build main.go
 
 ::Remove old images
 ::------------------------------
-docker rm -vf $(docker ps -a -q)
+::docker rm -vf $(docker ps -a -q)
+::docker image rm k8s_ecr_public_repo_ping
+::docker image rm public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping
 
-docker image rm k8s_ecr_public_repo_ping
-docker image rm public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping
-docker system prune -a
+docker system prune -a --force
 
 ::Build image
 ::------------------------------
 ::docker build --tag ping_docker_image .
 docker build -t k8s_ecr_public_repo_ping .
-
+timeout 60
 ::Tag image
 ::------------------------------
 ::docker tag ping_docker_image:latest public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
-docker tag k8s_ecr_public_repo_ping:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:3
+docker tag k8s_ecr_public_repo_ping:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:v1.6
+:: Change versión v1.x in this file at line 31 & 47, k8s_deployment\ping_app.yaml line 21, ping\soure_code\main.go line 19
 
 ::Connecting to pulic AWS ECR repo
 ::------------------------------
@@ -43,7 +44,7 @@ aws ecr-public get-login-password --region us-east-1 --profile dev | docker logi
 ::Push image to public AWS ECR repo
 ::------------------------------
 ::docker push public.ecr.aws/h9e6x2j6/docker_ping_repo_pub:1
-docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:3
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:v1.6
 
 ::Creating .kube config file on C:\Users\Juan Manuel\.kube\config
 ::--------------
@@ -64,6 +65,7 @@ kubectl create namespace ping-app-namespace
 ::Create Pods and Services
 ::--------------
 kubectl apply -f D:\projects\golang_aws_terraform_jenkins\microservices_kubernetes\k8s_deployment\ping_app.yaml
+timeout 60
 
 ::List Pods
 ::--------------
