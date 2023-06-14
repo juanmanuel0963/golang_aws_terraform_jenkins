@@ -43,7 +43,7 @@ run image locally
 
 --To break it down explicitly: -p 8080:8080 means redirecting traffic from port 8080 on all interfaces in the main network namespace to the container’s port 8080 on its external interface.
 
-docker run --rm -p 8080:8080 docker_ping_image
+docker run --rm -p 80:80 k8s_ecr_public_repo_blogs
 
 docker run --publish 8080:8080 docker_ping_image
 
