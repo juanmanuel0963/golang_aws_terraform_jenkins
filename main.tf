@@ -379,17 +379,49 @@ module "module_k8s_ecr_public_repo_ping_service" {
 ##################################################################################
 /*
 output "module_k8s_ecr_public_repo_ping_service_id" {
-  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_ping_service_id
+  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_service_id
   description = "Repository id"
 }
 
 output "module_k8s_ecr_public_repo_ping_service_name" {
-  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_ping_service_name
+  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_service_name
   description = "Repository name"
 }
 
 output "module_k8s_ecr_public_repo_ping_service_uri" {
-  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_ping_service_uri
+  value       = module.module_k8s_ecr_public_repo_ping_service.k8s_ecr_public_repo_service_uri
+  description = "Repository uri"
+}
+*/
+##################################################################################
+# k8s_ecr_public_repo_blogs_service
+##################################################################################
+
+module "module_k8s_ecr_public_repo_blogs_service" {
+  source          = "./microservices_kubernetes/terraform/ecr_public_repository"
+  region          = var.region
+  access_key      = var.access_key
+  secret_key      = var.secret_key
+  random_pet      = local.random_pet
+  repository_name = "blogs"
+}
+
+##################################################################################
+# k8s_ecr_public_repo_blogs_service - OUTPUT
+##################################################################################
+/*
+output "module_k8s_ecr_public_repo_blogs_service_id" {
+  value       = module.module_k8s_ecr_public_repo_blogs_service.k8s_ecr_public_repo_service_id
+  description = "Repository id"
+}
+
+output "module_k8s_ecr_public_repo_blogs_service_name" {
+  value       = module.module_k8s_ecr_public_repo_blogs_service.k8s_ecr_public_repo_service_name
+  description = "Repository name"
+}
+
+output "module_k8s_ecr_public_repo_blogs_service_uri" {
+  value       = module.module_k8s_ecr_public_repo_blogs_service.k8s_ecr_public_repo_service_uri
   description = "Repository uri"
 }
 */
@@ -403,6 +435,7 @@ module "module_networking" {
   access_key          = var.access_key
   secret_key          = var.secret_key
   security_group_name = "sg_${local.random_pet}"
+  //k8s_eip_nat2_the_public_ip = module.module_k8s_eip_nat.k8s_the_eip_nat2_public_ip
 }
 
 ##################################################################################

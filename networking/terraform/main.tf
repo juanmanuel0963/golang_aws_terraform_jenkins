@@ -21,7 +21,11 @@ variable "security_group_name"{
 data "http" "local_home_ip_address" {
   url = "https://ifconfig.me/ip"
 }
-
+/*
+variable "k8s_eip_nat2_the_public_ip"{
+  type    = string
+}
+*/
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -91,17 +95,7 @@ resource "aws_security_group_rule" "egress_to_everywhere" {
   protocol          = "all"
   cidr_blocks      = ["0.0.0.0/0"]
 }
-/*
-resource "aws_security_group_rule" "ingress_from_home" {
-  security_group_id = aws_security_group.the_security_group.id
-  description       = "ingress_from_home"
-  type              = "ingress"
-  from_port         = 0
-  to_port           = 65535
-  protocol          = "all"
-  cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
-}
-*/
+
 //-------Dynamic Home IPs for Dev/Tools ---------------------------
 
 resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
@@ -113,7 +107,17 @@ resource "aws_security_group_rule" "ingress_from_local_home_to_postgresql" {
   protocol          = "tcp"
   cidr_blocks      = ["${data.http.local_home_ip_address.response_body}/32"]
 }
-
+/*
+resource "aws_security_group_rule" "ingress_from_k8s_to_postgresql" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_k8s_to_postgresql"
+  type              = "ingress"
+  from_port         = 5432
+  to_port           = 5432
+  protocol          = "tcp"
+  cidr_blocks      = ["${var.k8s_eip_nat2_the_public_ip}/32"]  
+}
+*/
 resource "aws_security_group_rule" "ingress_from_local_home_to_ssh" {
   security_group_id = aws_security_group.the_security_group.id
   description       = "ingress_from_local_home_to_ssh"
@@ -214,6 +218,16 @@ resource "aws_security_group_rule" "ingress_from_server_jenkins_to_ssh" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks      = ["186.155.14.59/32"]
+}
+
+resource "aws_security_group_rule" "ingress_from_k8s_to_postgresql" {
+  security_group_id = aws_security_group.the_security_group.id
+  description       = "ingress_from_k8s_to_postgresql"
+  type              = "ingress"
+  from_port         = 5432
+  to_port           = 5432
+  protocol          = "tcp"
+  cidr_blocks      = ["${var.k8s_eip_nat2_the_public_ip}/32"]  
 }
 
 resource "aws_security_group_rule" "ingress_from_server_jenkins_to_3000" {

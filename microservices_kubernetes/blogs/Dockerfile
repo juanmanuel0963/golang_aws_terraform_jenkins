@@ -26,7 +26,7 @@ COPY . /app/blogs/
 #RUN go run $GOPATH/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
 
 #https://vsupalov.com/docker-arg-env-variable-guide/
-ENV PORT=3000
+ENV PORT=80
 ENV db_conn=""
 RUN echo "Oh dang look at that $PORT"
 RUN echo "Oh dang look at that $db_conn"
@@ -35,7 +35,7 @@ RUN echo "Oh dang look at that $db_conn"
 # But we can (optionally) document in the Dockerfile what ports
 # the application is going to listen on by default.
 # https://docs.docker.com/engine/reference/builder/#expose
-EXPOSE 3000
+EXPOSE 80
 
 
 # Run

@@ -70,19 +70,18 @@ resource "aws_ecrpublic_repository" "the_ecr_public_repo" {
 
 }
 
-output "k8s_ecr_public_repo_ping_service_id" {
+output "k8s_ecr_public_repo_service_id" {
   value       =  aws_ecrpublic_repository.the_ecr_public_repo.id
   description = "Repository id"
 }
 
-output "k8s_ecr_public_repo_ping_service_name" {
+output "k8s_ecr_public_repo_service_name" {
   value       =  aws_ecrpublic_repository.the_ecr_public_repo.repository_name
   description = "Repository name"
 }
 
-output "k8s_ecr_public_repo_ping_service_uri" {
+output "k8s_ecr_public_repo_service_uri" {
   value       =  aws_ecrpublic_repository.the_ecr_public_repo.repository_uri
   description = "Repository uri"
 }
-
 */
