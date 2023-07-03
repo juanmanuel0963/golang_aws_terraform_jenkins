@@ -120,7 +120,7 @@ module "module_k8s_eip_nat" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-  
+
   k8s_the_vpc_id           = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_internet_gateway = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
 
@@ -160,7 +160,7 @@ module "module_k8s_nat_gateways" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-  
+
   k8s_the_eip_nat1_id        = module.module_k8s_eip_nat.k8s_the_eip_nat1_id
   k8s_the_eip_nat2_id        = module.module_k8s_eip_nat.k8s_the_eip_nat2_id
   k8s_the_subnet_public_1_id = module.module_k8s_subnets.k8s_the_subnet_public_1_id
@@ -192,7 +192,7 @@ module "module_k8s_routing_tables" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-  
+
   k8s_the_vpc_id              = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_internet_gateway_id = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
   k8s_the_nat_gateway_1_id    = module.module_k8s_nat_gateways.k8s_the_nat_gateway_1_id
@@ -231,7 +231,7 @@ module "module_k8s_route_table_association" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-  
+
   k8s_the_vpc_id                = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_internet_gateway_id   = module.module_k8s_internet_gateway.k8s_the_internet_gateway_id
   k8s_the_route_table_public_id = module.module_k8s_routing_tables.k8s_the_route_table_public_id
@@ -281,7 +281,7 @@ module "module_k8s_eks" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-  
+
   k8s_the_vpc_id             = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_subnet_public_1_id = module.module_k8s_subnets.k8s_the_subnet_public_1_id
   k8s_the_subnet_public_2_id = module.module_k8s_subnets.k8s_the_subnet_public_2_id
@@ -320,7 +320,7 @@ module "module_k8s_eks_node_groups" {
   access_key = var.access_key
   secret_key = var.secret_key
   random_pet = local.random_pet
-  
+
   k8s_the_vpc_id           = module.module_k8s_vpc.k8s_the_vpc_id
   k8s_the_eks_cluster_name = module.module_k8s_eks.k8s_the_eks_cluster_name
 
@@ -430,11 +430,11 @@ output "module_k8s_ecr_public_repo_blogs_service_uri" {
 ##################################################################################
 
 module "module_networking" {
-  source              = "./networking/terraform"
-  region              = var.region
-  access_key          = var.access_key
-  secret_key          = var.secret_key
-  security_group_name = "sg_${local.random_pet}"
+  source                     = "./networking/terraform"
+  region                     = var.region
+  access_key                 = var.access_key
+  secret_key                 = var.secret_key
+  security_group_name        = "sg_${local.random_pet}"
   k8s_eip_nat2_the_public_ip = module.module_k8s_eip_nat.k8s_the_eip_nat2_public_ip
 }
 

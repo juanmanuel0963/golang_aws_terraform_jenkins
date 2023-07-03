@@ -23,7 +23,7 @@ docker build -t k8s_ecr_public_repo_ping .
 timeout 60
 ::Tag image
 ::------------------------------
-docker tag k8s_ecr_public_repo_ping:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:v1.6
+docker tag k8s_ecr_public_repo_ping:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:v1.0
 :: Change versión v1.x in this file at line 31 & 47, k8s_deployment\ping_app.yaml line 21, ping\soure_code\main.go line 19
 
 ::Connecting to pulic AWS ECR repo
@@ -32,7 +32,7 @@ aws ecr-public get-login-password --region us-east-1 --profile dev | docker logi
 
 ::Push image to public AWS ECR repo
 ::------------------------------
-docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:v1.6
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_ping:v1.0
 
 ::Creating .kube config file on C:\Users\Juan Manuel\.kube\config
 ::--------------
