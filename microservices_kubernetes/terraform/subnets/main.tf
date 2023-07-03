@@ -21,11 +21,11 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-/*
+
 variable "k8s_the_vpc_id"{
   type    = string
 }
-*/
+
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -61,7 +61,7 @@ locals {
   subnets_name = "k8s_subnets_${var.random_pet}"
   tag_name = "kubernetes.io/cluster/k8s_eks_cluster_${var.random_pet}"
 }
-/*
+
 resource "aws_subnet" "k8s_the_subnet_public_1" {
   # The VPC ID.
   vpc_id = var.k8s_the_vpc_id
@@ -164,4 +164,3 @@ output "k8s_the_subnet_private_2_id" {
   description = "Subnet private 2 Id"
 }
 
-*/
