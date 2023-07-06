@@ -11,6 +11,7 @@ del *.exe~
 set GOOS=linux
 set CGO_ENABLED=0
 go build main.go
+go run 'C:\Program Files\Go\src\crypto\tls\generate_cert.go' -rsa-bits 2048 -host localhost
 
 ::Remove old images
 ::------------------------------
@@ -28,16 +29,17 @@ docker build -t k8s_ecr_public_repo_blogs .
 timeout 60
 ::Tag image
 ::------------------------------
-docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v3.0
+docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.7
 :: Change versión v1.x in this file at line 31 & 40, k8s_deployment\blogs_app.yaml line 21.
 
 ::Connecting to pulic AWS ECR repo
 ::------------------------------
 aws ecr-public get-login-password --region us-east-1 --profile dev | docker login --username AWS --password-stdin public.ecr.aws/h9e6x2j6
+::I found that removing C:\Program Files\Docker\Docker\resources\bin\docker-credential-desktop.exe and C:\Program Files\Docker\Docker\resources\bin\docker-credential-wincred.exe worked for me. – Ethan Davis Sep 29 '20 at 18:10
 
 ::Push image to public AWS ECR repo
 ::------------------------------
-docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v3.0
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.7
 
 ::Creating .kube config file on C:\Users\Juan Manuel\.kube\config
 ::--------------
@@ -72,3 +74,6 @@ kubectl get svc -n blogs-app-namespace
 ::--------------
 ::kubectl exec -it --namespace <namespace> <podname> -- bash
 ::kubectl exec -it --namespace blogs-app-namespace blogs-app-deployment-7fb6fbf96b-ck6wz -- bash
+
+::Pod restart
+::kubectl rollout restart  -n blogs-app-namespace

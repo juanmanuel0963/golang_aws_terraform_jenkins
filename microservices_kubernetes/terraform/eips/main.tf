@@ -83,7 +83,7 @@ resource "aws_eip" "k8s_the_eip_nat2" {
 
   # A map of tags to assign to the resource.
   tags = {
-    Name = "K8s EIP 1"
+    Name = "K8s EIP 2"
   }  
 }
 
