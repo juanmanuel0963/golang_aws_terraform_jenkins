@@ -18,7 +18,7 @@ variable "secret_key" {
 variable "random_pet"{
   type    = string
 }
-
+/*
 variable "k8s_the_vpc_id"{
   type    = string
 }
@@ -54,7 +54,7 @@ variable "k8s_the_subnet_private_1_id"{
 variable "k8s_the_subnet_private_2_id"{
   type    = string
 }
-
+*/
 #############################################################################
 # PROVIDERS
 #############################################################################
@@ -92,7 +92,7 @@ locals {
 
 # Resource: aws_route_table_association
 # https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/route_table_association
-
+/*
 resource "aws_route_table_association" "k8s_the_route_table_association_public_1" {
   # The subnet ID to create an association.
   subnet_id = var.k8s_the_subnet_public_1_id
@@ -143,3 +143,4 @@ output "k8s_the_route_table_association_private_2_id" {
   value       = aws_route_table_association.k8s_the_route_table_association_private_2.id
   description = "Route table association private 2 Id"
 }
+*/

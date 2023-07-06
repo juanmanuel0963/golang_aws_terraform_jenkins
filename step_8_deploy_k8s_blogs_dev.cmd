@@ -29,7 +29,7 @@ docker build -t k8s_ecr_public_repo_blogs .
 timeout 60
 ::Tag image
 ::------------------------------
-docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.7
+docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v2.0
 :: Change versión v1.x in this file at line 31 & 40, k8s_deployment\blogs_app.yaml line 21.
 
 ::Connecting to pulic AWS ECR repo
@@ -39,7 +39,7 @@ aws ecr-public get-login-password --region us-east-1 --profile dev | docker logi
 
 ::Push image to public AWS ECR repo
 ::------------------------------
-docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.7
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v2.0
 
 ::Creating .kube config file on C:\Users\Juan Manuel\.kube\config
 ::--------------
@@ -73,7 +73,10 @@ kubectl get svc -n blogs-app-namespace
 ::List Pod files
 ::--------------
 ::kubectl exec -it --namespace <namespace> <podname> -- bash
-::kubectl exec -it --namespace blogs-app-namespace blogs-app-deployment-7fb6fbf96b-ck6wz -- bash
+::kubectl exec -it --namespace blogs-app-namespace blogs-app-deployment-6fbbf56fd4-v8m5w -- bash
+
+::cd /app/blogs/source_code
+::go run /usr/local/go/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
 
 ::Pod restart
-::kubectl rollout restart  -n blogs-app-namespace
+::kubectl rollout restart deployment blogs-app-deployment -n blogs-app-namespace
