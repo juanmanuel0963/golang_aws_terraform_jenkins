@@ -70,6 +70,12 @@ kubectl get pods -n blogs-app-namespace
 ::--------------
 kubectl get svc -n blogs-app-namespace
 
+::kubectl get nodes
+
+::How do I terminate HTTPs on Kubernetes Services with ACM?
+::https://www.youtube.com/watch?v=kU8H3_5UALc
+
+
 ::List Pod files
 ::--------------
 ::kubectl exec -it --namespace <namespace> <podname> -- bash
