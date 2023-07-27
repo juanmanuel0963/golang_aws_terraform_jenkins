@@ -359,8 +359,8 @@ output "module_k8s_the_eks_nodes_group_id" {
   value       = module.module_k8s_eks_node_groups.k8s_the_eks_nodes_group_id
   description = "Eks nodes group Id"
 }
-*/
 
+*/
 ##################################################################################
 # k8s_ecr_public_repo_ping_service
 ##################################################################################
@@ -442,7 +442,7 @@ module "module_networking" {
 ##################################################################################
 # networking - OUTPUT
 ##################################################################################
-
+/*
 output "module_networking_security_group" {
   description = "Security Group"
   value       = module.module_networking.security_group
@@ -472,7 +472,7 @@ output "module_networking_local_home_ip_address" {
   description = "Local Home Ip Address"
   value       = module.module_networking.local_home_ip_address
 }
-
+*/
 ##################################################################################
 # api_gateway
 ##################################################################################

@@ -28,13 +28,17 @@ func main() {
 	//err := r.RunTLS(":"+os.Getenv("PORT"), "cert.pem", "key.pem")
 
 	//Local w/out TLS
-	err := r.Run(":" + os.Getenv("PORT"))
+	//err := r.Run(":" + os.Getenv("PORT"))
 	//err := r.Run(":" + "3000")
 
-	//Server
+	//Server w/ TLS
 	//err := r.RunTLS(":"+os.Getenv("PORT"), "/home/ubuntu/tls/cert.pem", "/home/ubuntu/tls/key.pem")
 	//err := r.RunTLS(":"+"3000", "cert.pem", "key.pem")
 
+	//Server w/out TLS
+	err := r.Run(":" + os.Getenv("PORT"))
+
+	//err := r.RunTLS(":"+os.Getenv("PORT"), "", "")
 	// Listen and Server in https://127.0.0.1:8080
 
 	if err != nil {

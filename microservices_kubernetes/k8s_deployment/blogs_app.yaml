@@ -18,13 +18,13 @@ spec:
     spec:
       containers:
       - name: blogs-app
-        image: public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v2.0
+        image: public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.2
         env:
         - name: PORT
           value: "80"
         - name: db_conn
-          value: 'host=db-server-postgresql-kite.cm03k8s4ogkh.us-east-1.rds.amazonaws.com user=db_master password=***** dbname=db_postgresql_kite port=5432 sslmode=disable'
-        ports:
+          value: 'host=db-server-postgresql-kite.cm03k8s4ogkh.us-east-1.rds.amazonaws.com user=db_master password=****** dbname=db_postgresql_kite port=5432 sslmode=disable'
+        ports:         
         - containerPort: 80          
 ---
 apiVersion: v1
