@@ -98,17 +98,13 @@ kubectl get svc -n blogs-app-namespace
 ::--------------
 kubectl get nodes
 
-::How do I terminate HTTPs on Kubernetes Services with ACM?
-::https://www.youtube.com/watch?v=kU8H3_5UALc
-
-
-::List Pod files
+::Linux connection - List Pod files
 ::--------------
 ::kubectl exec -it --namespace <namespace> <podname> -- bash
 ::kubectl exec -it --namespace blogs-app-namespace blogs-app-deployment-7bb6dbccb5-nb88d -- bash
 
-::cd /app/blogs/source_code
-::go run /usr/local/go/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
-
 ::Pod restart
 ::kubectl rollout restart deployment blogs-app-deployment -n blogs-app-namespace
+
+::cd /app/blogs/source_code
+::go run /usr/local/go/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
