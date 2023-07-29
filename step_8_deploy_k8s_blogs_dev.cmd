@@ -1,7 +1,8 @@
-::Step 0: Not to do going gorward. I found that removing C:\Program Files\Docker\Docker\resources\bin\docker-credential-desktop.exe, C:\Program Files\Docker\Docker\resources\bin\docker-credential-wincred.exe and C:\Program Files\Docker\Docker\resources\bin\docker-credential-ecr-login.exe worked for me. – Ethan Davis Sep 29 '20 at 18:10
+::Step 0: blogs_app.yaml colocar la clave de bd en la línea 26
+::Step 0: Not to use going forward. I found that removing C:\Program Files\Docker\Docker\resources\bin\docker-credential-desktop.exe, C:\Program Files\Docker\Docker\resources\bin\docker-credential-wincred.exe and C:\Program Files\Docker\Docker\resources\bin\docker-credential-ecr-login.exe worked for me. – Ethan Davis Sep 29 '20 at 18:10
 ::Step 0: C:\Users\Juan Manuel\.docker\config.json -> verificar que sólo contenta esto: {}
 ::Step 0: C:\Users\Juan Manuel\.kube\config.json -> eliminar archivo
-::Step 0: blogs_app.yaml colocar la clave de bd en la línea 26
+
 ::Delete Files :: blogs-------------
 ::blogs - web server
 cd D:\projects\golang_aws_terraform_jenkins\microservices_kubernetes\blogs\source_code
@@ -41,7 +42,7 @@ timeout 60
 
 :: 2. Tag image
 ::------------------------------
-docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.8
+docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.1
 :: Change versión v1.x in this file at line 44 & 69, k8s_deployment\blogs_app.yaml line 21.
 
 :: 3. Creating .kube config file on C:\Users\Juan Manuel\.kube\config
@@ -66,7 +67,7 @@ aws ecr-public get-login-password --region us-east-1 --profile dev | docker logi
 
 :: 6. Push image to public AWS ECR repo
 ::------------------------------
-docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.8
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.1
 
 ::Connecting to Kubernetes cluster
 ::--------------
