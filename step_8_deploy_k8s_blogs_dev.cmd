@@ -11,7 +11,7 @@ del *.exe~
 set GOOS=linux
 set CGO_ENABLED=0
 go build main.go
-go run 'C:\Program Files\Go\src\crypto\tls\generate_cert.go' -rsa-bits 2048 -host localhost
+::go run 'C:\Program Files\Go\src\crypto\tls\generate_cert.go' -rsa-bits 2048 -host localhost
 
 ::Remove old images
 ::------------------------------
@@ -20,30 +20,51 @@ docker system prune -a --force
 ::timeout 10
 ::docker run --rm -p 3000:3000 k8s_ecr_public_repo_blogs
 
-:: 0. Creating .kube config file on C:\Users\Juan Manuel\.kube\config
-::--------------
-aws eks --region us-east-1 update-kubeconfig --name k8s_eks_cluster_kite --profile dev
-
-:: 1. Connecting to pulic AWS ECR repo
+::0. Renombrar archivos de Docker
 ::------------------------------
-aws ecr-public get-login-password --region us-east-1 --profile dev | docker login --username AWS --password-stdin public.ecr.aws/h9e6x2j6
-::I found that removing C:\Program Files\Docker\Docker\resources\bin\docker-credential-desktop.exe, C:\Program Files\Docker\Docker\resources\bin\docker-credential-wincred.exe and C:\Program Files\Docker\Docker\resources\bin\docker-credential-ecr-login.exe worked for me. – Ethan Davis Sep 29 '20 at 18:10
-
-:: 2. Build image
+cd C:\Program Files\Docker\Docker\resources\bin
+c:
+ren "docker-credential-desktop1.exe" "docker-credential-desktop.exe"
+ren "docker-credential-ecr-login1.exe" "docker-credential-ecr-login.exe"
+ren "docker-credential-wincred1.exe" "docker-credential-wincred.exe"
+dir
+:: 1. Build image
 ::------------------------------
-::docker build --tag blogs_docker_image .
 cd D:\projects\golang_aws_terraform_jenkins\microservices_kubernetes\blogs
+d:
 docker build -t k8s_ecr_public_repo_blogs .
 timeout 60
 
-:: 3. Tag image
+:: 2. Tag image
 ::------------------------------
-docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.2
-:: Change versión v1.x in this file at line 31 & 40, k8s_deployment\blogs_app.yaml line 21.
+docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.6
+:: Change versión v1.x in this file at line 41 & 67, k8s_deployment\blogs_app.yaml line 21.
 
-:: 4. Push image to public AWS ECR repo
+:: 3. Creating .kube config file on C:\Users\Juan Manuel\.kube\config
+::--------------
+aws eks --region us-east-1 update-kubeconfig --name k8s_eks_cluster_kite --profile dev
+
+:: 4. Renombrar archivos de Docker
 ::------------------------------
-docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.2
+cd C:\Program Files\Docker\Docker\resources\bin
+c:
+ren "docker-credential-desktop.exe" "docker-credential-desktop1.exe"
+ren "docker-credential-ecr-login.exe" "docker-credential-ecr-login1.exe"
+ren "docker-credential-wincred.exe" "docker-credential-wincred1.exe"
+dir
+
+:: 5. Connecting to pulic AWS ECR repo
+::------------------------------
+cd D:\projects\golang_aws_terraform_jenkins\microservices_kubernetes\blogs
+d:
+aws ecr-public get-login-password --region us-east-1 --profile dev | docker login --username AWS --password-stdin public.ecr.aws/h9e6x2j6
+::Step 1: I found that removing C:\Program Files\Docker\Docker\resources\bin\docker-credential-desktop.exe, C:\Program Files\Docker\Docker\resources\bin\docker-credential-wincred.exe and C:\Program Files\Docker\Docker\resources\bin\docker-credential-ecr-login.exe worked for me. – Ethan Davis Sep 29 '20 at 18:10
+::Step 2: C:\Users\Juan Manuel\.docker\config.json -> verificar que sólo contenta esto: {}
+::Step 3: C:\Users\Juan Manuel\.kube\config.json -> eliminar archivo
+
+:: 6. Push image to public AWS ECR repo
+::------------------------------
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.6
 
 ::Connecting to Kubernetes cluster
 ::--------------
