@@ -57,6 +57,10 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#cicd-through-jenkins">CI/CD through Jenkins</a>
 
+<a href="#creating-kubernetes-cluster">Creating Kubernetes cluster</a>
+
+
+
 -----------------------------
 
 ## Defining deployment environments
