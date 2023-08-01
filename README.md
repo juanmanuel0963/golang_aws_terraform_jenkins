@@ -769,7 +769,9 @@ Getting list of PODs and Services created
 Testing Kubernetes services
 
 Listing Blogs
+
 <img src="images/k8s-testing-1.png"/>
 
 Quering by Blog Id
+
 <img src="images/k8s-testing-2.png"/>
