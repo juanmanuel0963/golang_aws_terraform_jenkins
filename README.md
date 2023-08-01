@@ -690,3 +690,8 @@ We will start creating our Kubernetes infrastructure by defining a new VPC. All 
 Internet Gateway
 
 <img src="images/k8s_gateway.png"/>
+
+Subnets
+
+<img src="images/k8s_subnets.png"/>
+
