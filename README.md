@@ -726,6 +726,8 @@ Container Registry
 
 ## 	Deploying Docker image to Kubernetes cluster
 
+<a href="step_8_deploy_k8s_blogs_dev.cmd" target="_blank">step_8_deploy_k8s_blogs_dev.cmd</a>
+
 Compiling microservices source code
 
 <img src="images/k8s-deployment-1.png"/>
