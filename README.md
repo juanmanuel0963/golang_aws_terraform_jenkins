@@ -695,7 +695,7 @@ Subnets
 
 <img src="images/k8s_subnets.png"/>
 
-NAT Gateway
+Public IPs
 
-<img src="images/k8s_nat.png"/>
+<img src="images/k8s_ips.png"/>
 
