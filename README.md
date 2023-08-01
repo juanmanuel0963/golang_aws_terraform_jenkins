@@ -754,7 +754,9 @@ Updating .kube/config.json. Deleting current Kubernetes namespace. Creating name
 
 <img src="images/k8s-deployment-5.png"/>
 
-Applying kubernetes configuration file. Pods and services creation
+Applying kubernetes configuration file. 
+
+In the following Kubernetes configuration file, you will find step-by-step instructions for services creation from Docker image stored in the Amazon Container Registry.
 
 <a href="microservices_kubernetes/k8s_deployment/blogs_app.yaml" target="_blank">blogs_app.yaml</a>
 
