@@ -738,7 +738,11 @@ Building Docker image
 
 <img src="images/k8s-deployment-3.png"/>
 
+Tagging Docker image. Connecting to AWS Kubernetes. Pushing Docker image to AWS Container Registry
+
 <img src="images/k8s-deployment-4.png"/>
+
+Updating .kube/config.json
 
 <img src="images/k8s-deployment-5.png"/>
 
