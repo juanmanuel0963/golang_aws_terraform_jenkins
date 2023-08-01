@@ -736,7 +736,7 @@ Cleaning up Docker images
 
 Building Docker image
 
-<a href="blogs/Dockerfile" target="_blank">Dockerfile</a>
+<a href="microservices_kubernetes/blogs/Dockerfile" target="_blank">Dockerfile</a>
 
 <img src="images/k8s-deployment-3.png"/>
 
