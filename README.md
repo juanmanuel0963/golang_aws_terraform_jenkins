@@ -677,6 +677,8 @@ After a few minutes of execution, we get confirmation that the changes were succ
 
 ## 	Creating Kubernetes cluster
 
-With the 
+We will start creating our Kubernetes infrastructure by defining a new VPC.
+
+<a href="main.tf" target="_blank">main.tf</a>
 
 <img src="images/k8s_vpc.png"/>
