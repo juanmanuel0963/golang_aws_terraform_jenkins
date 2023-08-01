@@ -699,3 +699,7 @@ Public IPs
 
 <img src="images/k8s_ips.png"/>
 
+NAT Gateway
+
+<img src="images/k8s_nat_gateway.png"/>
+
