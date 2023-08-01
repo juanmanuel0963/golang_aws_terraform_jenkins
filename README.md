@@ -720,13 +720,13 @@ Node Groups
 
 <img src="images/k8s_node_groups.png"/>
 
-## 	Deploying Docker image to Kubernetes cluster
-
 Container Registry
 
 <img src="images/k8s_container_registry.png"/>
 
-Compiling source code
+## 	Deploying Docker image to Kubernetes cluster
+
+Compiling microservices source code
 
 <img src="images/k8s-deployment-1.png"/>
 
