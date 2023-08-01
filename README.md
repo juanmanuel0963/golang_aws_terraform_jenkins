@@ -726,9 +726,15 @@ Container Registry
 
 <img src="images/k8s_container_registry.png"/>
 
+Compiling source code
+
 <img src="images/k8s-deployment-1.png"/>
 
+Cleaning up Docker images
+
 <img src="images/k8s-deployment-2.png"/>
+
+Building Docker image
 
 <img src="images/k8s-deployment-3.png"/>
 
