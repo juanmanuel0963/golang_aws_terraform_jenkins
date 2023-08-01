@@ -699,7 +699,14 @@ Public IPs
 
 <img src="images/k8s_ips.png"/>
 
-NAT Gateway
+NAT Gateways
 
 <img src="images/k8s_nat_gateway.png"/>
 
+Routing Tables
+
+<img src="images/k8s_routing_tables.png"/>
+
+Route Table Association
+
+<img src="images/k8s_k8s_route_table_association.png"/>
