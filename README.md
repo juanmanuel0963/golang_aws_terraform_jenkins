@@ -59,6 +59,7 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#creating-kubernetes-cluster">Creating Kubernetes cluster</a>
 
+<a href="#deploying-docker-image-to-kubernetes-cluster">Deploying Docker image to Kubernetes cluster</a>
 
 
 -----------------------------
@@ -718,6 +719,8 @@ Kubernetes Cluster
 Node Groups
 
 <img src="images/k8s_node_groups.png"/>
+
+## 	Deploying Docker image to Kubernetes cluster
 
 Container Registry
 
