@@ -709,4 +709,4 @@ Routing Tables
 
 Route Table Association
 
-<img src="images/k8s_k8s_route_table_association.png"/>
+<img src="images/k8s_route_table_association.png"/>
