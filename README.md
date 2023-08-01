@@ -763,3 +763,11 @@ Applying kubernetes configuration file. Pods and services creation
 Getting list of PODs and Services created
 
 <img src="images/k8s-deployment-7.png"/>
+
+Testing Kubernetes services
+
+Listing Blogs
+<img src="images/k8s-testing-1.png"/>
+
+Quering by Blog Id
+<img src="images/k8s-testing-2.png"/>
