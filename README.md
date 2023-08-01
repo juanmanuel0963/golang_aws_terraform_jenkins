@@ -678,3 +678,5 @@ After a few minutes of execution, we get confirmation that the changes were succ
 ## 	Creating Kubernetes cluster
 
 With the 
+
+<img src="k8s-vpc.png"/>
