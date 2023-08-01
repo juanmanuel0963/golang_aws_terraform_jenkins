@@ -742,14 +742,14 @@ Tagging Docker image. Connecting to AWS Kubernetes. Pushing Docker image to AWS 
 
 <img src="images/k8s-deployment-4.png"/>
 
-Updating .kube/config.json. Deleting namespace. Creating namespace
+Updating .kube/config.json. Deleting current Kubernetes namespace. Creating namespace
 
 <img src="images/k8s-deployment-5.png"/>
 
-Applying kubernetes configuration. Pods and services creation
+Applying kubernetes configuration file. Pods and services creation
 
 <img src="images/k8s-deployment-6.png"/>
 
-Getting list of PODs and Services
+Getting list of PODs and Services created
 
 <img src="images/k8s-deployment-7.png"/>
