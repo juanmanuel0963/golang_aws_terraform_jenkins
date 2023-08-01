@@ -752,6 +752,8 @@ Updating .kube/config.json. Deleting current Kubernetes namespace. Creating name
 
 Applying kubernetes configuration file. Pods and services creation
 
+<a href="microservices_kubernetes/k8s_deployment/blogs_app.yaml" target="_blank">blogs_app.yaml</a>
+
 <img src="images/k8s-deployment-6.png"/>
 
 Getting list of PODs and Services created
