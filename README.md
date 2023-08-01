@@ -714,3 +714,11 @@ Route Table Association
 Kubernetes Cluster
 
 <img src="images/k8s_kubernetes_cluster.png"/>
+
+Node Groups
+
+<img src="images/k8s_node_groups.png"/>
+
+Container Registry
+
+<img src="images/k8s_container_registry.png"/>
