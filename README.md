@@ -725,3 +725,17 @@ Node Groups
 Container Registry
 
 <img src="images/k8s_container_registry.png"/>
+
+<img src="images/k8s-deployment-1.png"/>
+
+<img src="images/k8s-deployment-2.png"/>
+
+<img src="images/k8s-deployment-3.png"/>
+
+<img src="images/k8s-deployment-4.png"/>
+
+<img src="images/k8s-deployment-5.png"/>
+
+<img src="images/k8s-deployment-6.png"/>
+
+<img src="images/k8s-deployment-7.png"/>
