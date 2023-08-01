@@ -695,3 +695,7 @@ Subnets
 
 <img src="images/k8s_subnets.png"/>
 
+NAT Gateway
+
+<img src="images/k8s_nat.png"/>
+
