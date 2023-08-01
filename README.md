@@ -677,7 +677,7 @@ After a few minutes of execution, we get confirmation that the changes were succ
 
 ## 	Creating Kubernetes cluster
 
-We will start creating our Kubernetes infrastructure by defining a new VPC.
+We will start creating our Kubernetes infrastructure by defining a new VPC. All the other Kubernetes resources we create next will exist within the VPC.
 
 <a href="main.tf" target="_blank">main.tf</a>
 
