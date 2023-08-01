@@ -682,3 +682,5 @@ We will start creating our Kubernetes infrastructure by defining a new VPC. All 
 <a href="main.tf" target="_blank">main.tf</a>
 
 <img src="images/k8s_vpc.png"/>
+
+<img src="images/k8s_gateway.png"/>
