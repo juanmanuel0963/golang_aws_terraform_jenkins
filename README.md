@@ -677,7 +677,7 @@ After a few minutes of execution, we get confirmation that the changes were succ
 
 ## 	Creating Kubernetes cluster
 
-
+<img src="images/architecture_diagram_kubernetes.png"/>
 
 <a href="main.tf" target="_blank">main.tf</a>
 
