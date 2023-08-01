@@ -679,4 +679,4 @@ After a few minutes of execution, we get confirmation that the changes were succ
 
 With the 
 
-<img src="k8s-vpc.png"/>
+<img src="images/k8s_vpc.png"/>
