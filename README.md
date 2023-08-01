@@ -736,6 +736,8 @@ Cleaning up Docker images
 
 Building Docker image
 
+<a href="blogs/Dockerfile" target="_blank">Dockerfile</a>
+
 <img src="images/k8s-deployment-3.png"/>
 
 Tagging Docker image. Connecting to AWS Kubernetes. Pushing Docker image to AWS Container Registry
