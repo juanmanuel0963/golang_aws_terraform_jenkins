@@ -778,7 +778,7 @@ Quering by Blog Id
 
 ## 	Setting SSL up for Kubernetes services
 
-In order to securely invoke the microservices hosted in Kubernetes Pods, we must modify the Kubernetes deployment file. We add the following lines highlighted in yellow:
+In order to securely invoke the microservices hosted in Kubernetes Pods, we must modify the Kubernetes <a href="microservices_kubernetes/k8s_deployment/blogs_app.yaml" target="_blank">blogs_app.yaml</a> deployment file. We add the following lines highlighted in yellow:
 
 <img src="images/k8s-ssl-1.png"/>
 
