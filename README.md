@@ -778,7 +778,7 @@ Quering by Blog Id
 
 ## 	Setting SSL up for Kubernetes services
 
-In the following executable file, you will find step-by-step instructions to compile the Docker image and publish it to the Kubernetes cluster.
+In order to securely invoke the microservices hosted in Kubernetes Pods, we must modify the Kubernetes deployment file. We add the following lines highlighted in yellow:
 
 <img src="images/k8s-ssl-1.png"/>
 
