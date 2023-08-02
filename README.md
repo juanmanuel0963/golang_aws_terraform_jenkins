@@ -779,3 +779,15 @@ Quering by Blog Id
 ## 	Setting SSL up for Kubernetes services
 
 In the following executable file, you will find step-by-step instructions to compile the Docker image and publish it to the Kubernetes cluster.
+
+<img src="images/k8s-ssl-1.png"/>
+
+<img src="images/k8s-ssl-2.png"/>
+
+<img src="images/k8s-ssl-3.png"/>
+
+<img src="images/k8s-ssl-4.png"/>
+
+<img src="images/k8s-ssl-5.png"/>
+
+<img src="images/k8s-ssl-6.png"/>
