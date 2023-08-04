@@ -680,9 +680,10 @@ After a few minutes of execution, we get confirmation that the changes were succ
 
 Next, we are going to create the Kubernetes infrastructure described in the following image using Terraform.
 
+The Terraform instructions are located in the file <a href="main.tf" target="_blank">main.tf</a>.
+
 <img src="images/architecture_diagram_kubernetes.png"/>
 
-<a href="main.tf" target="_blank">main.tf</a>
 
 VPC
 
