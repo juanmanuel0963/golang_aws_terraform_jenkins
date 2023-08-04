@@ -789,9 +789,11 @@ In order to securely invoke the deployed microservices in Kubernetes Pods, we ar
 We can generate self-signed TLS certificates locally using the following golang instruction.
 
 Windows
+
 go run 'C:\Program Files\Go\src\crypto\tls\generate_cert.go' -rsa-bits 2048 -host localhost
 
 Linux
+
 ::go run /usr/local/go/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
 
 We will import the self-signed certificates that have been created previously.
