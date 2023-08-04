@@ -794,7 +794,7 @@ go run 'C:\Program Files\Go\src\crypto\tls\generate_cert.go' -rsa-bits 2048 -hos
 
 Linux
 
-::go run /usr/local/go/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
+go run /usr/local/go/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
 
 We will import the self-signed certificates that have been created previously.
 
