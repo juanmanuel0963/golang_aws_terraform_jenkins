@@ -796,4 +796,6 @@ In the following images, we can verify that the microservices are invoked via HT
 
 <img src="images/k8s-ssl-5.png"/>
 
+The microservice's URL corresponds to the DNS name of the external load balancer.
+
 <img src="images/k8s-ssl-6.png"/>
