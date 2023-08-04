@@ -796,7 +796,7 @@ Linux
 
 go run /usr/local/go/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
 
-We will import the self-signed certificates that have been created previously.
+We will import the self-signed certificate that have been created previously.
 
 <img src="images/k8s-ssl-2.png"/>
 
