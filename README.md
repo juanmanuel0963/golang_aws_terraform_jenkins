@@ -729,9 +729,11 @@ Container Registry
 
 ## 	Deploying Docker image to Kubernetes cluster
 
-In the following executable file, you will find step-by-step instructions to compile the Docker image and publish it to the Kubernetes cluster.
+In the following executable file, you will find step-by-step instructions to compile the Docker image and publish it to the Kubernetes cluster just created.
 
 <a href="step_8_deploy_k8s_blogs_dev.cmd" target="_blank">step_8_deploy_k8s_blogs_dev.cmd</a>
+
+Below is the step-by-step execution of the instructions.
 
 Compiling microservices source code
 
