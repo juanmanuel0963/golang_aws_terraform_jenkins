@@ -792,6 +792,8 @@ The value assigned to the "service.beta.kubernetes.io/aws-load-balancer-ssl-cert
 
 <img src="images/k8s-ssl-4.png"/>
 
+In the following images, we can verify that the microservices are invoked via HTTPS and respond successfully to list all the blogs and to query a specific blog.
+
 <img src="images/k8s-ssl-5.png"/>
 
 <img src="images/k8s-ssl-6.png"/>
