@@ -780,13 +780,13 @@ Quering by Blog Id
 
 In order to securely invoke the microservices hosted in Kubernetes Pods, we must modify the Kubernetes <a href="microservices_kubernetes/k8s_deployment/blogs_app.yaml" target="_blank">blogs_app.yaml</a> deployment file. We add the following lines highlighted in yellow:
 
-<img src="images/k8s-ssl-1.png"/>
-
 <img src="images/k8s-ssl-2.png"/>
 
 <img src="images/k8s-ssl-3.png"/>
 
 <img src="images/k8s-ssl-4.png"/>
+
+<img src="images/k8s-ssl-1.png"/>
 
 <img src="images/k8s-ssl-5.png"/>
 
