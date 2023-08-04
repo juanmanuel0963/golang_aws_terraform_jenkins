@@ -59,8 +59,9 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#creating-kubernetes-cluster">Creating Kubernetes cluster</a>
 
-<a href="#deploying-docker-image-to-kubernetes-cluster">Deploying Docker image to Kubernetes cluster</a>
+<a href="#creating-and-deploying-docker-image-to-kubernetes-cluster">Creating and deploying Docker image to Kubernetes cluster</a>
 
+<a href="#setting-up-tls-certificates-for-the-microservices-deployed-in-kubernetes-pods">Setting up TLS certificates for the microservices deployed in Kubernetes Pods</a>
 
 -----------------------------
 
@@ -727,9 +728,9 @@ Container Registry
 
 <img src="images/k8s_container_registry.png"/>
 
-## 	Deploying Docker image to Kubernetes cluster
+## 	Creating and deploying Docker image to Kubernetes cluster
 
-In the following executable file, you will find step-by-step instructions to compile the Docker image and publish it to the Kubernetes cluster just created.
+In the following executable file, you will find step-by-step instructions to compile locally the Docker image and publish it to the Kubernetes cluster just created.
 
 <a href="step_8_deploy_k8s_blogs_dev.cmd" target="_blank">step_8_deploy_k8s_blogs_dev.cmd</a>
 
