@@ -776,7 +776,7 @@ Quering by Blog Id
 
 <img src="images/k8s-testing-2.png"/>
 
-## 	Setting SSL up for Kubernetes services
+## 	Setting up TLS certificates for the microservices deployed in Kubernetes Pods.
 
 In order to securely invoke the deployed microservices in Kubernetes Pods, we are going to implement TLS certificates at the load balancer level. We will import locally self-generated certificates.
 
