@@ -771,6 +771,8 @@ Getting list of PODs and Services created
 
 Testing Kubernetes services
 
+In the following images, we can verify that the URL used to invoke the microservices is the same "EXTERNAL-IP" automatically generated for the "external-blog-app-service" service. Furthermore, this is the same URL generated for the external load balancer.
+
 Listing Blogs
 
 <img src="images/k8s-testing-1.png"/>
