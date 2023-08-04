@@ -745,9 +745,7 @@ Cleaning up Docker images
 
 Building Docker image
 
-Docker file with instructions for image building can be found here:
-
-<a href="microservices_kubernetes/blogs/Dockerfile" target="_blank">Dockerfile</a>
+Docker file with instructions for image building can be found here: <a href="microservices_kubernetes/blogs/Dockerfile" target="_blank">Dockerfile</a>
 
 <img src="images/k8s-deployment-3.png"/>
 
