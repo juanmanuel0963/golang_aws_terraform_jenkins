@@ -784,7 +784,7 @@ In order to securely invoke the deployed microservices in Kubernetes Pods, we ar
 
 <img src="images/k8s-ssl-3.png"/>
 
-We must modify the Kubernetes deployment file<a href="microservices_kubernetes/k8s_deployment/blogs_app.yaml" target="_blank">blogs_app.yaml</a>. We add the following lines highlighted in yellow:
+We must modify the Kubernetes deployment file <a href="microservices_kubernetes/k8s_deployment/blogs_app.yaml" target="_blank">blogs_app.yaml</a>. We add the following lines highlighted in yellow:
 
 <img src="images/k8s-ssl-1.png"/>
 
