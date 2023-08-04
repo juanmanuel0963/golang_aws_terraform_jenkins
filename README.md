@@ -784,7 +784,17 @@ Quering by Blog Id
 
 ## 	Setting up TLS certificates for the microservices deployed in Kubernetes Pods.
 
-In order to securely invoke the deployed microservices in Kubernetes Pods, we are going to implement TLS certificates at the load balancer level. We will import certificates that have been previously self-generated.
+In order to securely invoke the deployed microservices in Kubernetes Pods, we are going to implement TLS certificates at the load balancer level. 
+
+We can generate self-signed TLS certificates locally using the following golang instruction.
+
+Windows
+go run 'C:\Program Files\Go\src\crypto\tls\generate_cert.go' -rsa-bits 2048 -host localhost
+
+Linux
+::go run /usr/local/go/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host localhost
+
+We will import the self-signed certificates that have been created previously.
 
 <img src="images/k8s-ssl-2.png"/>
 
