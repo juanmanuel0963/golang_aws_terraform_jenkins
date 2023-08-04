@@ -778,7 +778,7 @@ Quering by Blog Id
 
 ## 	Setting SSL up for Kubernetes services
 
-In order to securely invoke the deployed microservices in Kubernetes, we are going to implement SSL certificates at the load balancer level.
+In order to securely invoke the deployed microservices in Kubernetes, we are going to implement TLS certificates at the load balancer level. We will import locally self-generated certificates.
 
 <img src="images/k8s-ssl-2.png"/>
 
