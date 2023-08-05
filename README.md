@@ -37,7 +37,7 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#creating-ec2-instance-and-configuring-restful-server">Creating EC2 Instance and configuring RESTful Server</a>
 
-<a href="#server-based-restful-microservice-written-golang-on-ec2-blogs-management">Server-based RESTful microservice written with Golang on EC2: Blogs management</a>
+<a href="#server-based-restful-microservice-written-golang-on-ec2-blogs-management">Server-based RESTful microservice written in Golang on EC2: Blogs management</a>
 
 <a href="#testing-server-based-restful-microservices-with-postman">Testing server-based RESTful microservices with Postman</a>
 
