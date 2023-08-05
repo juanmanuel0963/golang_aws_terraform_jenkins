@@ -28,7 +28,7 @@ docker system prune -a --force
 ::timeout 10
 ::docker run --rm -p 3000:3000 k8s_ecr_public_repo_blogs
 
-::0. Renombrar archivos de Docker
+::0. Rename docker exec files
 ::------------------------------
 cd C:\Program Files\Docker\Docker\resources\bin
 c:
@@ -52,7 +52,7 @@ docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_publ
 ::--------------
 aws eks --region us-east-1 update-kubeconfig --name k8s_eks_cluster_kite --profile dev
 
-:: 4. Renombrar archivos de Docker
+:: 4. Rename docker exec files
 ::------------------------------
 cd C:\Program Files\Docker\Docker\resources\bin
 c:
