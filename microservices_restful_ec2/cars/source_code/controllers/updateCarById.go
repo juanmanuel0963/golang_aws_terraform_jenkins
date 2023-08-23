@@ -1,0 +1,95 @@
+package controllers
+
+import (
+	"errors"
+	"fmt"
+	"net/http"
+	"strconv"
+
+	"github.com/gin-gonic/gin"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
+	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
+)
+
+func UpdateCarById(c *gin.Context) {
+
+	// Get car ID from path parameter
+	carId, err := strconv.Atoi(c.Param("id"))
+	if err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{
+			"error": "Invalid your user ID",
+		})
+		return
+	}
+
+	var body BodyCar
+
+	// Bind incoming JSON to user struct
+	if err := c.ShouldBindJSON(&body); err != nil {
+		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
+		return
+	}
+
+	var updateCar = models.Car{Category: body.Category, Color: body.Color, Maker: body.Maker,
+		Modelo: body.Modelo, Package: body.Package, Mileage: body.Mileage, Year: body.Year, Price: body.Year}
+
+	// Create a channel to communicate with the goroutine
+	carChannel := make(chan bool)
+	errChannel := make(chan error)
+
+	//Calling Go routine
+	go updateCarInDatabase(carId, updateCar, carChannel, errChannel)
+
+	// Wait for the user to be created and sent through the channel
+	select {
+	case updatedCar := <-carChannel:
+		c.JSON(http.StatusOK, gin.H{
+			"status": updatedCar,
+		})
+	case err := <-errChannel:
+		c.JSON(http.StatusInternalServerError, gin.H{
+			"error": err.Error(),
+		})
+	}
+}
+
+func updateCarInDatabase(carId int, updateCar models.Car, carChannel chan<- bool, errChannel chan<- error) {
+
+	defer close(carChannel)
+	defer close(errChannel)
+
+	//fmt.Println("Printing")
+
+	//fmt.Println(updateUser)
+	fmt.Println("Go Routine")
+
+	fmt.Println("carId")
+	fmt.Println(carId)
+
+	var findCar models.Car
+	result := initializers.DB.First(&findCar, carId)
+
+	fmt.Println("findCar")
+	fmt.Println(findCar)
+
+	if result.Error != nil {
+		errChannel <- errors.New(result.Error.Error())
+	} else if findCar.ID == 0 {
+		errChannel <- errors.New("failed to find car for updating")
+	}
+
+	// Update it
+	result = initializers.DB.Model(&findCar).Updates(updateCar)
+
+	fmt.Println("updateCar")
+	fmt.Println(updateCar)
+
+	if result.Error != nil {
+		errChannel <- errors.New(result.Error.Error())
+	} else {
+		// Send the created car through the channel
+		carChannel <- true
+	}
+
+	fmt.Println("closed")
+}

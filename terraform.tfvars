@@ -65,5 +65,8 @@ restful_ec2_products_port          = "3003"
 #restful_ec2_users
 restful_ec2_users_install_start = "users_start_service"
 restful_ec2_users_port          = "3004"
+#restful_ec2_cars
+restful_ec2_cars_install_start = "cars_start_service"
+restful_ec2_cars_port          = "3005"
 #restful_ec2_database_migrate
 restful_ec2_database_migrate = "database_migrate"

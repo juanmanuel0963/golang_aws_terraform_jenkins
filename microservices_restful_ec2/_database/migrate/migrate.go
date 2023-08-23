@@ -33,6 +33,10 @@ func main() {
 
 	initializers.DB.AutoMigrate(&models.Invoice{}, &models.Product{})
 
+	//----------Cars----------
+
+	initializers.DB.AutoMigrate(&models.Car{})
+
 	//----------Users - Adding Data----------
 
 	var users = []models.User{
@@ -107,6 +111,21 @@ func main() {
 		for _, product := range invoice.Products {
 			fmt.Println("	Product: ", product.ID) // 1,2,3
 		}
+	}
+
+	//----------Cars - Adding Data----------
+
+	var cars = []models.Car{
+		{Make: "Ford", Model: "F10", Package: "Base", Color: "Silver", Year: 2010, Category: "Truck", Mileage: 120123, Price: 1999900},
+		{Make: "Toyota", Model: "Camry", Package: "SE", Color: "White", Year: 2019, Category: "Sedan", Mileage: 39999, Price: 2899000},
+		{Make: "Toyota", Model: "Rav4", Package: "XSE", Color: "Red", Year: 2018, Category: "SUV", Mileage: 24001, Price: 2275000},
+		{Make: "Ford", Model: "Bronco", Package: "Badlands", Color: "Bumt Orange", Year: 2022, Category: "SUV", Mileage: 1, Price: 4499000},
+	}
+
+	initializers.DB.Create(&cars)
+
+	for _, car := range cars {
+		fmt.Println("Car: ", car.ID) // 1,2,3
 	}
 
 }

@@ -1875,6 +1875,46 @@ output "module_microservices_restful_ec2_users_install_start_rule_name" {
   value       = module.module_microservices_restful_ec2_users_install_start.aws_cloudwatch_event_rule_name
 }
 
+
+#############################################################################
+# VARIABLES - microservices_restful_ec2_cars
+#############################################################################
+
+variable "restful_ec2_cars_install_start" {
+  type = string
+}
+
+variable "restful_ec2_cars_port" {
+  type = string
+}
+
+##################################################################################
+# microservices_restful_ec2_cars - eventbridge_install_start - (EventBridge rule RunShellScript)
+##################################################################################
+
+module "module_microservices_restful_ec2_cars_install_start" {
+  source                   = "./microservices_restful_ec2/cars/terraform"
+  region                   = var.region
+  access_key               = var.access_key
+  secret_key               = var.secret_key
+  instance_name            = var.restful_server_1_instance_name
+  instance_id              = module.module_ec2_restful_server_1.aws_instance_id
+  instance_private_ip      = module.module_ec2_restful_server_1.aws_instance_private_ip
+  function_name            = var.restful_ec2_cars_install_start
+  random_pet               = local.random_pet
+  db_password              = var.db_password
+  db_instance_address      = module.module_db_postgresql.aws_db_instance_address
+  db_instance_db_name      = module.module_db_postgresql.aws_db_instance_db_name
+  db_port                  = var.db_port
+  cars_port                = var.restful_ec2_cars_port
+  aws_cognito_car_pool_id  = module.module_aws_cognito_car_pool.aws_cognito_car_pool_id
+}
+
+output "module_microservices_restful_ec2_cars_install_start_rule_name" {
+  description = "EventBridge rule name"
+  value       = module.module_microservices_restful_ec2_cars_install_start.aws_cloudwatch_event_rule_name
+}
+
 #############################################################################
 # VARIABLES - microservices_restful_ec2_database_migrate
 #############################################################################
@@ -1947,5 +1987,44 @@ output "module_aws_cognito_user_pool_app_client_id" {
 output "module_aws_cognito_user_pool_app_client_name" {
   description = "Cognito client app name"
   value       = module.module_aws_cognito_user_pool.aws_cognito_user_pool_app_client_name
+}
+
+
+##################################################################################
+# aws_cognito_cars_pool
+##################################################################################
+
+module "module_aws_cognito_car_pool" {
+  source     = "./cognito/auth_token/terraform"
+  region     = var.region
+  access_key = var.access_key
+  secret_key = var.secret_key
+  random_pet = local.random_pet
+  username   = var.db_username
+  password   = var.db_password
+}
+
+##################################################################################
+# aws_cognito_car_pool - OUTPUT
+##################################################################################
+
+output "module_aws_cognito_car_pool_id" {
+  description = "Cognito Car pool ID"
+  value       = module.module_aws_cognito_car_pool.aws_cognito_car_pool_id
+}
+
+output "module_aws_cognito_car_pool_name" {
+  description = "Cognito Car pool name"
+  value       = module.module_aws_cognito_car_pool.aws_cognito_car_pool_name
+}
+
+output "module_aws_cognito_car_pool_app_client_id" {
+  description = "Cognito client app ID"
+  value       = module.module_aws_cognito_car_pool.aws_cognito_car_pool_app_client_id
+}
+
+output "module_aws_cognito_car_pool_app_client_name" {
+  description = "Cognito client app name"
+  value       = module.module_aws_cognito_car_pool.aws_cognito_car_pool_app_client_name
 }
 
