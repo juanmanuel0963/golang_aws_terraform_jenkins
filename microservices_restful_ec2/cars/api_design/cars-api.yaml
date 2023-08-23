@@ -1,10 +1,12 @@
 openapi: 3.0.3
 info:
-  title: CarWash API
+  title: Cars API
   version: "0.1"
 tags:
   - name: Car
     description: Car related operations
+servers:
+- url: https://ec2-34-238-123-105.compute-1.amazonaws.com:3005    
 paths:
   /cars:
     post:
