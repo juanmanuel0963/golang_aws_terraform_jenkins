@@ -32,6 +32,8 @@ func CreateCar(c *gin.Context) {
 		return
 	}
 
+	fmt.Println(body)
+
 	var newCar = models.Car{Category: body.Category, Color: body.Color, Maker: body.Maker,
 		Modelo: body.Modelo, Package: body.Package, Mileage: body.Mileage, Year: body.Year, Price: body.Year}
 
