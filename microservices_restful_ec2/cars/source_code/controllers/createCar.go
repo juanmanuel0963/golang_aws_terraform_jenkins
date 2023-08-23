@@ -11,7 +11,7 @@ import (
 )
 
 type BodyCar struct {
-	Id       string `json:"id"`
+	Id       int32  `json:"id"`
 	Category string `json:"category"`
 	Color    string `json:"color"`
 	Maker    string `json:"maker"`
@@ -65,7 +65,7 @@ func createCar(newCar models.Car, carChannel chan<- models.Car, errChannel chan<
 	if result.Error != nil {
 		errChannel <- errors.New(result.Error.Error())
 	} else if newCar.ID == 0 {
-		errChannel <- errors.New("failed to create user")
+		errChannel <- errors.New("failed to create car")
 	} else {
 		// Send the created car through the channel
 		carChannel <- newCar
