@@ -39,6 +39,14 @@ del main.exe
 del *.exe
 del *.exe~
 
+::Delete Files :: Cars-------------
+::Cars - web server
+cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\cars\source_code
+del main
+del main.exe
+del *.exe
+del *.exe~
+
 ::Delete Files :: DB migrate--------
 ::ls env:
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\_database\migrate

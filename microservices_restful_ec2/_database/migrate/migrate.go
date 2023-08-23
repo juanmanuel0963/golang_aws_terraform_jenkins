@@ -116,10 +116,10 @@ func main() {
 	//----------Cars - Adding Data----------
 
 	var cars = []models.Car{
-		{Make: "Ford", Model: "F10", Package: "Base", Color: "Silver", Year: 2010, Category: "Truck", Mileage: 120123, Price: 1999900},
-		{Make: "Toyota", Model: "Camry", Package: "SE", Color: "White", Year: 2019, Category: "Sedan", Mileage: 39999, Price: 2899000},
-		{Make: "Toyota", Model: "Rav4", Package: "XSE", Color: "Red", Year: 2018, Category: "SUV", Mileage: 24001, Price: 2275000},
-		{Make: "Ford", Model: "Bronco", Package: "Badlands", Color: "Bumt Orange", Year: 2022, Category: "SUV", Mileage: 1, Price: 4499000},
+		{Maker: "Ford", Modelo: "F10", Package: "Base", Color: "Silver", Year: 2010, Category: "Truck", Mileage: 120123, Price: 1999900},
+		{Maker: "Toyota", Modelo: "Camry", Package: "SE", Color: "White", Year: 2019, Category: "Sedan", Mileage: 39999, Price: 2899000},
+		{Maker: "Toyota", Modelo: "Rav4", Package: "XSE", Color: "Red", Year: 2018, Category: "SUV", Mileage: 24001, Price: 2275000},
+		{Maker: "Ford", Modelo: "Bronco", Package: "Badlands", Color: "Bumt Orange", Year: 2022, Category: "SUV", Mileage: 1, Price: 4499000},
 	}
 
 	initializers.DB.Create(&cars)
