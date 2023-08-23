@@ -6,7 +6,7 @@ tags:
   - name: Car
     description: Car related operations
 servers:
-- url: http://ec2-34-238-123-105.compute-1.amazonaws.com:3005
+- url: https://ec2-34-238-123-105.compute-1.amazonaws.com:3005
 paths:
   /cars:
     post:
