@@ -51,6 +51,8 @@ func getCarFromDatabase(carId int, carChannel chan<- models.Car, errChannel chan
 	fmt.Println("carId")
 	fmt.Println(carId)
 
+	initializers.ConnectToDB()
+
 	var findCar models.Car
 	result := initializers.DB.First(&findCar, carId)
 

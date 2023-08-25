@@ -33,7 +33,7 @@ func DeleteCarByID(c *gin.Context) {
 	// Wait for the user to be deleted and sent through the channel
 	select {
 	case deleteSuccess := <-carChannel:
-		c.JSON(http.StatusOK, gin.H{
+		c.JSON(http.StatusNoContent, gin.H{
 			"status": deleteSuccess,
 		})
 	case err := <-errChannel:
@@ -47,6 +47,8 @@ func deleteCarInDatabase(carId int, carChannel chan<- bool, errChannel chan<- er
 
 	defer close(carChannel)
 	defer close(errChannel)
+
+	initializers.ConnectToDB()
 
 	//Delete the car
 	result := initializers.DB.Delete(&models.Car{}, carId)

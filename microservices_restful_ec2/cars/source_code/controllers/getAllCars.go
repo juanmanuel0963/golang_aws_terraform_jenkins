@@ -38,6 +38,8 @@ func getAllCarsFromDatabase(carsChannel chan<- []models.Car, errChannel chan<- e
 	defer close(carsChannel)
 	defer close(errChannel)
 
+	initializers.ConnectToDB()
+
 	// Get the cars list
 	var cars []models.Car
 	result := initializers.DB.Find(&cars)
