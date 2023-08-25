@@ -825,7 +825,7 @@ The microservice's URL corresponds to the DNS name of the external load balancer
 
 ## 	Designing and documenting APIs wih OpenAPI and Swagger 
 
-OpenAPI allows us to follow an "API-first design" approach. Through a configuration file, we can define the types of verbs to be executed (POST, GET, PUT, DELETE), as well as the request and response parameters.
+OpenAPI allows us to follow an "API-first design" approach. Through a configuration file, we can define the types of verbs to be executed (POST, GET, PUT, DELETE), as well as the request and response body parameters.
 
 <a href="microservices_restful_ec2/cars/api_design/cars-api.yaml" target="_blank">View the OpenAPI design file</a>
 
