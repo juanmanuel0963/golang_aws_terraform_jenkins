@@ -820,13 +820,15 @@ The microservice's URL corresponds to the DNS name of the external load balancer
 
 <img src="images/k8s-ssl-6.png"/>
 
-## 	Designing and documenting API's wih OpenAPI and Swagger 
+## 	Designing and documenting APIs wih OpenAPI and Swagger 
+
+OpenAPI allows us to follow a "API-first design" approach. Through a configuration file, we can define the types of verbs to be executed (POST, GET, PUT, DELETE), as well as the request and response parameters.
 
 <a href="microservices_restful_ec2/cars/api_design/cars-api.yaml" target="_blank">OpenAPI design file</a>
 
 <img src="images/openapi-1.png"/>
 
-<a href="http://cars-api-golang.s3-website-us-east-1.amazonaws.com/" target="_blank">Cars API's Swagger documentation</a>
+<a href="http://cars-api-golang.s3-website-us-east-1.amazonaws.com/" target="_blank">Cars API Swagger documentation</a>
 
 <img src="images/openapi-2.png"/>
 
