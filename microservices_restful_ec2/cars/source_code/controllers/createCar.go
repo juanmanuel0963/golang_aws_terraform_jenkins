@@ -22,6 +22,12 @@ type BodyCar struct {
 	Price    int32  `json:"price"`
 }
 
+func init() {
+
+	//Initialize DB conn
+	initializers.ConnectToDB()
+}
+
 func SetUpRouter() *gin.Engine {
 	router := gin.Default()
 	return router
@@ -68,7 +74,7 @@ func createCar(newCar models.Car, carChannel chan<- models.Car, errChannel chan<
 	defer close(carChannel)
 	defer close(errChannel)
 
-	initializers.ConnectToDB()
+	//initializers.ConnectToDB()
 
 	//Create the car
 	result := initializers.DB.Create(&newCar)

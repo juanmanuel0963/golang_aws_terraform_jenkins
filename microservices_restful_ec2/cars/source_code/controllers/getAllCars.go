@@ -10,6 +10,12 @@ import (
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 )
 
+func init() {
+
+	//Initialize DB conn
+	initializers.ConnectToDB()
+}
+
 // GetAllCars retrieves all cars
 func GetAllCars(c *gin.Context) {
 
@@ -38,7 +44,7 @@ func getAllCarsFromDatabase(carsChannel chan<- []models.Car, errChannel chan<- e
 	defer close(carsChannel)
 	defer close(errChannel)
 
-	initializers.ConnectToDB()
+	//initializers.ConnectToDB()
 
 	// Get the cars list
 	var cars []models.Car

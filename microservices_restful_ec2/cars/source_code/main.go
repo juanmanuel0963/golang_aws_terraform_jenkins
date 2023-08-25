@@ -4,14 +4,14 @@ import (
 	"os"
 
 	"github.com/gin-gonic/gin"
-	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/initializers"
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/cars/source_code/controllers"
 )
 
-func init() {
-	initializers.ConnectToDB()
-}
-
+/*
+	func init() {
+		initializers.ConnectToDB()
+	}
+*/
 func main() {
 
 	r := gin.Default()

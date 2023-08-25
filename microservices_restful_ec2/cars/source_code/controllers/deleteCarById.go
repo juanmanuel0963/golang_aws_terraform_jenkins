@@ -11,6 +11,12 @@ import (
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 )
 
+func init() {
+
+	//Initialize DB conn
+	initializers.ConnectToDB()
+}
+
 // DeleteCarByID handles DELETE requests for deleting a specific car by ID
 func DeleteCarByID(c *gin.Context) {
 
@@ -48,7 +54,7 @@ func deleteCarInDatabase(carId int, carChannel chan<- bool, errChannel chan<- er
 	defer close(carChannel)
 	defer close(errChannel)
 
-	initializers.ConnectToDB()
+	//initializers.ConnectToDB()
 
 	//Delete the car
 	result := initializers.DB.Delete(&models.Car{}, carId)

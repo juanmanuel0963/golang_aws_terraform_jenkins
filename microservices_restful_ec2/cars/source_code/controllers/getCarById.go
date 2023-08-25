@@ -11,6 +11,12 @@ import (
 	"github.com/juanmanuel0963/golang_aws_terraform_jenkins/v2/microservices_restful_ec2/_database/models"
 )
 
+func init() {
+
+	//Initialize DB conn
+	initializers.ConnectToDB()
+}
+
 func GetCarById(c *gin.Context) {
 	// Get car ID from path parameter
 	carId, err := strconv.Atoi(c.Param("id"))
@@ -51,7 +57,7 @@ func getCarFromDatabase(carId int, carChannel chan<- models.Car, errChannel chan
 	fmt.Println("carId")
 	fmt.Println(carId)
 
-	initializers.ConnectToDB()
+	//initializers.ConnectToDB()
 
 	var findCar models.Car
 	result := initializers.DB.First(&findCar, carId)
