@@ -819,3 +819,15 @@ In the following images, we can verify that the microservices are invoked via HT
 The microservice's URL corresponds to the DNS name of the external load balancer.
 
 <img src="images/k8s-ssl-6.png"/>
+
+## 	Designing and documenting API's wih OpenAPI and Swagger 
+
+<a href="microservices_restful_ec2/cars/api_design/cars-api.yaml" target="_blank">OpenAPI design file</a>
+
+<img src="images/openapi-1.png"/>
+
+<a href="http://cars-api-golang.s3-website-us-east-1.amazonaws.com/" target="_blank">Cars API's Swagger documentation</a>
+
+<img src="images/openapi-2.png"/>
+
+
