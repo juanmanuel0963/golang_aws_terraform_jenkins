@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: blogs-app
-        image: public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.2
+        image: public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.0
         env:
         - name: PORT
           value: "80"
@@ -62,4 +62,4 @@ spec:
     - protocol: TCP
       port: 443
       name: https
-      targetPort:80
+      targetPort: 80
