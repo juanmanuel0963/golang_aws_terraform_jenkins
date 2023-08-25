@@ -65,6 +65,9 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#setting-up-tls-certificates-for-the-microservices-deployed-in-kubernetes-pods">Setting up TLS certificates for the microservices deployed in Kubernetes Pods</a>
 
+<a href="#designing-and-documenting-apis-wih-openapi-and-swagger">Designing and documenting APIs wih OpenAPI and Swagger /a>
+
+
 -----------------------------
 
 ## Defining deployment environments
