@@ -828,6 +828,8 @@ OpenAPI allows us to follow a "API-first design" approach. Through a configurati
 
 <img src="images/openapi-1.png"/>
 
+Once we have finished defining the OpenAPI configuration file, we can open it in Swagger format in order to generate the API documentation.
+
 <a href="http://cars-api-golang.s3-website-us-east-1.amazonaws.com/" target="_blank">Cars API Swagger documentation</a>
 
 <img src="images/openapi-2.png"/>
