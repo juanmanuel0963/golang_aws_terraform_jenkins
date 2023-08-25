@@ -45,7 +45,7 @@ timeout 60
 
 :: 2. Tag image
 ::------------------------------
-docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.0
+docker tag k8s_ecr_public_repo_blogs:latest public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.1
 :: Change versión v1.x in this file at line 48 & 73, k8s_deployment\blogs_app.yaml line 21.
 
 :: 3. Creating .kube config file on C:\Users\Juan Manuel\.kube\config
@@ -70,7 +70,7 @@ aws ecr-public get-login-password --region us-east-1 --profile dev | docker logi
 
 :: 6. Push image to public AWS ECR repo
 ::------------------------------
-docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.0
+docker push public.ecr.aws/h9e6x2j6/k8s_ecr_public_repo_blogs:v1.1
 
 ::Connecting to Kubernetes cluster
 ::--------------
