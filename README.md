@@ -65,7 +65,7 @@ We will also be using Terraform to deploy the infrastructure and functional code
 
 <a href="#setting-up-tls-certificates-for-the-microservices-deployed-in-kubernetes-pods">Setting up TLS certificates for the microservices deployed in Kubernetes Pods</a>
 
-<a href="#designing-and-documenting-apis-wih-openapi-and-swagger">Designing and documenting APIs wih OpenAPI and Swagger /a>
+<a href="#designing-and-documenting-apis-wih-openapi-and-swagger">Designing and documenting APIs wih OpenAPI and Swagger</a>
 
 
 -----------------------------
@@ -825,7 +825,7 @@ The microservice's URL corresponds to the DNS name of the external load balancer
 
 ## 	Designing and documenting APIs wih OpenAPI and Swagger 
 
-OpenAPI allows us to follow a "API-first design" approach. Through a configuration file, we can define the types of verbs to be executed (POST, GET, PUT, DELETE), as well as the request and response parameters.
+OpenAPI allows us to follow an "API-first design" approach. Through a configuration file, we can define the types of verbs to be executed (POST, GET, PUT, DELETE), as well as the request and response parameters.
 
 <a href="microservices_restful_ec2/cars/api_design/cars-api.yaml" target="_blank">View the OpenAPI design file</a>
 
