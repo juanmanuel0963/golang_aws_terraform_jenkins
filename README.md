@@ -7,9 +7,9 @@ We will deploy the microservices on Lambda functions, EC2 instances, and Kuberne
 
 Follow me:
 
-<img src="images/linkedin.png"/> https://www.linkedin.com/in/juanmanuel0963/
+<img src="images/linkedin.png"/> https://www.linkedin.com/in/juanmanuel0963/</img>
 
-<img src="images/architecture_diagram.png"/>
+<img src="images/architecture_diagram.png"/> </img>
 
 We will be using AWS as our cloud platform. We will be using Golang as our programming language. Github will be our code repository. We will programmatically define the AWS infrastructure and services we will be implementing using Terraform.
 
