@@ -40,6 +40,11 @@ spec:
   selector:
     app: blogs-app
   type: LoadBalancer
+  #op1
+  #externalTrafficPolicy: Local
+  #loadBalancerSourceRanges: - <elastic-ip>  
+  #op2
+  #loadBalancerIP: xx.xx.xx.xx
   ports:
     - protocol: TCP
       port: 80
@@ -58,6 +63,11 @@ spec:
   selector:
     app: blogs-app
   type: LoadBalancer
+  #op1
+  #externalTrafficPolicy: Local
+  #loadBalancerSourceRanges: - <elastic-ip>  
+  #op2
+  #loadBalancerIP: xx.xx.xx.xx
   ports:
     - protocol: TCP
       port: 443
