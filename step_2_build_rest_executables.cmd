@@ -6,6 +6,7 @@ set GOOS=linux
 ::Build Files :: lambda_func_go-------------
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_lambda\lambda_func_go\source_code
 go build main.go
+ren main bootstrap
 
 ::Build Files :: Blogs-------------
 ::Blogs - web server
