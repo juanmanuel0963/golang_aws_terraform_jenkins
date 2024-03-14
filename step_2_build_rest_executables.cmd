@@ -3,6 +3,10 @@ set GOOS=linux
 ::ls env:
 ::set $Env:GOOS=linux
 
+::Build Files :: lambda_func_go-------------
+cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_lambda\lambda_func_go\source_code
+go build main.go
+
 ::Build Files :: Blogs-------------
 ::Blogs - web server
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\blogs\source_code

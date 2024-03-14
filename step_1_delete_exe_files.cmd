@@ -1,3 +1,10 @@
+::Delete Files :: lambda_func_go-------------
+cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_lambda\lambda_func_go\source_code
+del main
+del main.exe
+del *.exe
+del *.exe~
+del bootstrap
 
 ::Delete Files :: Blogs-------------
 ::Blogs - web server
