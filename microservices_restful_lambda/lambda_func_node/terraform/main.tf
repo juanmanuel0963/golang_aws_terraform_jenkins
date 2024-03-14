@@ -141,7 +141,7 @@ resource "aws_lambda_function" "the_lambda_function" {
   s3_bucket = aws_s3_bucket.lambda_func_bucket.id
   s3_key    = aws_s3_object.the_lambda_function.key
 
-  runtime = "nodejs12.x"
+  runtime = "nodejs18.x"
   handler = "${var.lambda_func_name}.handler"
 
   source_code_hash = data.archive_file.the_lambda_function.output_base64sha256
