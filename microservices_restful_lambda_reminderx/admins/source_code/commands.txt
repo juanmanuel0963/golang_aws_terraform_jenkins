@@ -1,0 +1,13 @@
+go mod tidy
+go run main.go //To run locally
+
+--before build binary to upload to AWS
+$Env:GOOS = "linux" 
+
+--buiild
+go build main.go
+
+--ren file as bootstrap for lambda function
+ren main bootstrap
+
+--Zip bootstrap the file and upload to lambda function
