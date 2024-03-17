@@ -70,6 +70,14 @@ del *.exe
 del *.exe~
 del bootstrap
 
+::Delete Files :: reminderx_admins-------------
+cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_lambda_reminderx\admins\source_code
+del main
+del main.exe
+del *.exe
+del *.exe~
+del bootstrap
+
 ::Delete Files :: Blogs-------------
 ::Blogs - web server
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\blogs\source_code

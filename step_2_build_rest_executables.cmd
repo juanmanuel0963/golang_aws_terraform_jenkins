@@ -43,6 +43,11 @@ cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_lambda\contact
 go build main.go
 ren main bootstrap
 
+::Build Files :: reminderx_admins-------------
+cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_lambda_reminderx\admins\source_code
+go build main.go
+ren main bootstrap
+
 ::Build Files :: Blogs-------------
 ::Blogs - web server
 cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_ec2\blogs\source_code
