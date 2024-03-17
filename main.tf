@@ -1090,9 +1090,9 @@ output "module_contacts_get_by_pagination_lambda_func_base_url" {
 ##################################################################################
 # reminderx_admins
 ##################################################################################
- 
+
 module "module_reminderx_admins" {
-  source                           = "./microservices_restful_lambda_reminderx/admins/terraform"
+  source                           = "./microservices_lambda_reminderx/rmdx_admins/terraform"
   region                           = var.region
   access_key                       = var.access_key
   secret_key                       = var.secret_key
@@ -1103,10 +1103,11 @@ module "module_reminderx_admins" {
   parent_api_gateway_name          = module.module_api_gateway.api_gateway_name
   parent_api_gateway_execution_arn = module.module_api_gateway.api_gateway_execution_arn
   parent_api_gateway_invoke_url    = module.module_api_gateway.api_gateway_invoke_url
-  InstanceConnectionName           = module.module_db_postgresql.aws_db_instance_endpoint
+  dbInstanceAddress                = module.module_db_postgresql.aws_db_instance_address
   dbName                           = module.module_db_postgresql.aws_db_instance_db_name
   dbUser                           = var.db_username
   dbPassword                       = var.db_password
+  dbPort                           = var.db_port
   vpc_id                           = module.module_networking.vpc_id
   security_group_id                = module.module_networking.security_group_id
   db_subnet_group_name             = module.module_db_postgresql.aws_db_subnet_group_name
