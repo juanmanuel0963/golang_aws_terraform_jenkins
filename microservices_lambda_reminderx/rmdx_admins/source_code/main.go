@@ -23,10 +23,10 @@ type Admin struct {
 var db *gorm.DB
 
 func init() {
-	dbName := os.Getenv("RMDX_DB_NAME")
+	dbHost := os.Getenv("RMDX_INSTANCE_ADDRESS")
 	dbUser := os.Getenv("RMDX_USER_NAME")
 	dbPassword := os.Getenv("RMDX_PASSWORD")
-	dbHost := os.Getenv("RMDX_INSTANCE_ADDRESS")
+	dbName := os.Getenv("RMDX_DB_NAME")
 	dbPort := os.Getenv("RMDX_PORT")
 
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable", dbHost, dbUser, dbPassword, dbName, dbPort)
