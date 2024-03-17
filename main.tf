@@ -1087,6 +1087,55 @@ output "module_contacts_get_by_pagination_lambda_func_base_url" {
   value       = module.module_contacts_get_by_pagination.lambda_func_base_url
 }
 
+##################################################################################
+# reminderx_admins
+##################################################################################
+ 
+module "module_reminderx_admins" {
+  source                           = "./microservices_restful_lambda_reminderx/admins/terraform"
+  region                           = var.region
+  access_key                       = var.access_key
+  secret_key                       = var.secret_key
+  lambda_func_name                 = "rmdx_admins"
+  random_integer                   = local.random_integer
+  random_pet                       = local.random_pet
+  parent_api_gateway_id            = module.module_api_gateway.api_gateway_id
+  parent_api_gateway_name          = module.module_api_gateway.api_gateway_name
+  parent_api_gateway_execution_arn = module.module_api_gateway.api_gateway_execution_arn
+  parent_api_gateway_invoke_url    = module.module_api_gateway.api_gateway_invoke_url
+  InstanceConnectionName           = module.module_db_postgresql.aws_db_instance_endpoint
+  dbName                           = module.module_db_postgresql.aws_db_instance_db_name
+  dbUser                           = var.db_username
+  dbPassword                       = var.db_password
+  vpc_id                           = module.module_networking.vpc_id
+  security_group_id                = module.module_networking.security_group_id
+  db_subnet_group_name             = module.module_db_postgresql.aws_db_subnet_group_name
+}
+
+##################################################################################
+# reminderx_admins - OUTPUT
+##################################################################################
+
+output "module_reminderx_admins_lambda_func_name" {
+  description = "Name of the Lambda function."
+  value       = module.module_reminderx_admins.lambda_func_name
+}
+
+output "module_reminderx_admins_lambda_func_bucket_name" {
+  description = "Name of the S3 bucket used to store function code."
+  value       = module.module_reminderx_admins.lambda_func_bucket_name
+}
+
+output "module_reminderx_admins_lambda_func_role_name" {
+  description = "Name of the rol"
+  value       = module.module_reminderx_admins.lambda_func_role_name
+}
+
+output "module_reminderx_admins_lambda_func_base_url" {
+  description = "Base URL for API Gateway stage + function name"
+  value       = module.module_reminderx_admins.lambda_func_base_url
+}
+
 #############################################################################
 # VARIABLES - ec2_grpc_server_1 (EC2 instance)
 #############################################################################

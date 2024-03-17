@@ -41,12 +41,16 @@ func init() {
 
 func main() {
 	if os.Getenv("_LAMBDA_SERVER_PORT") != "" {
-		fmt.Println("Running server...")
-		lambda.Start(HandleRequest)
-	} else {
+
 		fmt.Println("Running locally...")
 		http.HandleFunc("/admins", LocallyAdminsHandler)
-		http.ListenAndServe(":8080", nil)
+		http.ListenAndServe(":"+os.Getenv("_LAMBDA_SERVER_PORT"), nil)
+
+	} else {
+
+		fmt.Println("Running server...")
+		lambda.Start(HandleRequest)
+
 	}
 }
 
