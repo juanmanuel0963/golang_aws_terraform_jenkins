@@ -44,7 +44,7 @@ go build main.go
 ren main bootstrap
 
 ::Build Files :: reminderx_admins-------------
-cd D:\projects\golang_aws_terraform_jenkins\microservices_restful_lambda_reminderx\admins\source_code
+cd D:\projects\golang_aws_terraform_jenkins\microservices_lambda_reminderx\rmdx_admins\source_code
 go build main.go
 ren main bootstrap
 
