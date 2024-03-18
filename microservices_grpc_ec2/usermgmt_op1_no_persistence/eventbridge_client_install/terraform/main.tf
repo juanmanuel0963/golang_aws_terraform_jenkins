@@ -165,12 +165,4 @@ output "aws_cloudwatch_event_rule_name" {
 }
 
 /*
-//----------CloudWatch assignment event----------
 
-//Defines a log group to store log messages from your Lambda function for 30 days. 
-//By convention, Lambda stores logs in a group with the name /aws/lambda/<Function Name>.
-resource "aws_cloudwatch_log_group" "the_log_group" {
-  name = "/aws/events/${aws_cloudwatch_event_rule.the_rule.name}"
-  retention_in_days = 30
-}
-*/
