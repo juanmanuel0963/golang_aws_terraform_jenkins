@@ -101,6 +101,16 @@ kubectl get svc -n blogs-app-namespace
 ::--------------
 kubectl get nodes
 
+::Create the HorizontalPodAutoscaler
+::https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale-walkthrough/
+::Roughly speaking, the HPA controller will increase and decrease the number of replicas (by updating the Deployment) to maintain an average CPU utilization across all Pods of 50%. 
+::--------------
+kubectl autoscale deployment blogs-app-deployment --cpu-percent=50 --min=1 --max=10
+
+::You can check the current status of the newly-made HorizontalPodAutoscaler, by running:
+::# You can use "hpa" or "horizontalpodautoscaler"; either name works OK.
+kubectl get hpa
+
 ::Linux connection - List Pod files
 ::--------------
 ::kubectl exec -it --namespace <namespace> <podname> -- bash

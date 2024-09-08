@@ -14,7 +14,6 @@ func ConnectToDB() {
 
 	var err error
 
-	//Only for connections from EC2 instance
 	dsn := os.Getenv("db_conn")
 	fmt.Println(dsn)
 
